@@ -3,6 +3,8 @@ import { ref } from 'vue';
 import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import Date from '@/Components/Date.vue';
+import Footer from '@/Components/Footer.vue';
+import CreateFilter from '@/Components/CreateFilter.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import { Link } from '@inertiajs/vue3';
@@ -139,5 +141,8 @@ const showingNavigationDropdown = ref(false);
         <main>
             <slot />
         </main>
+
+        <!-- Footer section -->
+        <Footer />
     </div>
 </template>
