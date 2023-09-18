@@ -4,7 +4,7 @@ import { Head } from '@inertiajs/vue3';
 </script>
 
 <template>
-    <Head title="Inventorio" />
+    <Head title="Dashboard" />
 
     <AuthenticatedLayout>
         <div class="py-12">
