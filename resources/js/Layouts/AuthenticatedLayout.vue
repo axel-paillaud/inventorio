@@ -20,8 +20,8 @@ const showingNavigationDropdown = ref(false);
                         <div class="flex">
                             <!-- Homepage -->
                             <div class="shrink-0 flex items-center">
-                                <Link href="/">
-                                    Home
+                                <Link :href="route('dashboard')">
+                                    Dashboard
                                 </Link>
                             </div>
 
