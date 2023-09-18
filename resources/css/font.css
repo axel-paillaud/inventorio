@@ -5,3 +5,19 @@
     src:url(../fonts/Lato/Lato-Regular.ttf);
     font-display: swap;
 }
+
+@font-face {
+    font-family: lato;
+    font-style: bold;
+    font-weight: 700;
+    src:url(../fonts/Lato/Lato-Bold.ttf);
+    font-display: swap;
+}
+
+@font-face {
+    font-family: lato;
+    font-style: italic;
+    font-weight: 400;
+    src:url(../fonts/Lato/Lato-Italic.ttf);
+    font-display: swap;
+}
