@@ -2,5 +2,7 @@
 </script>
 
 <template>
-    <p class='font-bold'>Hello, world!</p>
+    <div>
+        <span>2023</span>
+    </div>
 </template>
