@@ -12,28 +12,30 @@ import Dropdown from '@/Components/Dropdown.vue';
             <span>2023</span>
             <!-- Arrow container -->
             <div class="flex items-center gap-1.5">
-                <button>
+                <button class="rounded-full hover:bg-gray-100 p-1.5">
                     <ChevronLeft :size="20"/>
                 </button>
-                <button>
+                <button class="rounded-full hover:bg-gray-100 p-1.5">
                     <ChevronRight :size="20"/>
                 </button>
             </div>
         </div>
-        <Dropdown>
+        <Dropdown align="right">
             <template #trigger>
                 <button
                     class='flex items-center py-2 px-3 border gap-1.5 rounded'
                 >
-                    Année
+                    <span>Année</span>
                     <ChevronDown :size="16"/>
                 </button>
             </template>
             <template #content>
-                <button>Jour</button>
-                <button>Mois</button>
-                <button>Année</button>
-                <button>Depuis toujours</button>
+                <div class="flex flex-col">
+                    <button class="text-left">Jour</button>
+                    <button class="text-left">Mois</button>
+                    <button class="text-left">Année</button>
+                    <button class="text-left">Depuis toujours</button>
+                </div>
             </template>
         </Dropdown>
     </div>
