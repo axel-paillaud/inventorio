@@ -25,7 +25,7 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/inventorio', function () {
+Route::get('/dashboard', function () {
     return Inertia::render('Inventorio');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
