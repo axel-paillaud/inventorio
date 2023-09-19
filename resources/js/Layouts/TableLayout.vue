@@ -27,11 +27,7 @@
                     <td class="td td-last">300</td>
                 </tr>
                 <tr>
-                    <td class="td td-last-row" colspan="1">Total</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td class="td td-last-row" colspan="5">Total</td>
                     <td class="td td-last-row td-total" colspan="1">128 000</td>
                 </tr>
             </tbody>
