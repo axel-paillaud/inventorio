@@ -55,7 +55,6 @@
 
 .td:hover {
     border-left-color: #e5e7eb;
-    border-left-width: 2px;
     border-right-color: #e5e7eb;
     border-top-color: #f3f4f6;
     background-color: #f3f4f6;
@@ -73,9 +72,5 @@
 
 .td-last-row {
     border: none;
-}
-
-.td-total {
-    grid-column: -1;
 }
 </style>
