@@ -4,7 +4,7 @@ import Filter from '@/Components/Filter.vue';
 </script>
 
 <template>
-    <footer class="bg-white border-t border-gray-100">
+    <footer class="bg-white border-t border-gray-100 fixed bottom-0 left-0 right-0">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <!-- Filter container -->

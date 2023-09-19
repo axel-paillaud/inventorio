@@ -13,7 +13,7 @@ const showingNavigationDropdown = ref(false);
 
 <template>
     <div class="min-h-screen bg-gray-100">
-        <header>
+        <header class="sticky top-0">
             <nav class="bg-white border-b border-gray-100">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -137,11 +137,7 @@ const showingNavigationDropdown = ref(false);
         </header>
 
         <!-- Page Content -->
-        <main>
-            <slot />
-        </main>
+        <slot />
 
-        <!-- Footer section -->
-        <Footer />
     </div>
 </template>
