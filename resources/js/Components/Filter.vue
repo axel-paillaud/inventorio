@@ -1,12 +1,13 @@
 <script setup>
-defineProps({
+const props = defineProps({
     name: String,
-    color: String
+    color: {type: String, default: 'gray'},
 })
+
 </script>
 
 <template>
-    <button class="px-3 py-2 border rounded hover:bg-gray-100">
+    <button class="transition-colors px-3 py-2 border rounded hover:bg-gray-100">
         {{ name }}
     </button>
 </template>
