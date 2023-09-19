@@ -6,7 +6,7 @@
         class="bg-white overflow-hidden shadow-sm sm:rounded-lg w-full"
     >
         <caption class="text-left">Pièces détachées</caption>
-        <thead>
+        <thead class="text-left bg-lime-100">
             <tr>
                 <th>Date</th>
                 <th>Nom</th>
@@ -28,3 +28,10 @@
         </tbody>
     </table>
 </template>
+
+<style scoped>
+th, td {
+    padding: 12px 24px;
+
+}
+</style>
