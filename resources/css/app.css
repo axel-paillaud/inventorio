@@ -7,3 +7,9 @@
 #app {
     @apply h-full;
 }
+
+.horizontal-center {
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+}

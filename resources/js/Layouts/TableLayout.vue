@@ -24,7 +24,7 @@ import { Plus } from 'lucide-vue-next';
                     <td class="td-last-row">
                         <div
                             class="rounded-full hover:bg-gray-100 p-1.5 w-fit
-                            cursor-pointer"
+                            cursor-pointer horizontal-center"
                         >
                             <Plus size="20"/>
                         </div>
