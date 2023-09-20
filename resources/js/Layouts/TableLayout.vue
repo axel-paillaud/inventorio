@@ -8,7 +8,7 @@
             class="bg-white overflow-hidden shadow-md sm:rounded-lg w-full
             border border-separate border-spacing-0"
         >
-            <thead class="text-left bg-lime-100">
+            <thead class="text-left bg-lime-100 sticky top-0">
                 <tr>
                     <th class="thead">Date</th>
                     <th class="thead">Nom</th>
