@@ -35,7 +35,12 @@ import { Plus } from 'lucide-vue-next';
             </tfoot>
             <tbody>
                 <tr v-for="n in 20">
-                    <td class="td td-first" >10/08/2023</td>
+                    <td class="td td-first">
+                        <input
+                            class="input-cell w-full focus:ring-0"
+                            type="date"
+                        >
+                    </td>
                     <td class="td">
                         <input
                             class="input-cell w-full focus:ring-0"
@@ -65,7 +70,7 @@ import { Plus } from 'lucide-vue-next';
                         >
                     </td>
                     <td class="td">
-                        <span class="input-cell">300</span>
+                        <div class="fixed-cell">300</div>
                     </td>
                 </tr>
             </tbody>
@@ -91,20 +96,23 @@ import { Plus } from 'lucide-vue-next';
     transition: background-color 0.2s ease;
 }
 
-.input-cell:hover, .input-cell:focus {
-    background-color: #f3f4f6;
-}
-
 .input-cell:focus {
     border-left-color: #e5e7eb;
     border-right-color: #e5e7eb;
     border-top-color: #f3f4f6;
+    background-color: #f3f4f6;
 }
 
 .input-cell:hover {
     border-left-color: #e5e7eb;
     border-right-color: #e5e7eb;
     border-top-color: #f3f4f6;
+    background-color: #f3f4f6;
+}
+
+.fixed-cell {
+    padding: 12px 24px;
+    border-bottom: 1px solid #e5e7eb;
 }
 
 .td-first:hover {
