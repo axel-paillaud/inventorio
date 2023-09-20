@@ -4,7 +4,7 @@ import Header from '@/Components/Header.vue';
 </script>
 
 <template>
-    <div class="min-h-screen bg-gray-100">
+    <div class="h-full bg-gray-100">
         <Header />
 
         <!-- Page Content -->

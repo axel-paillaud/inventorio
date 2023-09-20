@@ -3,7 +3,7 @@
 
 <template>
     <p class="px-6 py-1 text-lime-700">Pièces détachées</p>
-    <div class="max-h-96 border overflow-auto shadow-md rounded-lg relative">
+    <div class="h-4/6 border overflow-auto shadow-md rounded-lg relative">
         <table
             class="bg-white overflow-hidden shadow-md sm:rounded-lg w-full
             border border-separate border-spacing-0"
