@@ -36,7 +36,13 @@ import { Plus } from 'lucide-vue-next';
             <tbody>
                 <tr v-for="n in 20">
                     <td class="td td-first" >10/08/2023</td>
-                    <td class="td">Lame de ressort</td>
+                    <td class="">
+                        <input
+                            class="td w-full outline-none border-none focus:ring-0
+                            "
+                            type="text"
+                            value="Lame de ressort">
+                    </td>
                     <td class="td">Occasion</td>
                     <td class="td">2</td>
                     <td class="td">150</td>
@@ -54,7 +60,6 @@ import { Plus } from 'lucide-vue-next';
 }
 
 .td {
-    cursor: cell;
     padding: 12px 24px;
     border: 1px solid white;
     border-bottom-color: #e5e7eb;
