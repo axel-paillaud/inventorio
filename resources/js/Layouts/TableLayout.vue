@@ -38,15 +38,35 @@ import { Plus } from 'lucide-vue-next';
                     <td class="td td-first" >10/08/2023</td>
                     <td class="td">
                         <input
-                            class="input-cell w-full outline-none border-none
-                            focus:ring-0"
+                            class="input-cell w-full focus:ring-0"
                             type="text"
-                            value="Lame de ressort">
+                            value="Lame de ressort"
+                        >
                     </td>
-                    <td class="td">Occasion</td>
-                    <td class="td">2</td>
-                    <td class="td">150</td>
-                    <td class="td td-last">300</td>
+                    <td class="td">
+                        <input
+                            class="input-cell w-full focus:ring-0"
+                            type="text"
+                            value="Occasion"
+                        >
+                    </td>
+                    <td class="td">
+                        <input
+                            class="input-cell w-full focus:ring-0"
+                            type="number"
+                            value="2"
+                        >
+                    </td>
+                    <td class="td">
+                        <input
+                            class="input-cell w-full focus:ring-0"
+                            type="number"
+                            value="150"
+                        >
+                    </td>
+                    <td class="td">
+                        <span class="input-cell">300</span>
+                    </td>
                 </tr>
             </tbody>
         </table>
