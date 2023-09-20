@@ -6,7 +6,7 @@ import { Plus } from 'lucide-vue-next';
     <p class="px-6 py-1 text-lime-700">Pièces détachées</p>
     <div class="h-4/6 border overflow-auto shadow-md rounded-lg relative">
         <table
-            class="bg-white overflow-hidden shadow-md sm:rounded-lg w-full
+            class="bg-white shadow-md sm:rounded-lg w-full
             border border-separate border-spacing-0"
         >
             <thead class="text-left bg-lime-100 sticky top-0">
@@ -19,16 +19,8 @@ import { Plus } from 'lucide-vue-next';
                     <th class="thead">Total</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr v-for="n in 20">
-                    <td class="td td-first" >10/08/2023</td>
-                    <td class="td">Lame de ressort</td>
-                    <td class="td">Occasion</td>
-                    <td class="td">2</td>
-                    <td class="td">150</td>
-                    <td class="td td-last">300</td>
-                </tr>
-                <tr class="sticky bottom-0 bg-white">
+            <tfoot class="sticky bottom-0 bg-white">
+                <tr>
                     <td class="td-last-row">
                         <div
                             class="rounded-full hover:bg-gray-100 p-1.5 w-fit
@@ -39,6 +31,16 @@ import { Plus } from 'lucide-vue-next';
                     </td>
                     <td class="td-last-row" colspan="4">Total</td>
                     <td class="td-last-row td-total" colspan="1">128 000</td>
+                </tr>
+            </tfoot>
+            <tbody>
+                <tr v-for="n in 20">
+                    <td class="td td-first" >10/08/2023</td>
+                    <td class="td">Lame de ressort</td>
+                    <td class="td">Occasion</td>
+                    <td class="td">2</td>
+                    <td class="td">150</td>
+                    <td class="td td-last">300</td>
                 </tr>
             </tbody>
         </table>
