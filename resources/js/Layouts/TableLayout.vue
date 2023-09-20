@@ -1,4 +1,5 @@
 <script setup>
+import { Plus } from 'lucide-vue-next';
 </script>
 
 <template>
@@ -27,9 +28,17 @@
                     <td class="td">150</td>
                     <td class="td td-last">300</td>
                 </tr>
-                <tr>
-                    <td class="td td-last-row" colspan="5">Total</td>
-                    <td class="td td-last-row td-total" colspan="1">128 000</td>
+                <tr class="sticky bottom-0 bg-white">
+                    <td class="td-last-row">
+                        <div
+                            class="rounded-full hover:bg-gray-100 p-1.5 w-fit
+                            cursor-pointer"
+                        >
+                            <Plus size="20"/>
+                        </div>
+                    </td>
+                    <td class="td-last-row" colspan="4">Total</td>
+                    <td class="td-last-row td-total" colspan="1">128 000</td>
                 </tr>
             </tbody>
         </table>
@@ -68,6 +77,7 @@
 }
 
 .td-last-row {
-    border: none;
+    padding: 12px 24px;
+    border-top: solid 1px #e5e7eb;
 }
 </style>
