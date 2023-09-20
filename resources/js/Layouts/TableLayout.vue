@@ -5,9 +5,10 @@
     <p class="px-6 py-1 text-lime-700">Pièces détachées</p>
     <div class="max-h-96 border overflow-auto shadow-md rounded-lg relative">
         <table
-            class="bg-white sm:rounded-lg w-full"
+            class="bg-white overflow-hidden shadow-md sm:rounded-lg w-full
+            border border-separate border-spacing-0"
         >
-            <thead class="text-left bg-lime-100 sticky top-0">
+            <thead class="text-left bg-lime-100">
                 <tr>
                     <th class="thead">Date</th>
                     <th class="thead">Nom</th>
