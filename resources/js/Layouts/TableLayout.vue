@@ -36,10 +36,10 @@ import { Plus } from 'lucide-vue-next';
             <tbody>
                 <tr v-for="n in 20">
                     <td class="td td-first" >10/08/2023</td>
-                    <td class="">
+                    <td class="td">
                         <input
-                            class="td w-full outline-none border-none focus:ring-0
-                            "
+                            class="input-cell w-full outline-none border-none
+                            focus:ring-0"
                             type="text"
                             value="Lame de ressort">
                     </td>
@@ -60,17 +60,31 @@ import { Plus } from 'lucide-vue-next';
 }
 
 .td {
+    padding: 0;
+}
+
+.input-cell {
     padding: 12px 24px;
     border: 1px solid white;
     border-bottom-color: #e5e7eb;
     transition: all 0.2s ease;
+    transition: background-color 0.2s ease;
 }
 
-.td:hover {
+.input-cell:hover, .input-cell:focus {
+    background-color: #f3f4f6;
+}
+
+.input-cell:focus {
     border-left-color: #e5e7eb;
     border-right-color: #e5e7eb;
     border-top-color: #f3f4f6;
-    background-color: #f3f4f6;
+}
+
+.input-cell:hover {
+    border-left-color: #e5e7eb;
+    border-right-color: #e5e7eb;
+    border-top-color: #f3f4f6;
 }
 
 .td-first:hover {
