@@ -11,6 +11,11 @@ const colors = {
 </script>
 
 <template>
+    <!-- Gradient effect -->
+    <div
+        class="fixed bottom-0 h-28 w-full bg-gradient-to-t from-gray-300"
+    >
+    </div>
     <footer
         class="bg-white border-t border-gray-100 fixed bottom-0 left-0 right-0"
     >
