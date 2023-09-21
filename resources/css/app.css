@@ -4,10 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-#app {
-    @apply h-full;
-}
-
 .horizontal-center {
     top: 50%;
     transform: translateY(-50%);
