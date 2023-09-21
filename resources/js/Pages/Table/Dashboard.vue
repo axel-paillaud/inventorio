@@ -9,11 +9,20 @@ import { Head } from '@inertiajs/vue3';
     <Head title="Dashboard" />
 
     <AuthenticatedLayout>
-        <main class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <main
+            class="pt-12 pb-32 mx-auto px-4 sm:px-8 lg:px-12 grid grid-cols-2
+            gap-10"
+        >
+            <div>
                 <TableLayout />
             </div>
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div>
+                <TableLayout />
+            </div>
+            <div>
+                <TableLayout />
+            </div>
+            <div>
                 <TableLayout />
             </div>
         </main>

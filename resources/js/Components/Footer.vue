@@ -11,8 +11,10 @@ const colors = {
 </script>
 
 <template>
-    <footer class="bg-white border-t border-gray-100 fixed bottom-0 left-0 right-0">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer
+        class="bg-white border-t border-gray-100 fixed bottom-0 left-0 right-0"
+    >
+        <div class="mx-auto px-4 sm:px-8 lg:px-12">
             <div class="flex justify-between items-center h-16">
                 <!-- Filter container -->
                 <div class="flex gap-4">
