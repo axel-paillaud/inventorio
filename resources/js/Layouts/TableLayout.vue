@@ -39,7 +39,11 @@ import { Plus } from 'lucide-vue-next';
                         <input
                             class="input-cell w-full focus:ring-0"
                             type="date"
+                            value="2018-07-22"
                         >
+                        <div class="fixed-cell">
+                            2018-07-22
+                        </div>
                     </td>
                     <td class="td">
                         <input
@@ -47,6 +51,9 @@ import { Plus } from 'lucide-vue-next';
                             type="text"
                             value="Lame de ressort"
                         >
+                        <div class="fixed-cell">
+                            Lame de ressort
+                        </div>
                     </td>
                     <td class="td">
                         <input
@@ -54,6 +61,9 @@ import { Plus } from 'lucide-vue-next';
                             type="text"
                             value="Occasion"
                         >
+                        <div class="fixed-cell">
+                            Occasion
+                        </div>
                     </td>
                     <td class="td">
                         <input
@@ -61,6 +71,9 @@ import { Plus } from 'lucide-vue-next';
                             type="number"
                             value="2"
                         >
+                        <div class="fixed-cell">
+                            2
+                        </div>
                     </td>
                     <td class="td">
                         <input
@@ -68,6 +81,9 @@ import { Plus } from 'lucide-vue-next';
                             type="number"
                             value="150"
                         >
+                        <div class="fixed-cell">
+                            150
+                        </div>
                     </td>
                     <td class="td">
                         <div class="fixed-cell">300</div>
@@ -86,6 +102,14 @@ import { Plus } from 'lucide-vue-next';
 
 .td {
     padding: 0;
+}
+
+.td-total {
+    white-space: nowrap;
+}
+
+input {
+    display: none;
 }
 
 .input-cell {
