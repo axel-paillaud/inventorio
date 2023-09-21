@@ -11,7 +11,7 @@ import { Head } from '@inertiajs/vue3';
     <AuthenticatedLayout>
         <main
             class="pt-12 pb-32 mx-auto px-4 sm:px-8 lg:px-12 grid grid-cols-2
-            gap-10"
+            gap-y-10 gap-x-12"
         >
             <div>
                 <TableLayout />
