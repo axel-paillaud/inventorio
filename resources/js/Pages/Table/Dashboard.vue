@@ -19,6 +19,12 @@ import { Head } from '@inertiajs/vue3';
             <div class="flex-auto basis-2/6">
                 <TableLayout />
             </div>
+            <div class="flex-auto basis-2/6">
+                <TableLayout />
+            </div>
+            <div class="flex-auto basis-2/6">
+                <TableLayout />
+            </div>
         </main>
 
         <Footer />
