@@ -10,19 +10,13 @@ import { Head } from '@inertiajs/vue3';
 
     <AuthenticatedLayout>
         <main
-            class="pt-12 pb-32 mx-auto px-4 sm:px-8 lg:px-12 grid grid-cols-2
+            class="pt-12 pb-32 mx-auto px-4 sm:px-8 lg:px-12 flex flex-wrap
             gap-y-10 gap-x-12"
         >
-            <div>
+            <div class="flex-auto basis-2/6">
                 <TableLayout />
             </div>
-            <div>
-                <TableLayout />
-            </div>
-            <div>
-                <TableLayout />
-            </div>
-            <div>
+            <div class="flex-auto basis-2/6">
                 <TableLayout />
             </div>
         </main>
