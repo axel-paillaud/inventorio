@@ -9,23 +9,27 @@ import { Head } from '@inertiajs/vue3';
     <Head title="Dashboard" />
 
     <AuthenticatedLayout>
-        <main
-            class="pt-12 pb-32 mx-auto px-4 sm:px-8 lg:px-12 flex flex-wrap
-            gap-y-10 gap-x-12"
-        >
-            <div class="flex-auto basis-2/6">
-                <TableLayout />
-            </div>
-            <div class="flex-auto basis-2/6">
-                <TableLayout />
-            </div>
-            <div class="flex-auto basis-2/6">
-                <TableLayout />
-            </div>
-            <div class="flex-auto basis-2/6">
-                <TableLayout />
-            </div>
-        </main>
+        <div class="overflow-auto">
+            <main
+                class="pt-12 pb-32 mx-auto px-4 sm:px-8 lg:px-12 flex
+                gap-y-10 flex-col"
+            >
+                <div
+                    class="flex 2xl:flex-row flex-col z-10 gap-12
+                    justify-center"
+                >
+                    <TableLayout />
+                    <TableLayout />
+                </div>
+                <div
+                    class="flex 2xl:flex-row flex-col z-10 gap-12
+                    justify-center"
+                >
+                    <TableLayout />
+                    <TableLayout />
+                </div>
+            </main>
+        </div>
 
         <Footer />
 
