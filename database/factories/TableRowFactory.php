@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Table;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
@@ -17,6 +18,7 @@ class TableRowFactory extends Factory
     public function definition(): array
     {
         $states = ['Neuf', 'Occasion', 'A réparer'];
+        Table::id()->get();
 
         return [
             'table_id' => 1,
