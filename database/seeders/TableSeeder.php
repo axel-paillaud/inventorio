@@ -20,5 +20,10 @@ class TableSeeder extends Seeder
         Table::factory()->create(['colour' => 'blue']);
         Table::factory()->create(['colour' => 'red']);
         Table::factory()->create(['colour' => 'orange']);
+        Table::factory()->create();
+        Table::factory()->create();
+        Table::factory()->create();
+        Table::factory()->create();
+        Table::factory()->create();
     }
 }

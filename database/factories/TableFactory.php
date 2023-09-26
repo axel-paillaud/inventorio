@@ -21,6 +21,7 @@ class TableFactory extends Factory
         return [
             'user_id' => 1,
             'name' => fake()->word(),
+            'colour' => $colours[array_rand($colours)],
         ];
     }
 }
