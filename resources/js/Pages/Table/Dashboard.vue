@@ -5,9 +5,9 @@ import Footer from '@/Components/Footer.vue';
 import { Head } from '@inertiajs/vue3';
 import { useTableStore } from '@/stores/table';
 
-const props = defineProps(['table']);
+const props = defineProps(['tables']);
 const store = useTableStore();
-store.table = props.table;
+store.tables = props.tables;
 
 </script>
 
@@ -15,7 +15,9 @@ store.table = props.table;
     <Head title="Dashboard" />
 
     <AuthenticatedLayout>
-        <p>{{ table }}</p>
+        <p v-for="table in tables">
+            {{ table.color }}
+        </p>
         <div class="overflow-auto">
             <main
                 class="pt-12 pb-32 mx-auto px-4 sm:px-8 lg:px-12 flex

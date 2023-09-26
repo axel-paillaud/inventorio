@@ -1,6 +1,7 @@
 <script setup>
 import CreateFilter from '@/Components/CreateFilter.vue';
 import Filter from '@/Components/Filter.vue';
+import { useTableStore } from '@/stores/table';
 
 const colors = {
     green: 'border-lime-200 hover:bg-lime-100',
@@ -8,6 +9,10 @@ const colors = {
     red: 'border-red-200 hover:bg-red-100',
     orange: 'border-orange-200 hover:bg-orange-100',
 };
+
+const store = useTableStore();
+const tables = store.tables;
+
 </script>
 
 <template>
@@ -26,7 +31,7 @@ const colors = {
                 <!-- Filter container -->
                 <div class="flex gap-4">
                     <Filter name="Tout" />
-                    <Filter
+                    <!--<Filter
                         name="Partie cellules"
                         color="green"
                         :class="colors.green"
@@ -45,6 +50,11 @@ const colors = {
                         name="Pièces détachées"
                         color="orange"
                         :class="colors.orange"
+/>-->
+                    <Filter v-for="table in tables"
+                        :key="table.id"
+                        :name="table.name"
+                        :class="colors[table.color]"
                     />
                 </div>
                 <CreateFilter />

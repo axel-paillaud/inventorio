@@ -3,7 +3,7 @@ import { ref } from 'vue';
 
 export const useTableStore = defineStore('tables', () => {
     const name = ref('axel');
-    const table = ref(null);
+    const tables = ref(null);
 
-    return { name, table };
+    return { name, tables };
 });

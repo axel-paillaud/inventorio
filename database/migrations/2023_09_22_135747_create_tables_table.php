@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->timestamps();
-            $table->string('colour');
+            $table->string('color');
             $table->string('name');
         });
     }
