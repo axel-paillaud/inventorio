@@ -18,15 +18,14 @@ class TableRowFactory extends Factory
     public function definition(): array
     {
         $states = ['Neuf', 'Occasion', 'A réparer'];
-        Table::id()->get();
 
         return [
-            'table_id' => 1,
+            'table_id' => Table::inRandomOrder()->first()->id,
             'date' => fake()->date(),
             'name' => fake()->word(),
             'state' => $states[array_rand($states)],
-            'quantity' => rand(1, 300),
-            'price' => rand(1, 10000),
+            'quantity' => rand(1, 100),
+            'price' => (rand(1 * 10000, 10000 * 10000) / 10000),
         ];
     }
 }

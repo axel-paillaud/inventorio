@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('name');
             $table->enum('state', ['Neuf', 'Occasion', 'A réparer']);
             $table->integer('quantity');
-            $table->integer('price');
+            $table->float('price', 9, 2);
         });
     }
 
