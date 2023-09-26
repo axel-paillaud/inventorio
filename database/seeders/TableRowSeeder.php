@@ -13,6 +13,6 @@ class TableRowSeeder extends Seeder
      */
     public function run(): void
     {
-        TableRow::factory(10)->create();
+        TableRow::factory(150)->create();
     }
 }
