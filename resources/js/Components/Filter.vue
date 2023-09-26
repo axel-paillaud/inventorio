@@ -1,4 +1,5 @@
 <script setup>
+
 const props = defineProps({
     name: String,
     color: {type: String, default: 'gray'},

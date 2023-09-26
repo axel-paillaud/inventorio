@@ -3,8 +3,12 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import TableLayout from '@/Layouts/TableLayout.vue';
 import Footer from '@/Components/Footer.vue';
 import { Head } from '@inertiajs/vue3';
+import { useTableStore } from '@/stores/table';
 
-defineProps(['table']);
+const props = defineProps(['table']);
+const store = useTableStore();
+store.table = props.table;
+
 </script>
 
 <template>
