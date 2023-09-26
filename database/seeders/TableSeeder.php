@@ -13,17 +13,9 @@ class TableSeeder extends Seeder
      */
     public function run(): void
     {
-        Table::factory()->create([
-            'name' => 'Parties cellules',
-            'colour' => 'green',
-        ]);
-        Table::factory()->create(['colour' => 'blue']);
-        Table::factory()->create(['colour' => 'red']);
-        Table::factory()->create(['colour' => 'orange']);
-        Table::factory()->create();
-        Table::factory()->create();
-        Table::factory()->create();
-        Table::factory()->create();
-        Table::factory()->create();
+        Table::factory()->create([ 'name' => 'Parties cellules', 'colour' => 'green']);
+        Table::factory()->create(['name' => 'Consommables', 'colour' => 'blue']);
+        Table::factory()->create(['name' => 'Outils', 'colour' => 'red']);
+        Table::factory()->create(['name' => 'Pièces détachées', 'colour' => 'orange']);
     }
 }
