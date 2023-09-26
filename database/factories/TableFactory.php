@@ -16,8 +16,11 @@ class TableFactory extends Factory
      */
     public function definition(): array
     {
+        $colours = [ 'red', 'orange', 'green', 'sky', 'blue', 'violet', 'pink', ];
+
         return [
-            //
+            'user_id' => 1,
+            'name' => fake()->word(),
         ];
     }
 }
