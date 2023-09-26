@@ -22,7 +22,7 @@ class TableRowFactory extends Factory
         return [
             'table_id' => Table::inRandomOrder()->first()->id,
             'date' => fake()->date(),
-            'name' => fake()->word(),
+            'name' => fake()->sentence(),
             'state' => $states[array_rand($states)],
             'quantity' => rand(1, 100),
             'price' => (rand(1 * 10000, 10000 * 10000) / 10000),
