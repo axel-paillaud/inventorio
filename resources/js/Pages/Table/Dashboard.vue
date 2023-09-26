@@ -3,12 +3,15 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import TableLayout from '@/Layouts/TableLayout.vue';
 import Footer from '@/Components/Footer.vue';
 import { Head } from '@inertiajs/vue3';
+
+defineProps(['table']);
 </script>
 
 <template>
     <Head title="Dashboard" />
 
     <AuthenticatedLayout>
+        <p>{{ table }}</p>
         <div class="overflow-auto">
             <main
                 class="pt-12 pb-32 mx-auto px-4 sm:px-8 lg:px-12 flex
