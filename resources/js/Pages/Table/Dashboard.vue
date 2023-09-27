@@ -15,9 +15,8 @@ store.rows = props.rows;
 const tablePairs = computed(() => {
     let tablePairs = [];
     let index = 0;
+    tablePairs[index] = [];
     props.tables.forEach((table) => {
-        if (!tablePairs[index]) tablePairs[index] = [];
-
         if (tablePairs[index].length < 2) {
             tablePairs[index].push(table);
         }
@@ -29,6 +28,8 @@ const tablePairs = computed(() => {
     });
     return tablePairs;
 });
+
+console.log(tablePairs.value);
 
 </script>
 
