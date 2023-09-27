@@ -11,8 +11,6 @@ const store = useTableStore();
 store.tables = props.tables;
 store.rows = props.rows;
 
-console.log(props.tables);
-
 // Add corresponding rows to table
 const tables = computed(() => {
     let tables = props.tables;
@@ -28,14 +26,12 @@ const tables = computed(() => {
     return tables;
 });
 
-console.log(tables.value);
-
 // Sort table by pair of 2, to display 2 tables per container <div>
 const tablePairs = computed(() => {
     let tablePairs = [];
     let index = 0;
     tablePairs[index] = [];
-    props.tables.forEach((table) => {
+    tables.value.forEach((table) => {
         if (tablePairs[index].length < 2) {
             tablePairs[index].push(table);
         }
@@ -47,6 +43,8 @@ const tablePairs = computed(() => {
     });
     return tablePairs;
 });
+
+console.log(tables.value);
 
 </script>
 
@@ -67,6 +65,9 @@ const tablePairs = computed(() => {
                         <TableLayout
                             v-for="table in tablePair"
                             :key="table.id"
+                            :rows="table.rows"
+                            :color="table.color"
+                            :name="table.name"
                         />
                     </div>
                 </template>

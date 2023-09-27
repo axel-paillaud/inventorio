@@ -4,14 +4,19 @@ import TableRow from '@/Components/TableRow.vue';
 import { useTableStore } from '@/stores/table';
 
 // I need rows here, not tables
-const store = useTableStore();
-const rows = store.rows;
+//const store = useTableStore();
+//const rows = store.rows;
+
+const props = defineProps({
+    rows: Object,
+    name: String,
+});
 
 </script>
 
 <template>
     <div class="overflow-auto w-full">
-        <p class="px-6 py-1 text-lime-700">Pièces détachées</p>
+        <p class="px-6 py-1 text-lime-700">{{ name }}</p>
         <div class="max-h-[60vh] border overflow-auto shadow-md rounded-lg relative">
             <table
                 class="bg-white shadow-md sm:rounded-lg w-full
