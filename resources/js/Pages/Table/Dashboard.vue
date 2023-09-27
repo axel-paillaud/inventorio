@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import Table from '@/Components/Table.vue';
-import TableRow from '@/Components/TableRow.vue';
+import Row from '@/Components/Row.vue';
 import Footer from '@/Components/Footer.vue';
 import { Head } from '@inertiajs/vue3';
 import { useTableStore } from '@/stores/table';
@@ -67,7 +67,7 @@ const tablePairs = computed(() => {
                             :color="table.color"
                             :name="table.name"
                         >
-                            <TableRow
+                            <Row
                                 v-for="row in table.rows"
                                 :key="row.id"
                                 :date="row.date"

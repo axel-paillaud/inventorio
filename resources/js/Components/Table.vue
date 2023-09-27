@@ -1,6 +1,5 @@
 <script setup>
 import { Plus } from 'lucide-vue-next';
-import TableRow from '@/Components/TableRow.vue';
 import { useTableStore } from '@/stores/table';
 
 const props = defineProps({
@@ -20,7 +19,7 @@ const colors = {
 <template>
     <div class="overflow-auto w-full">
         <p
-            class="px-6 py-1 text-gray-700"
+            class="px-6 py-1"
             :class="colors[color].title"
         >
             {{ name }}
@@ -31,7 +30,7 @@ const colors = {
                 border border-separate border-spacing-0"
             >
                 <thead
-                    class="text-left bg-gray-100 sticky top-0 whitespace-nowrap"
+                    class="text-left sticky top-0 whitespace-nowrap"
                     :class="colors[color].bg"
                 >
                     <tr>
