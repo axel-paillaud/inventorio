@@ -61,6 +61,7 @@ const colors = {
                 <tbody>
                     <TableRow
                         v-for="row in rows"
+                        :key="row.id"
                         :date="row.date"
                         :name="row.name"
                         :state="row.state"
