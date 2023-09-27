@@ -1,6 +1,11 @@
 <script setup>
 import { Plus } from 'lucide-vue-next';
 import TableRow from '@/Components/TableRow.vue';
+import { useTableStore } from '@/stores/table';
+
+// I need rows here, not tables
+const store = useTableStore();
+const rows = store.rows;
 
 </script>
 

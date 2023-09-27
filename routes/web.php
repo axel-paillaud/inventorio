@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 use App\Models\Table;
+use App\Models\TableRow;
 use App\Models\User;
 
 /*
@@ -31,6 +32,7 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return Inertia::render('Table/Dashboard', [
         'tables' => Table::all(),
+        'rows' => TableRow::all(),
     ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
