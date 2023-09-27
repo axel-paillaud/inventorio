@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import TableLayout from '@/Layouts/TableLayout.vue';
+import Table from '@/Components/Table.vue';
 import Footer from '@/Components/Footer.vue';
 import { Head } from '@inertiajs/vue3';
 import { useTableStore } from '@/stores/table';
@@ -59,7 +59,7 @@ const tablePairs = computed(() => {
                         class="flex 2xl:flex-row flex-col z-10 gap-12
                         justify-center"
                     >
-                        <TableLayout
+                        <Table
                             v-for="table in tablePair"
                             :key="table.id"
                             :rows="table.rows"
