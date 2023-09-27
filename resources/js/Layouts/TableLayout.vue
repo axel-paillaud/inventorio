@@ -7,7 +7,7 @@ import TableRow from '@/Components/TableRow.vue';
 <template>
     <div class="overflow-auto w-full">
         <p class="px-6 py-1 text-lime-700">Pièces détachées</p>
-        <div class="h-[60vh] border overflow-auto shadow-md rounded-lg relative">
+        <div class="max-h-[60vh] border overflow-auto shadow-md rounded-lg relative">
             <table
                 class="bg-white shadow-md sm:rounded-lg w-full
                 border border-separate border-spacing-0"
