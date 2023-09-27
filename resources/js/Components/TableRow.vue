@@ -1,5 +1,11 @@
 <script setup>
-
+defineProps({
+    date: String,
+    name: String,
+    state: String,
+    quantity: Number,
+    price: Number,
+});
 </script>
 
 <template>
@@ -11,7 +17,7 @@
                 value="2018-07-22"
             >
             <div class="fixed-cell">
-                2018-07-22
+                {{ date }}
             </div>
         </td>
         <td class="td">
@@ -21,7 +27,7 @@
                 value="Lame de ressort"
             >
             <div class="fixed-cell">
-                Lame de ressort
+                {{ name }}
             </div>
         </td>
         <td class="td">
@@ -30,8 +36,8 @@
                 type="text"
                 value="Occasion"
             >
-            <div class="fixed-cell">
-                Occasion
+            <div class="fixed-cell whitespace-nowrap">
+                {{ state }}
             </div>
         </td>
         <td class="td">
@@ -41,7 +47,7 @@
                 value="2"
             >
             <div class="fixed-cell">
-                2
+                {{ quantity }}
             </div>
         </td>
         <td class="td">
@@ -51,7 +57,7 @@
                 value="150"
             >
             <div class="fixed-cell">
-                150
+                {{ price }}
             </div>
         </td>
         <td class="td">

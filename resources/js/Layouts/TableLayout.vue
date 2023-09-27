@@ -3,26 +3,38 @@ import { Plus } from 'lucide-vue-next';
 import TableRow from '@/Components/TableRow.vue';
 import { useTableStore } from '@/stores/table';
 
-// I need rows here, not tables
-//const store = useTableStore();
-//const rows = store.rows;
-
 const props = defineProps({
     rows: Object,
     name: String,
+    color: {type: String, default: 'gray'},
 });
+
+const colors = {
+    green: {title: 'text-green-700', bg: 'bg-green-100'},
+    blue: {title: 'text-blue-700', bg: 'bg-blue-100'},
+    red: {title: 'text-red-700', bg: 'bg-red-100'},
+    orange: {title: 'text-orange-700', bg: 'bg-orange-100'},
+}
 
 </script>
 
 <template>
     <div class="overflow-auto w-full">
-        <p class="px-6 py-1 text-lime-700">{{ name }}</p>
+        <p
+            class="px-6 py-1 text-gray-700"
+            :class="colors[color].title"
+        >
+            {{ name }}
+        </p>
         <div class="max-h-[60vh] border overflow-auto shadow-md rounded-lg relative">
             <table
                 class="bg-white shadow-md sm:rounded-lg w-full
                 border border-separate border-spacing-0"
             >
-                <thead class="text-left bg-lime-100 sticky top-0 whitespace-nowrap">
+                <thead
+                    class="text-left bg-gray-100 sticky top-0 whitespace-nowrap"
+                    :class="colors[color].bg"
+                >
                     <tr>
                         <th class="thead">Date</th>
                         <th class="thead">Nom</th>
@@ -47,7 +59,14 @@ const props = defineProps({
                     </tr>
                 </tfoot>
                 <tbody>
-                    <TableRow />
+                    <TableRow
+                        v-for="row in rows"
+                        :date="row.date"
+                        :name="row.name"
+                        :state="row.state"
+                        :quantity="row.quantity"
+                        :price="row.price"
+                    />
                 </tbody>
             </table>
         </div>

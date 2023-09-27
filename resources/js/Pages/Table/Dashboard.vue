@@ -43,8 +43,6 @@ const tablePairs = computed(() => {
     return tablePairs;
 });
 
-console.log(tables.value);
-
 </script>
 
 <template>

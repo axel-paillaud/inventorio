@@ -4,7 +4,7 @@ import Filter from '@/Components/Filter.vue';
 import { useTableStore } from '@/stores/table';
 
 const colors = {
-    green: 'border-lime-200 hover:bg-lime-100',
+    green: 'border-green-200 hover:bg-green-100',
     blue: 'border-blue-200 hover:bg-blue-100',
     red: 'border-red-200 hover:bg-red-100',
     orange: 'border-orange-200 hover:bg-orange-100',
