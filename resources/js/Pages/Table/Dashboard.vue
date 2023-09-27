@@ -14,10 +14,9 @@ store.rows = props.rows;
 // Add corresponding rows to table
 const tables = computed(() => {
     let tables = props.tables;
-    let rows = props.rows;
     tables.forEach((table) => {
         table.rows = [];
-        rows.forEach((row) => {
+        props.rows.forEach((row) => {
             if (table.id === row.table_id) {
                 table.rows.push(row);
             }
