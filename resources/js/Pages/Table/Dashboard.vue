@@ -1,4 +1,5 @@
 <script setup>
+import { computed } from 'vue';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import TableLayout from '@/Layouts/TableLayout.vue';
 import Footer from '@/Components/Footer.vue';
@@ -10,9 +11,24 @@ const store = useTableStore();
 store.tables = props.tables;
 store.rows = props.rows;
 
-const tablePairs = props.tables.toReversed();
-console.log(props.tables);
-console.log(tablePairs);
+// Sort table by pair of 2, to display 2 tables per container <div>
+const tablePairs = computed(() => {
+    let tablePairs = [];
+    let index = 0;
+    props.tables.forEach((table) => {
+        if (!tablePairs[index]) tablePairs[index] = [];
+
+        if (tablePairs[index].length < 2) {
+            tablePairs[index].push(table);
+        }
+        else {
+            index++;
+            tablePairs[index] = [];
+            tablePairs[index].push(table);
+        }
+    });
+    return tablePairs;
+});
 
 </script>
 
@@ -25,15 +41,17 @@ console.log(tablePairs);
                 class="pt-12 pb-32 mx-auto px-4 sm:px-8 lg:px-12 flex
                 gap-y-10 flex-col"
             >
-                <div
-                    class="flex 2xl:flex-row flex-col z-10 gap-12
-                    justify-center"
-                >
-                    <TableLayout
-                        v-for="table in tables"
-                        :key="table.id"
-                    />
-                </div>
+                <template v-for="(tablePair, index) in tablePairs" :key="index">
+                    <div
+                        class="flex 2xl:flex-row flex-col z-10 gap-12
+                        justify-center"
+                    >
+                        <TableLayout
+                            v-for="table in tablePair"
+                            :key="table.id"
+                        />
+                    </div>
+                </template>
             </main>
         </div>
 
