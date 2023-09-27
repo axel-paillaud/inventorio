@@ -4,7 +4,6 @@ import TableRow from '@/Components/TableRow.vue';
 import { useTableStore } from '@/stores/table';
 
 const props = defineProps({
-    rows: Object,
     name: String,
     color: {type: String, default: 'gray'},
 });
@@ -59,15 +58,7 @@ const colors = {
                     </tr>
                 </tfoot>
                 <tbody>
-                    <TableRow
-                        v-for="row in rows"
-                        :key="row.id"
-                        :date="row.date"
-                        :name="row.name"
-                        :state="row.state"
-                        :quantity="row.quantity"
-                        :price="row.price"
-                    />
+                    <slot />
                 </tbody>
             </table>
         </div>
