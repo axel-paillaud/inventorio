@@ -15,27 +15,15 @@ store.tables = props.tables;
 store.rows = props.rows;
 
 store.computeTotalRow();
-
-// Add corresponding rows to table
-const tables = computed(() => {
-    let tables = store.tables;
-    tables.forEach((table) => {
-        table.rows = [];
-        store.rows.forEach((row) => {
-            if (table.id === row.table_id) {
-                table.rows.push(row);
-            }
-        });
-    });
-    return tables;
-});
+store.associateRowToTable();
+store.computeTotalTable();
 
 // Sort table by pair of 2, to display 2 tables per container <div>
 const tablePairs = computed(() => {
     let tablePairs = [];
     let index = 0;
     tablePairs[index] = [];
-    tables.value.forEach((table) => {
+    store.tables.forEach((table) => {
         if (tablePairs[index].length < 2) {
             tablePairs[index].push(table);
         }

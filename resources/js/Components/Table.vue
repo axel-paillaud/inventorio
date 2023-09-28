@@ -1,11 +1,14 @@
 <script setup>
 import { Plus } from 'lucide-vue-next';
+import { formatter } from '@/Services/FormatService';
 
 const props = defineProps({
     name: String,
     color: {type: String, default: 'gray'},
     total: Number,
 });
+
+const total = formatter.format(props.total);
 
 const colors = {
     green: {title: 'text-green-700', bg: 'bg-green-100'},
@@ -53,7 +56,7 @@ const colors = {
                             </div>
                         </td>
                         <td class="td-last-row" colspan="4">Total</td>
-                        <td class="td-last-row td-total" colspan="1">128 000</td>
+                        <td class="td-last-row td-total" colspan="1">{{ total }}</td>
                     </tr>
                 </tfoot>
                 <tbody>
