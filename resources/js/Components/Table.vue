@@ -4,6 +4,7 @@ import { Plus } from 'lucide-vue-next';
 const props = defineProps({
     name: String,
     color: {type: String, default: 'gray'},
+    total: Number,
 });
 
 const colors = {

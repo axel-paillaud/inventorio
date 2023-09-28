@@ -8,16 +8,16 @@ const props = defineProps({
     state: String,
     quantity: Number,
     price: Number,
+    total: Number,
 });
 
 // Maybe use computed here when we need to update date in real time
 const formattedDate = new Date(props.date).toLocaleDateString();
 
+// Also here, maybe use computed
 const price = formatter.format(props.price);
+const total = formatter.format(props.total);
 
-const total = computed(() => {
-    return formatter.format(props.quantity * props.price);
-});
 </script>
 
 <template>

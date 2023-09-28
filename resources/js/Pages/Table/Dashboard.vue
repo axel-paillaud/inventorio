@@ -9,6 +9,8 @@ import { useTableStore } from '@/Stores/table';
 
 const props = defineProps(['tables', 'rows']);
 const store = useTableStore();
+
+// props from Inertia, pass it to Pinia
 store.tables = props.tables;
 store.rows = props.rows;
 
@@ -16,10 +18,10 @@ store.computeTotalRow();
 
 // Add corresponding rows to table
 const tables = computed(() => {
-    let tables = props.tables;
+    let tables = store.tables;
     tables.forEach((table) => {
         table.rows = [];
-        props.rows.forEach((row) => {
+        store.rows.forEach((row) => {
             if (table.id === row.table_id) {
                 table.rows.push(row);
             }
@@ -68,6 +70,7 @@ const tablePairs = computed(() => {
                             :rows="table.rows"
                             :color="table.color"
                             :name="table.name"
+                            :total="table.total"
                         >
                             <Row
                                 v-for="row in table.rows"
@@ -77,6 +80,7 @@ const tablePairs = computed(() => {
                                 :state="row.state"
                                 :quantity="row.quantity"
                                 :price="row.price"
+                                :total="row.total"
                             />
                         </Table>
                     </div>
