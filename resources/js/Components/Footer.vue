@@ -1,7 +1,7 @@
 <script setup>
 import CreateFilter from '@/Components/CreateFilter.vue';
 import Filter from '@/Components/Filter.vue';
-import { useTableStore } from '@/stores/table';
+import { useTableStore } from '@/Stores/table';
 
 const colors = {
     green: 'border-green-200 hover:bg-green-100',

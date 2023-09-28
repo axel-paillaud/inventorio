@@ -5,7 +5,7 @@ import Table from '@/Components/Table.vue';
 import Row from '@/Components/Row.vue';
 import Footer from '@/Components/Footer.vue';
 import { Head } from '@inertiajs/vue3';
-import { useTableStore } from '@/stores/table';
+import { useTableStore } from '@/Stores/table';
 
 const props = defineProps(['tables', 'rows']);
 const store = useTableStore();
