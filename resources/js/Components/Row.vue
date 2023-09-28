@@ -12,8 +12,17 @@ const props = defineProps({
 // Maybe use computed here when we need to update date in real time
 const formattedDate = new Date(props.date).toLocaleDateString();
 
+const formatter = new Intl.NumberFormat('fr-FR', {
+    // show the € sign
+    //style: 'currency',
+    //currency: 'EUR',
+    minimumFractionDigits: 2
+})
+
+const price = formatter.format(props.price);
+
 const total = computed(() => {
-    return (props.quantity * props.price).toFixed(2);
+    return formatter.format(props.quantity * props.price);
 });
 </script>
 
