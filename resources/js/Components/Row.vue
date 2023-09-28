@@ -1,11 +1,13 @@
 <script setup>
-defineProps({
+const props = defineProps({
     date: String,
     name: String,
     state: String,
     quantity: Number,
     price: Number,
 });
+
+const formattedDate = new Date(props.date).toLocaleDateString();
 </script>
 
 <template>
@@ -14,10 +16,10 @@ defineProps({
             <input
                 class="input-cell w-full focus:ring-0"
                 type="date"
-                value="2018-07-22"
+                :input="date"
             >
             <div class="fixed-cell">
-                {{ date }}
+                {{ formattedDate }}
             </div>
         </td>
         <td class="td">

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('table_id');
             $table->timestamps();
-            $table->timestamp('date');
+            $table->date('date');
             $table->string('name');
             $table->enum('state', ['Neuf', 'Occasion', 'A réparer']);
             $table->integer('quantity');
