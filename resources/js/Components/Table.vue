@@ -1,6 +1,5 @@
 <script setup>
 import { Plus } from 'lucide-vue-next';
-import { useTableStore } from '@/stores/table';
 
 const props = defineProps({
     name: String,

@@ -1,9 +1,19 @@
 import { defineStore } from 'pinia';
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 
 export const useTableStore = defineStore('tables', () => {
-    const tables = ref(null);
-    const rows = ref(null);
+    const tables = ref({});
+    const rows = ref({});
 
-    return { tables, rows };
+    function computeTotalRow() {
+        rows.value.forEach((row) => {
+            const total = computed(() => {
+                return (row.quantity * row.price);
+            });
+
+            row.total = total.value;
+        });
+    }
+
+    return { tables, rows, computeTotalRow };
 });

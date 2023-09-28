@@ -12,6 +12,8 @@ const store = useTableStore();
 store.tables = props.tables;
 store.rows = props.rows;
 
+store.computeTotalRow();
+
 // Add corresponding rows to table
 const tables = computed(() => {
     let tables = props.tables;
@@ -55,7 +57,7 @@ const tablePairs = computed(() => {
                 class="pt-12 pb-32 mx-auto px-4 sm:px-8 lg:px-12 flex
                 gap-y-10 flex-col"
             >
-                <template v-for="(tablePair, index) in tablePairs" :key="index">
+                <template v-for="tablePair, index in tablePairs" :key="index">
                     <div
                         class="flex 2xl:flex-row flex-col z-10 gap-12
                         justify-center"
