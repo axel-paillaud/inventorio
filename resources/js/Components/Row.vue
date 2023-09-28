@@ -1,5 +1,6 @@
 <script setup>
 import { computed } from 'vue';
+import { formatter } from '@/Services/FormatService.js';
 
 const props = defineProps({
     date: String,
@@ -11,13 +12,6 @@ const props = defineProps({
 
 // Maybe use computed here when we need to update date in real time
 const formattedDate = new Date(props.date).toLocaleDateString();
-
-const formatter = new Intl.NumberFormat('fr-FR', {
-    // show the € sign
-    //style: 'currency',
-    //currency: 'EUR',
-    minimumFractionDigits: 2
-})
 
 const price = formatter.format(props.price);
 
