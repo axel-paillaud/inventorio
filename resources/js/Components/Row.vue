@@ -1,4 +1,6 @@
 <script setup>
+import { computed } from 'vue';
+
 const props = defineProps({
     date: String,
     name: String,
@@ -7,7 +9,12 @@ const props = defineProps({
     price: Number,
 });
 
+// Maybe use computed here when we need to update date in real time
 const formattedDate = new Date(props.date).toLocaleDateString();
+
+const total = computed(() => {
+    return (props.quantity * props.price).toFixed(2);
+});
 </script>
 
 <template>
@@ -63,7 +70,7 @@ const formattedDate = new Date(props.date).toLocaleDateString();
             </div>
         </td>
         <td class="td">
-            <div class="fixed-cell">300</div>
+            <div class="fixed-cell">{{ total }}</div>
         </td>
     </tr>
 </template>
