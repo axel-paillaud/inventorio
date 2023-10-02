@@ -65,16 +65,6 @@ const total = formatter.format(props.total);
 
 <style scoped>
 
-.td-first:hover {
-    border-left-color: var(--gray-100);
-    border-right-color: var(--gray-200);
-}
-
-.td-last:hover {
-    border-left-color: va(--gray-200);
-    border-right-color: var(--gray-100);
-}
-
 .td-last-row {
     padding: 12px 24px;
     border-top: solid 1px var(--gray-200);

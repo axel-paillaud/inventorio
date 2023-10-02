@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue';
+import { computed, ref, reactive } from 'vue';
 import { formatter } from '@/Services/FormatService.js';
 
 const props = defineProps({
@@ -15,28 +15,40 @@ const props = defineProps({
 const formattedDate = new Date(props.date).toLocaleDateString();
 
 // Also here, maybe use computed
-const price = formatter.format(props.price);
+const formattedPrice = formatter.format(props.price);
 const total = formatter.format(props.total);
+
+const showCellValue = ref(true);
+const showInput = ref(false);
+
+function toggleInput(event) {
+    console.log(event);
+    showCellValue.value = !showCellValue.value;
+    showInput.value = !showInput.value;
+}
 
 </script>
 
 <template>
     <tr>
-        <td class="td td-first">
+        <td class="td">
             <input
                 class="input-cell w-full focus:ring-0"
+                :class="{ hidden: !showInput}"
+                @click="toggleInput"
                 type="date"
-                :input="date"
+                :value="date"
             >
-            <div class="fixed-cell">
+            <div class="fixed-cell" @click="toggleInput" :class="{ hidden: !showCellValue }">
                 {{ formattedDate }}
             </div>
         </td>
         <td class="td">
             <input
                 class="input-cell w-full focus:ring-0"
+                :class="{ hidden: !showInput }"
                 type="text"
-                value="Lame de ressort"
+                :value="name"
             >
             <div class="fixed-cell">
                 {{ name }}
@@ -45,8 +57,9 @@ const total = formatter.format(props.total);
         <td class="td">
             <input
                 class="input-cell w-full focus:ring-0"
+                :class="{ hidden: !showInput }"
                 type="text"
-                value="Occasion"
+                :value="state"
             >
             <div class="fixed-cell whitespace-nowrap">
                 {{ state }}
@@ -55,8 +68,9 @@ const total = formatter.format(props.total);
         <td class="td">
             <input
                 class="input-cell w-full focus:ring-0"
+                :class="{ hidden: !showInput }"
                 type="number"
-                value="2"
+                :value="quantity"
             >
             <div class="fixed-cell">
                 {{ quantity }}
@@ -65,11 +79,12 @@ const total = formatter.format(props.total);
         <td class="td">
             <input
                 class="input-cell w-full focus:ring-0"
+                :class="{ hidden: !showInput }"
                 type="number"
-                value="150"
+                :value="price"
             >
             <div class="fixed-cell">
-                {{ price }}
+                {{ formattedPrice }}
             </div>
         </td>
         <td class="td-total">
@@ -84,6 +99,7 @@ const total = formatter.format(props.total);
     border: 1px solid white;
     border-bottom: 1px solid var(--gray-100);
     transition: background-color 0.2s ease;
+    cursor: text;
 }
 
 .td:hover {
@@ -100,7 +116,6 @@ const total = formatter.format(props.total);
 }
 
 .input-cell {
-    display: none;
     padding: 12px 24px;
     border: 1px solid white;
     border-bottom-color: var(--gray-200);
