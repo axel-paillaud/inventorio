@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref, reactive } from 'vue';
+import { ref, reactive } from 'vue';
 import { formatter } from '@/Services/FormatService.js';
 
 const props = defineProps({
@@ -21,25 +21,41 @@ const total = formatter.format(props.total);
 const showCellValue = ref(true);
 const showInput = ref(false);
 
-function toggleInput(event) {
-    console.log(event);
+const showCellObj = reactive({
+    date: {
+        value: false,
+        toggleInputTest,
+    },
+    // it work ! But probably need refacto
+    name: false,
+    state: false,
+    quantity: false,
+    price: false
+});
+
+function toggleInput() {
     showCellValue.value = !showCellValue.value;
     showInput.value = !showInput.value;
+}
+
+function toggleInputTest() {
+    console.log(this.value);
+    this.value = !this.value;
 }
 
 </script>
 
 <template>
     <tr>
-        <td class="td">
+        <td class="td" @click="showCellObj.date.toggleInputTest">
             <input
                 class="input-cell w-full focus:ring-0"
-                :class="{ hidden: !showInput}"
+                :class="{ hidden: !showCellObj.date.value}"
                 @click="toggleInput"
                 type="date"
                 :value="date"
             >
-            <div class="fixed-cell" @click="toggleInput" :class="{ hidden: !showCellValue }">
+            <div class="fixed-cell" :class="{ hidden: showCellObj.date.value }">
                 {{ formattedDate }}
             </div>
         </td>
