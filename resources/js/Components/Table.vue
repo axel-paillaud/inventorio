@@ -27,7 +27,7 @@ const total = formatter.format(props.total);
                 border border-separate border-spacing-0"
             >
                 <thead
-                    class="text-left sticky top-0 whitespace-nowrap"
+                    class="text-left sticky top-0 whitespace-nowrap z-50"
                     :class="colors[color].bg"
                 >
                     <tr>

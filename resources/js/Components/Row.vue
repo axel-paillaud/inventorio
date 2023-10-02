@@ -35,24 +35,25 @@ const showCell = reactive({
             @click="showCell.date = !showCell.date"
         >
             <input
-                class="input-cell focus:ring-0 absolute inset-0 w-48"
+                class="input-cell focus:ring-0 absolute inset-0 w-48 z-30"
                 :class="{ hidden: !showCell.date}"
                 @click="toggleInput"
                 type="date"
                 :value="date"
             >
-            <div class="fixed-cell" :class="{ hidden: showCell.date }">
+            <div class="fixed-cell" :class="{ invisible: showCell.date }">
                 {{ formattedDate }}
             </div>
         </td>
-        <td class="td" @click="showCell.name = !showCell.name">
-            <input
-                class="input-cell w-full"
+        <td
+            class="td relative"
+            @click="showCell.name = !showCell.name">
+            <textarea
+                class="input-cell absolute inset-0 w-full z-30"
                 :class="{ hidden: !showCell.name }"
-                type="text"
-                :value="name"
-            >
-            <div class="fixed-cell" :class="{ hidden: showCell.name }">
+                rows="5"
+            >{{ name }}</textarea>
+            <div class="fixed-cell" :class="{ invisible: showCell.name }">
                 {{ name }}
             </div>
         </td>
