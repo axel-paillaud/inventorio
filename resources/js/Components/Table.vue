@@ -31,12 +31,12 @@ const total = formatter.format(props.total);
                     :class="colors[color].bg"
                 >
                     <tr>
-                        <th class="thead">Date</th>
-                        <th class="thead">Nom</th>
-                        <th class="thead">État</th>
-                        <th class="thead">Quantité</th>
-                        <th class="thead">Prix Unitaire</th>
-                        <th class="thead">Total</th>
+                        <th class="py-3 px-6 border-b">Date</th>
+                        <th class="py-3 px-6 border-b">Nom</th>
+                        <th class="py-3 px-6 border-b">État</th>
+                        <th class="py-3 px-6 border-b">Quantité</th>
+                        <th class="py-3 px-6 border-b">Prix Unitaire</th>
+                        <th class="py-3 px-6 border-b">Total</th>
                     </tr>
                 </thead>
                 <tfoot class="sticky bottom-0 bg-white">
@@ -50,7 +50,9 @@ const total = formatter.format(props.total);
                             </div>
                         </td>
                         <td class="td-last-row" colspan="4">Total</td>
-                        <td class="td-last-row td-total" colspan="1">{{ total }}</td>
+                        <td class="td-last-row whitespace-nowrap" colspan="1">
+                            {{ total }}
+                        </td>
                     </tr>
                 </tfoot>
                 <tbody>
@@ -61,61 +63,7 @@ const total = formatter.format(props.total);
     </div>
 </template>
 
-<style>
-.thead {
-    padding: 12px 24px;
-    border-bottom: 1px solid #e5e7eb;
-}
-
-.td {
-    padding: 0;
-    border: 1px solid white;
-    border-bottom: 1px solid var(--gray-100);
-    transition: background-color 0.2s ease;
-}
-
-.td:hover {
-    border-top: 1px solid var(--gray-100);
-    border-left: 1px solid var(--gray-200);
-    border-right: 1px solid var(--gray-200);
-    background-color: var(--gray-100);
-}
-
-.td-total {
-    white-space: nowrap;
-}
-
-input {
-    display: none;
-}
-
-.input-cell {
-    padding: 12px 24px;
-    border: 1px solid white;
-    border-bottom-color: var(--gray-200);
-    transition: all 0.2s ease;
-    transition: background-color 0.2s ease;
-}
-
-.input-cell:focus {
-    border-left-color: var(--gray-200);
-    border-right-color: var(--gray-200);
-    border-top-color: var(--gray-100);
-    background-color: var(--gray-100);
-}
-
-.input-cell:hover {
-    border-left-color: var(--gray-200);
-    border-right-color: var(--gray-200);
-    border-top-color: var(--gray-100);
-    background-color: var(--gray-100);
-}
-
-.fixed-cell {
-    padding: 12px 24px;
-    max-height: 145px;
-    overflow: hidden;
-}
+<style scoped>
 
 .td-first:hover {
     border-left-color: var(--gray-100);

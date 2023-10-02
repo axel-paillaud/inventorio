@@ -72,8 +72,62 @@ const total = formatter.format(props.total);
                 {{ price }}
             </div>
         </td>
-        <td class="td">
+        <td class="td-total">
             <div class="fixed-cell">{{ total }}</div>
         </td>
     </tr>
 </template>
+
+<style scoped>
+.td {
+    padding: 0;
+    border: 1px solid white;
+    border-bottom: 1px solid var(--gray-100);
+    transition: background-color 0.2s ease;
+}
+
+.td:hover {
+    border-top: 1px solid var(--gray-100);
+    border-left: 1px solid var(--gray-200);
+    border-right: 1px solid var(--gray-200);
+    background-color: var(--gray-100);
+}
+
+.td-total {
+    padding: 0;
+    border: 1px solid white;
+    border-bottom: 1px solid var(--gray-100);
+}
+
+input {
+    display: none;
+}
+
+.input-cell {
+    padding: 12px 24px;
+    border: 1px solid white;
+    border-bottom-color: var(--gray-200);
+    transition: all 0.2s ease;
+    transition: background-color 0.2s ease;
+}
+
+.input-cell:focus {
+    border-left-color: var(--gray-200);
+    border-right-color: var(--gray-200);
+    border-top-color: var(--gray-100);
+    background-color: var(--gray-100);
+}
+
+.input-cell:hover {
+    border-left-color: var(--gray-200);
+    border-right-color: var(--gray-200);
+    border-top-color: var(--gray-100);
+    background-color: var(--gray-100);
+}
+
+.fixed-cell {
+    padding: 12px 24px;
+    max-height: 145px;
+    overflow: hidden;
+}
+</style>
