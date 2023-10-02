@@ -30,9 +30,12 @@ const showCell = reactive({
 
 <template>
     <tr>
-        <td class="td" @click="showCell.date = !showCell.date">
+        <td
+            class="td relative"
+            @click="showCell.date = !showCell.date"
+        >
             <input
-                class="input-cell w-full focus:ring-0"
+                class="input-cell focus:ring-0 absolute inset-0 w-48"
                 :class="{ hidden: !showCell.date}"
                 @click="toggleInput"
                 type="date"
