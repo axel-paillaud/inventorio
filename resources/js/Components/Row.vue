@@ -18,88 +18,71 @@ const formattedDate = new Date(props.date).toLocaleDateString();
 const formattedPrice = formatter.format(props.price);
 const total = formatter.format(props.total);
 
-const showCellValue = ref(true);
-const showInput = ref(false);
-
-const showCellObj = reactive({
-    date: {
-        value: false,
-        toggleInputTest,
-    },
-    // it work ! But probably need refacto
+const showCell = reactive({
+    date: false,
     name: false,
     state: false,
     quantity: false,
     price: false
 });
 
-function toggleInput() {
-    showCellValue.value = !showCellValue.value;
-    showInput.value = !showInput.value;
-}
-
-function toggleInputTest() {
-    console.log(this.value);
-    this.value = !this.value;
-}
-
 </script>
 
 <template>
     <tr>
-        <td class="td" @click="showCellObj.date.toggleInputTest">
+        <td class="td" @click="showCell.date = !showCell.date">
             <input
                 class="input-cell w-full focus:ring-0"
-                :class="{ hidden: !showCellObj.date.value}"
+                :class="{ hidden: !showCell.date}"
                 @click="toggleInput"
                 type="date"
                 :value="date"
             >
-            <div class="fixed-cell" :class="{ hidden: showCellObj.date.value }">
+            <div class="fixed-cell" :class="{ hidden: showCell.date }">
                 {{ formattedDate }}
             </div>
         </td>
-        <td class="td">
+        <td class="td" @click="showCell.name = !showCell.name">
             <input
-                class="input-cell w-full focus:ring-0"
-                :class="{ hidden: !showInput }"
+                class="input-cell w-full"
+                :class="{ hidden: !showCell.name }"
                 type="text"
                 :value="name"
             >
-            <div class="fixed-cell">
+            <div class="fixed-cell" :class="{ hidden: showCell.name }">
                 {{ name }}
             </div>
         </td>
-        <td class="td">
+        <td class="td" @click="showCell.state = !showCell.state">
             <input
                 class="input-cell w-full focus:ring-0"
-                :class="{ hidden: !showInput }"
+                :class="{ hidden: !showCell.state }"
                 type="text"
                 :value="state"
             >
-            <div class="fixed-cell whitespace-nowrap">
+            <div class="fixed-cell whitespace-nowrap" :class="{ hidden: showCell.state }">
                 {{ state }}
             </div>
         </td>
-        <td class="td">
+        <td class="td" @click="showCell.quantity = !showCell.quantity">
             <input
                 class="input-cell w-full focus:ring-0"
-                :class="{ hidden: !showInput }"
+                :class="{ hidden: !showCell.quantity }"
                 type="number"
                 :value="quantity"
             >
-            <div class="fixed-cell">
+            <div class="fixed-cell" :class="{ hidden: showCell.quantity }">
                 {{ quantity }}
             </div>
         </td>
-        <td class="td">
+        <td class="td" @click="showCell.price = !showCell.price">
             <input
                 class="input-cell w-full focus:ring-0"
-                :class="{ hidden: !showInput }"
+                :class="{ hidden: !showCell.price }"
                 type="number"
                 :value="price"
             >
-            <div class="fixed-cell">
+            <div class="fixed-cell" :class="{ hidden: showCell.price }">
                 {{ formattedPrice }}
             </div>
         </td>
@@ -133,8 +116,6 @@ function toggleInputTest() {
 
 .input-cell {
     padding: 12px 24px;
-    border: 1px solid white;
-    border-bottom-color: var(--gray-200);
     transition: all 0.2s ease;
     transition: background-color 0.2s ease;
 }
