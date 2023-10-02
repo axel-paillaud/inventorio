@@ -1,6 +1,7 @@
 <script setup>
 import { Plus } from 'lucide-vue-next';
 import { formatter } from '@/Services/FormatService';
+import colors from '@/Services/ColorService';
 
 const props = defineProps({
     name: String,
@@ -9,13 +10,6 @@ const props = defineProps({
 });
 
 const total = formatter.format(props.total);
-
-const colors = {
-    green: {title: 'text-green-700', bg: 'bg-green-100'},
-    blue: {title: 'text-blue-700', bg: 'bg-blue-100'},
-    red: {title: 'text-red-700', bg: 'bg-red-100'},
-    orange: {title: 'text-orange-700', bg: 'bg-orange-100'},
-}
 
 </script>
 

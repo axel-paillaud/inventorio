@@ -2,13 +2,14 @@
 import CreateFilter from '@/Components/CreateFilter.vue';
 import Filter from '@/Components/Filter.vue';
 import { useTableStore } from '@/Stores/table';
+import colors from '@/Services/ColorService';
 
-const colors = {
-    green: 'border-green-200 hover:bg-green-100',
-    blue: 'border-blue-200 hover:bg-blue-100',
-    red: 'border-red-200 hover:bg-red-100',
-    orange: 'border-orange-200 hover:bg-orange-100',
-};
+//const colors = {
+//    green: 'border-green-200 hover:bg-green-100',
+//    blue: 'border-blue-200 hover:bg-blue-100',
+//    red: 'border-red-200 hover:bg-red-100',
+//    orange: 'border-orange-200 hover:bg-orange-100',
+//};
 
 const store = useTableStore();
 const tables = store.tables;
@@ -30,31 +31,14 @@ const tables = store.tables;
             <div class="flex justify-between items-center h-16">
                 <!-- Filter container -->
                 <div class="flex gap-4">
-                    <Filter name="Tout" />
-                    <!--<Filter
-                        name="Partie cellules"
-                        color="green"
-                        :class="colors.green"
-                    />
                     <Filter
-                        name="Consommables"
-                        color="blue"
-                        :class="colors.blue"
+                        name="Tout"
+                        :class="colors['gray'].filter"
                     />
-                    <Filter
-                        name="Outils"
-                        color="red"
-                        :class="colors.red"
-                    />
-                    <Filter
-                        name="Pièces détachées"
-                        color="orange"
-                        :class="colors.orange"
-/>-->
                     <Filter v-for="table in tables"
                         :key="table.id"
                         :name="table.name"
-                        :class="colors[table.color]"
+                        :class="colors[table.color].filter"
                     />
                 </div>
                 <CreateFilter />
