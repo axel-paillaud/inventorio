@@ -99,11 +99,8 @@ const total = formatter.format(props.total);
     border-bottom: 1px solid var(--gray-100);
 }
 
-input {
-    display: none;
-}
-
 .input-cell {
+    display: none;
     padding: 12px 24px;
     border: 1px solid white;
     border-bottom-color: var(--gray-200);
