@@ -1,4 +1,5 @@
 <script setup>
+import { reactive, watch } from 'vue';
 import { formatter } from '@/Services/FormatService.js';
 import DateCell from '@/Components/Cells/Date.vue';
 import NameCell from '@/Components/Cells/Name.vue';
@@ -15,13 +16,30 @@ const props = defineProps({
     total: Number,
 });
 
+const toggleCell = reactive({
+    date: false,
+    name: false,
+    state: false,
+    quantity: false,
+    price: false,
+    total: false,
+});
+
+watch(toggleCell, () => {
+    console.log(toggleCell);
+});
+
 const total = formatter.format(props.total);
+
+const hideOtherCells = (event) => {
+    console.log(event);
+}
 
 </script>
 
 <template>
     <tr>
-        <DateCell :date="date" />
+        <DateCell :date="date" @show="hideOtherCells"/>
         <NameCell :name="name" />
         <StateCell :state="state" />
         <QuantityCell :quantity="quantity" />

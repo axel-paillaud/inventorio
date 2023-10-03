@@ -17,8 +17,8 @@ const show = ref(false);
     @click="show = true"
     >
         <span
+            v-show="show"
             class="py-3 px-6 absolute inset-0 w-full z-30 bg-white h-fit min-h-full"
-            :class="{ hidden: !show }"
             role="textbox"
             contenteditable="true"
         >

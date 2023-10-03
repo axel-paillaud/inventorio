@@ -18,8 +18,8 @@ const currentState = ref(props.state);
         @click="show = true"
     >
         <select
+            v-show="show"
             class="py-3 px-6 w-full focus:ring-0 absolute inset-0 z-30 min-w-[130px]"
-            :class="{ hidden: !show }"
             v-model="currentState"
         >
             <option value="Neuf">Neuf</option>

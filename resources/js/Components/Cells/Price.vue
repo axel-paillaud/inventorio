@@ -22,7 +22,7 @@ const formattedPrice = formatter.format(props.price);
     >
         <input
             class="py-3 px-6 w-full h-full focus:ring-0 absolute inset-0 z-30"
-            :class="{ hidden: !show }"
+            v-show="show"
             type="number"
             :value="price"
         >
