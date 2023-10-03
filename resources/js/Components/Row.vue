@@ -77,7 +77,7 @@ const showCell = reactive({
         </td>
         <td class="td relative" @click="showCell.quantity = true">
             <input
-                class="input-cell w-full focus:ring-0"
+                class="input-cell w-full h-full focus:ring-0 absolute inset-0 z-30"
                 :class="{ hidden: !showCell.quantity }"
                 type="number"
                 :value="quantity"
@@ -88,7 +88,7 @@ const showCell = reactive({
         </td>
         <td class="td relative" @click="showCell.price = true">
             <input
-                class="input-cell w-full focus:ring-0"
+                class="input-cell w-full h-full focus:ring-0 absolute inset-0 z-30"
                 :class="{ hidden: !showCell.price }"
                 type="number"
                 :value="price"
