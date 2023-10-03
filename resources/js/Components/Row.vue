@@ -1,6 +1,10 @@
 <script setup>
-import { reactive, ref } from 'vue';
 import { formatter } from '@/Services/FormatService.js';
+import DateCell from '@/Components/Cells/Date.vue';
+import NameCell from '@/Components/Cells/Name.vue';
+import StateCell from '@/Components/Cells/State.vue';
+import QuantityCell from '@/Components/Cells/Quantity.vue';
+import PriceCell from '@/Components/Cells/Price.vue';
 
 const props = defineProps({
     date: String,
@@ -11,92 +15,17 @@ const props = defineProps({
     total: Number,
 });
 
-const currentState = ref(props.state);
-
-// Maybe use computed here when we need to update date in real time
-const formattedDate = new Date(props.date).toLocaleDateString();
-
-// Also here, maybe use computed
-const formattedPrice = formatter.format(props.price);
 const total = formatter.format(props.total);
-
-const showCell = reactive({
-    date: false,
-    name: false,
-    state: false,
-    quantity: false,
-    price: false
-});
 
 </script>
 
 <template>
     <tr>
-        <td
-            class="td relative"
-            @click="showCell.date = true"
-        >
-            <input
-                class="input-cell focus:ring-0 absolute inset-0 w-48 z-30"
-                :class="{ hidden: !showCell.date}"
-                type="date"
-                :value="date"
-            >
-            <div class="fixed-cell" :class="{ invisible: showCell.date }">
-                {{ formattedDate }}
-            </div>
-        </td>
-        <td
-            class="td relative"
-            @click="showCell.name = true">
-            <span
-                class="input-cell absolute inset-0 w-full z-30 bg-white h-fit min-h-full"
-                :class="{ hidden: !showCell.name }"
-                role="textbox"
-                contenteditable="true"
-            >
-                {{ name }}
-            </span>
-            <div class="fixed-cell" :class="{ invisible: showCell.name }">
-                {{ name }}
-            </div>
-        </td>
-        <td class="td relative" @click="showCell.state = true">
-            <select
-                class="input-cell w-full focus:ring-0 absolute inset-0 z-30 w-32"
-                :class="{ hidden: !showCell.state }"
-                v-model="currentState"
-            >
-                <option value="Neuf">Neuf</option>
-                <option value="Occasion">Occasion</option>
-                <option value="A réparer">A réparer</option>
-            </select>
-            <div class="fixed-cell whitespace-nowrap" :class="{ hidden: showCell.state }">
-                {{ state }}
-            </div>
-        </td>
-        <td class="td relative" @click="showCell.quantity = true">
-            <input
-                class="input-cell w-full h-full focus:ring-0 absolute inset-0 z-30"
-                :class="{ hidden: !showCell.quantity }"
-                type="number"
-                :value="quantity"
-            >
-            <div class="fixed-cell" :class="{ hidden: showCell.quantity }">
-                {{ quantity }}
-            </div>
-        </td>
-        <td class="td relative" @click="showCell.price = true">
-            <input
-                class="input-cell w-full h-full focus:ring-0 absolute inset-0 z-30"
-                :class="{ hidden: !showCell.price }"
-                type="number"
-                :value="price"
-            >
-            <div class="fixed-cell" :class="{ hidden: showCell.price }">
-                {{ formattedPrice }}
-            </div>
-        </td>
+        <DateCell :date="date" />
+        <NameCell :name="name" />
+        <StateCell :state="state" />
+        <QuantityCell :quantity="quantity" />
+        <PriceCell :price="price" />
         <td class="td-total">
             <div class="fixed-cell">{{ total }}</div>
         </td>
