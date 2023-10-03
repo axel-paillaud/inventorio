@@ -1,5 +1,5 @@
 <script setup>
-import { reactive } from 'vue';
+import { reactive, ref } from 'vue';
 import { formatter } from '@/Services/FormatService.js';
 
 const props = defineProps({
@@ -10,6 +10,8 @@ const props = defineProps({
     price: Number,
     total: Number,
 });
+
+const currentState = ref(props.state);
 
 // Maybe use computed here when we need to update date in real time
 const formattedDate = new Date(props.date).toLocaleDateString();
@@ -32,12 +34,11 @@ const showCell = reactive({
     <tr>
         <td
             class="td relative"
-            @click="showCell.date = !showCell.date"
+            @click="showCell.date = true"
         >
             <input
                 class="input-cell focus:ring-0 absolute inset-0 w-48 z-30"
                 :class="{ hidden: !showCell.date}"
-                @click="toggleInput"
                 type="date"
                 :value="date"
             >
@@ -47,28 +48,34 @@ const showCell = reactive({
         </td>
         <td
             class="td relative"
-            @click="showCell.name = !showCell.name">
-            <textarea
-                class="input-cell absolute inset-0 w-full z-30"
+            @click="showCell.name = true">
+            <span
+                class="input-cell absolute inset-0 w-full z-30 bg-white h-fit min-h-full"
                 :class="{ hidden: !showCell.name }"
-                rows="3"
-            >{{ name }}</textarea>
+                role="textbox"
+                contenteditable="true"
+            >
+                {{ name }}
+            </span>
             <div class="fixed-cell" :class="{ invisible: showCell.name }">
                 {{ name }}
             </div>
         </td>
-        <td class="td" @click="showCell.state = !showCell.state">
-            <input
-                class="input-cell w-full focus:ring-0"
+        <td class="td relative" @click="showCell.state = true">
+            <select
+                class="input-cell w-full focus:ring-0 absolute inset-0 z-30 w-32"
                 :class="{ hidden: !showCell.state }"
-                type="text"
-                :value="state"
+                v-model="currentState"
             >
+                <option value="Neuf">Neuf</option>
+                <option value="Occasion">Occasion</option>
+                <option value="A réparer">A réparer</option>
+            </select>
             <div class="fixed-cell whitespace-nowrap" :class="{ hidden: showCell.state }">
                 {{ state }}
             </div>
         </td>
-        <td class="td" @click="showCell.quantity = !showCell.quantity">
+        <td class="td relative" @click="showCell.quantity = true">
             <input
                 class="input-cell w-full focus:ring-0"
                 :class="{ hidden: !showCell.quantity }"
@@ -79,7 +86,7 @@ const showCell = reactive({
                 {{ quantity }}
             </div>
         </td>
-        <td class="td" @click="showCell.price = !showCell.price">
+        <td class="td relative" @click="showCell.price = true">
             <input
                 class="input-cell w-full focus:ring-0"
                 :class="{ hidden: !showCell.price }"
