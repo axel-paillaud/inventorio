@@ -39,7 +39,7 @@ const total = formatter.format(props.total);
                         <th class="py-3 px-6 border-b">Total</th>
                     </tr>
                 </thead>
-                <tfoot class="sticky bottom-0 bg-white">
+                <tfoot class="sticky bottom-0 bg-white z-50">
                     <tr>
                         <td class="td-last-row">
                             <div

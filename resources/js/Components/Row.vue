@@ -1,5 +1,5 @@
 <script setup>
-import { ref, reactive } from 'vue';
+import { reactive } from 'vue';
 import { formatter } from '@/Services/FormatService.js';
 
 const props = defineProps({
@@ -51,7 +51,7 @@ const showCell = reactive({
             <textarea
                 class="input-cell absolute inset-0 w-full z-30"
                 :class="{ hidden: !showCell.name }"
-                rows="5"
+                rows="3"
             >{{ name }}</textarea>
             <div class="fixed-cell" :class="{ invisible: showCell.name }">
                 {{ name }}
