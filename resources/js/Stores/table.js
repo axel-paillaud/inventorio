@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { ref, reactive, computed } from 'vue';
+import { ref, reactive, computed, watch } from 'vue';
 
 export const useTableStore = defineStore('tables', () => {
     // Why is it work with ref ? I think I should use reactive()
