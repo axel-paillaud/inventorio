@@ -1,9 +1,11 @@
 import { defineStore } from 'pinia';
-import { ref, computed } from 'vue';
+import { ref, reactive, computed } from 'vue';
 
 export const useTableStore = defineStore('tables', () => {
+    // Why is it work with ref ? I think I should use reactive()
     const tables = ref({});
     const rows = ref({});
+    const cells = reactive({});
 
     function computeTotalRow() {
         rows.value.forEach((row) => {
@@ -36,7 +38,17 @@ export const useTableStore = defineStore('tables', () => {
         });
     }
 
+    function addCells(cellId) {
+        cells[cellId] = { isActive: false };
+    }
+
     return {
-        tables, rows, computeTotalRow, associateRowToTable, computeTotalTable
+        tables,
+        rows,
+        cells,
+        addCells,
+        computeTotalRow,
+        associateRowToTable,
+        computeTotalTable,
     };
 });

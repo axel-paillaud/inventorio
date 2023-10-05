@@ -8,6 +8,7 @@ import QuantityCell from '@/Components/Cells/Quantity.vue';
 import PriceCell from '@/Components/Cells/Price.vue';
 
 const props = defineProps({
+    rowId: Number,
     date: String,
     name: String,
     state: String,
@@ -16,34 +17,17 @@ const props = defineProps({
     total: Number,
 });
 
-const toggleCell = reactive({
-    date: false,
-    name: false,
-    state: false,
-    quantity: false,
-    price: false,
-    total: false,
-});
-
-watch(toggleCell, () => {
-    console.log(toggleCell);
-});
-
 const total = formatter.format(props.total);
-
-const hideOtherCells = (event) => {
-    console.log(event);
-}
 
 </script>
 
 <template>
     <tr>
-        <DateCell :date="date" @show="hideOtherCells"/>
-        <NameCell :name="name" />
-        <StateCell :state="state" />
-        <QuantityCell :quantity="quantity" />
-        <PriceCell :price="price" />
+        <DateCell :date="date" :rowId="rowId" />
+        <NameCell :name="name" :rowId="rowId" />
+        <StateCell :state="state" :rowId="rowId" />
+        <QuantityCell :quantity="quantity" :rowId="rowId" />
+        <PriceCell :price="price" :rowId="rowId" />
         <td class="p-0 border border-white border-b-gray-100">
             <div class="py-3 px-6">{{ total }}</div>
         </td>

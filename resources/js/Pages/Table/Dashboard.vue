@@ -63,6 +63,7 @@ const tablePairs = computed(() => {
                             <Row
                                 v-for="row in table.rows"
                                 :key="row.id"
+                                :rowId="row.id"
                                 :date="row.date"
                                 :name="row.name"
                                 :state="row.state"
