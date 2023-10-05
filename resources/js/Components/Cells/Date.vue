@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch } from 'vue';
+import { watch } from 'vue';
 import { useTableStore } from '@/Stores/table';
 
 const props = defineProps({
@@ -8,6 +8,7 @@ const props = defineProps({
 });
 
 const store = useTableStore();
+console.log(typeof(store));
 
 const cellId = props.rowId + "Date";
 store.addCells(cellId);
@@ -16,8 +17,8 @@ const currentCell = store.cells[cellId];
 
 watch(() => currentCell.isActive, (newValue) => {
     if (newValue) {
-        currentCell.isActive = true;
         for (const cell in store.cells) {
+            // set all others cells than the current one to false
             if (cell !== cellId) {
                 store.cells[cell].isActive = false;
             }

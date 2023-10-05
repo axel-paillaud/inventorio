@@ -5,7 +5,7 @@ export const useTableStore = defineStore('tables', () => {
     // Why is it work with ref ? I think I should use reactive()
     const tables = ref({});
     const rows = ref({});
-    const cells = reactive({});
+    const cells = ref({});
 
     function computeTotalRow() {
         rows.value.forEach((row) => {
@@ -39,7 +39,7 @@ export const useTableStore = defineStore('tables', () => {
     }
 
     function addCells(cellId) {
-        cells[cellId] = { isActive: false };
+        cells.value[cellId] = { isActive: false };
     }
 
     return {

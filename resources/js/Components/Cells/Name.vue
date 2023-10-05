@@ -1,8 +1,9 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 
 const props = defineProps({
-    name: String
+    name: String,
+    rowId: Number,
 });
 
 const show = ref(false);
