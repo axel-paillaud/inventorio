@@ -25,11 +25,12 @@ const formattedPrice = formatter.format(props.price);
     <td
         @click="currentCell.isActive = true"
         class="p-0 border border-white border-b border-b-gray-100 relative
-        transition-colors cursor-text hover:bg-gray-100 hover:border-t-gray-100
-        hover:border-r-gray-200 hover:border-l-200"
+        transition-colors cursor-text hover:bg-gray-50 hover:border-t-gray-50
+        hover:border-r-gray-200 hover:border-l-gray-200"
     >
         <input
-            class="py-3 px-6 w-full h-full focus:ring-0 absolute inset-0 z-30"
+            class="py-3 px-6 w-full h-full focus:ring-0 absolute inset-0 z-30
+            bg-gray-50 border-gray-500"
             v-show="currentCell.isActive"
             type="number"
             :value="price"

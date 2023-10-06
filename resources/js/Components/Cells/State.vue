@@ -24,13 +24,14 @@ const currentState = ref(props.state);
 <template>
 <td
     class="p-0 border border-white border-b border-b-gray-100 relative
-        transition-colors cursor-text hover:bg-gray-100 hover:border-t-gray-100
-        hover:border-r-gray-200 hover:border-l-200"
+        transition-colors cursor-text hover:bg-gray-50 hover:border-t-gray-50
+        hover:border-r-gray-200 hover:border-l-gray-200"
         @click="currentCell.isActive = true"
     >
         <select
             v-show="currentCell.isActive"
-            class="py-3 px-6 w-full focus:ring-0 absolute inset-0 z-30 min-w-[130px]"
+            class="py-3 px-6 w-full focus:ring-0 absolute inset-0 z-30 min-w-[130px]
+            bg-gray-50 border-gray-500"
             v-model="currentState"
         >
             <option value="Neuf">Neuf</option>

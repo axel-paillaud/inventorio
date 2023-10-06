@@ -25,13 +25,13 @@ const formattedDate = new Date(props.date).toLocaleDateString();
 <td
     @click="currentCell.isActive = true"
     class="p-0 border border-white border-b border-b-gray-100 relative
-        transition-colors cursor-text hover:bg-gray-100 hover:border-t-gray-100
-        hover:border-r-gray-200 hover:border-l-200"
+        transition-colors cursor-text hover:bg-gray-50 hover:border-t-gray-50
+        hover:border-r-gray-200 hover:border-l-gray-200"
 >
     <input
         v-show="currentCell.isActive"
         class="py-3 px-6 focus:ring-0 transition-colors absolute inset-0 w-48
-            z-30"
+            z-30 bg-gray-50 border-gray-500"
         type="date"
         :value="date"
     >
