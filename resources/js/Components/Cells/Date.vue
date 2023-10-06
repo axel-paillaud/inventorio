@@ -1,6 +1,6 @@
 <script setup>
-import { watch } from 'vue';
 import { useTableStore } from '@/Stores/table';
+import watchCurrentCellState from '@/Services/WatchCurrentCellStateService.js';
 
 const props = defineProps({
     date: String,
@@ -8,23 +8,13 @@ const props = defineProps({
 });
 
 const store = useTableStore();
-console.log(typeof(store));
 
 const cellId = props.rowId + "Date";
 store.addCells(cellId);
 
 const currentCell = store.cells[cellId];
 
-watch(() => currentCell.isActive, (newValue) => {
-    if (newValue) {
-        for (const cell in store.cells) {
-            // set all others cells than the current one to false
-            if (cell !== cellId) {
-                store.cells[cell].isActive = false;
-            }
-        }
-    }
-});
+watchCurrentCellState(currentCell, store, cellId);
 
 // Maybe use computed here when we need to update date in real time
 const formattedDate = new Date(props.date).toLocaleDateString();

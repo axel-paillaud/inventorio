@@ -6,7 +6,7 @@ import { watch } from 'vue';
  * @param {object} store - Pinia store.
  * @param {string} currentCellId - Current cell Id of the component.
  */
-export default function hideOtherCells(currentCell, store, currentCellId) {
+export default function watchCurrentCellState(currentCell, store, currentCellId) {
     watch(() => currentCell.isActive, (newValue) => {
         if (newValue) {
             for (const cell in store.cells) {
