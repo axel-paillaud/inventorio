@@ -11,13 +11,13 @@ const props = defineProps({
 const isActive = ref(false);
 
 const closeOnEscape = (e) => {
-    if (isActive.value && e.key === "Escape") {
+    if (isActive.value && (e.key === "Escape" || e.key === "Enter")) {
         isActive.value = false;
     }
 }
 
 onMounted(() => document.addEventListener('keydown', closeOnEscape));
-onUnmounted(() => document.removeEventListener('keydown', closeOnEscape));
+onUnmounted(() => document.EventListener('keydown', closeOnEscape));
 
 //const store = useTableStore();
 
@@ -42,7 +42,7 @@ const formattedDate = new Date(props.date).toLocaleDateString();
     >
         <!-- Overlay -->
         <div v-show="isActive"
-            class="fixed inset-0 z-50 bg-red-500 opacity-30"
+            class="fixed inset-0 z-50 bg-red-500 opacity-30 cursor-default"
             @click.stop="isActive = false">
         </div>
         <input
