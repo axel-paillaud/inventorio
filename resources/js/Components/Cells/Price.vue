@@ -4,7 +4,6 @@ import { formatter } from '@/Services/FormatService';
 
 const props = defineProps({
     price: Number,
-    rowId: Number,
 });
 
 const isActive = ref(false);

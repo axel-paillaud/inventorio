@@ -3,7 +3,6 @@ import { ref, onMounted, onUnmounted } from 'vue';
 
 const props = defineProps({
     name: String,
-    rowId: Number,
 });
 
 const isActive = ref(false);

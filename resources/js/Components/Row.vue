@@ -23,11 +23,11 @@ const total = formatter.format(props.total);
 
 <template>
     <tr>
-        <DateCell :date="date" :rowId="rowId" />
-        <NameCell :name="name" :rowId="rowId" />
-        <StateCell :state="state" :rowId="rowId" />
-        <QuantityCell :quantity="quantity" :rowId="rowId" />
-        <PriceCell :price="price" :rowId="rowId" />
+        <DateCell :date="date" />
+        <NameCell :name="name" />
+        <StateCell :state="state" />
+        <QuantityCell :quantity="quantity" />
+        <PriceCell :price="price" />
         <td class="p-0 border border-white border-b-gray-100">
             <div class="py-3 px-6">{{ total }}</div>
         </td>
