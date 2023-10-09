@@ -49,7 +49,7 @@ const tablePairs = computed(() => {
             >
                 <template v-for="tablePair, index in tablePairs" :key="index">
                     <div
-                        class="flex 2xl:flex-row flex-col z-10 gap-12
+                        class="flex 2xl:flex-row flex-col gap-12
                         justify-center"
                     >
                         <Table

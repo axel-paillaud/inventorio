@@ -27,7 +27,7 @@ const total = formatter.format(props.total);
                 border border-separate border-spacing-0"
             >
                 <thead
-                    class="text-left sticky top-0 whitespace-nowrap z-50"
+                    class="text-left sticky top-0 whitespace-nowrap z-30"
                     :class="colors[color].bg"
                 >
                     <tr>
@@ -39,7 +39,7 @@ const total = formatter.format(props.total);
                         <th class="py-3 px-6 border-b">Total</th>
                     </tr>
                 </thead>
-                <tfoot class="sticky bottom-0 bg-white z-50">
+                <tfoot class="sticky bottom-0 bg-white z-30">
                     <tr>
                         <td class="td-last-row">
                             <div

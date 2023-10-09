@@ -25,7 +25,7 @@ const tables = store.tables;
     </div>
     <footer
         class="bg-white border-t border-gray-100 fixed bottom-0 left-0 right-0
-        z-20"
+        z-40"
     >
         <div class="mx-auto px-4 sm:px-8 lg:px-12">
             <div class="flex justify-between items-center h-16">
