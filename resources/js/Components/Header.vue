@@ -11,7 +11,7 @@ const showingNavigationDropdown = ref(false);
 </script>
 
 <template>
-    <header class="sticky top-0 z-40">
+    <header class="sticky top-0 z-70">
         <nav class="bg-white border-b border-gray-100">
             <!-- Primary Navigation Menu -->
             <div class="mx-auto px-4 sm:px-8 lg:px-12">

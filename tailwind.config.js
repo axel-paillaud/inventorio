@@ -17,6 +17,13 @@ export default {
                 //sans: ['Figtree', ...defaultTheme.fontFamily.sans],
                 sans: ['lato', ...defaultTheme.fontFamily.sans],
             },
+            zIndex: {
+                '60': '60',
+                '70': '70',
+                '80': '80',
+                '90': '90',
+                '100': '100'
+            },
         },
     },
 
