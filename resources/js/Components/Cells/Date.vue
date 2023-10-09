@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
+import InputOverlay from '@/Components/InputOverlay.vue';
 
 const props = defineProps({
     date: String,
@@ -7,14 +8,14 @@ const props = defineProps({
 
 const isActive = ref(false);
 
-const closeOnEscape = (e) => {
-    if (isActive.value && (e.key === "Escape" || e.key === "Enter")) {
-        isActive.value = false;
-    }
-}
+//const closeOnEscape = (e) => {
+//    if (isActive.value && (e.key === "Escape" || e.key === "Enter")) {
+//        isActive.value = false;
+//    }
+//}
 
-onMounted(() => document.addEventListener('keydown', closeOnEscape));
-onUnmounted(() => document.EventListener('keydown', closeOnEscape));
+//onMounted(() => document.addEventListener('keydown', closeOnEscape));
+//onUnmounted(() => document.EventListener('keydown', closeOnEscape));
 
 // Maybe use computed here when we need to update date in real time
 const formattedDate = new Date(props.date).toLocaleDateString();
@@ -28,13 +29,7 @@ const formattedDate = new Date(props.date).toLocaleDateString();
         transition-colors cursor-text hover:bg-gray-50 hover:border-t-gray-50
         hover:border-r-gray-200 hover:border-l-gray-200"
     >
-        <!-- Full Screen Overlay -->
-        <div
-            v-show="isActive"
-            class="fixed inset-0 z-50 cursor-default"
-            @click.stop="isActive = false"
-        >
-        </div>
+        <InputOverlay :isActive="isActive"  @closeCell="isActive = false"/>
         <input
             v-show="isActive"
             class="py-3 px-6 focus:ring-0 transition-colors absolute inset-0 w-48
