@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref } from 'vue';
 import InputOverlay from '@/Components/InputOverlay.vue';
 
 const props = defineProps({
@@ -7,15 +7,6 @@ const props = defineProps({
 });
 
 const isActive = ref(false);
-
-//const closeOnEscape = (e) => {
-//    if (isActive.value && (e.key === "Escape" || e.key === "Enter")) {
-//        isActive.value = false;
-//    }
-//}
-
-//onMounted(() => document.addEventListener('keydown', closeOnEscape));
-//onUnmounted(() => document.EventListener('keydown', closeOnEscape));
 
 // Maybe use computed here when we need to update date in real time
 const formattedDate = new Date(props.date).toLocaleDateString();
