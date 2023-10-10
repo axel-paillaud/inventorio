@@ -7,6 +7,7 @@ import QuantityCell from '@/Components/Cells/Quantity.vue';
 import PriceCell from '@/Components/Cells/Price.vue';
 
 const props = defineProps({
+    rowId: Number,
     date: String,
     name: String,
     state: String,
@@ -21,7 +22,7 @@ const total = formatter.format(props.total);
 
 <template>
     <tr>
-        <DateCell :date="date" />
+        <DateCell :date="date" :rowId="rowId" />
         <NameCell :name="name" />
         <StateCell :state="state" />
         <QuantityCell :quantity="quantity" />
