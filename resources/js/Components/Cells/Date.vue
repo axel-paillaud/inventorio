@@ -20,7 +20,7 @@ const formattedDate = new Date(props.date).toLocaleDateString();
         transition-colors cursor-text hover:bg-gray-50 hover:border-t-gray-50
         hover:border-r-gray-200 hover:border-l-gray-200"
     >
-        <InputOverlay :isActive="isActive"  @closeCell="isActive = false"/>
+        <InputOverlay :isActive="isActive"  @closeCell="isActive = false" />
         <input
             v-show="isActive"
             class="py-3 px-6 focus:ring-0 transition-colors absolute inset-0 w-48

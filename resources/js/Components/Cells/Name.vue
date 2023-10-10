@@ -1,20 +1,12 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref } from 'vue';
+import InputOverlay from '@/Components/InputOverlay.vue';
 
 const props = defineProps({
     name: String,
 });
 
 const isActive = ref(false);
-
-const closeOnEscape = (e) => {
-    if (isActive.value && (e.key === "Escape" || e.key === "Enter")) {
-        isActive.value = false;
-    }
-}
-
-onMounted(() => document.addEventListener('keydown', closeOnEscape));
-onUnmounted(() => document.removeEventListener('keydown', closeOnEscape));
 
 </script>
 
@@ -25,13 +17,7 @@ onUnmounted(() => document.removeEventListener('keydown', closeOnEscape));
         hover:border-r-gray-200 hover:border-l-gray-200"
     @click="isActive = true"
     >
-        <!-- Full Screen Overlay -->
-        <div
-            v-show="isActive"
-            class="fixed inset-0 z-50 cursor-default"
-            @click.stop="isActive = false"
-        >
-        </div>
+        <InputOverlay :isActive="isActive" @closeCell="isActive = false" />
         <span
             v-show="isActive"
             class="py-3 px-6 absolute inset-0 w-full z-60 h-fit min-h-full
