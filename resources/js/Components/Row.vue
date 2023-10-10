@@ -1,5 +1,4 @@
 <script setup>
-import { reactive, watch } from 'vue';
 import { formatter } from '@/Services/FormatService.js';
 import DateCell from '@/Components/Cells/Date.vue';
 import NameCell from '@/Components/Cells/Name.vue';
@@ -8,7 +7,6 @@ import QuantityCell from '@/Components/Cells/Quantity.vue';
 import PriceCell from '@/Components/Cells/Price.vue';
 
 const props = defineProps({
-    rowId: Number,
     date: String,
     name: String,
     state: String,
