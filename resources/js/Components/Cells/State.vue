@@ -4,6 +4,7 @@ import InputOverlay from '@/Components/InputOverlay.vue';
 
 const props = defineProps({
     state: String,
+    rowId: Number,
 });
 
 const isActive = ref(false);
@@ -33,7 +34,7 @@ const currentState = ref(props.state);
         <div class="py-3 px-6 whitespace-nowrap"
             :class="{ invisible: isActive }"
         >
-            {{ state }}
+            {{ currentState }}
         </div>
 </td>
 </template>

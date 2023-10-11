@@ -7,6 +7,7 @@ const props = defineProps({
 });
 
 const isActive = ref(false);
+const quantity = ref(props.quantity);
 
 </script>
 
@@ -23,7 +24,7 @@ const isActive = ref(false);
             bg-gray-50 border-gray-500"
             v-show="isActive"
             type="number"
-            :value="quantity"
+            v-model="quantity"
         >
         <div class="py-3 px-6" :class="{ invisible: isActive }">
             {{ quantity }}

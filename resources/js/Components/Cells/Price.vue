@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { formatter } from '@/Services/FormatService';
 import InputOverlay from '@/Components/InputOverlay.vue';
 
@@ -8,8 +8,11 @@ const props = defineProps({
 });
 
 const isActive = ref(false);
+const price = ref(props.price);
 
-const formattedPrice = formatter.format(props.price);
+const formattedPrice = computed(() => {
+    return formatter.format(price.value);
+});
 
 </script>
 
@@ -26,7 +29,7 @@ const formattedPrice = formatter.format(props.price);
             bg-gray-50 border-gray-500"
             v-show="isActive"
             type="number"
-            :value="price"
+            v-model="price"
         >
         <div class="py-3 px-6" :class="{ invisible: isActive }">
             {{ formattedPrice }}

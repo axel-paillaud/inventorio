@@ -24,7 +24,7 @@ const total = formatter.format(props.total);
     <tr>
         <DateCell :date="date" :rowId="rowId" />
         <NameCell :name="name" />
-        <StateCell :state="state" />
+        <StateCell :state="state" :rowId="rowId" />
         <QuantityCell :quantity="quantity" />
         <PriceCell :price="price" />
         <td class="p-0 border border-white border-b-gray-100">
