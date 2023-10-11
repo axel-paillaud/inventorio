@@ -19,6 +19,7 @@ onUnmounted(() => document.removeEventListener('keydown', closeOnEscape));
 
 <template>
     <div
+        data-testid="overlay"
         v-show="isActive"
         class="fixed inset-0 z-50 cursor-default"
         @click.stop="$emit('closeCell')"
