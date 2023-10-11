@@ -1,10 +1,11 @@
 <script setup>
-import { formatter } from '@/Services/FormatService.js';
+import { ref } from 'vue';
 import DateCell from '@/Components/Cells/Date.vue';
 import NameCell from '@/Components/Cells/Name.vue';
 import StateCell from '@/Components/Cells/State.vue';
 import QuantityCell from '@/Components/Cells/Quantity.vue';
 import PriceCell from '@/Components/Cells/Price.vue';
+import Total from '@/Components/Cells/CellTotal.vue';
 
 const props = defineProps({
     rowId: Number,
@@ -13,10 +14,10 @@ const props = defineProps({
     state: String,
     quantity: Number,
     price: Number,
-    total: Number,
 });
 
-const total = formatter.format(props.total);
+const quantity = ref(props.quantity);
+const price = ref(props.price);
 
 </script>
 
@@ -25,11 +26,19 @@ const total = formatter.format(props.total);
         <DateCell :date="date" :rowId="rowId" />
         <NameCell :name="name" />
         <StateCell :state="state" :rowId="rowId" />
-        <QuantityCell :quantity="quantity" />
-        <PriceCell :price="price" />
-        <td class="p-0 border border-white border-b-gray-100">
-            <div class="py-3 px-6">{{ total }}</div>
-        </td>
+        <QuantityCell
+            :quantity="quantity"
+            @updateQuantity="(updatedQuantity) => quantity = updatedQuantity"
+        />
+        <PriceCell
+            :price="price"
+            @updatePrice="(updatedPrice) => price = updatedPrice"
+        />
+        <Total
+            :quantity="quantity"
+            :price="price"
+            @updateTotal="(updatedTotal) => $emit('updateTotal', updatedTotal)"
+        />
     </tr>
 </template>
 

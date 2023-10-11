@@ -25,6 +25,7 @@ const formattedPrice = computed(() => {
     >
         <InputOverlay :isActive="isActive" @closeCell="isActive = false" />
         <input
+            @input="$emit('updatePrice', price)"
             class="py-3 px-6 w-full h-full focus:ring-0 absolute inset-0 z-60
             bg-gray-50 border-gray-500"
             v-show="isActive"

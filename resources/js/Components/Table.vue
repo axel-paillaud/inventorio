@@ -1,15 +1,14 @@
 <script setup>
 import { Plus } from 'lucide-vue-next';
-import { formatter } from '@/Services/FormatService';
+import Total from '@/Components/Cells/TableTotal.vue';
 import colors from '@/Services/ColorService';
 
 const props = defineProps({
     name: String,
+    rows: Array,
     color: {type: String, default: 'gray'},
     total: Number,
 });
-
-const total = formatter.format(props.total);
 
 </script>
 
@@ -27,7 +26,8 @@ const total = formatter.format(props.total);
                 border border-separate border-spacing-0"
             >
                 <thead
-                    class="text-left sticky top-0 whitespace-nowrap z-30"
+                    class="text-left sticky top-0 whitespace-nowrap z-70
+                    pointer-events-none"
                     :class="colors[color].bg"
                 >
                     <tr>
@@ -50,9 +50,7 @@ const total = formatter.format(props.total);
                             </div>
                         </td>
                         <td class="td-last-row" colspan="4">Total</td>
-                        <td class="td-last-row whitespace-nowrap" colspan="1">
-                            {{ total }}
-                        </td>
+                        <Total :total="total" :rows="rows"/>
                     </tr>
                 </tfoot>
                 <tbody>

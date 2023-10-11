@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import Table from '@/Components/Table.vue';
 import Row from '@/Components/Row.vue';
@@ -47,7 +47,7 @@ const tablePairs = computed(() => {
                 class="pt-12 pb-32 mx-auto px-4 sm:px-8 lg:px-12 flex
                 gap-y-10 flex-col"
             >
-                <template v-for="tablePair, index in tablePairs" :key="index">
+                <template v-for="tablePair in tablePairs">
                     <div
                         class="flex 2xl:flex-row flex-col gap-12
                         justify-center"
@@ -63,13 +63,12 @@ const tablePairs = computed(() => {
                             <Row
                                 v-for="row in table.rows"
                                 :key="row.id"
-                                :rowId="row.id"
                                 :date="row.date"
                                 :name="row.name"
                                 :state="row.state"
                                 :quantity="row.quantity"
                                 :price="row.price"
-                                :total="row.total"
+                                @updateTotal="(updatedTotal) => row.total = updatedTotal"
                             />
                         </Table>
                     </div>

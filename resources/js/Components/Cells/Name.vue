@@ -7,6 +7,7 @@ const props = defineProps({
 });
 
 const isActive = ref(false);
+const name = ref(props.name);
 
 </script>
 
@@ -18,15 +19,16 @@ const isActive = ref(false);
     @click="isActive = true"
     >
         <InputOverlay :isActive="isActive" @closeCell="isActive = false" />
-        <span
+        <textarea
             v-show="isActive"
-            class="py-3 px-6 absolute inset-0 w-full z-60 h-fit min-h-full
+            class="py-3 px-6 absolute top-0 left-0 w-full z-60 h-fit min-h-full
             bg-gray-50 border-gray-500"
             role="textbox"
             contenteditable="true"
+            v-model="name"
         >
             {{ name }}
-        </span>
+        </textarea>
         <div class="py-3 px-6" :class="{ invisible: isActive }">
             {{ name }}
         </div>
