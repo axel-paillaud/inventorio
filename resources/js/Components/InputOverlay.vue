@@ -1,25 +1,19 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
-import { emitCloseOnEscape } from '@/Composables/closeCell';
+import { onMounted, onUnmounted } from 'vue';
 const emit = defineEmits(['closeCell']);
 
 const props = defineProps({
     isActive: Boolean,
 });
 
-// const closeOnEscape = (e) => {
-//     if (props.isActive && (e.key === "Escape" || e.key === "Enter")) {
-//         console.log("hello");
-//         emit('closeCell');
-//     }
-// }
-//
-// onMounted(() => document.addEventListener('keydown', closeOnEscape));
-// onUnmounted(() => document.removeEventListener('keydown', closeOnEscape));
+const closeOnEscape = (e) => {
+    if (props.isActive && (e.key === "Escape" || e.key === "Enter")) {
+        emit('closeCell');
+    }
+}
 
-
-emitCloseOnEscape(emit, props.isActive);
-// emitCloseOnEnter(emit, props.isActive);
+onMounted(() => document.addEventListener('keydown', closeOnEscape));
+onUnmounted(() => document.removeEventListener('keydown', closeOnEscape));
 
 </script>
 

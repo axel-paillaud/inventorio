@@ -3,7 +3,6 @@ import { onMounted, onUnmounted } from 'vue';
 export function emitCloseOnEscape(emit, isActive) {
    const closeOnEscape = (e) => {
         if (e.key === "Escape") {
-            console.log(isActive);
             emit('closeCell');
         }
     }
