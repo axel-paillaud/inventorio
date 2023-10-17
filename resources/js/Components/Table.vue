@@ -14,7 +14,6 @@ const props = defineProps({
 
 <template>
     <div class="w-full">
-
             <table
                 class="bg-white sm:rounded-lg w-full
                 border border-separate border-spacing-0"
