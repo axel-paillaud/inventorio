@@ -7,8 +7,6 @@ const props = defineProps({
     rows: Array,
 });
 
-console.log(props.rows);
-
 const total = computed(() => {
     const total = props.rows.reduce(
         (accumulator, currentValue) => accumulator + currentValue.total, 0
