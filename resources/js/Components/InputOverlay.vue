@@ -18,10 +18,12 @@ onUnmounted(() => document.removeEventListener('keydown', closeOnEscape));
 </script>
 
 <template>
-    <div
-        data-testid="overlay"
-        v-if="isActive"
-        class="fixed inset-0 z-50 cursor-default"
-        @click.stop="$emit('closeCell')"
-    ></div>
+    <Teleport to="body">
+        <div
+            data-testid="overlay"
+            v-if="isActive"
+            class="fixed inset-0 z-50 cursor-default bg-red-500 opacity-30"
+            @click.stop="$emit('closeCell')"
+        ></div>
+    </Teleport>
 </template>
