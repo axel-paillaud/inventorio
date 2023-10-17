@@ -7,6 +7,8 @@ const props = defineProps({
     rows: Array,
 });
 
+console.log(props.rows);
+
 const total = computed(() => {
     const total = props.rows.reduce(
         (accumulator, currentValue) => accumulator + currentValue.total, 0
@@ -17,7 +19,11 @@ const total = computed(() => {
 </script>
 
 <template>
-    <td class="py-3 px-6 border-t border-t-gray-200" colspan="1">
+    <td
+        data-testid="table-total"
+        class="py-3 px-6 border-t border-t-gray-200"
+        colspan="1"
+    >
         {{ total }}
     </td>
 </template>
