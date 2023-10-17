@@ -22,7 +22,7 @@ onUnmounted(() => document.removeEventListener('keydown', closeOnEscape));
         <div
             data-testid="overlay"
             v-if="isActive"
-            class="fixed inset-0 z-50 cursor-default bg-red-500 opacity-30"
+            class="fixed inset-0 z-50 cursor-default"
             @click.stop="$emit('closeCell')"
         ></div>
     </Teleport>
