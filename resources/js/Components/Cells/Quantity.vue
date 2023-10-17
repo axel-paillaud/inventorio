@@ -1,5 +1,5 @@
 <script setup>
-import { ref} from 'vue';
+import { ref } from 'vue';
 import InputOverlay from '@/Components/InputOverlay.vue';
 
 const props = defineProps({
@@ -25,6 +25,7 @@ const quantity = ref(props.quantity);
             bg-gray-50 border-gray-500"
             v-show="isActive"
             type="number"
+            step="1"
             v-model="quantity"
         >
         <div class="py-3 px-6" :class="{ invisible: isActive }">
