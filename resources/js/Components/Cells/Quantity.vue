@@ -9,6 +9,8 @@ const props = defineProps({
 const isActive = ref(false);
 const quantity = ref(props.quantity);
 
+// validate with Composables/validators/integer.js
+
 </script>
 
 <template>
