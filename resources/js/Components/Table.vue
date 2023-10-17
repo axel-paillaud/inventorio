@@ -14,19 +14,21 @@ const props = defineProps({
 
 <template>
     <div class="w-full">
-        <p
-            class="px-6 py-1"
-            :class="colors[color].title"
-        >
-            {{ name }}
-        </p>
-        <div class="max-h-[60vh] border overflow-auto shadow-md rounded-lg relative">
+
             <table
                 class="bg-white sm:rounded-lg w-full
                 border border-separate border-spacing-0"
             >
+                <caption
+                    class="px-6 py-1 text-left"
+                    :class="colors[color].title"
+                >
+                    {{ name }}
+                </caption>
+
+            <div class="max-h-[60vh] border overflow-auto shadow-md rounded-lg relative">
                 <thead
-                    class="text-left sticky top-0 whitespace-nowrap z-70
+                    class="text-left sticky top-0 whitespace-nowrap z-30
                     pointer-events-none"
                     :class="colors[color].bg"
                 >
@@ -56,8 +58,8 @@ const props = defineProps({
                 <tbody>
                     <slot />
                 </tbody>
-            </table>
-        </div>
+            </div>
+        </table>
     </div>
 </template>
 
