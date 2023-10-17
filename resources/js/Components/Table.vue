@@ -13,7 +13,7 @@ const props = defineProps({
 </script>
 
 <template>
-    <div class="overflow-auto w-full">
+    <div class="w-full">
         <p
             class="px-6 py-1"
             :class="colors[color].title"
@@ -22,7 +22,7 @@ const props = defineProps({
         </p>
         <div class="max-h-[60vh] border overflow-auto shadow-md rounded-lg relative">
             <table
-                class="bg-white shadow-md sm:rounded-lg w-full
+                class="bg-white sm:rounded-lg w-full
                 border border-separate border-spacing-0"
             >
                 <thead
