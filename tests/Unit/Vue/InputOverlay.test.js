@@ -1,6 +1,5 @@
 import { mount } from '@vue/test-utils';
 import InputOverlay from '@/Components/InputOverlay.vue';
-import DateCell from '@/Components/Cells/Date.vue';
 
 afterEach(() => {
   // clean up

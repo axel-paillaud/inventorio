@@ -24,6 +24,11 @@ watch(total, (newTotal) => {
 
 <template>
     <td class="p-0 border border-white border-b-gray-100">
-        <div class="py-3 px-6">{{ formattedTotal }}</div>
+        <div
+            data-testid="row-total"
+            class="py-3 px-6"
+        >
+            {{ formattedTotal }}
+        </div>
     </td>
 </template>

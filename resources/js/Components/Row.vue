@@ -5,7 +5,7 @@ import NameCell from '@/Components/Cells/Name.vue';
 import StateCell from '@/Components/Cells/State.vue';
 import QuantityCell from '@/Components/Cells/Quantity.vue';
 import PriceCell from '@/Components/Cells/Price.vue';
-import Total from '@/Components/Cells/CellTotal.vue';
+import Total from '@/Components/Cells/RowTotal.vue';
 
 const props = defineProps({
     rowId: Number,
