@@ -14,6 +14,7 @@ const props = defineProps({
 
 <template>
     <div class="w-full">
+        <div class="max-h-[60vh] border overflow-auto shadow-md rounded-lg relative">
             <table
                 class="bg-white sm:rounded-lg w-full
                 border border-separate border-spacing-0"
@@ -25,7 +26,6 @@ const props = defineProps({
                     {{ name }}
                 </caption>
 
-            <div class="max-h-[60vh] border overflow-auto shadow-md rounded-lg relative">
                 <thead
                     class="text-left sticky top-0 whitespace-nowrap z-30
                     pointer-events-none"
@@ -57,8 +57,8 @@ const props = defineProps({
                 <tbody>
                     <slot />
                 </tbody>
-            </div>
-        </table>
+            </table>
+        </div>
     </div>
 </template>
 
