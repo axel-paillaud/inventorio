@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import InputOverlay from '@/Components/InputOverlay.vue';
 
 const props = defineProps({
@@ -8,6 +8,14 @@ const props = defineProps({
 
 const isActive = ref(false);
 const name = ref(props.name);
+
+watch(name, (newName, oldName) => {
+    if (newName.length < 255) {
+        name.value = newName;
+    } else {
+        name.value = oldName;
+    }
+});
 
 </script>
 
