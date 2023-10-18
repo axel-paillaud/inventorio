@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import InputOverlay from '@/Components/InputOverlay.vue';
 
 const props = defineProps({
@@ -10,6 +10,15 @@ const isActive = ref(false);
 const quantity = ref(props.quantity);
 
 // validate with Composables/validators/integer.js
+
+watch(quantity, (newQuantity, oldQuantity) => {
+    if (Number(newQuantity)) {
+        quantity.value = 3;
+    }
+    else {
+        quantity.value = oldQuantity;
+    }
+});
 
 </script>
 
