@@ -10,6 +10,8 @@ const props = defineProps({
 const isActive = ref(false);
 const date = ref(props.date);
 
+console.log(date.value);
+
 const formattedDate = computed(() => {
     return new Date(date.value).toLocaleDateString();
 });
