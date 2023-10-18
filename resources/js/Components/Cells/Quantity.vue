@@ -9,7 +9,6 @@ const props = defineProps({
 
 const emit = defineEmits({
     updateQuantity: ( quantity ) => {
-        // integer.js inside condition here
         if (isPositiveInteger(quantity)) {
             return true;
         }
