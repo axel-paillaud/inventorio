@@ -1,6 +1,7 @@
 <script setup>
 import { ref, watch } from 'vue';
 import InputOverlay from '@/Components/InputOverlay.vue';
+import { isPositiveInteger } from '@/Composables/validators/integer';
 
 const props = defineProps({
     quantity: Number,
@@ -9,7 +10,7 @@ const props = defineProps({
 const emit = defineEmits({
     updateQuantity: ( quantity ) => {
         // integer.js inside condition here
-        if (Number(quantity)) {
+        if (isPositiveInteger(quantity)) {
             return true;
         }
         else {
@@ -22,11 +23,8 @@ const emit = defineEmits({
 const isActive = ref(false);
 const quantity = ref(props.quantity);
 
-// validate with Composables/validators/integer.js
-
 watch(quantity, (newQuantity, oldQuantity) => {
-    // integer.js inside condition here ?
-    if (Number(newQuantity)) {
+    if (isPositiveInteger(newQuantity)) {
         quantity.value = newQuantity;
     }
     else {
@@ -34,10 +32,8 @@ watch(quantity, (newQuantity, oldQuantity) => {
     }
 });
 
-// trigger updateQuantity inside watcher, remove @input="updateQuantity" ?
-
 function updateQuantity(quantity) {
-    if (Number(quantity)) {
+    if (isPositiveInteger(quantity)) {
         emit('updateQuantity', quantity);
     }
 }
@@ -52,15 +48,6 @@ function updateQuantity(quantity) {
         hover:border-r-gray-200 hover:border-l-gray-200"
     >
         <InputOverlay :isActive="isActive" @closeCell="isActive = false" />
-<!--         <input
-            @input="$emit('updateQuantity', quantity)"
-            class="py-3 px-6 w-full h-full focus:ring-0 absolute inset-0 z-60
-            bg-gray-50 border-gray-500"
-            v-show="isActive"
-            type="number"
-            step="1"
-            v-model="quantity"
-        > -->
         <input
             @input="updateQuantity(quantity)"
             class="py-3 px-6 w-full h-full focus:ring-0 absolute inset-0 z-60
