@@ -1,6 +1,7 @@
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, watch } from 'vue';
 import InputOverlay from '@/Components/InputOverlay.vue';
+import { isDateValid } from '@/Composables/validators/date';
 
 const props = defineProps({
     date: String,
@@ -10,7 +11,13 @@ const props = defineProps({
 const isActive = ref(false);
 const date = ref(props.date);
 
-console.log(date.value);
+watch(date, (newDate, oldDate) => {
+    if (isDateValid(date)) {
+        date.value = newDate;
+    } else {
+        date.value = oldDate;
+    }
+});
 
 const formattedDate = computed(() => {
     return new Date(date.value).toLocaleDateString();

@@ -25,8 +25,7 @@ const quantity = ref(props.quantity);
 watch(quantity, (newQuantity, oldQuantity) => {
     if (isPositiveInteger(newQuantity)) {
         quantity.value = newQuantity;
-    }
-    else {
+    } else {
         quantity.value = oldQuantity;
     }
 });
