@@ -1,6 +1,7 @@
 <script setup>
 // import { associateRowToTable, createTablePairs } from '@/Services/TableService';
 import { SortTable } from '@/Services/TableService';
+import { createPairs } from '@/Composables/sort';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import Table from '@/Components/Table.vue';
 import Row from '@/Components/Row.vue';
@@ -10,8 +11,12 @@ import { Head } from '@inertiajs/vue3';
 const props = defineProps(['tables', 'rows']);
 
 const sortTable = new SortTable(props.tables, props.rows);
+
+// Should return new table instead of modify original props
 sortTable.associateRowToTable();
-const tablePairs = sortTable.createTablePairs();
+// const tablePairs = sortTable.createTablePairs();
+
+const tablePairs = createPairs(props.tables);
 
 </script>
 

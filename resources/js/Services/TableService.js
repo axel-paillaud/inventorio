@@ -1,5 +1,5 @@
 export class SortTable {
-    constructor(tables, rows) {
+    constructor(tables = [], rows = []) {
         this.tables = tables;
         this.rows = rows;
     }

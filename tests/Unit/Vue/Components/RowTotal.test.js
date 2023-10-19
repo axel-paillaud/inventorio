@@ -23,14 +23,19 @@ describe('RowTotal', () => {
     });
 
     test('When props price and quantity is updated, emit the new total', async () => {
-        const wrapper = mount(Total);
+        const wrapper = mount(Total, {
+            props: {
+                quantity: 5,
+                price: 10,
+            }
+        });
 
         await wrapper.setProps({ quantity: 10, price: 7 });
         expect(wrapper.emitted()).toHaveProperty('updateTotal');
-        expect(wrapper.emitted().updateTotal[0]).toEqual([70]);
+        expect(wrapper.emitted().updateTotal[1]).toEqual([70]);
 
         await wrapper.setProps({ quantity: 84, price: 13.56 });
         expect(wrapper.emitted()).toHaveProperty('updateTotal');
-        expect(wrapper.emitted().updateTotal[1]).toEqual([1139.04]);
+        expect(wrapper.emitted().updateTotal[2]).toEqual([1139.04]);
     });
 });
