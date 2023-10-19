@@ -1,18 +1,13 @@
 <script setup>
 import CreateFilter from '@/Components/CreateFilter.vue';
 import Filter from '@/Components/Filter.vue';
-import { useTableStore } from '@/Stores/table';
 import colors from '@/Services/ColorService';
 
-//const colors = {
-//    green: 'border-green-200 hover:bg-green-100',
-//    blue: 'border-blue-200 hover:bg-blue-100',
-//    red: 'border-red-200 hover:bg-red-100',
-//    orange: 'border-orange-200 hover:bg-orange-100',
-//};
+const props = defineProps({
+    tables: Array,
+});
 
-const store = useTableStore();
-const tables = store.tables;
+console.log(props.tables);
 
 </script>
 
@@ -36,7 +31,7 @@ const tables = store.tables;
                         :class="colors['gray'].filter"
                     />
                     <Filter v-for="table in tables"
-                        :key="table.id"
+                        :key="'filter' + table.id"
                         :name="table.name"
                         :class="colors[table.color].filter"
                     />

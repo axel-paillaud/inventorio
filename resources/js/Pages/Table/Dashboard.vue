@@ -32,7 +32,7 @@ const tablePairs = createPairs(tables);
                     >
                         <Table
                             v-for="table in tablePair"
-                            :key="table.id"
+                            :key="'table' + table.id"
                             :rows="table.rows"
                             :color="table.color"
                             :name="table.name"
@@ -54,7 +54,7 @@ const tablePairs = createPairs(tables);
             </main>
         </div>
 
-        <Footer />
+        <Footer :tables="tables" />
 
     </AuthenticatedLayout>
 </template>
