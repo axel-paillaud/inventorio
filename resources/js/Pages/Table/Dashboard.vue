@@ -13,7 +13,7 @@ const props = defineProps(['tables', 'rows']);
 
 const tables = new SortTable(props.tables, props.rows).associateRowToTable();
 
-const tablePairs = createActivePairs(tables);
+const activeTablePairs = createActivePairs(tables);
 
 </script>
 
@@ -26,12 +26,12 @@ const tablePairs = createActivePairs(tables);
                 class="pt-12 pb-32 mx-auto px-4 sm:px-8 lg:px-12 flex
                 gap-y-10 flex-col"
             >
-                <template v-for="tablePair in tablePairs">
+                <template v-for="activeTablePair in activeTablePairs">
                     <div
                         class="flex 2xl:flex-row flex-col gap-12
                         justify-center"
                     >
-                        <template v-for="table in tablePair" :key="'table' + table.id">
+                        <template v-for="table in activeTablePair" :key="'table' + table.id">
 
                             <Table
                                 v-if="table.isActive"
