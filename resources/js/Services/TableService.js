@@ -7,25 +7,17 @@ export class SortTable {
     associateRowToTable() {
         let tablesWithRows = [];
 
-/*         this.tables.forEach((table) => {
-            tableWithRow.push(table);
-            tableWithRow.rows = [];
-            this.rows.forEach((row) => {
-                if (table.id === row.table_id) {
-                    tableWithRow.rows.push(row);
-                }
-            });
-        }); */
-
         this.tables.forEach((table) => {
-            tablesWithRows.push(table);
+            // Make a copy of the table props
+            // We loose proxy here. If it's a problem later, remove {...table} to table
+            tablesWithRows.push({...table});
         });
 
         tablesWithRows.forEach((table) => {
-            table.row = [];
+            table.rows = [];
             this.rows.forEach((row) => {
                 if (table.id === row.table_id) {
-                    table.row.push(row);
+                    table.rows.push(row);
                 }
             });
         });

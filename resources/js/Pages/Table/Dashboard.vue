@@ -12,12 +12,6 @@ const props = defineProps(['tables', 'rows']);
 
 const tables = new SortTable(props.tables, props.rows).associateRowToTable();
 
-console.log(tables);
-
-// Should return new table instead of modify original props
-// const tablePairs = sortTable.createTablePairs();
-
-
 const tablePairs = createPairs(tables);
 
 </script>
