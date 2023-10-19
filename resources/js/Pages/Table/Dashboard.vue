@@ -10,13 +10,15 @@ import { Head } from '@inertiajs/vue3';
 
 const props = defineProps(['tables', 'rows']);
 
-const sortTable = new SortTable(props.tables, props.rows);
+const tables = new SortTable(props.tables, props.rows).associateRowToTable();
+
+console.log(tables);
 
 // Should return new table instead of modify original props
-sortTable.associateRowToTable();
 // const tablePairs = sortTable.createTablePairs();
 
-const tablePairs = createPairs(props.tables);
+
+const tablePairs = createPairs(tables);
 
 </script>
 

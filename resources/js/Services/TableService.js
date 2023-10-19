@@ -4,30 +4,33 @@ export class SortTable {
         this.rows = rows;
     }
 
-    createTablePairs(tablePairs = [], index = 0) {
-        tablePairs[index] = [];
-        this.tables.forEach((table) => {
-            if (tablePairs[index].length < 2) {
-                tablePairs[index].push(table);
-            }
-            else {
-                index++;
-                tablePairs[index] = [];
-                tablePairs[index].push(table);
-            }
-        });
-        return tablePairs;
-    }
-
     associateRowToTable() {
-        this.tables.forEach((table) => {
-            table.rows = [];
+        let tablesWithRows = [];
+
+/*         this.tables.forEach((table) => {
+            tableWithRow.push(table);
+            tableWithRow.rows = [];
             this.rows.forEach((row) => {
                 if (table.id === row.table_id) {
-                    table.rows.push(row);
+                    tableWithRow.rows.push(row);
+                }
+            });
+        }); */
+
+        this.tables.forEach((table) => {
+            tablesWithRows.push(table);
+        });
+
+        tablesWithRows.forEach((table) => {
+            table.row = [];
+            this.rows.forEach((row) => {
+                if (table.id === row.table_id) {
+                    table.row.push(row);
                 }
             });
         });
+
+        return tablesWithRows;
     }
 }
 
