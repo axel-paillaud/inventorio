@@ -1,7 +1,6 @@
 <script setup>
 // import { associateRowToTable, createTablePairs } from '@/Services/TableService';
 import { SortTable } from '@/Services/TableService';
-import { createPairs } from '@/Composables/sort';
 import { createActivePairs } from '@/Composables/sort';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import Table from '@/Components/Table.vue';
@@ -55,7 +54,7 @@ const activeTablePairs = createActivePairs(tables);
             </main>
         </div>
 
-        <Footer :tables="tables" />
+        <Footer :tables="tables" @toggleTable="(id) => console.log(id)"/>
 
     </AuthenticatedLayout>
 </template>

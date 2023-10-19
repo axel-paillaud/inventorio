@@ -11,10 +11,6 @@ describe('createPairs', () => {
             expect(pair.length).toBeLessThan(3);
         });
     });
-
-    test('', () => {
-
-    });
 });
 
 describe('createActivePairs', () => {

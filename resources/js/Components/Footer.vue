@@ -1,10 +1,22 @@
 <script setup>
+import { isPositiveInteger } from '@/Composables/validators/integer';
 import CreateFilter from '@/Components/CreateFilter.vue';
 import Filter from '@/Components/Filter.vue';
 import colors from '@/Services/ColorService';
 
 const props = defineProps({
     tables: Array,
+});
+
+const emit = defineEmits({
+    toggleTable: ( id ) => {
+        if (isPositiveInteger(id)) {
+            return true
+        } else {
+            console.warn('Invalid table id type!');
+            return false;
+        }
+    },
 });
 
 </script>
@@ -32,6 +44,7 @@ const props = defineProps({
                         :key="'filter' + table.id"
                         :name="table.name"
                         :class="colors[table.color].filter"
+                        @click="$emit('toggleTable', table.id)"
                     />
                 </div>
                 <CreateFilter />
