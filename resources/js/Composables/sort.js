@@ -12,3 +12,7 @@ export function createPairs(initialArray, newArray = [], index = 0) {
     });
     return newArray;
 }
+
+export function createActivePairs(initialArray) {
+    return createPairs(initialArray.filter((element) => element.isActive));
+}
