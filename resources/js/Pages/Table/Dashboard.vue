@@ -1,5 +1,6 @@
 <script setup>
 import { computed, ref } from 'vue';
+import { associateRowToTable, createTablePairs } from '@/Services/TableService';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import Table from '@/Components/Table.vue';
 import Row from '@/Components/Row.vue';
@@ -19,24 +20,19 @@ const props = defineProps(['tables', 'rows']);
 
 // store.associateRowToTable();
 
-function associateRowToTable() {
-    props.tables.forEach((table) => {
-        table.rows = [];
-        props.rows.forEach((row) => {
-            if (table.id === row.table_id) {
-                table.rows.push(row);
-            }
-        });
-    });
-}
+associateRowToTable(props.tables, props.rows);
 
-associateRowToTable();
+/* const tablePairs = computed(() => {
+    return createTablePairs(props.tables)
+}); */
+
+const tablePairs = createTablePairs(props.tables);
 
 // computeTotalTable ok, don't need it anymore
 // store.computeTotalTable();
 
 // Sort table by pair of 2, to display 2 tables per container <div>
-const tablePairs = computed(() => {
+/* const tablePairs = computed(() => {
     let tablePairs = [];
     let index = 0;
     tablePairs[index] = [];
@@ -51,7 +47,7 @@ const tablePairs = computed(() => {
         }
     });
     return tablePairs;
-});
+}); */
 
 </script>
 
