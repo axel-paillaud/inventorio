@@ -1,53 +1,16 @@
 <script setup>
-import { computed, ref } from 'vue';
 import { associateRowToTable, createTablePairs } from '@/Services/TableService';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import Table from '@/Components/Table.vue';
 import Row from '@/Components/Row.vue';
 import Footer from '@/Components/Footer.vue';
 import { Head } from '@inertiajs/vue3';
-import { useTableStore } from '@/Stores/table';
 
 const props = defineProps(['tables', 'rows']);
-// const store = useTableStore();
-
-// props from Inertia, pass it to Pinia
-// store.tables = props.tables;
-// store.rows = props.rows;
-
-// computeTotalRow ok, don't need it anymore, <tableTotal> component do it already
-// store.computeTotalRow();
-
-// store.associateRowToTable();
 
 associateRowToTable(props.tables, props.rows);
 
-/* const tablePairs = computed(() => {
-    return createTablePairs(props.tables)
-}); */
-
 const tablePairs = createTablePairs(props.tables);
-
-// computeTotalTable ok, don't need it anymore
-// store.computeTotalTable();
-
-// Sort table by pair of 2, to display 2 tables per container <div>
-/* const tablePairs = computed(() => {
-    let tablePairs = [];
-    let index = 0;
-    tablePairs[index] = [];
-    props.tables.forEach((table) => {
-        if (tablePairs[index].length < 2) {
-            tablePairs[index].push(table);
-        }
-        else {
-            index++;
-            tablePairs[index] = [];
-            tablePairs[index].push(table);
-        }
-    });
-    return tablePairs;
-}); */
 
 </script>
 
