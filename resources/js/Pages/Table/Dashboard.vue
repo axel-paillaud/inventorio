@@ -1,5 +1,6 @@
 <script setup>
-import { associateRowToTable, createTablePairs } from '@/Services/TableService';
+// import { associateRowToTable, createTablePairs } from '@/Services/TableService';
+import { SortTable } from '@/Services/TableService';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import Table from '@/Components/Table.vue';
 import Row from '@/Components/Row.vue';
@@ -8,9 +9,9 @@ import { Head } from '@inertiajs/vue3';
 
 const props = defineProps(['tables', 'rows']);
 
-associateRowToTable(props.tables, props.rows);
-
-const tablePairs = createTablePairs(props.tables);
+const sortTable = new SortTable(props.tables, props.rows);
+sortTable.associateRowToTable();
+const tablePairs = sortTable.createTablePairs();
 
 </script>
 
