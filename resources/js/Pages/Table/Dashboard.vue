@@ -8,11 +8,11 @@ import { Head } from '@inertiajs/vue3';
 import { useTableStore } from '@/Stores/table';
 
 const props = defineProps(['tables', 'rows']);
-const store = useTableStore();
+// const store = useTableStore();
 
 // props from Inertia, pass it to Pinia
-store.tables = props.tables;
-store.rows = props.rows;
+// store.tables = props.tables;
+// store.rows = props.rows;
 
 // computeTotalRow ok, don't need it anymore, <tableTotal> component do it already
 // store.computeTotalRow();

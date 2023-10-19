@@ -37,15 +37,10 @@ export const useTableStore = defineStore('tables', () => {
         });
     }
 
-    function addCells(cellId) {
-        cells.value[cellId] = { isActive: false };
-    }
-
     return {
         tables,
         rows,
         cells,
-        addCells,
         computeTotalRow,
         associateRowToTable,
         computeTotalTable,
