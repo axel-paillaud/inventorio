@@ -1,6 +1,6 @@
 <script setup>
 import { ref, watch, computed } from 'vue';
-import { formatter } from '@/Services/FormatService';
+import { formatter } from '@/Composables/formatter';
 import { isNumber } from '@/Composables/validators/integer';
 import InputOverlay from '@/Components/InputOverlay.vue';
 

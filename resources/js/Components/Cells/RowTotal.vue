@@ -1,6 +1,6 @@
 <script setup>
 import { computed, watch } from 'vue';
-import { formatter } from '@/Services/FormatService.js'
+import { formatter } from '@/Composables/formatter.js'
 
 const props = defineProps({
     quantity: Number,
