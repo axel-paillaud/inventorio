@@ -1,5 +1,5 @@
 <script setup>
-// import { associateRowToTable, createTablePairs } from '@/Services/TableService';
+import { computed } from 'vue';
 import { SortTable } from '@/Services/TableService';
 import { createActivePairs } from '@/Composables/sort';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
@@ -12,7 +12,14 @@ const props = defineProps(['tables', 'rows']);
 
 const tables = new SortTable(props.tables, props.rows).associateRowToTable();
 
-const activeTablePairs = createActivePairs(tables);
+const activeTablePairs = computed(() => {
+    return createActivePairs(tables);
+});
+
+const setActiveTable = (tableId) => {
+    let table = tables.find(table => table.id === tableId);
+    table.isActive = !table.isActive;
+}
 
 </script>
 
@@ -54,7 +61,7 @@ const activeTablePairs = createActivePairs(tables);
             </main>
         </div>
 
-        <Footer :tables="tables" @toggleTable="(id) => console.log(id)"/>
+        <Footer :tables="tables" @toggleTable="setActiveTable"/>
 
     </AuthenticatedLayout>
 </template>
