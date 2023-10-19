@@ -1,13 +1,22 @@
 <script setup>
 import { computed, watch } from 'vue';
 import { formatter } from '@/Composables/formatter.js'
+import { isNumber } from '@/Composables/validators/integer';
 
 const props = defineProps({
     quantity: Number,
     price: Number,
 });
 
-const emit = defineEmits(['updateTotal']);
+const emit = defineEmits({
+    updateTotal: ( total ) => {
+        if (isNumber(total)) return true;
+        else {
+            console.war('Invalid total row type!');
+            return false;
+        }
+    }
+});
 
 const total = computed(() => {
     return props.price * props.quantity;
