@@ -7,8 +7,6 @@ const props = defineProps({
     tables: Array,
 });
 
-console.log(props.tables);
-
 </script>
 
 <template>

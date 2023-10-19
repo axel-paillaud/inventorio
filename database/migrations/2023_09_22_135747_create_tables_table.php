@@ -17,6 +17,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('color');
             $table->string('name');
+            $table->boolean('isActive');
         });
     }
 
