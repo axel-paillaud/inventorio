@@ -15,6 +15,8 @@ const total = computed(() => {
 
 const formattedTotal = computed(() => formatter.format(total.value));
 
+emit('updateTotal', total.value);
+
 watch(total, (newTotal) => {
     emit('updateTotal', newTotal);
 });

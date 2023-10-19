@@ -14,16 +14,22 @@ const store = useTableStore();
 store.tables = props.tables;
 store.rows = props.rows;
 
-store.computeTotalRow();
+// computeTotalRow ok, don't need it anymore, <tableTotal> component do it already
+// store.computeTotalRow();
+
 store.associateRowToTable();
-store.computeTotalTable();
+
+// computeTotalTable ok, don't need it anymore
+// store.computeTotalTable();
+
+console.log(props.tables);
 
 // Sort table by pair of 2, to display 2 tables per container <div>
 const tablePairs = computed(() => {
     let tablePairs = [];
     let index = 0;
     tablePairs[index] = [];
-    store.tables.forEach((table) => {
+    props.tables.forEach((table) => {
         if (tablePairs[index].length < 2) {
             tablePairs[index].push(table);
         }

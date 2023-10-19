@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue';
+import { isNumber } from '@/Composables/validators/integer';
 import DateCell from '@/Components/Cells/Date.vue';
 import NameCell from '@/Components/Cells/Name.vue';
 import StateCell from '@/Components/Cells/State.vue';
@@ -14,6 +15,16 @@ const props = defineProps({
     state: String,
     quantity: Number,
     price: Number,
+});
+
+const emit = defineEmits({
+    updateTotal: (total) => {
+        if (isNumber(total)) return true;
+        else {
+            console.warn('Invalid total row type!');
+            return false;
+        }
+    }
 });
 
 const quantity = ref(props.quantity);
