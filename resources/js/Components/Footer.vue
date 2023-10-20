@@ -40,6 +40,7 @@ const emit = defineEmits({
                         color="gray"
                     />
                     <Filter v-for="table in tables"
+                        data-testid="filter-component"
                         :key="'filter' + table.id"
                         :name="table.name"
                         :color="table.color"
