@@ -1,4 +1,5 @@
 <script setup>
+import { ref } from 'vue';
 import { isPositiveInteger } from '@/Composables/validators/integer';
 import CreateFilter from '@/Components/CreateFilter.vue';
 import Filter from '@/Components/Filter.vue';
@@ -43,7 +44,7 @@ const emit = defineEmits({
                     <Filter v-for="table in tables"
                         :key="'filter' + table.id"
                         :name="table.name"
-                        :class="colors[table.color].filter"
+                        :class="[{[colors[table.color].bg]: table.isActive}, colors[table.color].filter]"
                         @click="$emit('toggleTable', table.id)"
                     />
                 </div>
