@@ -1,9 +1,7 @@
 <script setup>
-import { ref } from 'vue';
 import { isPositiveInteger } from '@/Composables/validators/integer';
 import CreateFilter from '@/Components/CreateFilter.vue';
 import Filter from '@/Components/Filter.vue';
-import colors from '@/Services/ColorService';
 
 const props = defineProps({
     tables: Array,

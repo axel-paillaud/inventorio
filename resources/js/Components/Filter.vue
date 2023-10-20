@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue';
+import { computed } from 'vue';
 import colors from '@/Services/ColorService';
 
 const props = defineProps({
@@ -17,6 +17,7 @@ const classFilter = computed(() => ({
 
 <template>
     <button
+        data-testid="filter-button"
         :class="classFilter"
         class="transition-colors px-3 py-2 border rounded"
     >
