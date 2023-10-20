@@ -39,12 +39,13 @@ const emit = defineEmits({
                 <div class="flex gap-4">
                     <Filter
                         name="Tout"
-                        :class="colors['gray'].filter"
+                        color="gray"
                     />
                     <Filter v-for="table in tables"
                         :key="'filter' + table.id"
                         :name="table.name"
-                        :class="[{[colors[table.color].bg]: table.isActive}, colors[table.color].filter]"
+                        :color="table.color"
+                        :isActive="Boolean(table.isActive)"
                         @click="$emit('toggleTable', table.id)"
                     />
                 </div>
