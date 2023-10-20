@@ -29,12 +29,12 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Table/Dashboard', [
+Route::get('/inventorio', function () {
+    return Inertia::render('Table/Inventorio', [
         'tables' => Table::all(),
         'rows' => TableRow::all(),
     ]);
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified'])->name('inventorio');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

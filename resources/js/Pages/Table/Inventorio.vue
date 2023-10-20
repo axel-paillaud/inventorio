@@ -30,7 +30,7 @@ const setActiveAllTable = () => {
 </script>
 
 <template>
-    <Head title="Dashboard" />
+    <Head title="Home" />
 
     <AuthenticatedLayout>
         <div class="overflow-auto">
