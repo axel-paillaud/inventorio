@@ -21,7 +21,7 @@ const colors = {
     },
     gray: {
         title: '',
-        bg: '',
+        bg: 'bg-gray-100',
         filter: 'border-gray-200 hover:bg-gray-100',
     },
 }

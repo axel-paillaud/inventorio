@@ -1,6 +1,7 @@
 <script setup>
 import { isPositiveInteger } from '@/Composables/validators/integer';
 import CreateFilter from '@/Components/CreateFilter.vue';
+import FilterAll from '@/Components/FilterAll.vue';
 import Filter from '@/Components/Filter.vue';
 
 const props = defineProps({
@@ -36,7 +37,8 @@ const emit = defineEmits({
             <div class="flex justify-between items-center h-16">
                 <!-- Filter container -->
                 <div class="flex gap-4">
-                    <Filter
+                    <FilterAll
+                        :tables="tables"
                         name="Tout"
                         color="gray"
                         @click="$emit('toggleAllTable')"
