@@ -18,9 +18,9 @@ describe('Footer', () => {
 
         const filtersComponent = wrapper.findAllComponents('[data-testid="filter-component"]');
 
-        filtersComponent.forEach((filter) => {
-            filter.trigger('click');
-            expect(filter.emitted()).toHaveProperty('toggleTable');
+        filtersComponent.forEach(async (filter) => {
+            await filter.trigger('click');
+            expect(wrapper.emitted()).toHaveProperty('toggleTable');
         });
     });
 });
