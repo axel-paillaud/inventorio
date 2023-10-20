@@ -16,6 +16,7 @@ const emit = defineEmits({
             return false;
         }
     },
+    toggleAllTable: () => true,
 });
 
 </script>
@@ -38,6 +39,7 @@ const emit = defineEmits({
                     <Filter
                         name="Tout"
                         color="gray"
+                        @click="$emit('toggleAllTable')"
                     />
                     <Filter v-for="table in tables"
                         data-testid="filter-component"

@@ -21,6 +21,12 @@ const setActiveTable = (tableId) => {
     table.isActive = !table.isActive;
 }
 
+const setActiveAllTable = () => {
+    tables.forEach((table) => {
+        table.isActive = true;
+    });
+}
+
 </script>
 
 <template>
@@ -61,7 +67,11 @@ const setActiveTable = (tableId) => {
             </main>
         </div>
 
-        <Footer :tables="tables" @toggleTable="setActiveTable"/>
+        <Footer
+            :tables="tables"
+            @toggleTable="setActiveTable"
+            @toggleAllTable="setActiveAllTable"
+        />
 
     </AuthenticatedLayout>
 </template>
