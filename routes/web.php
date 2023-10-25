@@ -37,6 +37,11 @@ Route::get('/inventorio', function () {
     ]);
 })->middleware(['auth', 'verified'])->name('inventorio');
 
+Route::get('/inventorio/{grade}/{year}/{month?}/{day?}',
+    function (string $grade, int $year, ?int $month = null, ?int $day = null) {
+        return $grade . ' ' . $year . ' ' . $month . ' ' . $day;
+})->middleware(['auth', 'verified']);
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
