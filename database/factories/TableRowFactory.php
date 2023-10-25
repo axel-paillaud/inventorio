@@ -21,7 +21,7 @@ class TableRowFactory extends Factory
 
         return [
             'table_id' => Table::inRandomOrder()->first()->id,
-            // 'date' => fake()->date(),
+            'user_id' => 1,
             'date' => fake()->dateTimeBetween('2019-01-01', '2023-12-31'),
             'name' => fake()->sentence(),
             'state' => $states[array_rand($states)],

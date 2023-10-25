@@ -31,8 +31,9 @@ Route::get('/', function () {
 
 Route::get('/inventorio', function () {
     return Inertia::render('Table/Inventorio', [
-        'tables' => Table::all(),
-        'rows' => TableRow::all(),
+        'tables' => Table::where('user_id', 1)->get(),
+        // 'rows' => TableRow::all(),
+        'rows' => TableRow::where('user_id', 1)->get(),
     ]);
 })->middleware(['auth', 'verified'])->name('inventorio');
 
