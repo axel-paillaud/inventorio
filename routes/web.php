@@ -31,6 +31,7 @@ Route::get('/', function () {
 
 Route::get('/inventorio', function () {
     $user = Auth::user();
+
     return Inertia::render('Table/Inventorio', [
         'tables' => Table::where('user_id', $user->id)->get(),
         'rows' => TableRow::where('user_id', $user->id)->get(),
@@ -39,7 +40,21 @@ Route::get('/inventorio', function () {
 
 Route::get('/inventorio/{grade}/{year}/{month?}/{day?}',
     function (string $grade, int $year, ?int $month = null, ?int $day = null) {
-        return $grade . ' ' . $year . ' ' . $month . ' ' . $day;
+        $user = Auth::user();
+
+        if (!$month) $month = '%%';
+        if (!$day) $day = '%%';
+
+        $month = str_pad($month, 2, '0', STR_PAD_LEFT);
+        $day = str_pad($day, 2, '0', STR_PAD_LEFT);
+
+        return Inertia::render('Table/Inventorio', [
+            'tables' => Table::where('user_id', $user->id)->get(),
+            'rows' => TableRow::where('user_id', $user->id)
+                // ->where('date', 'like', $year . '-' . $month . '-' . $day)
+                ->whereYear('date', $year)
+                ->get(),
+        ]);
 })->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {
