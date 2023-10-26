@@ -42,18 +42,20 @@ Route::get('/inventorio/{grade}/{year}/{month?}/{day?}',
     function (string $grade, int $year, ?int $month = null, ?int $day = null) {
         $user = Auth::user();
 
-        if (!$month) $month = '%%';
-        if (!$day) $day = '%%';
+        $queryRow = TableRow::where('user_id', $user->id)
+            ->whereYear('date', $year);
 
-        $month = str_pad($month, 2, '0', STR_PAD_LEFT);
-        $day = str_pad($day, 2, '0', STR_PAD_LEFT);
+        if ($month) {
+            $queryRow->whereMonth('date', $month);
+        }
+
+        if ($day) {
+            $queryRow->whereDay('date', $day);
+        }
 
         return Inertia::render('Table/Inventorio', [
             'tables' => Table::where('user_id', $user->id)->get(),
-            'rows' => TableRow::where('user_id', $user->id)
-                // ->where('date', 'like', $year . '-' . $month . '-' . $day)
-                ->whereYear('date', $year)
-                ->get(),
+            'rows' => $queryRow->get(),
         ]);
 })->middleware(['auth', 'verified']);
 
