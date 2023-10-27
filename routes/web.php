@@ -38,26 +38,46 @@ Route::get('/inventorio', function () {
     ]);
 })->middleware(['auth', 'verified'])->name('inventorio');
 
-Route::get('/inventorio/{grade}/{year}/{month?}/{day?}',
-    function (string $grade, int $year, ?int $month = null, ?int $day = null) {
+Route::get('/inventorio/year/{year}', function (int $year) {
+    $user = Auth::user();
+
+    $query = TableRow::where('user_id', $user->id)
+        ->whereYear('date', $year);
+
+    return Inertia::render('Table/Inventorio', [
+        'tables' => Table::where('user_id', $user->id)->get(),
+        'rows' => $query->get(),
+    ]);
+})->middleware(['auth', 'verified']);
+
+Route::get('/inventorio/month/{year}/{month}',
+    function (int $year, int $month) {
         $user = Auth::user();
 
-        $queryRow = TableRow::where('user_id', $user->id)
-            ->whereYear('date', $year);
-
-        if ($month) {
-            $queryRow->whereMonth('date', $month);
-        }
-
-        if ($day) {
-            $queryRow->whereDay('date', $day);
-        }
+        $query = TableRow::where('user_id', $user->id)
+        ->whereYear('date', $year)
+        ->whereMonth('date', $month);
 
         return Inertia::render('Table/Inventorio', [
             'tables' => Table::where('user_id', $user->id)->get(),
-            'rows' => $queryRow->get(),
+            'rows' => $query->get(),
         ]);
-})->middleware(['auth', 'verified']);
+    })->middleware(['auth', 'verified']);
+
+Route::get('/inventorio/day/{year}/{month}/{day}',
+    function (int $year, int $month, int $day) {
+        $user = Auth::user();
+
+        $query = TableRow::where('user_id', $user->id)
+        ->whereYear('date', $year)
+        ->whereMonth('date', $month)
+        ->whereDay('date', $day);
+
+        return Inertia::render('Table/Inventorio', [
+            'tables' => Table::where('user_id', $user->id)->get(),
+            'rows' => $query->get(),
+        ]);
+    })->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
