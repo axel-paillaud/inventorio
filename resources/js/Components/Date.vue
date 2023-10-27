@@ -33,9 +33,9 @@ import DropdownLink from '@/Components/DropdownLink.vue';
             </template>
             <template #content>
                 <div class="flex flex-col">
-                    <DropdownLink :href="route('profile.edit')"> Jour </DropdownLink>
-                    <DropdownLink :href="route('profile.edit')"> Mois </DropdownLink>
-                    <DropdownLink :href="route('profile.edit')"> Année </DropdownLink>
+                    <DropdownLink :href="route('date.day', { year: 2023, month: 9, day: 27})"> Jour </DropdownLink>
+                    <DropdownLink :href="route('date.month', { year: 2023, month: 9 })"> Mois </DropdownLink>
+                    <DropdownLink :href="route('date.year', '2023')"> Année </DropdownLink>
                     <DropdownLink :href="route('profile.edit')"> Depuis toujours</DropdownLink>
                 </div>
             </template>
