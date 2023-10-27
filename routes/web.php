@@ -1,8 +1,12 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\YearController;
+use App\Http\Controllers\MonthController;
+use App\Http\Controllers\DayController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 use App\Models\Table;
@@ -29,8 +33,8 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/inventorio', function () {
-    $user = Auth::user();
+Route::get('/inventorio', function (Request $request) {
+    $user = $request->user();
 
     return Inertia::render('Table/Inventorio', [
         'tables' => Table::where('user_id', $user->id)->get(),
@@ -38,46 +42,14 @@ Route::get('/inventorio', function () {
     ]);
 })->middleware(['auth', 'verified'])->name('inventorio');
 
-Route::get('/inventorio/year/{year}', function (int $year) {
-    $user = Auth::user();
+Route::get('/inventorio/year/{year}', [YearController::class, 'show'])
+    ->middleware(['auth', 'verified'])->name('date.year');
 
-    $query = TableRow::where('user_id', $user->id)
-        ->whereYear('date', $year);
+Route::get('/inventorio/month/{year}/{month}', [MonthController::class, 'show'])
+    ->middleware(['auth', 'verified'])->name('date.month');
 
-    return Inertia::render('Table/Inventorio', [
-        'tables' => Table::where('user_id', $user->id)->get(),
-        'rows' => $query->get(),
-    ]);
-})->middleware(['auth', 'verified']);
-
-Route::get('/inventorio/month/{year}/{month}',
-    function (int $year, int $month) {
-        $user = Auth::user();
-
-        $query = TableRow::where('user_id', $user->id)
-        ->whereYear('date', $year)
-        ->whereMonth('date', $month);
-
-        return Inertia::render('Table/Inventorio', [
-            'tables' => Table::where('user_id', $user->id)->get(),
-            'rows' => $query->get(),
-        ]);
-    })->middleware(['auth', 'verified']);
-
-Route::get('/inventorio/day/{year}/{month}/{day}',
-    function (int $year, int $month, int $day) {
-        $user = Auth::user();
-
-        $query = TableRow::where('user_id', $user->id)
-        ->whereYear('date', $year)
-        ->whereMonth('date', $month)
-        ->whereDay('date', $day);
-
-        return Inertia::render('Table/Inventorio', [
-            'tables' => Table::where('user_id', $user->id)->get(),
-            'rows' => $query->get(),
-        ]);
-    })->middleware(['auth', 'verified']);
+Route::get('/inventorio/month/{year}/{month}/{day}', [DayController::class, 'show'])
+    ->middleware(['auth', 'verified'])->name('date.day');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
