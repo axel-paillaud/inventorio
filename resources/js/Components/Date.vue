@@ -31,13 +31,15 @@ const callback = () => {
             <!-- Arrow container -->
             <div class="flex items-center gap-1.5">
                 <!-- slot ici ne change rien ? comment ne pas reload ce component ? -->
+                <!-- note : slot était pout le composent DropdownLink, pas pour Link -->
+                <!-- Ce n'est pas comme Vue router -->
                 <Link
                     class="rounded-full hover:bg-gray-100 p-1.5"
-                    @click="callback"
+                    as="button"
+                    @click="year -= 1"
                     :href="route('date.year', year)"
                 >
                     <ChevronLeft :size="20"/>
-                    <slot />
                 </Link>
                 <button
                     class="rounded-full hover:bg-gray-100 p-1.5"
@@ -59,10 +61,26 @@ const callback = () => {
             </template>
             <template #content>
                 <div class="flex flex-col">
-                    <DropdownLink :href="route('date.day', { year: 2023, month: 9, day: 27})"> Jour </DropdownLink>
-                    <DropdownLink :href="route('date.month', { year: 2023, month: 9 })"> Mois </DropdownLink>
-                    <DropdownLink :href="route('date.year', year)"> Année </DropdownLink>
-                    <DropdownLink :href="route('profile.edit')"> Depuis toujours</DropdownLink>
+                    <DropdownLink
+                        :href="route('date.day', { year: 2023, month: 9, day: 27})"
+                    >
+                        Jour
+                    </DropdownLink>
+                    <DropdownLink
+                        :href="route('date.month', { year: 2023, month: 9 })"
+                    >
+                        Mois
+                    </DropdownLink>
+                    <DropdownLink
+                        :href="route('date.year', year)"
+                    >
+                        Année
+                    </DropdownLink>
+                    <DropdownLink
+                        :href="route('profile.edit')"
+                    >
+                        Depuis toujours
+                    </DropdownLink>
                 </div>
             </template>
         </Dropdown>
