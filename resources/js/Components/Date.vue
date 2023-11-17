@@ -30,20 +30,18 @@ const callback = () => {
             <span>{{ year }}</span>
             <!-- Arrow container -->
             <div class="flex items-center gap-1.5">
-                <!-- slot ici ne change rien ? comment ne pas reload ce component ? -->
-                <!-- note : slot était pout le composent DropdownLink, pas pour Link -->
-                <!-- Ce n'est pas comme Vue router -->
+                <!-- See partial reloads -->
                 <Link
                     class="rounded-full hover:bg-gray-100 p-1.5"
-                    as="button"
-                    @click="year -= 1"
                     :href="route('date.year', year)"
+                    preserve-state
+                    @click="callback"
                 >
                     <ChevronLeft :size="20"/>
                 </Link>
                 <button
                     class="rounded-full hover:bg-gray-100 p-1.5"
-                    @click="year += 1"
+                    @click="callback"
                 >
                     <ChevronRight :size="20"/>
                 </button>
