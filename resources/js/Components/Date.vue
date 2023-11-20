@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue';
+import { router } from '@inertiajs/vue3';
 import { Link } from '@inertiajs/vue3';
 import { ChevronLeft } from 'lucide-vue-next';
 import { ChevronRight } from 'lucide-vue-next';
@@ -19,7 +20,10 @@ onMounted(() => {
 });
 
 const callback = () => {
-    year.value -= 1;
+    // year.value -= 1;
+    year.value - 1;
+    console.log(year.value);
+    router.get('inventorio/year/' + year.value);
 }
 </script>
 
@@ -30,15 +34,15 @@ const callback = () => {
             <span>{{ year }}</span>
             <!-- Arrow container -->
             <div class="flex items-center gap-1.5">
+                <!-- We need preverveState and preserveScroll ? -->
                 <!-- See partial reloads -->
-                <Link
+                <button
                     class="rounded-full hover:bg-gray-100 p-1.5"
                     :href="route('date.year', year)"
-                    preserve-state
-                    @click="callback"
+                    @click.prevent="callback"
                 >
                     <ChevronLeft :size="20"/>
-                </Link>
+                </button>
                 <button
                     class="rounded-full hover:bg-gray-100 p-1.5"
                     @click="callback"
