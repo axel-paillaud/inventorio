@@ -20,10 +20,8 @@ onMounted(() => {
 });
 
 const callback = () => {
-    // year.value -= 1;
-    year.value - 1;
+    year.value -= 1;
     console.log(year.value);
-    router.get('inventorio/year/' + year.value);
 }
 </script>
 
@@ -38,9 +36,8 @@ const callback = () => {
                 <!-- See partial reloads -->
                 <Link
                     class="rounded-full hover:bg-gray-100 p-1.5"
-                    :href="route('date.test')"
-                    @click="year--"
-                    :data="{ year }"
+                    :href="route('date.year', year)"
+                    @click="callback"
                 >
                     <ChevronLeft :size="20"/>
                 </Link>
