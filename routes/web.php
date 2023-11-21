@@ -42,6 +42,10 @@ Route::get('/inventorio', function (Request $request) {
     ]);
 })->middleware(['auth', 'verified'])->name('inventorio');
 
+// Test with query params
+Route::get('/inventorio/year', [YearController::class, 'show2'])
+    ->middleware(['auth', 'verified'])->name('date.test');
+
 Route::get('/inventorio/year/{year}', [YearController::class, 'show'])
     ->middleware(['auth', 'verified'])->name('date.year');
 

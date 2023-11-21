@@ -36,13 +36,14 @@ const callback = () => {
             <div class="flex items-center gap-1.5">
                 <!-- We need preverveState and preserveScroll ? -->
                 <!-- See partial reloads -->
-                <button
+                <Link
                     class="rounded-full hover:bg-gray-100 p-1.5"
-                    :href="route('date.year', year)"
-                    @click.prevent="callback"
+                    :href="route('date.test')"
+                    @click="year--"
+                    :data="{ year }"
                 >
                     <ChevronLeft :size="20"/>
-                </button>
+                </Link>
                 <button
                     class="rounded-full hover:bg-gray-100 p-1.5"
                     @click="callback"
