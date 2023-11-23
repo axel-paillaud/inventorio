@@ -30,13 +30,14 @@ import DropdownLink from '@/Components/DropdownLink.vue';
 const year = ref(0);
 year.value = 2023;
 
-// Manual visit to do it programmaticaly
 const decreaseYear = () => {
     year.value -= 1;
+    router.get(`/inventorio/year/${year.value}`);
  }
 
 const increaseYear = () => {
     year.value += 1;
+    router.get(`/inventorio/year/${year.value}`);
 }
 
 </script>
@@ -50,20 +51,18 @@ const increaseYear = () => {
             <div class="flex items-center gap-1.5">
                 <!-- We need preverveState and preserveScroll ? -->
                 <!-- See partial reloads -->
-                <Link
+                <button
                     class="rounded-full hover:bg-gray-100 p-1.5"
                     @click="decreaseYear"
-                    :href="route('date.year', year)"
                 >
                     <ChevronLeft :size="20"/>
-                </Link>
-                <Link
+                </button>
+                <button
                     class="rounded-full hover:bg-gray-100 p-1.5"
                     @click="increaseYear"
-                    :href="route('date.year', year)"
                 >
                     <ChevronRight :size="20"/>
-                </Link>
+                </button>
             </div>
         </div>
         <Dropdown align="right">
