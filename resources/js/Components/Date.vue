@@ -1,24 +1,23 @@
 <script setup>
 import { ref, onMounted } from 'vue';
-import { router } from '@inertiajs/vue3';
-import { Link, useRemember } from '@inertiajs/vue3';
+import { Link, router } from '@inertiajs/vue3';
 import { ChevronLeft } from 'lucide-vue-next';
 import { ChevronRight } from 'lucide-vue-next';
 import { ChevronDown } from 'lucide-vue-next';
 import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 
- // const year = ref(0);
+// const year = ref(0);
 // const month = ref(0);
 // const day = ref(0);
 //
 //
- // onMounted(() => {
-     // const currentDate = new Date();
-     // year.value = currentDate.getFullYear();
+// onMounted(() => {
+//     const currentDate = new Date();
+//     year.value = currentDate.getFullYear();
 //     month.value = currentDate.getMonth();
 //     day.value = currentDate.getDate();
- // });
+// });
 
 </script>
 
@@ -31,6 +30,7 @@ import DropdownLink from '@/Components/DropdownLink.vue';
 const year = ref(0);
 year.value = 2023;
 
+// Manual visit to do it programmaticaly
 const decreaseYear = () => {
     year.value -= 1;
  }
