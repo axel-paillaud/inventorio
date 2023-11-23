@@ -8,62 +8,56 @@ import { ChevronDown } from 'lucide-vue-next';
 import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 
- // const year = ref(0);
-// const month = ref(0);
-// const day = ref(0);
-//
-//
- // onMounted(() => {
-     // const currentDate = new Date();
-     // year.value = currentDate.getFullYear();
-//     month.value = currentDate.getMonth();
-//     day.value = currentDate.getDate();
- // });
+const year = ref(0);
+const month = ref(0);
+const day = ref(0);
+
+
+onMounted(() => {
+    const currentDate = new Date();
+    year.value = currentDate.getFullYear();
+    month.value = currentDate.getMonth();
+    day.value = currentDate.getDate();
+});
 
 </script>
 
 <script>
 
-// const testYear = useRemember({
-//     year: 2023,
-// });
-//
-const year = ref(0);
-year.value = 2023;
+const testYear = useRemember({
+    year: 2023,
+});
 
-const decreaseYear = () => {
-    year.value -= 1;
- }
-
-const increaseYear = () => {
-    year.value += 1;
+const callback = () => {
+    testYear.value.year -= 1;
+    console.log(testYear.value.year);
 }
 
+console.log(testYear.value.year);
 </script>
 
 <template>
     <div class="flex items-center text-sm gap-4">
         <!-- Date and arrow container -->
         <div class="flex items-center gap-4">
-            <span>{{ year }}</span>
+            <span>{{ testYear.year }}</span>
             <!-- Arrow container -->
             <div class="flex items-center gap-1.5">
                 <!-- We need preverveState and preserveScroll ? -->
                 <!-- See partial reloads -->
                 <Link
                     class="rounded-full hover:bg-gray-100 p-1.5"
-                    @click="decreaseYear"
-                    :href="route('date.year', year)"
+                    @click="callback"
+                    :href="route('date.year', testYear.year)"
                 >
                     <ChevronLeft :size="20"/>
                 </Link>
-                <Link
+                <button
                     class="rounded-full hover:bg-gray-100 p-1.5"
-                    @click="increaseYear"
-                    :href="route('date.year', year)"
+                    @click="callback"
                 >
                     <ChevronRight :size="20"/>
-                </Link>
+                </button>
             </div>
         </div>
         <Dropdown align="right">
