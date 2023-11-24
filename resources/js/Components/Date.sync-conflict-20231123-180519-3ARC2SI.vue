@@ -1,62 +1,26 @@
 <script setup>
-import { ref } from 'vue';
-import { router } from '@inertiajs/vue3';
-// TODO ?
-//import { updateDate } from '@/Composables/updateDate';
+import { ref, onMounted } from 'vue';
+import { Link } from '@inertiajs/vue3';
 import { ChevronLeft } from 'lucide-vue-next';
 import { ChevronRight } from 'lucide-vue-next';
 import { ChevronDown } from 'lucide-vue-next';
 import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 
-</script>
-
-<script>
 const year = ref(0);
 const month = ref(0);
 const day = ref(0);
 
-const currentDate = new Date();
-year.value = currentDate.getFullYear();
-// Month in JavaScript start at 0, we need real current date number.
-month.value = currentDate.getMonth() + 1;
-day.value = currentDate.getDate();
+onMounted(() => {
+    const currentDate = new Date();
+    year.value = currentDate.getFullYear();
+    month.value = currentDate.getMonth();
+    day.value = currentDate.getDate();
+});
 
-
-const decreaseYear = () => {
+const callback = () => {
     year.value -= 1;
-    router.get(`/inventorio/year/${year.value}`);
- }
-
-const increaseYear = () => {
-    if ((year.value + 1) > currentDate.getFullYear()) {
-        year.value = currentDate.getFullYear();
-    }
-    else {
-        year.value += 1;
-    }
-    router.get(`/inventorio/year/${year.value}`);
 }
-
-const updateDate = {
-    year: {
-       decrease() {
-            year.value -= 1;
-            router.get(`/inventorio/year/${year.value}`);
-        },
-        increase() {
-            if ((year.value + 1) > currentDate.getFullYear()) {
-                year.value = currentDate.getFullYear();
-            }
-            else {
-                year.value += 1;
-            }
-            router.get(`/inventorio/year/${year.value}`);
-
-        }
-    }
-}
-
 </script>
 
 <template>
@@ -66,17 +30,18 @@ const updateDate = {
             <span>{{ year }}</span>
             <!-- Arrow container -->
             <div class="flex items-center gap-1.5">
-                <!-- We need preverveState and preserveScroll ? -->
                 <!-- See partial reloads -->
-                <button
+                <Link
                     class="rounded-full hover:bg-gray-100 p-1.5"
-                    @click="updateDate['year'].decrease(year)"
+                    :href="route('date.year', year)"
+                    preserve-state
+                    @click="callback"
                 >
                     <ChevronLeft :size="20"/>
-                </button>
+                </Link>
                 <button
                     class="rounded-full hover:bg-gray-100 p-1.5"
-                    @click="updateDate['year'].increase(year)"
+                    @click="callback"
                 >
                     <ChevronRight :size="20"/>
                 </button>
@@ -95,12 +60,12 @@ const updateDate = {
             <template #content>
                 <div class="flex flex-col">
                     <DropdownLink
-                        :href="route('date.day', { year, month, day})"
+                        :href="route('date.day', { year: 2023, month: 9, day: 27})"
                     >
                         Jour
                     </DropdownLink>
                     <DropdownLink
-                        :href="route('date.month', { year, month })"
+                        :href="route('date.month', { year: 2023, month: 9 })"
                     >
                         Mois
                     </DropdownLink>
