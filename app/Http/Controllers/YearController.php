@@ -19,6 +19,7 @@ class YearController extends Controller
         return Inertia::render('Table/Inventorio', [
             'tables' => Table::where('user_id', $user->id)->get(),
             'rows' => $query->get(),
+            'dateType' => 'year',
         ]);
     }
 }

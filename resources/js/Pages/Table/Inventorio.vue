@@ -27,6 +27,7 @@ const setActiveAllTable = () => {
     });
 }
 
+
 </script>
 
 <template>
