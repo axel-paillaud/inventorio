@@ -4,3 +4,4 @@ export const formatter = new Intl.NumberFormat('fr-FR', {
     //currency: 'EUR',
     minimumFractionDigits: 2
 });
+

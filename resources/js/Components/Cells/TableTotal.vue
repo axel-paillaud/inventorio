@@ -1,6 +1,6 @@
 <script setup>
 import { computed, ref } from 'vue';
-import { formatter } from '@/Composables/formatter';
+import { formatter } from '@/Composables/currencyFormatter';
 
 const props = defineProps({
     total: Number,

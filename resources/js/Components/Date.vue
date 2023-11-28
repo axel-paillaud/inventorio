@@ -1,8 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import { router } from '@inertiajs/vue3';
-// TODO ?
-//import { updateDate } from '@/Composables/updateDate';
+import { fullDateFormatter, monthFormatter } from '@/Composables/dateFormatter.js';
 import { ChevronLeft } from 'lucide-vue-next';
 import { ChevronRight } from 'lucide-vue-next';
 import { ChevronDown } from 'lucide-vue-next';
@@ -54,8 +53,17 @@ const updateDate = {
             router.get(`/inventorio/year/${year.value}`);
 
         }
-    }
+    },
+    month: {
+
+    },
+    day: {
+
+    },
 }
+
+console.log(fullDateFormatter.format(new Date(year.value, month.value, day.value)));
+console.log(monthFormatter.format(new Date(year.value, month.value, day.value)));
 
 </script>
 
