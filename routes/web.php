@@ -48,7 +48,7 @@ Route::get('/inventorio/year/{year}', [YearController::class, 'show'])
 Route::get('/inventorio/month/{year}/{month}', [MonthController::class, 'show'])
     ->middleware(['auth', 'verified'])->name('date.month');
 
-Route::get('/inventorio/month/{year}/{month}/{day}', [DayController::class, 'show'])
+Route::get('/inventorio/day/{year}/{month}/{day}', [DayController::class, 'show'])
     ->middleware(['auth', 'verified'])->name('date.day');
 
 Route::middleware('auth')->group(function () {

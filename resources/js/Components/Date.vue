@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 import { router } from '@inertiajs/vue3';
 import { fullDateFormatter, monthFormatter } from '@/Composables/dateFormatter.js';
+import checkDateTypeInUrl from '@/Composables/parseUrl.js';
 import { ChevronLeft } from 'lucide-vue-next';
 import { ChevronRight } from 'lucide-vue-next';
 import { ChevronDown } from 'lucide-vue-next';
@@ -15,6 +16,9 @@ import DropdownLink from '@/Components/DropdownLink.vue';
 const year = ref(0);
 const month = ref(0);
 const day = ref(0);
+const dateType = ref(null);
+
+dateType.value = checkDateTypeInUrl(window.location.href);
 
 const currentDate = new Date();
 year.value = currentDate.getFullYear();
@@ -63,8 +67,8 @@ const updateDate = {
     },
 }
 
-console.log(fullDateFormatter.format(new Date(year.value, month.value, day.value)));
-console.log(monthFormatter.format(new Date(year.value, month.value, day.value)));
+// console.log(fullDateFormatter.format(new Date(year.value, month.value, day.value)));
+// console.log(monthFormatter.format(new Date(year.value, month.value, day.value)));
 
 </script>
 
@@ -97,23 +101,26 @@ console.log(monthFormatter.format(new Date(year.value, month.value, day.value)))
                     class='flex items-center py-2 px-3 border gap-1.5 rounded
                     hover:bg-gray-100'
                 >
-                    <span>Année</span>
+                    <span>{{ dateType }}</span>
                     <ChevronDown :size="16"/>
                 </button>
             </template>
             <template #content>
                 <div class="flex flex-col">
                     <DropdownLink
+                        @click="dateType = 'day'"
                         :href="route('date.day', { year, month, day})"
                     >
                         Jour
                     </DropdownLink>
                     <DropdownLink
+                        @click="dateType = 'month'"
                         :href="route('date.month', { year, month })"
                     >
                         Mois
                     </DropdownLink>
                     <DropdownLink
+                        @click="dateType = 'year'"
                         :href="route('date.year', year)"
                     >
                         Année
