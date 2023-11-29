@@ -3,6 +3,7 @@ import { ref } from 'vue';
 import { router } from '@inertiajs/vue3';
 import { fullDateFormatter, monthFormatter } from '@/Composables/dateFormatter.js';
 import checkDateTypeInUrl from '@/Composables/parseUrl.js';
+import { dateFrenchTranslation } from '@/Composables/englishToFrench';
 import { ChevronLeft } from 'lucide-vue-next';
 import { ChevronRight } from 'lucide-vue-next';
 import { ChevronDown } from 'lucide-vue-next';
@@ -16,6 +17,9 @@ import DropdownLink from '@/Components/DropdownLink.vue';
 const year = ref(0);
 const month = ref(0);
 const day = ref(0);
+const fullDate = ref(null);
+const monthAndYear = ref(null);
+
 const dateType = ref(null);
 
 dateType.value = checkDateTypeInUrl(window.location.href);
@@ -25,22 +29,6 @@ year.value = currentDate.getFullYear();
 // Month in JavaScript start at 0, we need real current date number.
 month.value = currentDate.getMonth() + 1;
 day.value = currentDate.getDate();
-
-
-const decreaseYear = () => {
-    year.value -= 1;
-    router.get(`/inventorio/year/${year.value}`);
- }
-
-const increaseYear = () => {
-    if ((year.value + 1) > currentDate.getFullYear()) {
-        year.value = currentDate.getFullYear();
-    }
-    else {
-        year.value += 1;
-    }
-    router.get(`/inventorio/year/${year.value}`);
-}
 
 const updateDate = {
     year: {
@@ -67,15 +55,18 @@ const updateDate = {
     },
 }
 
-// console.log(fullDateFormatter.format(new Date(year.value, month.value, day.value)));
-// console.log(monthFormatter.format(new Date(year.value, month.value, day.value)));
+fullDate.value = fullDateFormatter.format(new Date(year.value, month.value, day.value));
+monthAndYear.value = monthFormatter.format(new Date(year.value, month.value, day.value));
 
 </script>
 
 <template>
     <div class="flex items-center text-sm gap-4">
         <!-- Date and arrow container -->
-        <div class="flex items-center gap-4">
+        <div
+            v-if="dateType === 'year'"
+            class="flex items-center gap-4"
+        >
             <span>{{ year }}</span>
             <!-- Arrow container -->
             <div class="flex items-center gap-1.5">
@@ -95,13 +86,59 @@ const updateDate = {
                 </button>
             </div>
         </div>
+        <div
+            v-else-if="dateType === 'month'"
+            class="flex items-center gap-4"
+        >
+            <span>{{ monthAndYear }}</span>
+            <!-- Arrow container -->
+            <div class="flex items-center gap-1.5">
+                <!-- We need preverveState and preserveScroll ? -->
+                <!-- See partial reloads -->
+                <button
+                    class="rounded-full hover:bg-gray-100 p-1.5"
+                    @click="updateDate['month'].decrease(month)"
+                >
+                    <ChevronLeft :size="20"/>
+                </button>
+                <button
+                    class="rounded-full hover:bg-gray-100 p-1.5"
+                    @click="updateDate['month'].increase(month)"
+                >
+                    <ChevronRight :size="20"/>
+                </button>
+            </div>
+        </div>
+        <div
+            v-else="dateType === 'day'"
+            class="flex items-center gap-4"
+        >
+            <span>{{ fullDate }}</span>
+            <!-- Arrow container -->
+            <div class="flex items-center gap-1.5">
+                <!-- We need preverveState and preserveScroll ? -->
+                <!-- See partial reloads -->
+                <button
+                    class="rounded-full hover:bg-gray-100 p-1.5"
+                    @click="updateDate['day'].decrease(day)"
+                >
+                    <ChevronLeft :size="20"/>
+                </button>
+                <button
+                    class="rounded-full hover:bg-gray-100 p-1.5"
+                    @click="updateDate['day'].increase(day)"
+                >
+                    <ChevronRight :size="20"/>
+                </button>
+            </div>
+        </div>
         <Dropdown align="right">
             <template #trigger>
                 <button
                     class='flex items-center py-2 px-3 border gap-1.5 rounded
                     hover:bg-gray-100'
                 >
-                    <span>{{ dateType }}</span>
+                    <span>{{ dateFrenchTranslation[dateType] }}</span>
                     <ChevronDown :size="16"/>
                 </button>
             </template>
