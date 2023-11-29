@@ -1,5 +1,5 @@
 <script setup>
-import { ref, inject } from 'vue';
+import { ref } from 'vue';
 import { router } from '@inertiajs/vue3';
 import { fullDateFormatter, monthFormatter } from '@/Composables/dateFormatter.js';
 import { ChevronLeft } from 'lucide-vue-next';
@@ -7,9 +7,6 @@ import { ChevronRight } from 'lucide-vue-next';
 import { ChevronDown } from 'lucide-vue-next';
 import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
-
-const dateType = inject('dateType');
-console.log(dateType);
 
 </script>
 

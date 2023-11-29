@@ -1,5 +1,5 @@
 <script setup>
-import { computed, provide } from 'vue';
+import { computed } from 'vue';
 import { SortTable } from '@/Services/TableService';
 import { createActivePairs } from '@/Composables/sort';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
@@ -9,9 +9,6 @@ import Footer from '@/Components/Footer.vue';
 import { Head } from '@inertiajs/vue3';
 
 const props = defineProps(['tables', 'rows', 'dateType']);
-
-// Date.vue component need to know if we filtered row by Year, Month, or Day.
-provide('dateType', props.dateType);
 
 const tables = new SortTable(props.tables, props.rows).associateRowToTable();
 
