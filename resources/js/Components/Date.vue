@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { router } from '@inertiajs/vue3';
 import { fullDateFormatter, monthFormatter } from '@/Composables/dateFormatter.js';
 import checkDateTypeInUrl from '@/Composables/parseUrl.js';
@@ -17,8 +17,8 @@ import DropdownLink from '@/Components/DropdownLink.vue';
 const year = ref(0);
 const month = ref(0);
 const day = ref(0);
-const fullDate = ref(null);
-const monthAndYear = ref(null);
+// const fullDate = ref(null);
+// const monthAndYear = ref(null);
 
 const dateType = ref(null);
 
@@ -29,6 +29,15 @@ year.value = currentDate.getFullYear();
 // Month in JavaScript start at 0, we need real current date number.
 month.value = currentDate.getMonth() + 1;
 day.value = currentDate.getDate();
+
+const formattedFullDate = computed(() => {
+    return fullDateFormatter.format(new Date(year.value, month.value, day.value));
+});
+
+const formattedMonthAndYear = computed(() => {
+    return monthFormatter.format(new Date(year.value, month.value - 1, day.value));
+
+});
 
 const updateDate = {
     year: {
@@ -50,12 +59,10 @@ const updateDate = {
     month: {
         decrease() {
             month.value -= 1;
-            monthAndYear.value = monthFormatter.format(new Date(year.value, month.value - 1, day.value));
             router.get(`/inventorio/month/${year.value}/${month.value}`);
         },
         increase() {
             month.value += 1;
-            monthAndYear.value = monthFormatter.format(new Date(year.value, month.value - 1, day.value));
             router.get(`/inventorio/month/${year.value}/${month.value}`);
         }
     },
@@ -63,10 +70,6 @@ const updateDate = {
 
     },
 }
-
-// try computed here
-fullDate.value = fullDateFormatter.format(new Date(year.value, month.value, day.value));
-monthAndYear.value = monthFormatter.format(new Date(year.value, month.value - 1, day.value));
 
 </script>
 
@@ -105,7 +108,7 @@ monthAndYear.value = monthFormatter.format(new Date(year.value, month.value - 1,
             v-else-if="dateType === 'month'"
             class="flex items-center gap-4"
         >
-            <span>{{ monthAndYear }}</span>
+            <span>{{ formattedMonthAndYear }}</span>
             <!-- Arrow container -->
             <div class="flex items-center gap-1.5">
                 <!-- We need preverveState and preserveScroll ? -->
@@ -128,7 +131,7 @@ monthAndYear.value = monthFormatter.format(new Date(year.value, month.value - 1,
             v-else="dateType === 'day'"
             class="flex items-center gap-4"
         >
-            <span>{{ fullDate }}</span>
+            <span>{{ formattedFullDate }}</span>
             <!-- Arrow container -->
             <div class="flex items-center gap-1.5">
                 <!-- We need preverveState and preserveScroll ? -->
