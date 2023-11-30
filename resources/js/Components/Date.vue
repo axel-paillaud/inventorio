@@ -74,7 +74,12 @@ monthAndYear.value = monthFormatter.format(new Date(year.value, month.value - 1,
     <div class="flex items-center text-sm gap-4">
         <!-- Date and arrow container -->
         <div
-            v-if="dateType === 'year'"
+            v-if="dateType === 'always'"
+            class="flex items-center gap-4"
+        >
+        </div>
+        <div
+            v-else-if="dateType === 'year'"
             class="flex items-center gap-4"
         >
             <span>{{ year }}</span>
@@ -173,7 +178,8 @@ monthAndYear.value = monthFormatter.format(new Date(year.value, month.value - 1,
                         Année
                     </DropdownLink>
                     <DropdownLink
-                        :href="route('profile.edit')"
+                        @click="dateType = 'always'"
+                        :href="route('inventorio')"
                     >
                         Depuis toujours
                     </DropdownLink>
