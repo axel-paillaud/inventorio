@@ -50,12 +50,12 @@ const updateDate = {
     month: {
         decrease() {
             month.value -= 1;
-            monthAndYear.value = monthFormatter.format(new Date(year.value, month.value, day.value));
+            monthAndYear.value = monthFormatter.format(new Date(year.value, month.value - 1, day.value));
             router.get(`/inventorio/month/${year.value}/${month.value}`);
         },
         increase() {
             month.value += 1;
-            monthAndYear.value = monthFormatter.format(new Date(year.value, month.value, day.value));
+            monthAndYear.value = monthFormatter.format(new Date(year.value, month.value - 1, day.value));
             router.get(`/inventorio/month/${year.value}/${month.value}`);
         }
     },
@@ -66,7 +66,7 @@ const updateDate = {
 
 // try computed here
 fullDate.value = fullDateFormatter.format(new Date(year.value, month.value, day.value));
-monthAndYear.value = monthFormatter.format(new Date(year.value, month.value, day.value));
+monthAndYear.value = monthFormatter.format(new Date(year.value, month.value - 1, day.value));
 
 </script>
 
