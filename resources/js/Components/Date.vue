@@ -20,8 +20,6 @@ const props = defineProps({
 const year = ref(0);
 const month = ref(0);
 const day = ref(0);
-// const fullDate = ref(null);
-// const monthAndYear = ref(null);
 
 const currentDate = new Date();
 year.value = currentDate.getFullYear();
