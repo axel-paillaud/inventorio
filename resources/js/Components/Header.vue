@@ -3,11 +3,14 @@ import { ref } from 'vue';
 import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import Date from '@/Components/Date.vue';
-import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import { Link } from '@inertiajs/vue3';
+import checkDateTypeInUrl from '@/Composables/parseUrl.js';
+
 
 const showingNavigationDropdown = ref(false);
+
+const dateFilter = ref(checkDateTypeInUrl(window.location.href));
 </script>
 
 <template>
@@ -19,7 +22,10 @@ const showingNavigationDropdown = ref(false);
                     <div class="flex">
                         <!-- Homepage -->
                         <div class="shrink-0 flex items-center">
-                            <Link :href="route('inventorio')">
+                            <Link
+                                :href="route('inventorio')"
+                                @click="dateFilter = 'always'"
+                            >
                                 Inventorio
                             </Link>
                         </div>
@@ -28,7 +34,7 @@ const showingNavigationDropdown = ref(false);
 
                     <div class="flex items-center">
                         <!-- Date Selection -->
-                        <Date />
+                        <Date :dateFilter="dateFilter" />
 
                         <!-- Profile Dropdown -->
                         <div class="hidden sm:flex sm:items-center sm:ml-6">

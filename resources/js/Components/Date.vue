@@ -2,13 +2,16 @@
 import { ref, computed } from 'vue';
 import { router } from '@inertiajs/vue3';
 import { fullDateFormatter, monthFormatter } from '@/Composables/dateFormatter.js';
-import checkDateTypeInUrl from '@/Composables/parseUrl.js';
 import { dateFrenchTranslation } from '@/Composables/englishToFrench';
 import { ChevronLeft } from 'lucide-vue-next';
 import { ChevronRight } from 'lucide-vue-next';
 import { ChevronDown } from 'lucide-vue-next';
 import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
+
+const props = defineProps({
+    dateFilter: String,
+});
 
 </script>
 
@@ -19,10 +22,6 @@ const month = ref(0);
 const day = ref(0);
 // const fullDate = ref(null);
 // const monthAndYear = ref(null);
-
-const dateType = ref(null);
-
-dateType.value = checkDateTypeInUrl(window.location.href);
 
 const currentDate = new Date();
 year.value = currentDate.getFullYear();
@@ -77,12 +76,12 @@ const updateDate = {
     <div class="flex items-center text-sm gap-4">
         <!-- Date and arrow container -->
         <div
-            v-if="dateType === 'always'"
+            v-if="dateFilter === 'always'"
             class="flex items-center gap-4"
         >
         </div>
         <div
-            v-else-if="dateType === 'year'"
+            v-else-if="dateFilter === 'year'"
             class="flex items-center gap-4"
         >
             <span>{{ year }}</span>
@@ -105,7 +104,7 @@ const updateDate = {
             </div>
         </div>
         <div
-            v-else-if="dateType === 'month'"
+            v-else-if="dateFilter === 'month'"
             class="flex items-center gap-4"
         >
             <span>{{ formattedMonthAndYear }}</span>
@@ -128,7 +127,7 @@ const updateDate = {
             </div>
         </div>
         <div
-            v-else="dateType === 'day'"
+            v-else="dateFilter === 'day'"
             class="flex items-center gap-4"
         >
             <span>{{ formattedFullDate }}</span>
@@ -156,32 +155,32 @@ const updateDate = {
                     class='flex items-center py-2 px-3 border gap-1.5 rounded
                     hover:bg-gray-100'
                 >
-                    <span>{{ dateFrenchTranslation[dateType] }}</span>
+                    <span>{{ dateFrenchTranslation[dateFilter] }}</span>
                     <ChevronDown :size="16"/>
                 </button>
             </template>
             <template #content>
                 <div class="flex flex-col">
                     <DropdownLink
-                        @click="dateType = 'day'"
+                        @click="dateFilter = 'day'"
                         :href="route('date.day', { year, month, day})"
                     >
                         Jour
                     </DropdownLink>
                     <DropdownLink
-                        @click="dateType = 'month'"
+                        @click="dateFilter = 'month'"
                         :href="route('date.month', { year, month })"
                     >
                         Mois
                     </DropdownLink>
                     <DropdownLink
-                        @click="dateType = 'year'"
+                        @click="dateFilter = 'year'"
                         :href="route('date.year', year)"
                     >
                         Année
                     </DropdownLink>
                     <DropdownLink
-                        @click="dateType = 'always'"
+                        @click="dateFilter = 'always'"
                         :href="route('inventorio')"
                     >
                         Depuis toujours
