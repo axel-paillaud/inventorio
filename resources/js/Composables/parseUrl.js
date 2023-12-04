@@ -4,3 +4,4 @@ export function checkDateTypeInUrl(url) {
     else if (/\/day\//.test(url)) return 'day';
     return 'always';
 }
+
