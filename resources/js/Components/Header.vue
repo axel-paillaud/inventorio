@@ -5,7 +5,7 @@ import DropdownLink from '@/Components/DropdownLink.vue';
 import Date from '@/Components/Date.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import { Link } from '@inertiajs/vue3';
-import checkDateTypeInUrl from '@/Composables/parseUrl.js';
+import { checkDateTypeInUrl } from '@/Composables/parseUrl.js';
 
 
 const showingNavigationDropdown = ref(false);

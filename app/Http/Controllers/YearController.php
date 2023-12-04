@@ -20,6 +20,7 @@ class YearController extends Controller
             'tables' => Table::where('user_id', $user->id)->get(),
             'rows' => $query->get(),
             'dateType' => 'year',
+            'year' => $year,
         ]);
     }
 }

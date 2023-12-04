@@ -8,9 +8,11 @@ import Row from '@/Components/Row.vue';
 import Footer from '@/Components/Footer.vue';
 import { Head } from '@inertiajs/vue3';
 
-const props = defineProps(['tables', 'rows', 'dateType']);
+const props = defineProps(['tables', 'rows', 'dateType', 'year']);
 
 const tables = new SortTable(props.tables, props.rows).associateRowToTable();
+
+console.log(props.year);
 
 const activeTablePairs = computed(() => {
     return createActivePairs(tables);
