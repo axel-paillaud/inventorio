@@ -77,7 +77,15 @@ const updateDate = {
         }
     },
     day: {
-
+        // wip
+        decrease() {
+            // day.value -=1;
+            // router.get(`/inventorio/day/${year.value}/${month.value}/${day.value}`);
+        },
+        increase() {
+            // day.value += 1;
+            // router.get(`/inventorio/day/${year.value}/${month.value}/${day.value}`);
+        },
     },
 }
 
