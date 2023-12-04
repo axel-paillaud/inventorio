@@ -8,14 +8,11 @@ import Row from '@/Components/Row.vue';
 import Footer from '@/Components/Footer.vue';
 import { Head } from '@inertiajs/vue3';
 
-const props = defineProps(['tables', 'rows', 'dateType', 'year', 'month', 'day']);
+const props = defineProps([
+    'tables', 'rows', 'dateType', 'year', 'month', 'day'
+]);
 
 const tables = new SortTable(props.tables, props.rows).associateRowToTable();
-
-console.log("dateType : " + props.dateType);
-console.log(props.year);
-console.log(props.month);
-console.log(props.day);
 
 const activeTablePairs = computed(() => {
     return createActivePairs(tables);
@@ -39,7 +36,12 @@ const setActiveAllTable = () => {
     <Head title="Home" />
 
     <div class="h-full bg-gray-100">
-        <Header />
+        <Header
+            :dateType="dateType"
+            :year="year"
+            :month="month"
+            :day="day"
+        />
     </div>
 
     <div class="overflow-auto">

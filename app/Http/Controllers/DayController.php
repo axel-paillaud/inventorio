@@ -21,6 +21,10 @@ class DayController extends Controller
         return Inertia::render('Table/Inventorio', [
             'tables' => Table::where('user_id', $user->id)->get(),
             'rows' => $query->get(),
+            'dateType' => 'day',
+            'year' => $year,
+            'month' => $month,
+            'day' => $day,
         ]);
     }
 }

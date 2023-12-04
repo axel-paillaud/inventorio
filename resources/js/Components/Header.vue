@@ -7,6 +7,12 @@ import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import { Link } from '@inertiajs/vue3';
 import { checkDateTypeInUrl } from '@/Composables/parseUrl.js';
 
+const props = defineProps({
+    dateType: String,
+    year: Number,
+    month: Number,
+    day: Number
+});
 
 const showingNavigationDropdown = ref(false);
 
@@ -24,7 +30,7 @@ const dateFilter = ref(checkDateTypeInUrl(window.location.href));
                         <div class="shrink-0 flex items-center">
                             <Link
                                 :href="route('inventorio')"
-                                @click="dateFilter = 'always'"
+                                @click="dateType = 'always'"
                             >
                                 Inventorio
                             </Link>
@@ -34,7 +40,12 @@ const dateFilter = ref(checkDateTypeInUrl(window.location.href));
 
                     <div class="flex items-center">
                         <!-- Date Selection -->
-                        <Date :dateFilter="dateFilter" />
+                        <Date
+                            :dateFilter="dateType"
+                            :year="year"
+                            :month="month"
+                            :day="day"
+                        />
 
                         <!-- Profile Dropdown -->
                         <div class="hidden sm:flex sm:items-center sm:ml-6">

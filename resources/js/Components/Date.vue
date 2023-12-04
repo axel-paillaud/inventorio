@@ -11,7 +11,15 @@ import DropdownLink from '@/Components/DropdownLink.vue';
 
 const props = defineProps({
     dateFilter: String,
+    year: Number,
+    month: Number,
+    day: Number,
 });
+
+console.log("dateType : " + props.dateType);
+console.log(props.year);
+console.log(props.month);
+console.log(props.day);
 
 </script>
 
