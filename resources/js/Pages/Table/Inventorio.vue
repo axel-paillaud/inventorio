@@ -2,17 +2,20 @@
 import { computed } from 'vue';
 import { SortTable } from '@/Services/TableService';
 import { createActivePairs } from '@/Composables/sort';
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import Header from '@/Components/Header.vue';
 import Table from '@/Components/Table.vue';
 import Row from '@/Components/Row.vue';
 import Footer from '@/Components/Footer.vue';
 import { Head } from '@inertiajs/vue3';
 
-const props = defineProps(['tables', 'rows', 'dateType', 'year']);
+const props = defineProps(['tables', 'rows', 'dateType', 'year', 'month', 'day']);
 
 const tables = new SortTable(props.tables, props.rows).associateRowToTable();
 
+console.log("dateType : " + props.dateType);
 console.log(props.year);
+console.log(props.month);
+console.log(props.day);
 
 const activeTablePairs = computed(() => {
     return createActivePairs(tables);
@@ -35,46 +38,47 @@ const setActiveAllTable = () => {
 <template>
     <Head title="Home" />
 
-    <AuthenticatedLayout>
-        <div class="overflow-auto">
-            <main
-                class="pt-12 pb-32 mx-auto px-4 sm:px-8 lg:px-12 flex
-                gap-y-10 flex-col"
-            >
-                <template v-for="activeTablePair in activeTablePairs">
-                    <div
-                        class="flex 2xl:flex-row flex-col gap-12
-                        justify-center"
-                    >
-                        <template v-for="table in activeTablePair" :key="'table' + table.id">
+    <div class="h-full bg-gray-100">
+        <Header />
+    </div>
 
-                            <Table
-                                v-if="table.isActive"
-                                :rows="table.rows"
-                                :color="table.color"
-                                :name="table.name"
-                                :total="table.total"
-                            >
-                                <Row
-                                    v-for="row in table.rows"
-                                    :key="row.id" :date="row.date" :name="row.name"
-                                    :state="row.state"
-                                    :quantity="row.quantity"
-                                    :price="row.price"
-                                    @updateTotal="(updatedTotal) => row.total = updatedTotal"
-                                />
-                            </Table>
-                        </template>
-                    </div>
-                </template>
-            </main>
-        </div>
+    <div class="overflow-auto">
+        <main
+            class="pt-12 pb-32 mx-auto px-4 sm:px-8 lg:px-12 flex
+            gap-y-10 flex-col"
+        >
+            <template v-for="activeTablePair in activeTablePairs">
+                <div
+                    class="flex 2xl:flex-row flex-col gap-12
+                    justify-center"
+                >
+                    <template v-for="table in activeTablePair" :key="'table' + table.id">
 
-        <Footer
-            :tables="tables"
-            @toggleTable="setActiveTable"
-            @toggleAllTable="setActiveAllTable"
-        />
+                        <Table
+                            v-if="table.isActive"
+                            :rows="table.rows"
+                            :color="table.color"
+                            :name="table.name"
+                            :total="table.total"
+                        >
+                            <Row
+                                v-for="row in table.rows"
+                                :key="row.id" :date="row.date" :name="row.name"
+                                :state="row.state"
+                                :quantity="row.quantity"
+                                :price="row.price"
+                                @updateTotal="(updatedTotal) => row.total = updatedTotal"
+                            />
+                        </Table>
+                    </template>
+                </div>
+            </template>
+        </main>
+    </div>
 
-    </AuthenticatedLayout>
+    <Footer
+        :tables="tables"
+        @toggleTable="setActiveTable"
+        @toggleAllTable="setActiveAllTable"
+    />
 </template>

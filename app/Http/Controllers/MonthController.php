@@ -20,6 +20,9 @@ class MonthController extends Controller
         return Inertia::render('Table/Inventorio', [
             'tables' => Table::where('user_id', $user->id)->get(),
             'rows' => $query->get(),
+            'dateType' => 'month',
+            'year' => $year,
+            'month' => $month,
         ]);
     }
 }
