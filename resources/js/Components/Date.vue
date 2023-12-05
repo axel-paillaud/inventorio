@@ -16,17 +16,11 @@ const props = defineProps({
     day: Number,
 });
 
-console.log("dateType : " + props.dateType);
-console.log(props.year);
-console.log(props.month);
-console.log(props.day);
-
 const currentDate = new Date();
 
-const year = ref(0);
-const month = ref(0);
-const day = ref(0);
-
+const year = ref(null);
+const month = ref(null);
+const day = ref(null);
 
 if (props.year) year.value = props.year;
 else year.value = currentDate.getFullYear();
