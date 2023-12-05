@@ -41,7 +41,7 @@ const dateFilter = ref(checkDateTypeInUrl(window.location.href));
                     <div class="flex items-center">
                         <!-- Date Selection -->
                         <Date
-                            :dateFilter="dateType"
+                            :dateType="dateType"
                             :year="year"
                             :month="month"
                             :day="day"
