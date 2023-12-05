@@ -5,7 +5,6 @@ import DropdownLink from '@/Components/DropdownLink.vue';
 import Date from '@/Components/Date.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import { Link } from '@inertiajs/vue3';
-import { checkDateTypeInUrl } from '@/Composables/parseUrl.js';
 
 const props = defineProps({
     dateType: String,
@@ -16,7 +15,6 @@ const props = defineProps({
 
 const showingNavigationDropdown = ref(false);
 
-const dateFilter = ref(checkDateTypeInUrl(window.location.href));
 </script>
 
 <template>
