@@ -7,6 +7,7 @@ import Table from '@/Components/Table.vue';
 import Row from '@/Components/Row.vue';
 import Footer from '@/Components/Footer.vue';
 import { Head } from '@inertiajs/vue3';
+import { router } from '@inertiajs/vue3';
 
 const props = defineProps([
     'tables', 'rows', 'dateType', 'year', 'month', 'day'
@@ -28,7 +29,6 @@ const setActiveAllTable = () => {
         table.isActive = true;
     });
 }
-
 
 </script>
 
