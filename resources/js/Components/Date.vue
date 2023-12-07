@@ -33,7 +33,7 @@ if (props.day) day.value = props.day;
 else day.value = currentDate.getDate();
 
 const formattedFullDate = computed(() => {
-    return fullDateFormatter.format(new Date(year.value, month.value, day.value));
+    return fullDateFormatter.format(new Date(year.value, month.value - 1, day.value));
 });
 
 const formattedMonthAndYear = computed(() => {
