@@ -84,12 +84,26 @@ const updateDate = {
     day: {
         // wip
         decrease() {
-            // day.value -=1;
-            // router.get(`/inventorio/day/${year.value}/${month.value}/${day.value}`);
+            if (day.value <= 1) {
+                updateDate.month.decrease();
+                day.value = 31;
+                router.get(`/inventorio/day/${year.value}/${month.value}/${day.value}`);
+            }
+            else {
+                day.value -= 1;
+                router.get(`/inventorio/day/${year.value}/${month.value}/${day.value}`);
+            }
         },
         increase() {
-            // day.value += 1;
-            // router.get(`/inventorio/day/${year.value}/${month.value}/${day.value}`);
+            if (day.value >= 31) {
+                updateDate.month.increase();
+                day.value = 1;
+                router.get(`/inventorio/day/${year.value}/${month.value}/${day.value}`);
+            }
+            else {
+                day.value += 1;
+                router.get(`/inventorio/day/${year.value}/${month.value}/${day.value}`);
+            }
         },
     },
 }
