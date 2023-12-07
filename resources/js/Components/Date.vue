@@ -41,6 +41,10 @@ const formattedMonthAndYear = computed(() => {
 
 });
 
+function daysInMonth(year, month) {
+    return new Date(year, month, 0).getDate();
+}
+
 const updateDate = {
     year: {
        decrease() {
@@ -82,11 +86,10 @@ const updateDate = {
         }
     },
     day: {
-        // wip
         decrease() {
             if (day.value <= 1) {
                 updateDate.month.decrease();
-                day.value = 31;
+                day.value = daysInMonth(year.value, month.value);
                 router.get(`/inventorio/day/${year.value}/${month.value}/${day.value}`);
             }
             else {
@@ -95,7 +98,7 @@ const updateDate = {
             }
         },
         increase() {
-            if (day.value >= 31) {
+            if (day.value >= daysInMonth(year.value, month.value)) {
                 updateDate.month.increase();
                 day.value = 1;
                 router.get(`/inventorio/day/${year.value}/${month.value}/${day.value}`);
