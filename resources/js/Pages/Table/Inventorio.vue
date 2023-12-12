@@ -1,13 +1,11 @@
 <script setup>
-import { computed } from 'vue';
 import { SortTable } from '@/Services/TableService';
-import { createActivePairs } from '@/Composables/sort';
+import { createPairs } from '@/Composables/sort';
 import Header from '@/Components/Header.vue';
 import Table from '@/Components/Table.vue';
 import Row from '@/Components/Row.vue';
 import Footer from '@/Components/Footer.vue';
 import { Head } from '@inertiajs/vue3';
-import { router } from '@inertiajs/vue3';
 
 const props = defineProps([
     'tables', 'rows', 'dateType', 'year', 'month', 'day'
@@ -15,9 +13,11 @@ const props = defineProps([
 
 const tables = new SortTable(props.tables, props.rows).associateRowToTable();
 
-const activeTablePairs = computed(() => {
-    return createActivePairs(tables);
-});
+// const activeTablePairs = computed(() => {
+    // return createActivePairs(tables);
+// });
+
+const tablePairs = createPairs(tables);
 
 const setActiveTable = (tableId) => {
     let table = tables.find(table => table.id === tableId);
@@ -49,13 +49,13 @@ const setActiveAllTable = () => {
             class="pt-12 pb-32 mx-auto px-4 sm:px-8 lg:px-12 flex
             gap-y-10 flex-col"
         >
-            <template v-for="activeTablePair in activeTablePairs">
+            <template v-for="tablePair in tablePairs">
                 <div
                     class="flex 2xl:flex-row flex-col gap-12
                     justify-center"
                 >
-                    <template v-for="table in activeTablePair" :key="'table' + table.id">
-
+                    <template v-for="table in tablePair" :key="'table' + table.id">
+                        <Transition>
                         <Table
                             v-if="table.isActive"
                             :rows="table.rows"
@@ -72,6 +72,7 @@ const setActiveAllTable = () => {
                                 @updateTotal="(updatedTotal) => row.total = updatedTotal"
                             />
                         </Table>
+                        </Transition>
                     </template>
                 </div>
             </template>
@@ -84,3 +85,15 @@ const setActiveAllTable = () => {
         @toggleAllTable="setActiveAllTable"
     />
 </template>
+
+<style scoped>
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+</style>
