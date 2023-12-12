@@ -17,7 +17,7 @@ const tables = new SortTable(props.tables, props.rows).associateRowToTable();
     // return createActivePairs(tables);
 // });
 
-const tablePairs = createPairs(tables);
+// const tablePairs = createPairs(tables);
 
 const setActiveTable = (tableId) => {
     let table = tables.find(table => table.id === tableId);
@@ -47,34 +47,27 @@ const setActiveAllTable = () => {
     <div class="overflow-auto">
         <main
             class="pt-12 pb-32 mx-auto px-4 sm:px-8 lg:px-12 flex
-            gap-y-10 flex-col"
+            gap-10 flex-wrap flex-col xl:flex-row"
         >
-            <template v-for="tablePair in tablePairs">
-                <div
-                    class="flex 2xl:flex-row flex-col gap-12
-                    justify-center"
-                >
-                    <template v-for="table in tablePair" :key="'table' + table.id">
-                        <Transition>
-                        <Table
-                            v-if="table.isActive"
-                            :rows="table.rows"
-                            :color="table.color"
-                            :name="table.name"
-                            :total="table.total"
-                        >
-                            <Row
-                                v-for="row in table.rows"
-                                :key="row.id" :date="row.date" :name="row.name"
-                                :state="row.state"
-                                :quantity="row.quantity"
-                                :price="row.price"
-                                @updateTotal="(updatedTotal) => row.total = updatedTotal"
-                            />
-                        </Table>
-                        </Transition>
-                    </template>
-                </div>
+            <template v-for="table in tables" :key="'table' + table.id">
+                <Transition>
+                    <Table
+                        v-if="table.isActive"
+                        :rows="table.rows"
+                        :color="table.color"
+                        :name="table.name"
+                        :total="table.total"
+                    >
+                        <Row
+                            v-for="row in table.rows"
+                            :key="row.id" :date="row.date" :name="row.name"
+                            :state="row.state"
+                            :quantity="row.quantity"
+                            :price="row.price"
+                            @updateTotal="(updatedTotal) => row.total = updatedTotal"
+                        />
+                    </Table>
+                </Transition>
             </template>
         </main>
     </div>
