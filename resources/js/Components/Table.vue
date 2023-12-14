@@ -13,7 +13,7 @@ const props = defineProps({
 </script>
 
 <template>
-    <div class="w-full">
+    <div class="basis-full xl:basis-4/12 grow">
         <p
             class="px-6 py-1"
             :class="colors[color].title"
