@@ -80,13 +80,15 @@ const setActiveAllTable = () => {
 </template>
 
 <style scoped>
+/* Table animation when toggle */
 .v-enter-active,
 .v-leave-active {
-  transition: opacity 0.5s ease;
+    transition: opacity 0.4s ease, scale 0.4s ease;
 }
 
 .v-enter-from,
 .v-leave-to {
-  opacity: 0;
+    scale: 0.95;
+    opacity: 0;
 }
 </style>
