@@ -2,6 +2,10 @@
 
 ## Installation
 
+`git clone git@github.com:axel-paillaud/vancraft.git`
+
+`cd vancraft`
+
 `composer install` && `npm install`
 
 Create SQL database and `.env` file (take `.env.example` as an example).
