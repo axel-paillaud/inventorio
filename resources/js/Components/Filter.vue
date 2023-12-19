@@ -1,12 +1,15 @@
 <script setup>
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import colors from '@/Services/ColorService';
+import { router } from 'vue';
 
 const props = defineProps({
     name: String,
     color: String,
     isActive: Boolean,
 })
+
+const form = ref({ active: null });
 
 const classFilter = computed(() => ({
     [colors[props.color].filter]: true,
