@@ -1,7 +1,7 @@
 <script setup>
 import { computed, ref } from 'vue';
 import colors from '@/Services/ColorService';
-import { router } from 'vue';
+// import { router } from 'vue';
 
 const props = defineProps({
     name: String,
