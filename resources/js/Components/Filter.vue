@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref } from 'vue';
+import { computed } from 'vue';
 import colors from '@/Services/ColorService';
 import { router } from '@inertiajs/vue3';
 
@@ -15,11 +15,8 @@ const classFilter = computed(() => ({
     [colors[props.color].bg]: props.isActive,
 }));
 
-console.log("setup :" + props.isActive);
-
 function submit() {
-    console.log("submit function :" + props.isActive);
-    router.post(`/filter/${props.tableId}`, { isActive: props.isActive })
+    router.post(`/inventorio/filter/${props.tableId}`, { isActive: props.isActive })
 }
 
 </script>

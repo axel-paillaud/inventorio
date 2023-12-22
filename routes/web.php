@@ -43,7 +43,7 @@ Route::get('/inventorio', function (Request $request) {
     ]);
 })->middleware(['auth', 'verified'])->name('inventorio');
 
-Route::post('/filter/{id}', function(Request $request, int $id) {
+Route::post('/inventorio/filter/{id}', function(Request $request, int $id) {
     $user = $request->user();
 
     Table::where([
@@ -51,7 +51,7 @@ Route::post('/filter/{id}', function(Request $request, int $id) {
         ['id', $id]
     ])->update(['isActive' => $request->input("isActive")]);
 
-});
+})->middleware(['auth', 'verified']);
 
 Route::get('/inventorio/year/{year}', [YearController::class, 'show'])
     ->middleware(['auth', 'verified'])->name('date.year');
