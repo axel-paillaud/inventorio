@@ -1,6 +1,7 @@
 <script setup>
 import { computed } from 'vue';
 import colors from '@/Services/ColorService';
+import { router } from '@inertiajs/vue3';
 
 const props = defineProps({
     name: String,
@@ -17,14 +18,21 @@ const classFilter = computed(() => ({
     [colors[props.color].bg]: isAllTablesActive.value,
 }));
 
+function submitToggleAllTable() {
+    router.post('/inventorio/filters');
+}
+
 </script>
 
 <template>
-    <button
-        data-testid="filter-button"
-        :class="classFilter"
-        class="transition-colors px-3 py-2 border rounded"
-    >
-        {{ name }}
-    </button>
+    <form @submit.prevent="submitToggleAllTable">
+        <button
+            data-testid="filter-button"
+            :class="classFilter"
+            class="transition-colors px-3 py-2 border rounded"
+            type="submit"
+        >
+            {{ name }}
+        </button>
+    </form>
 </template>

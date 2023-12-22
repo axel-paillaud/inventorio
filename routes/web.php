@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Inventorio\ToggleTableController;
+use App\Http\Controllers\Inventorio\ToggleAllTableController;
 use App\Http\Controllers\Inventorio\YearController;
 use App\Http\Controllers\Inventorio\MonthController;
 use App\Http\Controllers\Inventorio\DayController;
@@ -43,15 +45,11 @@ Route::get('/inventorio', function (Request $request) {
     ]);
 })->middleware(['auth', 'verified'])->name('inventorio');
 
-Route::post('/inventorio/filter/{id}', function(Request $request, int $id) {
-    $user = $request->user();
+Route::post('/inventorio/filter/{id}', [ToggleTableController::class, 'update'])
+    ->middleware(['auth', 'verified']);
 
-    Table::where([
-        ['user_id', $user->id],
-        ['id', $id]
-    ])->update(['isActive' => $request->input("isActive")]);
-
-})->middleware(['auth', 'verified']);
+Route::post('/inventorio/filters', [ToggleAllTableController::class, 'update'])
+    ->middleware(['auth', 'verified']);
 
 Route::get('/inventorio/year/{year}', [YearController::class, 'show'])
     ->middleware(['auth', 'verified'])->name('date.year');

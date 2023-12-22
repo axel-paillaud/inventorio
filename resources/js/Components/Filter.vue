@@ -15,14 +15,14 @@ const classFilter = computed(() => ({
     [colors[props.color].bg]: props.isActive,
 }));
 
-function submit() {
+function submitToggleTable() {
     router.post(`/inventorio/filter/${props.tableId}`, { isActive: props.isActive })
 }
 
 </script>
 
 <template>
-    <form @submit.prevent="submit">
+    <form @submit.prevent="submitToggleTable">
         <button
             data-testid="filter-button"
             :class="classFilter"
