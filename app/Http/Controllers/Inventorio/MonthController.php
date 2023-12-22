@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Inventorio;
 
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Table;
 use App\Models\TableRow;
+use App\Http\Controllers\Controller;
 
 class MonthController extends Controller
 {

@@ -1,9 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\YearController;
-use App\Http\Controllers\MonthController;
-use App\Http\Controllers\DayController;
+use App\Http\Controllers\Inventorio\YearController;
+use App\Http\Controllers\Inventorio\MonthController;
+use App\Http\Controllers\Inventorio\DayController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
