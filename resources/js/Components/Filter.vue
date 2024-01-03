@@ -16,7 +16,10 @@ const classFilter = computed(() => ({
 }));
 
 function submitToggleTable() {
-    router.post(`/inventorio/filter/${props.tableId}`, { isActive: props.isActive })
+    router.post(
+        `/inventorio/filter/${props.tableId}`,
+        { isActive: props.isActive }
+    )
 }
 
 </script>
