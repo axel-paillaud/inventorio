@@ -51,14 +51,11 @@ Route::post('/inventorio/filter/{id}', [ToggleTableController::class, 'update'])
 Route::post('/inventorio/filters', [ToggleAllTableController::class, 'update'])
     ->middleware(['auth', 'verified']);
 
-Route::get('/inventorio/year/{year}', [YearController::class, 'show'])
-    ->middleware(['auth', 'verified'])->name('date.year');
-
-Route::get('/inventorio/month/{year}/{month}', [MonthController::class, 'show'])
-    ->middleware(['auth', 'verified'])->name('date.month');
-
-Route::get('/inventorio/day/{year}/{month}/{day}', [DayController::class, 'show'])
-    ->middleware(['auth', 'verified'])->name('date.day');
+Route::middleware('auth', 'verified')->group(function() {
+    Route::get('/inventorio/year/{year}', [YearController::class, 'show'])->name('date.year');
+    Route::get('/inventorio/month/{year}/{month}', [MonthController::class, 'show'])->name('date.month');
+    Route::get('/inventorio/day/{year}/{month}/{day}', [DayController::class, 'show'])->name('date.day');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
