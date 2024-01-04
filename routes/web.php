@@ -51,6 +51,11 @@ Route::post('/inventorio/filter/{id}', [ToggleTableController::class, 'update'])
 Route::post('/inventorio/filters', [ToggleAllTableController::class, 'update'])
     ->middleware(['auth', 'verified']);
 
+Route::post('/inventorio/cells/date', function(Request $request) {
+    dd($request);
+})
+    ->middleware(['auth', 'verified']);
+
 Route::middleware('auth', 'verified')->group(function() {
     Route::get('/inventorio/year/{year}', [YearController::class, 'show'])->name('date.year');
     Route::get('/inventorio/month/{year}/{month}', [MonthController::class, 'show'])->name('date.month');

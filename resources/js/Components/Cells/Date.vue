@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, watch } from 'vue';
+import { ref, computed } from 'vue';
 import InputOverlay from '@/Components/InputOverlay.vue';
 import { isDateValid } from '@/Composables/validators/date';
 import { router } from '@inertiajs/vue3';
@@ -12,21 +12,14 @@ const props = defineProps({
 const isActive = ref(false);
 const date = ref(props.date);
 
-// watch(date, (newDate, oldDate) => {
-//     if (isDateValid(date)) {
-//         date.value = newDate;
-//     } else {
-//         date.value = oldDate;
-//     }
-// });
-
 const formattedDate = computed(() => {
-    console.log(date.value);
     return new Date(date.value).toLocaleDateString();
 });
 
 function submitCellData() {
+    // add isDateValid() here
     console.log("hello, franck!");
+    router.post('/inventorio/cells/date', date);
 }
 
 </script>
@@ -39,15 +32,14 @@ function submitCellData() {
         hover:border-r-gray-200 hover:border-l-gray-200"
     >
         <InputOverlay :isActive="isActive"  @closeCell="isActive = false" />
-        <form @submit.prevent="submitCellData">
-            <input
-                v-show="isActive"
-                class="py-3 px-6 focus:ring-0 transition-colors absolute inset-0 w-48
-                z-60 bg-gray-50 border-gray-500"
-                type="date"
-                v-model="date"
-            >
-        </form>
+        <input
+            @change="submitCellData"
+            v-show="isActive"
+            class="py-3 px-6 focus:ring-0 transition-colors absolute inset-0 w-48
+            z-60 bg-gray-50 border-gray-500"
+            type="date"
+            v-model="date"
+        >
         <div class="py-3 px-6" :class="{ invisible: isActive }">
             {{ formattedDate }}
         </div>
