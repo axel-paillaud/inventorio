@@ -13,12 +13,6 @@ const props = defineProps([
 
 const tables = new SortTable(props.tables, props.rows).associateRowToTable();
 
-// const activeTablePairs = computed(() => {
-    // return createActivePairs(tables);
-// });
-
-// const tablePairs = createPairs(tables);
-
 const setActiveTable = (tableId) => {
     let table = tables.find(table => table.id === tableId);
     table.isActive = !table.isActive;
