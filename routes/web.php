@@ -53,7 +53,7 @@ Route::post('/inventorio/filters', [ToggleAllTableController::class, 'update'])
 
 Route::post('/inventorio/cells/date', function(Request $request) {
     $validated = $request->validate([
-    'date' => ['required', 'max:3'],
+    'date' => ['required', 'date'],
     ]);
     dd($validated);
 })

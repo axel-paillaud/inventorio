@@ -38,7 +38,8 @@ const setActiveAllTable = () => {
         />
     </div>
 
-    <div v-if="errors.date">{{ errors.date }}</div>
+    <!-- Show form validation error from Laravel for debugging -->
+    <div v-if="errors">{{ errors }}</div>
 
     <div class="overflow-auto">
         <main
