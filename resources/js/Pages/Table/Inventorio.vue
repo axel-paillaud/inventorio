@@ -8,7 +8,7 @@ import Footer from '@/Components/Footer.vue';
 import { Head } from '@inertiajs/vue3';
 
 const props = defineProps([
-    'tables', 'rows', 'dateType', 'year', 'month', 'day'
+    'tables', 'rows', 'dateType', 'year', 'month', 'day', 'errors',
 ]);
 
 const tables = new SortTable(props.tables, props.rows).associateRowToTable();
@@ -43,6 +43,8 @@ const setActiveAllTable = () => {
             :day="day"
         />
     </div>
+
+    <div v-if="errors.date">{{ errors.date }}</div>
 
     <div class="overflow-auto">
         <main

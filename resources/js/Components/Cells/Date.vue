@@ -18,14 +18,13 @@ const formattedDate = computed(() => {
 
 function submitCellData() {
     // add isDateValid() here
-    console.log("hello, franck!");
-    router.post('/inventorio/cells/date', date);
+    router.post('/inventorio/cells/date', { date });
 }
 
 </script>
 
 <template>
-    <td
+       <td
         @click="isActive = true"
         class="p-0 border border-white border-b border-b-gray-100 relative
         transition-colors cursor-text hover:bg-gray-50 hover:border-t-gray-50
@@ -39,6 +38,7 @@ function submitCellData() {
             z-60 bg-gray-50 border-gray-500"
             type="date"
             v-model="date"
+            name="date"
         >
         <div class="py-3 px-6" :class="{ invisible: isActive }">
             {{ formattedDate }}

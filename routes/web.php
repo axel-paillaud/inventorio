@@ -52,7 +52,10 @@ Route::post('/inventorio/filters', [ToggleAllTableController::class, 'update'])
     ->middleware(['auth', 'verified']);
 
 Route::post('/inventorio/cells/date', function(Request $request) {
-    dd($request);
+    $validated = $request->validate([
+    'date' => ['required', 'max:3'],
+    ]);
+    dd($validated);
 })
     ->middleware(['auth', 'verified']);
 
