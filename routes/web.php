@@ -52,12 +52,24 @@ Route::post('/inventorio/filters', [ToggleAllTableController::class, 'update'])
     ->middleware(['auth', 'verified']);
 
 Route::post('/inventorio/cells/date', function(Request $request) {
+    $user = $request->user();
+
     $validated = $request->validate([
-    'date' => ['required', 'date'],
+        'date' => ['required', 'date_format:Y-m-d'],
+        'row_id' => ['required', 'integer', 'exists:table_rows,id'],
     ]);
-    dd($validated);
+
+    // TableRow::where([
+    //     ['user_id', $user->id],
+    //     ['id', $validated['row_id']],
+    // ])->update(['date' => $validated['date']]);
+
+        TableRow::where([
+        ['user_id', $user->id],
+        ['id', $validated['row_id']],
+    ])->update(['date' => $validated['date']]);
 })
-    ->middleware(['auth', 'verified']);
+->middleware(['auth', 'verified']);
 
 Route::middleware('auth', 'verified')->group(function() {
     Route::get('/inventorio/year/{year}', [YearController::class, 'show'])->name('date.year');

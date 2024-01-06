@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, reactive, computed } from 'vue';
 import InputOverlay from '@/Components/InputOverlay.vue';
 import { isDateValid } from '@/Composables/validators/date';
 import { router } from '@inertiajs/vue3';
@@ -10,15 +10,22 @@ const props = defineProps({
 });
 
 const isActive = ref(false);
-const date = ref(props.date);
 
 const formattedDate = computed(() => {
-    return new Date(date.value).toLocaleDateString();
+    return new Date(form.date).toLocaleDateString();
+});
+
+// maybe refacto here, to have ref instead of reactive, and use directly
+// date instead of form.date ?
+
+const form = reactive({
+    row_id: props.rowId,
+    date: props.date
 });
 
 function submitCellData() {
     // add isDateValid() here
-    router.post('/inventorio/cells/date', { date });
+    router.post('/inventorio/cells/date', form);
 }
 
 </script>
@@ -37,7 +44,7 @@ function submitCellData() {
             class="py-3 px-6 focus:ring-0 transition-colors absolute inset-0 w-48
             z-60 bg-gray-50 border-gray-500"
             type="date"
-            v-model="date"
+            v-model="form.date"
             name="date"
         >
         <div class="py-3 px-6" :class="{ invisible: isActive }">

@@ -57,7 +57,9 @@ const setActiveAllTable = () => {
                     >
                         <Row
                             v-for="row in table.rows"
-                            :key="row.id" :date="row.date" :name="row.name"
+                            :key="row.id" :rowId="row.id"
+                            :date="row.date"
+                            :name="row.name"
                             :state="row.state"
                             :quantity="row.quantity"
                             :price="row.price"
