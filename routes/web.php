@@ -6,6 +6,7 @@ use App\Http\Controllers\Inventorio\ToggleAllTableController;
 use App\Http\Controllers\Inventorio\YearController;
 use App\Http\Controllers\Inventorio\MonthController;
 use App\Http\Controllers\Inventorio\DayController;
+use App\Http\Controllers\Inventorio\DateController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -51,25 +52,8 @@ Route::post('/inventorio/filter/{id}', [ToggleTableController::class, 'update'])
 Route::post('/inventorio/filters', [ToggleAllTableController::class, 'update'])
     ->middleware(['auth', 'verified']);
 
-Route::post('/inventorio/cells/date', function(Request $request) {
-    $user = $request->user();
-
-    $validated = $request->validate([
-        'date' => ['required', 'date_format:Y-m-d'],
-        'row_id' => ['required', 'integer', 'exists:table_rows,id'],
-    ]);
-
-    // TableRow::where([
-    //     ['user_id', $user->id],
-    //     ['id', $validated['row_id']],
-    // ])->update(['date' => $validated['date']]);
-
-        TableRow::where([
-        ['user_id', $user->id],
-        ['id', $validated['row_id']],
-    ])->update(['date' => $validated['date']]);
-})
-->middleware(['auth', 'verified']);
+Route::post('/inventorio/cells/date', [DateController::class, 'update'])
+    ->middleware(['auth', 'verified']);
 
 Route::middleware('auth', 'verified')->group(function() {
     Route::get('/inventorio/year/{year}', [YearController::class, 'show'])->name('date.year');
