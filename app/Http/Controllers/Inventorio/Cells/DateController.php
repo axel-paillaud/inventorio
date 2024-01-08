@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Inventorio;
+namespace App\Http\Controllers\Inventorio\Cells;
 
 use Illuminate\Http\Request;
 use App\Models\TableRow;

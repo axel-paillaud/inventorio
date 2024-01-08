@@ -35,7 +35,7 @@ const price = ref(props.price);
 <template>
     <tr>
         <DateCell :date="date" :rowId="rowId" />
-        <NameCell :name="name" />
+        <NameCell :name="name" :rowId="rowId" />
         <StateCell :state="state" :rowId="rowId" />
         <QuantityCell
             :quantity="quantity"

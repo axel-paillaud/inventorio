@@ -6,7 +6,8 @@ use App\Http\Controllers\Inventorio\ToggleAllTableController;
 use App\Http\Controllers\Inventorio\YearController;
 use App\Http\Controllers\Inventorio\MonthController;
 use App\Http\Controllers\Inventorio\DayController;
-use App\Http\Controllers\Inventorio\DateController;
+use App\Http\Controllers\Inventorio\Cells\DateController;
+use App\Http\Controllers\Inventorio\Cells\NameController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -53,6 +54,9 @@ Route::post('/inventorio/filters', [ToggleAllTableController::class, 'update'])
     ->middleware(['auth', 'verified']);
 
 Route::post('/inventorio/cells/date', [DateController::class, 'update'])
+    ->middleware(['auth', 'verified']);
+
+Route::post('/inventorio/cells/name', [NameController::class, 'update'])
     ->middleware(['auth', 'verified']);
 
 Route::middleware('auth', 'verified')->group(function() {

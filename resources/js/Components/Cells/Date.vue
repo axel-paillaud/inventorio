@@ -12,20 +12,17 @@ const props = defineProps({
 const isActive = ref(false);
 
 const formattedDate = computed(() => {
-    return new Date(form.date).toLocaleDateString();
+    return new Date(form.value.date).toLocaleDateString();
 });
 
-// maybe refacto here, to have ref instead of reactive, and use directly
-// date instead of form.date ?
-
-const form = reactive({
+const form = ref({
     row_id: props.rowId,
     date: props.date
 });
 
 function submitCellData() {
     // add isDateValid() here
-    router.post('/inventorio/cells/date', form);
+    router.post('/inventorio/cells/date', form.value);
 }
 
 </script>
