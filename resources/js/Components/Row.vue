@@ -39,10 +39,12 @@ const price = ref(props.price);
         <StateCell :state="state" :rowId="rowId" />
         <QuantityCell
             :quantity="quantity"
+            :rowId="rowId"
             @updateQuantity="(updatedQuantity) => quantity = updatedQuantity"
         />
         <PriceCell
             :price="price"
+            :rowId="rowId"
             @updatePrice="(updatedPrice) => price = updatedPrice"
         />
         <Total

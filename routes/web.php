@@ -8,6 +8,8 @@ use App\Http\Controllers\Inventorio\MonthController;
 use App\Http\Controllers\Inventorio\DayController;
 use App\Http\Controllers\Inventorio\Cells\DateController;
 use App\Http\Controllers\Inventorio\Cells\NameController;
+use App\Http\Controllers\Inventorio\Cells\StateController;
+use App\Http\Controllers\Inventorio\Cells\QuantityController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -57,6 +59,12 @@ Route::post('/inventorio/cells/date', [DateController::class, 'update'])
     ->middleware(['auth', 'verified']);
 
 Route::post('/inventorio/cells/name', [NameController::class, 'update'])
+    ->middleware(['auth', 'verified']);
+
+Route::post('/inventorio/cells/state', [StateController::class, 'update'])
+    ->middleware(['auth', 'verified']);
+
+Route::post('/inventorio/cells/quantity', [QuantityController::class, 'update'])
     ->middleware(['auth', 'verified']);
 
 Route::middleware('auth', 'verified')->group(function() {

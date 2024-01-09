@@ -1,10 +1,12 @@
 <script setup>
-import { ref, watch } from 'vue';
+import { ref } from 'vue';
+import { router } from '@inertiajs/vue3';
 import InputOverlay from '@/Components/InputOverlay.vue';
 import { isPositiveInteger } from '@/Composables/validators/integer';
 
 const props = defineProps({
     quantity: Number,
+    rowId: Number,
 });
 
 const emit = defineEmits({
@@ -19,21 +21,21 @@ const emit = defineEmits({
     }
 });
 
-const isActive = ref(false);
-const quantity = ref(props.quantity);
-
-watch(quantity, (newQuantity, oldQuantity) => {
-    if (isPositiveInteger(newQuantity)) {
-        quantity.value = newQuantity;
-    } else {
-        quantity.value = oldQuantity;
-    }
+const form = ref({
+    row_id: props.rowId,
+    quantity: props.quantity
 });
+
+const isActive = ref(false);
 
 function updateQuantity(quantity) {
     if (isPositiveInteger(quantity)) {
         emit('updateQuantity', quantity);
     }
+}
+
+function submitCellData() {
+    router.post('/inventorio/cells/quantity', form.value);
 }
 
 </script>
@@ -47,16 +49,18 @@ function updateQuantity(quantity) {
     >
         <InputOverlay :isActive="isActive" @closeCell="isActive = false" />
         <input
-            @input="updateQuantity(quantity)"
+            @change="submitCellData"
+            @input="updateQuantity(form.quantity)"
             class="py-3 px-6 w-full h-full focus:ring-0 absolute inset-0 z-60
             bg-gray-50 border-gray-500"
             v-show="isActive"
             type="number"
             step="1"
-            v-model="quantity"
+            min="0"
+            v-model="form.quantity"
         >
         <div class="py-3 px-6" :class="{ invisible: isActive }">
-            {{ quantity }}
+            {{ form.quantity }}
         </div>
 
     </td>

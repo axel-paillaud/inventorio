@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue';
+import { router } from '@inertiajs/vue3';
 import InputOverlay from '@/Components/InputOverlay.vue';
 
 const props = defineProps({
@@ -8,7 +9,15 @@ const props = defineProps({
 });
 
 const isActive = ref(false);
-const currentState = ref(props.state);
+
+const form = ref({
+    row_id: props.rowId,
+    state: props.state
+});
+
+function submitCellData() {
+    router.post('/inventorio/cells/state', form.value);
+}
 
 </script>
 
@@ -21,10 +30,11 @@ const currentState = ref(props.state);
     >
         <InputOverlay :isActive="isActive" @closeCell="isActive = false"/>
         <select
+            @change="submitCellData"
             v-show="isActive"
             class="py-3 px-6 w-full focus:ring-0 absolute inset-0 z-60 min-w-[130px]
             bg-gray-50 border-gray-500"
-            v-model="currentState"
+            v-model="form.state"
         >
             <option value="Neuf">Neuf</option>
             <option value="Occasion">Occasion</option>
@@ -34,7 +44,7 @@ const currentState = ref(props.state);
         <div class="py-3 px-6 whitespace-nowrap"
             :class="{ invisible: isActive }"
         >
-            {{ currentState }}
+            {{ form.state }}
         </div>
 </td>
 </template>
