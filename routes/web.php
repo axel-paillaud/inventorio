@@ -10,6 +10,7 @@ use App\Http\Controllers\Inventorio\Cells\DateController;
 use App\Http\Controllers\Inventorio\Cells\NameController;
 use App\Http\Controllers\Inventorio\Cells\StateController;
 use App\Http\Controllers\Inventorio\Cells\QuantityController;
+use App\Http\Controllers\Inventorio\Cells\PriceController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -65,6 +66,9 @@ Route::post('/inventorio/cells/state', [StateController::class, 'update'])
     ->middleware(['auth', 'verified']);
 
 Route::post('/inventorio/cells/quantity', [QuantityController::class, 'update'])
+    ->middleware(['auth', 'verified']);
+
+Route::post('/inventorio/cells/price', [PriceController::class, 'update'])
     ->middleware(['auth', 'verified']);
 
 Route::middleware('auth', 'verified')->group(function() {

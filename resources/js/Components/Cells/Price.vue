@@ -1,10 +1,12 @@
 <script setup>
-import { ref, watch, computed } from 'vue';
+import { ref, computed } from 'vue';
+import { router } from '@inertiajs/vue3';
 import { formatter } from '@/Composables/currencyFormatter';
 import { isNumber } from '@/Composables/validators/integer';
 import InputOverlay from '@/Components/InputOverlay.vue';
 
 const props = defineProps({
+    rowId: Number,
     price: Number,
 });
 
@@ -21,15 +23,10 @@ const emit = defineEmits({
 });
 
 const isActive = ref(false);
-const price = ref(props.price);
 
-watch(price, (newPrice, oldPrice) => {
-    if (isNumber(newPrice)) {
-        price.value = newPrice;
-    }
-    else {
-        price.value = oldPrice;
-    }
+const form = ref({
+    row_id: props.rowId,
+    price: props.price,
 });
 
 function updatePrice(price) {
@@ -39,8 +36,12 @@ function updatePrice(price) {
 }
 
 const formattedPrice = computed(() => {
-    return formatter.format(price.value);
+    return formatter.format(form.value.price);
 });
+
+function submitCellData() {
+    router.post('/inventorio/cells/price', form.value);
+}
 
 </script>
 
@@ -53,12 +54,14 @@ const formattedPrice = computed(() => {
     >
         <InputOverlay :isActive="isActive" @closeCell="isActive = false" />
         <input
-            @input="updatePrice(price)"
+            @change="submitCellData"
+            @input="updatePrice(form.price)"
             class="py-3 px-6 w-full h-full focus:ring-0 absolute inset-0 z-60
             bg-gray-50 border-gray-500"
             v-show="isActive"
             type="number"
-            v-model="price"
+            v-model="form.price"
+            min="0"
         >
         <div class="py-3 px-6" :class="{ invisible: isActive }">
             {{ formattedPrice }}
