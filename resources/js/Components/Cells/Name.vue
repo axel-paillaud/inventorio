@@ -1,5 +1,5 @@
 <script setup>
-import { ref, reactive } from 'vue';
+import { ref } from 'vue';
 import { router } from '@inertiajs/vue3';
 import InputOverlay from '@/Components/InputOverlay.vue';
 
@@ -9,20 +9,11 @@ const props = defineProps({
 });
 
 const isActive = ref(false);
-const name = ref(props.name);
 
 const form = ref({
     row_id: props.rowId,
     name: props.name,
 });
-
-// watch(name, (newName, oldName) => {
-//     if (newName.length < 255) {
-//         name.value = newName;
-//     } else {
-//         name.value = oldName;
-//     }
-// });
 
 function submitCellData() {
     router.post('/inventorio/cells/name', form.value);
@@ -46,12 +37,12 @@ function submitCellData() {
             maxlength="255"
             required
             role="textbox"
-            v-model="name"
+            v-model="form.name"
         >
-            {{ name }}
+            {{ form.name }}
         </textarea>
         <div class="py-3 px-6" :class="{ invisible: isActive }">
-            {{ name }}
+            {{ form.name }}
         </div>
 </td>
 </template>
