@@ -1,9 +1,10 @@
 <script setup>
-import { Plus } from 'lucide-vue-next';
 import Total from '@/Components/Cells/TableTotal.vue';
+import CreateNewRow from '@/Components/CreateNewRow.vue';
 import colors from '@/Services/ColorService';
 
 const props = defineProps({
+    tableId: Number,
     name: String,
     rows: Array,
     color: {type: String, default: 'gray'},
@@ -41,14 +42,7 @@ const props = defineProps({
                 </thead>
                 <tfoot class="sticky bottom-0 bg-white z-30">
                     <tr>
-                        <td class="td-last-row">
-                            <div
-                                class="rounded-full hover:bg-gray-100 p-1.5 w-fit
-                                cursor-pointer horizontal-center"
-                            >
-                                <Plus size="20"/>
-                            </div>
-                        </td>
+                        <CreateNewRow :tableId="tableId" />
                         <td class="td-last-row" colspan="4">Total</td>
                         <Total :total="total" :rows="rows"/>
                     </tr>

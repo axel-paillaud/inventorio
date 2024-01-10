@@ -50,6 +50,7 @@ const setActiveAllTable = () => {
                 <Transition>
                     <Table
                         v-if="table.isActive"
+                        :tableId="table.id"
                         :rows="table.rows"
                         :color="table.color"
                         :name="table.name"
