@@ -3,7 +3,6 @@ import { ref } from 'vue';
 import { Plus } from 'lucide-vue-next';
 
 const dialog = ref(null);
-const formIsActive = ref(false);
 
 </script>
 
@@ -11,6 +10,7 @@ const formIsActive = ref(false);
     <td class="td-last-row">
         <dialog
             ref="dialog"
+            class=""
         >
             <p>hello</p>
         </dialog>
