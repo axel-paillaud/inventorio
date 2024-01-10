@@ -11,7 +11,6 @@ const formIsActive = ref(false);
     <td class="td-last-row">
         <dialog
             ref="dialog"
-            id="form-create-new-row"
         >
             <p>hello</p>
         </dialog>
