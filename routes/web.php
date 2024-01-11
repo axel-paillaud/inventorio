@@ -6,6 +6,7 @@ use App\Http\Controllers\Inventorio\ToggleAllTableController;
 use App\Http\Controllers\Inventorio\YearController;
 use App\Http\Controllers\Inventorio\MonthController;
 use App\Http\Controllers\Inventorio\DayController;
+use App\Http\Controllers\Inventorio\RowController;
 use App\Http\Controllers\Inventorio\Cells\DateController;
 use App\Http\Controllers\Inventorio\Cells\NameController;
 use App\Http\Controllers\Inventorio\Cells\StateController;
@@ -69,6 +70,9 @@ Route::post('/inventorio/cells/quantity', [QuantityController::class, 'update'])
     ->middleware(['auth', 'verified']);
 
 Route::post('/inventorio/cells/price', [PriceController::class, 'update'])
+    ->middleware(['auth', 'verified']);
+
+Route::post('/inventorio/table/create-row', [RowController::class, 'create'])
     ->middleware(['auth', 'verified']);
 
 Route::middleware('auth', 'verified')->group(function() {

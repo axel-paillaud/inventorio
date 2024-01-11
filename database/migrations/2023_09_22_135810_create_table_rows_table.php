@@ -16,11 +16,11 @@ return new class extends Migration
             $table->foreignId('table_id');
             $table->foreignId('user_id');
             $table->timestamps();
-            $table->date('date');
-            $table->string('name');
-            $table->enum('state', ['Neuf', 'Occasion', 'A réparer']);
-            $table->integer('quantity');
-            $table->float('price', 9, 2);
+            $table->date('date')->default('2023-01-01');
+            $table->string('name')->default('');
+            $table->enum('state', ['Neuf', 'Occasion', 'A réparer'])->default('Neuf');
+            $table->integer('quantity')->default('0');
+            $table->float('price', 9, 2)->default('0.0');
         });
     }
 
