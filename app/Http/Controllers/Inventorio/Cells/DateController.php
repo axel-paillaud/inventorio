@@ -22,4 +22,5 @@ class DateController extends Controller
             ['id', $validated['row_id']],
         ])->update(['date' => $validated['date']]);
     }
+
 }

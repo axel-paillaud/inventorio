@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Inventorio;
 
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\Controller;
 use App\Models\Table;
 use App\Models\TableRow;
@@ -26,6 +27,7 @@ class RowController extends Controller
         $user = $request->user();
 
         $row = new TableRow([
+            'id' => 111111,
             'table_id' => $request->table_id,
             'user_id' => $user->id,
         ]);
@@ -33,6 +35,9 @@ class RowController extends Controller
         $row->save();
         $row->refresh();
 
+        // return Inertia::location(route('date.year', ['year' => 2023]));
+        // return Inertia::location(route('inventorio'));
         return to_route('inventorio');
+        // return Redirect::route('inventorio');
     }
 }
