@@ -1,4 +1,5 @@
 <script setup>
+import { ref } from 'vue';
 import { SortTable } from '@/Services/TableService';
 import { createPairs } from '@/Composables/sort';
 import Header from '@/Components/Header.vue';
@@ -11,15 +12,29 @@ const props = defineProps([
     'tables', 'rows', 'dateType', 'year', 'month', 'day', 'errors',
 ]);
 
-const tables = new SortTable(props.tables, props.rows).associateRowToTable();
+console.log(window.location);
+
+const tables = ref(new SortTable(props.tables, props.rows).associateRowToTable());
+console.log(tables.value);
+
+const createRow = () => {
+    tables.value.find((table) => table.id = 1).rows.push({
+        id: 12312302983,
+        date: "2023-01-01",
+        name: "",
+        state: "Neuf",
+        quantity: 0,
+        price: 0
+    });
+}
 
 const setActiveTable = (tableId) => {
-    let table = tables.find(table => table.id === tableId);
+    let table = tables.value.find(table => table.id === tableId);
     table.isActive = !table.isActive;
 }
 
 const setActiveAllTable = () => {
-    tables.forEach((table) => {
+    tables.value.forEach((table) => {
         table.isActive = true;
     });
 }
@@ -55,6 +70,7 @@ const setActiveAllTable = () => {
                         :color="table.color"
                         :name="table.name"
                         :total="table.total"
+                        @create-row="createRow"
                     >
                         <Row
                             v-for="row in table.rows"

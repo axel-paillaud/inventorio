@@ -27,7 +27,6 @@ class RowController extends Controller
         $user = $request->user();
 
         $row = new TableRow([
-            'id' => 111111,
             'table_id' => $request->table_id,
             'user_id' => $user->id,
         ]);
@@ -35,9 +34,6 @@ class RowController extends Controller
         $row->save();
         $row->refresh();
 
-        // return Inertia::location(route('date.year', ['year' => 2023]));
-        // return Inertia::location(route('inventorio'));
-        return to_route('inventorio');
-        // return Redirect::route('inventorio');
+        return to_route('inventorio', ['id' => $row->id]);
     }
 }

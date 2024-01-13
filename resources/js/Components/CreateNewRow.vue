@@ -6,8 +6,11 @@ const props = defineProps({
     tableId: Number,
 });
 
+const emit = defineEmits(['createRow']);
+
 function createNewRow() {
     router.post('/inventorio/table/create-row', { table_id: props.tableId });
+    emit('createRow');
 }
 
 </script>

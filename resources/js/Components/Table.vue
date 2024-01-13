@@ -11,6 +11,8 @@ const props = defineProps({
     total: Number,
 });
 
+const emit = defineEmits(['createRow']);
+
 </script>
 
 <template>
@@ -42,7 +44,10 @@ const props = defineProps({
                 </thead>
                 <tfoot class="sticky bottom-0 bg-white z-30">
                     <tr>
-                        <CreateNewRow :tableId="tableId" />
+                        <CreateNewRow
+                            :tableId="tableId"
+                            @create-row="$emit('createRow')"
+                        />
                         <td class="td-last-row" colspan="4">Total</td>
                         <Total :total="total" :rows="rows"/>
                     </tr>
