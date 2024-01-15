@@ -11,17 +11,6 @@ use App\Models\TableRow;
 
 class RowController extends Controller
 {
-   public function index(Request $request)
-    {
-        $user = $request->user;
-
-        return Inertia::render('Table/Inventorio', [
-            'tables' => Table::where('user_id', $user->id)->get(),
-            'rows' => TableRow::where('user_id', $user->id)->get(),
-            'dateType' => 'always'
-        ]);
-    }
-
     public function create(Request $request)
     {
         $user = $request->user();
@@ -32,8 +21,7 @@ class RowController extends Controller
         ]);
 
         $row->save();
-        $row->refresh();
 
-        return to_route('inventorio', ['id' => $row->id]);
+        return to_route('inventorio');
     }
 }

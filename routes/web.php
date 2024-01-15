@@ -72,7 +72,7 @@ Route::post('/inventorio/cells/quantity', [QuantityController::class, 'update'])
 Route::post('/inventorio/cells/price', [PriceController::class, 'update'])
     ->middleware(['auth', 'verified']);
 
-Route::post('/inventorio/table/create-row', [RowController::class, 'create'])
+Route::post('/inventorio/row/create', [RowController::class, 'create'])
     ->middleware(['auth', 'verified']);
 
 Route::middleware('auth', 'verified')->group(function() {

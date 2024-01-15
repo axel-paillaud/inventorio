@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue';
+import { router } from '@inertiajs/vue3';
 import { SortTable } from '@/Services/TableService';
 import { createPairs } from '@/Composables/sort';
 import Header from '@/Components/Header.vue';
@@ -12,20 +13,18 @@ const props = defineProps([
     'tables', 'rows', 'dateType', 'year', 'month', 'day', 'errors',
 ]);
 
-console.log(window.location);
-
 const tables = ref(new SortTable(props.tables, props.rows).associateRowToTable());
-console.log(tables.value);
 
 const createRow = () => {
-    tables.value.find((table) => table.id = 1).rows.push({
+/*     tables.value.find((table) => table.id = 1).rows.push({
         id: 12312302983,
         date: "2023-01-01",
         name: "",
         state: "Neuf",
         quantity: 0,
         price: 0
-    });
+    }); */
+    console.log("hello");
 }
 
 const setActiveTable = (tableId) => {
