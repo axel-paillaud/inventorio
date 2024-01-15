@@ -19,6 +19,7 @@ function createNewRow() {
     form.post('inventorio/row/create', {
         resetOnSuccess: false,
         preserveScroll: true,
+        preserveState: false,
     });
 }
 
