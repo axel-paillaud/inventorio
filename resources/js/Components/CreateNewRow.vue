@@ -16,7 +16,7 @@ const emit = defineEmits(['createRow']);
 function createNewRow() {
     // router.post('/inventorio/row/create', { table_id: props.tableId });
     // emit('createRow');
-    form.post('inventorio/row/create', {
+    form.post('/inventorio/row/create', {
         resetOnSuccess: false,
         preserveScroll: true,
         preserveState: false,

@@ -23,6 +23,7 @@ class RowController extends Controller
         $row->save();
         $row->refresh();
 
-        return to_route('inventorio');
+        // return to_route('inventorio');
+        return redirect()->back();
     }
 }
