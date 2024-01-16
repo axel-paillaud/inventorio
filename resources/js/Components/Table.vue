@@ -11,8 +11,6 @@ const props = defineProps({
     total: Number,
 });
 
-const emit = defineEmits(['createRow']);
-
 </script>
 
 <template>
@@ -23,7 +21,10 @@ const emit = defineEmits(['createRow']);
         >
             {{ name }}
         </p>
-        <div class="max-h-[65vh] border overflow-auto shadow-md rounded-lg relative">
+        <div
+            class="max-h-[65vh] border overflow-auto shadow-md rounded-lg relative"
+            scroll-region
+        >
             <table
                 class="bg-white sm:rounded-lg w-full
                 border border-separate border-spacing-0"
@@ -46,7 +47,6 @@ const emit = defineEmits(['createRow']);
                     <tr>
                         <CreateNewRow
                             :tableId="tableId"
-                            @create-row="$emit('createRow')"
                         />
                         <td class="td-last-row" colspan="4">Total</td>
                         <Total :total="total" :rows="rows"/>

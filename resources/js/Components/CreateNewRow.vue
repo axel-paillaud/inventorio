@@ -1,5 +1,4 @@
 <script setup>
-import { router } from '@inertiajs/vue3';
 import { useForm } from '@inertiajs/vue3';
 import { Plus } from 'lucide-vue-next';
 
@@ -11,15 +10,12 @@ const form = useForm({
     table_id: props.tableId,
 });
 
-const emit = defineEmits(['createRow']);
-
 function createNewRow() {
-    // router.post('/inventorio/row/create', { table_id: props.tableId });
-    // emit('createRow');
     form.post('/inventorio/row/create', {
         resetOnSuccess: false,
         preserveScroll: true,
         preserveState: false,
+        only: ['rows'],
     });
 }
 

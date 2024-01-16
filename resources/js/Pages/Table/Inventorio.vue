@@ -1,8 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-import { router } from '@inertiajs/vue3';
 import { SortTable } from '@/Services/TableService';
-import { createPairs } from '@/Composables/sort';
 import Header from '@/Components/Header.vue';
 import Table from '@/Components/Table.vue';
 import Row from '@/Components/Row.vue';
@@ -14,18 +12,6 @@ const props = defineProps([
 ]);
 
 const tables = ref(new SortTable(props.tables, props.rows).associateRowToTable());
-
-const createRow = () => {
-/*     tables.value.find((table) => table.id = 1).rows.push({
-        id: 12312302983,
-        date: "2023-01-01",
-        name: "",
-        state: "Neuf",
-        quantity: 0,
-        price: 0
-    }); */
-    console.log("hello");
-}
 
 const setActiveTable = (tableId) => {
     let table = tables.value.find(table => table.id === tableId);
@@ -69,7 +55,6 @@ const setActiveAllTable = () => {
                         :color="table.color"
                         :name="table.name"
                         :total="table.total"
-                        @create-row="createRow"
                     >
                         <Row
                             v-for="row in table.rows"
