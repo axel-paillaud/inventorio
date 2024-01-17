@@ -1,8 +1,23 @@
-/* Build default date based on current filter date */
+import { getFormattedCurrentDate } from "./getCurrentDate";
 
-export function buildDefaultDate(year, month, day) {
-    if (!year && !month && !day) return undefined;
-    if (!month && !day) return `${year}-01-01`;
-    if (!day) return `${year}-${month}-01`;
-    return `${year}-${month}-${day}`;
+/* Build default date based on current filter date */
+/* If we have only year set, set month and day to first */
+
+const currentDate = new Date();
+
+const formattedCurrentDate = getFormattedCurrentDate(currentDate);
+
+export function buildDefaultDate(yearFilter, monthFilter, dayFilter) {
+    if (!yearFilter && !monthFilter && !dayFilter) return formattedCurrentDate;
+
+    if (!monthFilter && !dayFilter) return `${yearFilter}-01-01`;
+
+    if (!dayFilter) {
+        const formattedMonthFilter = monthFilter.toString().padStart(2, '0');
+        return `${yearFilter}-${formattedMonthFilter}-01`;
+    }
+
+    const formattedMonthFilter = monthFilter.toString().padStart(2, '0');
+    const formattedDayFilter = dayFilter.toString().padStart(2, '0');
+    return `${yearFilter}-${formattedMonthFilter}-${formattedDayFilter}`;
 }

@@ -14,7 +14,6 @@ const props = defineProps([
 
 // get current filter date here, to pass it as a props to CreateNewRow component
 const currentFilterDate = buildDefaultDate(props.year, props.month, props.day);
-console.log(currentFilterDate);
 
 const tables = ref(new SortTable(props.tables, props.rows).associateRowToTable());
 
