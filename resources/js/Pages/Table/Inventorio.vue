@@ -54,6 +54,7 @@ const setActiveAllTable = () => {
                 <Transition>
                     <Table
                         v-if="table.isActive"
+                        :currentFilterDate="currentFilterDate"
                         :tableId="table.id"
                         :rows="table.rows"
                         :color="table.color"

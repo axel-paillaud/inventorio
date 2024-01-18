@@ -4,6 +4,7 @@ import CreateNewRow from '@/Components/CreateNewRow.vue';
 import colors from '@/Services/ColorService';
 
 const props = defineProps({
+    currentFilterDate: String,
     tableId: Number,
     name: String,
     rows: Array,
@@ -46,6 +47,7 @@ const props = defineProps({
                 <tfoot class="sticky bottom-0 bg-white z-30">
                     <tr>
                         <CreateNewRow
+                            :currentFilterDate="currentFilterDate"
                             :tableId="tableId"
                         />
                         <td class="td-last-row" colspan="4">Total</td>

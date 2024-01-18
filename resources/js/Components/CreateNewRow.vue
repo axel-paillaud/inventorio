@@ -4,10 +4,12 @@ import { Plus } from 'lucide-vue-next';
 
 const props = defineProps({
     tableId: Number,
+    currentFilterDate: String,
 });
 
 const form = useForm({
     table_id: props.tableId,
+    date: props.currentFilterDate
 });
 
 function createNewRow() {

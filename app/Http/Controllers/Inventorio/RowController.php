@@ -3,10 +3,7 @@
 namespace App\Http\Controllers\Inventorio;
 
 use Illuminate\Http\Request;
-use Inertia\Inertia;
-use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\Controller;
-use App\Models\Table;
 use App\Models\TableRow;
 
 class RowController extends Controller
@@ -18,6 +15,7 @@ class RowController extends Controller
         $row = new TableRow([
             'table_id' => $request->table_id,
             'user_id' => $user->id,
+            'date' => $request->date,
         ]);
 
         $row->save();
