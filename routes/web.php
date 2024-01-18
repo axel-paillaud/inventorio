@@ -57,23 +57,13 @@ Route::post('/inventorio/filter/{id}', [ToggleTableController::class, 'update'])
 Route::post('/inventorio/filters', [ToggleAllTableController::class, 'update'])
     ->middleware(['auth', 'verified']);
 
-Route::post('/inventorio/cells/date', [DateController::class, 'update'])
-    ->middleware(['auth', 'verified']);
-
-Route::post('/inventorio/cells/name', [NameController::class, 'update'])
-    ->middleware(['auth', 'verified']);
-
-Route::post('/inventorio/cells/state', [StateController::class, 'update'])
-    ->middleware(['auth', 'verified']);
-
-Route::post('/inventorio/cells/quantity', [QuantityController::class, 'update'])
-    ->middleware(['auth', 'verified']);
-
-Route::post('/inventorio/cells/price', [PriceController::class, 'update'])
-    ->middleware(['auth', 'verified']);
-
-Route::post('/inventorio/row/create', [RowController::class, 'create'])
-    ->middleware(['auth', 'verified']);
+Route::middleware('auth', 'verified')->group(function() {
+    Route::post('/inventorio/cells/date', [DateController::class, 'update']);
+    Route::post('/inventorio/cells/name', [NameController::class, 'update']);
+    Route::post('/inventorio/cells/state', [StateController::class, 'update']);
+    Route::post('/inventorio/cells/quantity', [QuantityController::class, 'update']);
+    Route::post('/inventorio/cells/price', [PriceController::class, 'update']);
+});
 
 Route::middleware('auth', 'verified')->group(function() {
     Route::get('/inventorio/year/{year}', [YearController::class, 'show'])->name('date.year');
