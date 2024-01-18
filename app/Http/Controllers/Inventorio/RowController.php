@@ -12,10 +12,15 @@ class RowController extends Controller
     {
         $user = $request->user();
 
+        $validated = $request->validate([
+            'table_id' => 'required|numeric|exists:tables,id',
+            'date' => 'date_format:Y-m-d',
+        ]);
+
         $row = new TableRow([
-            'table_id' => $request->table_id,
+            'table_id' => $validated['table_id'],
             'user_id' => $user->id,
-            'date' => $request->date,
+            'date' => $validated['date'],
         ]);
 
         $row->save();
