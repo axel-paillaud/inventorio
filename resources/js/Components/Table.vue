@@ -1,4 +1,5 @@
 <script setup>
+import { ref, onMounted } from 'vue';
 import Total from '@/Components/Cells/TableTotal.vue';
 import CreateNewRow from '@/Components/CreateNewRow.vue';
 import colors from '@/Services/ColorService';
@@ -12,6 +13,14 @@ const props = defineProps({
     total: Number,
 });
 
+const tableContainer = ref(null);
+
+onMounted(() => {
+    tableContainer.value.addEventListener('scroll', () => {
+        console.log(tableContainer.value.scrollTop);
+    });
+});
+
 </script>
 
 <template>
@@ -23,6 +32,7 @@ const props = defineProps({
             {{ name }}
         </p>
         <div
+            ref="tableContainer"
             class="max-h-[65vh] border overflow-auto shadow-md rounded-lg relative"
             scroll-region
         >
