@@ -7,6 +7,8 @@ const props = defineProps({
     currentFilterDate: String,
 });
 
+const emit = defineEmits(['createNewRowEvent']);
+
 const form = useForm({
     table_id: props.tableId,
     date: props.currentFilterDate
@@ -18,6 +20,7 @@ function createNewRow() {
         preserveScroll: true,
         preserveState: false,
         only: ['rows'],
+        onSuccess: page => { console.log(page); emit('createNewRowEvent'); },
     });
 }
 

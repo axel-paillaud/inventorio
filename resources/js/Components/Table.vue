@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 import Total from '@/Components/Cells/TableTotal.vue';
 import CreateNewRow from '@/Components/CreateNewRow.vue';
 import colors from '@/Services/ColorService';
@@ -15,11 +15,18 @@ const props = defineProps({
 
 const tableContainer = ref(null);
 
-onMounted(() => {
+const callback = (form) => {
+    tableContainer.value.scrollTop = 99999999;
+    console.log("hello from create new row event");
+ }
+
+/* onMounted(() => {
     tableContainer.value.addEventListener('scroll', () => {
         console.log(tableContainer.value.scrollTop);
     });
-});
+
+    tableContainer.value.scrollTop = 99999;
+}); */
 
 </script>
 
@@ -57,6 +64,7 @@ onMounted(() => {
                 <tfoot class="sticky bottom-0 bg-white z-30">
                     <tr>
                         <CreateNewRow
+                            @create-new-row-event="callback"
                             :currentFilterDate="currentFilterDate"
                             :tableId="tableId"
                         />

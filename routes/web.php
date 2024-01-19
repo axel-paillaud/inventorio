@@ -51,6 +51,9 @@ Route::get('/inventorio', function (Request $request) {
     ]);
 })->middleware(['auth', 'verified'])->name('inventorio');
 
+Route::post('/inventorio/row/create', [RowController::class, 'create'])
+    ->middleware(['auth', 'verified']);
+
 Route::post('/inventorio/filter/{id}', [ToggleTableController::class, 'update'])
     ->middleware(['auth', 'verified']);
 
