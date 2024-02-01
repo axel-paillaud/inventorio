@@ -22,6 +22,8 @@
         "vue": "^3.2.41"
     },
     "dependencies": {
+        "@inertiajs-fix-scroll/core": "file:../../../../framework/inertiajs/tarball/core/inertiajs-fix-scroll-core-1.0.14.tgz",
+        "@inertiajs-fix-scroll/vue3": "file:../../../../framework/inertiajs/tarball/vue3/inertiajs-fix-scroll-vue3-1.0.14.tgz",
         "lucide-vue-next": "^0.279.0",
         "pinia": "^2.1.6"
     }
