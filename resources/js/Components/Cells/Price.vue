@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed } from 'vue';
-import { router } from '@inertiajs/vue3';
+import { router } from '@inertiajs-fix-scroll/vue3';
 import { formatter } from '@/Composables/currencyFormatter';
 import { isNumber } from '@/Composables/validators/integer';
 import InputOverlay from '@/Components/InputOverlay.vue';

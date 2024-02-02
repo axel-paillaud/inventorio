@@ -1,5 +1,5 @@
 <script setup>
-import { useForm } from '@inertiajs/vue3';
+import { useForm } from '@inertiajs-fix-scroll/vue3';
 import { Plus } from 'lucide-vue-next';
 
 const props = defineProps({

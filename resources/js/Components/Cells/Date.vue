@@ -2,7 +2,7 @@
 import { ref, reactive, computed } from 'vue';
 import InputOverlay from '@/Components/InputOverlay.vue';
 import { isDateValid } from '@/Composables/validators/date';
-import { router } from '@inertiajs/vue3';
+import { router } from '@inertiajs-fix-scroll/vue3';
 
 const props = defineProps({
     date: String,

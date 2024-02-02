@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-import { router } from '@inertiajs/vue3';
+import { router } from '@inertiajs-fix-scroll/vue3';
 import InputOverlay from '@/Components/InputOverlay.vue';
 import { isPositiveInteger } from '@/Composables/validators/integer';
 
