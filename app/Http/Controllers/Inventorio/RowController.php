@@ -27,6 +27,6 @@ class RowController extends Controller
         $row->refresh();
 
         // return to_route('inventorio');
-        return redirect()->back();
+        // return redirect()->back();
     }
 }
