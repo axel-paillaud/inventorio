@@ -22,7 +22,6 @@
         "vue": "^3.2.41"
     },
     "dependencies": {
-        "@inertiajs-fix-scroll/vue3": "^1.0.16",
         "lucide-vue-next": "^0.279.0",
         "pinia": "^2.1.6"
     }
