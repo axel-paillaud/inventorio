@@ -18,7 +18,7 @@ function createNewRow() {
     form.post('/inventorio/row/create', {
         resetOnSuccess: false,
         preserveScroll: true,
-        preserveState: false,
+        preserveState: true,
         only: ['rows'],
         onSuccess: page => { console.log(page); emit('createNewRowEvent'); },
     });

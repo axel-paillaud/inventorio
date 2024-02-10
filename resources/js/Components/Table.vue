@@ -20,14 +20,6 @@ const callback = (form) => {
     console.log("hello from create new row event");
  }
 
-/* onMounted(() => {
-    tableContainer.value.addEventListener('scroll', () => {
-        console.log(tableContainer.value.scrollTop);
-    });
-
-    tableContainer.value.scrollTop = 99999;
-}); */
-
 </script>
 
 <template>
