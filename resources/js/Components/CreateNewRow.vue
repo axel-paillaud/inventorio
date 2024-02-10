@@ -14,6 +14,8 @@ const form = useForm({
     date: props.currentFilterDate
 });
 
+console.log("test");
+
 function createNewRow() {
     form.post('/inventorio/row/create', {
         resetOnSuccess: false,
