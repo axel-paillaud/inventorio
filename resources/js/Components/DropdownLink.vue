@@ -1,5 +1,5 @@
 <script setup>
-import { Link } from '@inertiajs-fix-scroll/vue3';
+import { Link } from '@inertiajs/vue3';
 
 defineProps({
     href: {

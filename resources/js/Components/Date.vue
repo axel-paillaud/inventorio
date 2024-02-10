@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed } from 'vue';
-import { router } from '@inertiajs-fix-scroll/vue3';
+import { router } from '@inertiajs/vue3';
 import { fullDateFormatter, monthFormatter } from '@/Composables/dateFormatter.js';
 import { dateFrenchTranslation } from '@/Composables/englishToFrench';
 import { ChevronLeft } from 'lucide-vue-next';

@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue';
 import colors from '@/Services/ColorService';
-import { router } from '@inertiajs-fix-scroll/vue3';
+import { router } from '@inertiajs/vue3';
 
 const props = defineProps({
     name: String,
