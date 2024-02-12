@@ -29,4 +29,15 @@ class RowController extends Controller
         // return to_route('inventorio');
         // return redirect()->back();
     }
+
+    public function show(Request $request, int $tableId)
+    {
+        $user = $request->user();
+
+        $rows = TableRow::where('user_id', $user->id)
+        ->where('table_id', $tableId)
+        ->get();
+
+        return response()->json($rows);
+    }
 }

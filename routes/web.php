@@ -51,15 +51,8 @@ Route::get('/inventorio', function (Request $request) {
     ]);
 })->middleware(['auth', 'verified'])->name('inventorio');
 
-Route::get('/inventorio/{tableId}', function (Request $request, int $tableId) {
-    $user = $request->user();
-
-    $rows = TableRow::where('user_id', $user->id)
-    ->where('table_id', $tableId)
-    ->get();
-
-    return response()->json($rows);
-})->middleware('auth');
+Route::get('/inventorio/{tableId}', [RowController::class, 'show'])
+->middleware('auth');
 
 Route::post('/inventorio/row/create', [RowController::class, 'create'])
     ->middleware(['auth', 'verified']);
