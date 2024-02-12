@@ -61,16 +61,6 @@ const setActiveAllTable = () => {
                         :name="table.name"
                         :total="table.total"
                     >
-<!--                         <Row
-                            v-for="row in table.rows"
-                            :key="row.id" :rowId="row.id"
-                            :date="row.date"
-                            :name="row.name"
-                            :state="row.state"
-                            :quantity="row.quantity"
-                            :price="row.price"
-                            @updateTotal="(updatedTotal) => row.total = updatedTotal"
-                        /> -->
                     </Table>
                 </Transition>
             </template>
