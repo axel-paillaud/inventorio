@@ -1,5 +1,7 @@
 <script setup>
 import { ref } from 'vue';
+import { useFetch } from '../Composables/fetch.js';
+import Row from '@/Components/Row.vue';
 import Total from '@/Components/Cells/TableTotal.vue';
 import CreateNewRow from '@/Components/CreateNewRow.vue';
 import colors from '@/Services/ColorService';
@@ -8,16 +10,16 @@ const props = defineProps({
     currentFilterDate: String,
     tableId: Number,
     name: String,
-    rows: Array,
     color: {type: String, default: 'gray'},
     total: Number,
 });
+
+const { data: rows, error } = useFetch(`/inventorio/${props.tableId}`);
 
 const tableContainer = ref(null);
 
 const callback = (form) => {
     tableContainer.value.scrollTop = 99999999;
-    console.log("hello from create new row event");
  }
 
 </script>
@@ -61,11 +63,27 @@ const callback = (form) => {
                             :tableId="tableId"
                         />
                         <td class="td-last-row" colspan="4">Total</td>
-                        <Total :total="total" :rows="rows"/>
+                        <Total v-if="rows" :total="total" :rows="rows"/>
                     </tr>
                 </tfoot>
                 <tbody>
-                    <slot />
+                    <Row
+                        v-if="rows"
+                        v-for="row in rows"
+                        :key="row.id" :rowId="row.id"
+                        :date="row.date"
+                        :name="row.name"
+                        :state="row.state"
+                        :quantity="row.quantity"
+                        :price="row.price"
+                        @updateTotal="(updatedTotal) => row.total = updatedTotal"
+                    />
+                    <tr v-if="error" class="text-red-500 text-center">
+                        <td colspan="6"><p class="p-2">Oups ! Une erreur est survenue. Message d'erreur :</p></td>
+                    </tr>
+                    <tr v-if="error" class="text-red-500 text-center">
+                        <td colspan="6"><p class="p-2">{{ error }}</p></td>
+                    </tr>
                 </tbody>
             </table>
         </div>
