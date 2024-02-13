@@ -8,13 +8,26 @@ import colors from '@/Services/ColorService';
 
 const props = defineProps({
     currentFilterDate: String,
+    year: Number,
+    month: Number,
+    day: Number,
     tableId: Number,
     name: String,
     color: {type: String, default: 'gray'},
     total: Number,
 });
 
-const { data: rows, error } = useFetch(`/inventorio/${props.tableId}`);
+function getUrl() {
+    let url = `/inventorio/row/${props.tableId}`;
+    if (props.year) url += `/${props.year}`;
+    if (props.month) url += `/${props.month}`;
+    if (props.day) url += `/${props.day}`;
+    return url;
+}
+
+const url = getUrl();
+
+const { data: rows, error } = useFetch(url);
 
 const tableContainer = ref(null);
 

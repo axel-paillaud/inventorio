@@ -55,6 +55,9 @@ const setActiveAllTable = () => {
                     <Table
                         v-if="table.isActive"
                         :currentFilterDate="currentFilterDate"
+                        :year="year"
+                        :month="month"
+                        :day="day"
                         :tableId="table.id"
                         :rows="table.rows"
                         :color="table.color"

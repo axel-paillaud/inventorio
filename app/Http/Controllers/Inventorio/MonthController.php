@@ -16,7 +16,7 @@ class MonthController extends Controller
 
         $query = TableRow::where('user_id', $user->id)
         ->whereYear('date', $year)
-        ->whereMonth('month', $month);
+        ->whereMonth('date', $month);
 
         return Inertia::render('Table/Inventorio', [
             'tables' => Table::where('user_id', $user->id)->get(),
