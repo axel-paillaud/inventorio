@@ -30,13 +30,25 @@ class RowController extends Controller
         // return redirect()->back();
     }
 
-    public function show(Request $request, int $tableId)
+    public function show
+    (
+        Request $request,
+        int $tableId,
+        ?int $year = null,
+        ?int $month = null,
+        ?int $day = null
+    )
     {
         $user = $request->user();
 
-        $rows = TableRow::where('user_id', $user->id)
-        ->where('table_id', $tableId)
-        ->get();
+        $query = TableRow::where('user_id', $user->id)
+        ->where('table_id', $tableId);
+
+        if ($year) $query->whereYear('date', $year);
+        if ($month) $query->whereMonth('date', $month);
+        if ($day) $query->whereDay('date', $day);
+
+        $rows = $query->get();
 
         return response()->json($rows);
     }
