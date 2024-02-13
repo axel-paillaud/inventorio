@@ -17,15 +17,10 @@ const props = defineProps({
     total: Number,
 });
 
-function getUrl() {
-    let url = `/inventorio/row/${props.tableId}`;
-    if (props.year) url += `/${props.year}`;
-    if (props.month) url += `/${props.month}`;
-    if (props.day) url += `/${props.day}`;
-    return url;
-}
-
-const url = getUrl();
+let url = `/inventorio/row/${props.tableId}`;
+if (props.year) url += `/${props.year}`;
+if (props.month) url += `/${props.month}`;
+if (props.day) url += `/${props.day}`;
 
 const { data: rows, error } = useFetch(url);
 
