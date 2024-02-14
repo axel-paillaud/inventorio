@@ -1,13 +1,13 @@
 <script setup>
 import { ref, nextTick } from 'vue';
 import { useFetch, useRefreshFetch } from '../Composables/fetch.js';
+import { buildDefaultDate } from '@/Composables/buildDefaultDate';
 import Row from '@/Components/Row.vue';
 import Total from '@/Components/Cells/TableTotal.vue';
 import CreateNewRow from '@/Components/CreateNewRow.vue';
 import colors from '@/Services/ColorService';
 
 const props = defineProps({
-    currentFilterDate: String,
     year: Number,
     month: Number,
     day: Number,
@@ -15,6 +15,8 @@ const props = defineProps({
     name: String,
     color: {type: String, default: 'gray'},
 });
+
+const currentFilterDate = buildDefaultDate(props.year, props.month, props.day);
 
 let url = `/inventorio/api/${props.tableId}`;
 if (props.year) {

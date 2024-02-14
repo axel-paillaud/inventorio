@@ -1,7 +1,6 @@
 <script setup>
 import { ref } from 'vue';
 import { SortTable } from '@/Services/TableService';
-import { buildDefaultDate } from '@/Composables/buildDefaultDate';
 import Header from '@/Components/Header.vue';
 import Table from '@/Components/Table.vue';
 import Row from '@/Components/Row.vue';
@@ -11,9 +10,6 @@ import { Head } from '@inertiajs/vue3';
 const props = defineProps([
     'tables', 'dateType', 'year', 'month', 'day', 'errors',
 ]);
-
-// get current filter date here, to pass it as a props to CreateNewRow component
-const currentFilterDate = buildDefaultDate(props.year, props.month, props.day);
 
 const setActiveTable = (tableId) => {
     let table = tables.value.find(table => table.id === tableId);
@@ -52,7 +48,6 @@ const setActiveAllTable = () => {
                 <Transition>
                     <Table
                         v-if="table.isActive"
-                        :currentFilterDate="currentFilterDate"
                         :year="year"
                         :month="month"
                         :day="day"
