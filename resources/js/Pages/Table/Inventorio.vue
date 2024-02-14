@@ -11,6 +11,8 @@ const props = defineProps([
     'tables', 'dateType', 'year', 'month', 'day', 'errors',
 ]);
 
+const tables = ref(props.tables);
+
 const setActiveTable = (tableId) => {
     let table = tables.value.find(table => table.id === tableId);
     table.isActive = !table.isActive;
