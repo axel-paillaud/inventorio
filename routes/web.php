@@ -51,7 +51,7 @@ Route::get('/inventorio', function (Request $request) {
     ]);
 })->middleware(['auth', 'verified'])->name('inventorio');
 
-Route::get('/inventorio/row/{tableId}/{year?}/{month?}/{day?}', [RowController::class, 'show'])
+Route::get('/inventorio/api/{tableId}/{year?}/{month?}/{day?}', [RowController::class, 'show'])
 ->middleware('auth');
 
 Route::post('/inventorio/row/create', [RowController::class, 'create'])

@@ -17,7 +17,7 @@ const props = defineProps({
     total: Number,
 });
 
-let url = `/inventorio/row/${props.tableId}`;
+let url = `/inventorio/api/${props.tableId}`;
 if (props.year) {
     url += `/${props.year}`;
     if (props.month) {
