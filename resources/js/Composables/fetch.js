@@ -13,6 +13,9 @@ export function useFetch(url) {
 }
 
 export function useRefreshFetch(url, data, error) {
+    data.value = null;
+    error.value = null;
+
     return new Promise((resolve) => {
         fetch(url)
             .then((res) => res.json())

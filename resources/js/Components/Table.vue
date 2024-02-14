@@ -14,7 +14,6 @@ const props = defineProps({
     tableId: Number,
     name: String,
     color: {type: String, default: 'gray'},
-    total: Number,
 });
 
 let url = `/api/inventorio/${props.tableId}`;
@@ -32,7 +31,7 @@ let { data: rows, error } = useFetch(url);
 
 const tableContainer = ref(null);
 
-const createNewRow = () => {
+const refreshAndScrollDown = () => {
     useRefreshFetch(url, rows, error)
         .then(() => tableContainer.value.scrollTop = tableContainer.value.scrollHeight );
  }
@@ -73,12 +72,12 @@ const createNewRow = () => {
                 <tfoot class="sticky bottom-0 bg-white z-30">
                     <tr>
                         <CreateNewRow
-                            @create-new-row-event="createNewRow"
+                            @create-new-row-event="refreshAndScrollDown"
                             :currentFilterDate="currentFilterDate"
                             :tableId="tableId"
                         />
                         <td class="td-last-row" colspan="4">Total</td>
-                        <Total v-if="rows" :total="total" :rows="rows"/>
+                        <Total v-if="rows" :rows="rows"/>
                     </tr>
                 </tfoot>
                 <tbody>
