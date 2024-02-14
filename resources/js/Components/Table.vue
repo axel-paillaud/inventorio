@@ -34,7 +34,7 @@ const tableContainer = ref(null);
 
 const createNewRow = () => {
     useRefreshFetch(url, rows, error)
-        .then(() => tableContainer.value.scrollTop = 999999 );
+        .then(() => tableContainer.value.scrollTop = tableContainer.value.scrollHeight );
  }
 
 </script>
