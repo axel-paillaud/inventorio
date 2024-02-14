@@ -26,8 +26,7 @@ class RowController extends Controller
         $row->save();
         $row->refresh();
 
-        // return to_route('inventorio');
-        // return redirect()->back();
+        return response()->json($row);
     }
 
     public function show

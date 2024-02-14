@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, nextTick } from 'vue';
 import { useFetch, useRefreshFetch } from '../Composables/fetch.js';
 import Row from '@/Components/Row.vue';
 import Total from '@/Components/Cells/TableTotal.vue';
@@ -16,7 +16,7 @@ const props = defineProps({
     color: {type: String, default: 'gray'},
 });
 
-let url = `/api/inventorio/${props.tableId}`;
+let url = `/inventorio/api/${props.tableId}`;
 if (props.year) {
     url += `/${props.year}`;
     if (props.month) {
@@ -31,9 +31,10 @@ let { data: rows, error } = useFetch(url);
 
 const tableContainer = ref(null);
 
-const refreshAndScrollDown = () => {
-    useRefreshFetch(url, rows, error)
-        .then(() => tableContainer.value.scrollTop = tableContainer.value.scrollHeight );
+const addNewRowAndScrollDown = async (newRow) => {
+    rows.value.push(newRow);
+    await nextTick();
+    tableContainer.value.scrollTop = tableContainer.value.scrollHeight;
  }
 
 </script>
@@ -72,7 +73,7 @@ const refreshAndScrollDown = () => {
                 <tfoot class="sticky bottom-0 bg-white z-30">
                     <tr>
                         <CreateNewRow
-                            @create-new-row-event="refreshAndScrollDown"
+                            @create-new-row-event="addNewRowAndScrollDown"
                             :currentFilterDate="currentFilterDate"
                             :tableId="tableId"
                         />

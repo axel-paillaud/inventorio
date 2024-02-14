@@ -1,4 +1,5 @@
 <script setup>
+import axios from 'axios';
 import { useForm } from '@inertiajs/vue3';
 import { Plus } from 'lucide-vue-next';
 
@@ -15,13 +16,21 @@ const form = useForm({
 });
 
 function createNewRow() {
-    form.post('/inventorio/row/create', {
+/*     form.post('/inventorio/api/create', {
         resetOnSuccess: false,
         preserveScroll: true,
         preserveState: true,
         only: ['rows'],
-        onSuccess: page => { emit('createNewRowEvent'); },
-    });
+        onSuccess: () => { emit('createNewRowEvent'); },
+    }); */
+
+    axios.post(
+        '/inventorio/api/create',
+        {table_id: props.tableId, date: props.currentFilterDate}
+    )
+        .then((res) => emit('createNewRowEvent', res.data))
+        .catch((err) => console.log(err));
+
 }
 
 </script>

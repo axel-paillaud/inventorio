@@ -56,10 +56,10 @@ Route::middleware('auth')->group(function() {
     ->name('inventorio.day');
 });
 
-Route::get('/api/inventorio/{tableId}/{year?}/{month?}/{day?}', [RowController::class, 'show'])
+Route::get('/inventorio/api/{tableId}/{year?}/{month?}/{day?}', [RowController::class, 'show'])
 ->middleware('auth');
 
-Route::post('/inventorio/row/create', [RowController::class, 'create'])
+Route::post('/inventorio/api/create', [RowController::class, 'create'])
     ->middleware(['auth', 'verified']);
 
 Route::post('/inventorio/filter/{id}', [ToggleTableController::class, 'update'])
