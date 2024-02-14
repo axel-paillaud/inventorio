@@ -11,3 +11,15 @@ export function useFetch(url) {
 
     return { data, error };
 }
+
+export function useRefreshFetch(url, data, error) {
+    return new Promise((resolve) => {
+        fetch(url)
+            .then((res) => res.json())
+            .then((json) => {
+                data.value = json;
+                resolve();
+            })
+            .catch((err) => (error.value = err));
+    });
+}

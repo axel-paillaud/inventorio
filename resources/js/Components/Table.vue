@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-import { useFetch } from '../Composables/fetch.js';
+import { useFetch, useRefreshFetch } from '../Composables/fetch.js';
 import Row from '@/Components/Row.vue';
 import Total from '@/Components/Cells/TableTotal.vue';
 import CreateNewRow from '@/Components/CreateNewRow.vue';
@@ -33,14 +33,8 @@ let { data: rows, error } = useFetch(url);
 const tableContainer = ref(null);
 
 const createNewRow = () => {
-    fetch(url)
-        .then((res) => res.json())
-        .then((json) => rows.value = json)
-        .then(() => tableContainer.value.scrollTop = 999999)
-        .catch((err) => console.log(err));
-    // rows.value = newRows;
-    // error.value = newError;
-    // tableContainer.value.scrollTop = 99999999;
+    useRefreshFetch(url, rows, error)
+        .then(() => tableContainer.value.scrollTop = 999999 );
  }
 
 </script>
