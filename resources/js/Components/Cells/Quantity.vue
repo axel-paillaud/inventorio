@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-import { router } from '@inertiajs/vue3';
+import { useForm } from '@inertiajs/vue3';
 import InputOverlay from '@/Components/InputOverlay.vue';
 import { isPositiveInteger } from '@/Composables/validators/integer';
 
@@ -21,9 +21,11 @@ const emit = defineEmits({
     }
 });
 
-const form = ref({
+const quantity = ref(props.quantity);
+
+const form = useForm({
     row_id: props.rowId,
-    quantity: props.quantity
+    quantity
 });
 
 const isActive = ref(false);
@@ -35,7 +37,9 @@ function updateQuantity(quantity) {
 }
 
 function submitCellData() {
-    router.post('/inventorio/cells/quantity', form.value);
+    form.post('/inventorio/cells/quantity', {
+        preserveScroll: true,
+    });
 }
 
 </script>

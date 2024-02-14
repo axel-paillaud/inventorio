@@ -1,8 +1,8 @@
 <script setup>
-import { ref, reactive, computed } from 'vue';
+import { ref, computed } from 'vue';
 import InputOverlay from '@/Components/InputOverlay.vue';
 import { isDateValid } from '@/Composables/validators/date';
-import { router } from '@inertiajs/vue3';
+import { useForm } from '@inertiajs/vue3';
 
 const props = defineProps({
     date: String,
@@ -10,19 +10,22 @@ const props = defineProps({
 });
 
 const isActive = ref(false);
+const date = ref(props.date);
 
 const formattedDate = computed(() => {
-    return new Date(form.value.date).toLocaleDateString();
+    return new Date(form.date).toLocaleDateString();
 });
 
-const form = ref({
+const form = useForm({
     row_id: props.rowId,
-    date: props.date
+    date
 });
 
 function submitCellData() {
     // add isDateValid() here
-    router.post('/inventorio/cells/date', form.value);
+    form.post('/inventorio/cells/date', {
+        preserveScroll: true,
+    });
 }
 
 </script>

@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-import { router } from '@inertiajs/vue3';
+import { useForm } from '@inertiajs/vue3';
 import InputOverlay from '@/Components/InputOverlay.vue';
 
 const props = defineProps({
@@ -10,13 +10,15 @@ const props = defineProps({
 
 const isActive = ref(false);
 
-const form = ref({
+const form = useForm({
     row_id: props.rowId,
     name: props.name,
 });
 
 function submitCellData() {
-    router.post('/inventorio/cells/name', form.value);
+    form.post('/inventorio/cells/name', {
+        preserveScroll: true,
+    });
 }
 
 </script>

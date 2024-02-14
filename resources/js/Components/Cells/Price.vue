@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed } from 'vue';
-import { router } from '@inertiajs/vue3';
+import { useForm } from '@inertiajs/vue3';
 import { formatter } from '@/Composables/currencyFormatter';
 import { isNumber } from '@/Composables/validators/integer';
 import InputOverlay from '@/Components/InputOverlay.vue';
@@ -23,10 +23,11 @@ const emit = defineEmits({
 });
 
 const isActive = ref(false);
+const price = ref(props.price);
 
-const form = ref({
+const form = useForm({
     row_id: props.rowId,
-    price: props.price,
+    price
 });
 
 function updatePrice(price) {
@@ -36,11 +37,13 @@ function updatePrice(price) {
 }
 
 const formattedPrice = computed(() => {
-    return formatter.format(form.value.price);
+    return formatter.format(form.price);
 });
 
 function submitCellData() {
-    router.post('/inventorio/cells/price', form.value);
+    form.post('/inventorio/cells/price', {
+        preserveScroll: true,
+    });
 }
 
 </script>
