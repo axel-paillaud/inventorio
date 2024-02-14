@@ -16,6 +16,7 @@ const props = defineProps({
     color: {type: String, default: 'gray'},
 });
 
+const createRowError = ref(null);
 const currentFilterDate = buildDefaultDate(props.year, props.month, props.day);
 
 let url = `/inventorio/api/${props.tableId}`;
@@ -73,9 +74,15 @@ const addNewRowAndScrollDown = async (newRow) => {
                     </tr>
                 </thead>
                 <tfoot class="sticky bottom-0 bg-white z-30">
+                    <tr v-if="createRowError">
+                        <td class="text-red-500 py-3 px-6" colspan="6">
+                            {{ createRowError }}
+                        </td>
+                    </tr>
                     <tr>
                         <CreateNewRow
                             @create-new-row-event="addNewRowAndScrollDown"
+                            @error-create-new-row-event="(err) => createRowError = err"
                             :currentFilterDate="currentFilterDate"
                             :tableId="tableId"
                         />

@@ -7,7 +7,7 @@ const props = defineProps({
     currentFilterDate: String,
 });
 
-const emit = defineEmits(['createNewRowEvent']);
+const emit = defineEmits(['createNewRowEvent', 'errorCreateNewRowEvent']);
 
 function createNewRow() {
     axios.post(
@@ -15,13 +15,13 @@ function createNewRow() {
         {table_id: props.tableId, date: props.currentFilterDate}
     )
         .then((res) => emit('createNewRowEvent', res.data))
-        .catch((err) => console.log(err));
+        .catch((err) => emit('errorCreateNewRowEvent', err));
 }
 
 </script>
 
 <template>
-    <td class="td-last-row">
+    <td class="td-last-row relative">
         <div
             @click="createNewRow"
             class="rounded-full hover:bg-gray-100 p-1.5 w-fit
