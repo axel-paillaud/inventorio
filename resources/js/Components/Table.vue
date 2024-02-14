@@ -28,12 +28,19 @@ if (props.year) {
     }
 }
 
-const { data: rows, error } = useFetch(url);
+let { data: rows, error } = useFetch(url);
 
 const tableContainer = ref(null);
 
-const callback = (form) => {
-    tableContainer.value.scrollTop = 99999999;
+const createNewRow = () => {
+    fetch(url)
+        .then((res) => res.json())
+        .then((json) => rows.value = json)
+        .then(() => tableContainer.value.scrollTop = 999999)
+        .catch((err) => console.log(err));
+    // rows.value = newRows;
+    // error.value = newError;
+    // tableContainer.value.scrollTop = 99999999;
  }
 
 </script>
@@ -72,7 +79,7 @@ const callback = (form) => {
                 <tfoot class="sticky bottom-0 bg-white z-30">
                     <tr>
                         <CreateNewRow
-                            @create-new-row-event="callback"
+                            @create-new-row-event="createNewRow"
                             :currentFilterDate="currentFilterDate"
                             :tableId="tableId"
                         />

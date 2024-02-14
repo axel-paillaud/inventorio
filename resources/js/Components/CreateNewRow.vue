@@ -20,7 +20,7 @@ function createNewRow() {
         preserveScroll: true,
         preserveState: true,
         only: ['rows'],
-        onSuccess: page => { console.log(page); emit('createNewRowEvent'); },
+        onSuccess: page => { emit('createNewRowEvent'); },
     });
 }
 
