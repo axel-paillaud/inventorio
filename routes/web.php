@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Inventorio\TableController;
 use App\Http\Controllers\Inventorio\ToggleTableController;
 use App\Http\Controllers\Inventorio\ToggleAllTableController;
 use App\Http\Controllers\Inventorio\YearController;
@@ -41,17 +42,21 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/inventorio', function (Request $request) {
-    $user = $request->user();
+Route::middleware('auth')->group(function() {
+    Route::get('/inventorio', [TableController::class, 'show'])
+    ->name('inventorio');
 
-    return Inertia::render('Table/Inventorio', [
-        'tables' => Table::where('user_id', $user->id)->get(),
-        'rows' => TableRow::where('user_id', $user->id)->get(),
-        'dateType' => 'always',
-    ]);
-})->middleware(['auth', 'verified'])->name('inventorio');
+    Route::get('/inventorio/year/{year}', [TableController::class, 'showYear'])
+    ->name('inventorio.year');
 
-Route::get('/inventorio/api/{tableId}/{year?}/{month?}/{day?}', [RowController::class, 'show'])
+    Route::get('/inventorio/month/{year}/{month}', [TableController::class, 'showMonth'])
+    ->name('inventorio.month');
+
+    Route::get('/inventorio/day/{year}/{month}/{day}', [TableController::class, 'showDay'])
+    ->name('inventorio.day');
+});
+
+Route::get('/api/inventorio/{tableId}/{year?}/{month?}/{day?}', [RowController::class, 'show'])
 ->middleware('auth');
 
 Route::post('/inventorio/row/create', [RowController::class, 'create'])
@@ -69,12 +74,6 @@ Route::middleware('auth', 'verified')->group(function() {
     Route::post('/inventorio/cells/state', [StateController::class, 'update']);
     Route::post('/inventorio/cells/quantity', [QuantityController::class, 'update']);
     Route::post('/inventorio/cells/price', [PriceController::class, 'update']);
-});
-
-Route::middleware('auth', 'verified')->group(function() {
-    Route::get('/inventorio/year/{year}', [YearController::class, 'show'])->name('date.year');
-    Route::get('/inventorio/month/{year}/{month}', [MonthController::class, 'show'])->name('date.month');
-    Route::get('/inventorio/day/{year}/{month}/{day}', [DayController::class, 'show'])->name('date.day');
 });
 
 Route::middleware('auth')->group(function () {

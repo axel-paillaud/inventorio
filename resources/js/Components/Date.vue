@@ -204,19 +204,19 @@ const updateDate = {
                 <div class="flex flex-col">
                     <DropdownLink
                         @click="dateType = 'day'"
-                        :href="route('date.day', { year, month, day})"
+                        :href="route('inventorio.day', { year, month, day } )"
                     >
                         Jour
                     </DropdownLink>
                     <DropdownLink
                         @click="dateType = 'month'"
-                        :href="route('date.month', { year, month })"
+                        :href="route('inventorio.month', { year, month } )"
                     >
                         Mois
                     </DropdownLink>
                     <DropdownLink
                         @click="dateType = 'year'"
-                        :href="route('date.year', { year } )"
+                        :href="route('inventorio.year', { year } )"
                     >
                         Année
                     </DropdownLink>
