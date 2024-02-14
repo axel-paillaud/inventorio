@@ -9,13 +9,11 @@ import Footer from '@/Components/Footer.vue';
 import { Head } from '@inertiajs/vue3';
 
 const props = defineProps([
-    'tables', 'rows', 'dateType', 'year', 'month', 'day', 'errors',
+    'tables', 'dateType', 'year', 'month', 'day', 'errors',
 ]);
 
 // get current filter date here, to pass it as a props to CreateNewRow component
 const currentFilterDate = buildDefaultDate(props.year, props.month, props.day);
-
-const tables = ref(new SortTable(props.tables, props.rows).associateRowToTable());
 
 const setActiveTable = (tableId) => {
     let table = tables.value.find(table => table.id === tableId);
@@ -59,10 +57,8 @@ const setActiveAllTable = () => {
                         :month="month"
                         :day="day"
                         :tableId="table.id"
-                        :rows="table.rows"
                         :color="table.color"
                         :name="table.name"
-                        :total="table.total"
                     >
                     </Table>
                 </Transition>

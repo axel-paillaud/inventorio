@@ -1,3 +1,5 @@
+// This code is now useless. Please consider deleting it.
+
 import { watch } from 'vue';
 
 /**

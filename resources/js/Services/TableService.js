@@ -1,3 +1,5 @@
+// This class is now useless. Please consider deleting it.
+
 export class SortTable {
     constructor(tables = [], rows = []) {
         this.tables = tables;
