@@ -18,9 +18,15 @@ const props = defineProps({
 });
 
 let url = `/inventorio/row/${props.tableId}`;
-if (props.year) url += `/${props.year}`;
-if (props.month) url += `/${props.month}`;
-if (props.day) url += `/${props.day}`;
+if (props.year) {
+    url += `/${props.year}`;
+    if (props.month) {
+        url += `/${props.month}`;
+        if(props.day) {
+            url += `/${props.day}`;
+        }
+    }
+}
 
 const { data: rows, error } = useFetch(url);
 

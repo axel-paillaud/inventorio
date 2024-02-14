@@ -44,9 +44,18 @@ class RowController extends Controller
         $query = TableRow::where('user_id', $user->id)
         ->where('table_id', $tableId);
 
-        if ($year) $query->whereYear('date', $year);
-        if ($month) $query->whereMonth('date', $month);
-        if ($day) $query->whereDay('date', $day);
+        if ($year)
+        {
+            $query->whereYear('date', $year);
+            if ($month)
+            {
+                $query->whereMonth('date', $month);
+                if ($day)
+                {
+                    $query->whereDay('date', $day);
+                }
+            }
+        }
 
         $rows = $query->get();
 
