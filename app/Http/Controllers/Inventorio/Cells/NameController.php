@@ -12,8 +12,10 @@ class NameController extends Controller
     {
         $user = $request->user();
 
+        if (!$request['name']) {$request['name'] = '';};
+
         $validated = $request->validate([
-            'name' => ['required', 'max:255'],
+            'name' => ['max:255'],
             'row_id' => ['required', 'integer', 'exists:table_rows,id'],
         ]);
 
