@@ -8,6 +8,7 @@ import { ChevronRight } from 'lucide-vue-next';
 import { ChevronDown } from 'lucide-vue-next';
 import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
+import '@/Services/updateDate';
 
 const props = defineProps({
     dateType: String,
@@ -128,8 +129,6 @@ const updateDate = {
             <span>{{ year }}</span>
             <!-- Arrow container -->
             <div class="flex items-center gap-1.5">
-                <!-- We need preverveState and preserveScroll ? -->
-                <!-- See partial reloads -->
                 <button
                     class="rounded-full hover:bg-gray-100 p-1.5"
                     @click="updateDate['year'].decrease(year)"
