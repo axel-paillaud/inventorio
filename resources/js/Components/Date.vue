@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue';
 import { router } from '@inertiajs/vue3';
+import { initDate } from '@/Services/updateDate.js';
 import { fullDateFormatter, monthFormatter } from '@/Composables/dateFormatter.js';
 import { dateFrenchTranslation } from '@/Composables/englishToFrench';
 import { ChevronLeft } from 'lucide-vue-next';
@@ -19,19 +20,7 @@ const props = defineProps({
 
 const currentDate = new Date();
 
-const year = ref(null);
-const month = ref(null);
-const day = ref(null);
-
-if (props.year) year.value = props.year;
-else year.value = currentDate.getFullYear();
-
-if (props.month) month.value = props.month;
-// Month in JavaScript start at 0, we need real current date number.
-else month.value = currentDate.getMonth() + 1;
-
-if (props.day) day.value = props.day;
-else day.value = currentDate.getDate();
+const { year, month, day } = initDate(props.year, props.month, props.day);
 
 const formattedFullDate = computed(() => {
     return fullDateFormatter.format(new Date(year.value, month.value - 1, day.value));
