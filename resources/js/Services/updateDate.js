@@ -74,8 +74,16 @@ export const updateMonth = {
 export const updateDay = {
     decrease(year, month, day) {
         if (day <= 1) {
-            // not ok, have to make class here, or rewrite the method
-            updateMonth.decrease(year, month);
+            // duplication of updateMonth.decrease() here
+            if (month <= 1) {
+                month = 12;
+                year --;
+                router.get(`/inventorio/month/${year}/${month}`);
+            }
+            else {
+                month -= 1;
+                router.get(`/inventorio/month/${year}/${month}`);
+            }
             day = daysInMonth(year, month);
             router.get(`/inventorio/day/${year}/${month}/${day}`);
         }
@@ -85,6 +93,25 @@ export const updateDay = {
         }
     },
     increase(year, month, day) {
-
+        if (day.value >= daysInMonth(year.value, month.value)) {
+            // duplication of updateMonth.increase() here
+            if (!((month + 1) > (currentDate.getMonth() + 1) && year == currentDate.getFullYear())) {
+                if (month >= 12) {
+                    month = 1;
+                    year++;
+                    router.get(`/inventorio/month/${year}/${month}`);
+                }
+                else {
+                    month += 1;
+                    router.get(`/inventorio/month/${year}/${month}`);
+                }
+            }
+            day = 1;
+            router.get(`/inventorio/day/${year}/${month}/${day}`);
+        }
+        else {
+            day += 1;
+            router.get(`/inventorio/day/${year}/${month}/${day}`);
+        }
     }
 }

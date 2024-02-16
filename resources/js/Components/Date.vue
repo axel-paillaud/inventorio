@@ -1,6 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue';
-import { router } from '@inertiajs/vue3';
+import { computed } from 'vue';
 import {
     initDate, updateYear, updateMonth, updateDay
 } from '@/Services/updateDate.js';
@@ -20,8 +19,6 @@ const props = defineProps({
     day: Number,
 });
 
-const currentDate = new Date();
-
 const { year, month, day } = initDate(props.year, props.month, props.day);
 
 const formattedFullDate = computed(() => {
@@ -32,75 +29,6 @@ const formattedMonthAndYear = computed(() => {
     return monthFormatter.format(new Date(year.value, month.value - 1, day.value));
 
 });
-
-function daysInMonth(year, month) {
-    return new Date(year, month, 0).getDate();
-}
-
-const updateDate = {
-    year: {
-       decrease() {
-            year.value -= 1;
-            router.get(`/inventorio/year/${year.value}`);
-        },
-        increase() {
-            if (!((year.value + 1) > currentDate.getFullYear())) {
-                year.value += 1;
-                router.get(`/inventorio/year/${year.value}`);
-            }
-        }
-    },
-    month: {
-        decrease() {
-            if (month.value <= 1) {
-                month.value = 12;
-                year.value --;
-                router.get(`/inventorio/month/${year.value}/${month.value}`);
-            }
-            else {
-                month.value -= 1;
-                router.get(`/inventorio/month/${year.value}/${month.value}`);
-            }
-        },
-        increase() {
-            if (!((month.value + 1) > (currentDate.getMonth() + 1) && year.value == currentDate.getFullYear())) {
-                if (month.value >= 12) {
-                    month.value = 1;
-                    year.value++;
-                    router.get(`/inventorio/month/${year.value}/${month.value}`);
-                }
-                else {
-                    month.value += 1;
-                    router.get(`/inventorio/month/${year.value}/${month.value}`);
-                }
-            }
-        }
-    },
-    day: {
-        decrease() {
-            if (day.value <= 1) {
-                updateDate.month.decrease();
-                day.value = daysInMonth(year.value, month.value);
-                router.get(`/inventorio/day/${year.value}/${month.value}/${day.value}`);
-            }
-            else {
-                day.value -= 1;
-                router.get(`/inventorio/day/${year.value}/${month.value}/${day.value}`);
-            }
-        },
-        increase() {
-            if (day.value >= daysInMonth(year.value, month.value)) {
-                updateDate.month.increase();
-                day.value = 1;
-                router.get(`/inventorio/day/${year.value}/${month.value}/${day.value}`);
-            }
-            else {
-                day.value += 1;
-                router.get(`/inventorio/day/${year.value}/${month.value}/${day.value}`);
-            }
-        },
-    },
-}
 
 </script>
 
@@ -173,7 +101,7 @@ const updateDate = {
                 </button>
                 <button
                     class="rounded-full hover:bg-gray-100 p-1.5"
-                    @click="updateDate['day'].increase(day)"
+                    @click="updateDay.increase(year, month, day)"
                 >
                     <ChevronRight :size="20"/>
                 </button>
