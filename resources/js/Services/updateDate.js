@@ -108,3 +108,72 @@ export const updateDay = {
         }
     }
 }
+
+export class UpdateDate {
+    constructor(year, month, day) {
+        this.year = year;
+        this.month = month;
+        this.day = day;
+    }
+
+    decreaseYear() {
+        this.year -= 1;
+        router.get(`/inventorio/year/${this.year}`);
+    }
+
+    increaseYear() {
+        if (!((this.year + 1) > currentDate.getFullYear())) {
+            this.year += 1;
+            router.get(`/inventorio/year/${this.year}`);
+        }
+    }
+
+    decreaseMonth() {
+        if (this.month <= 1) {
+            this.month = 12;
+            this.decreaseYear();
+            router.get(`/inventorio/month/${this.year}/${this.month}`);
+        }
+        else {
+            this.month -= 1;
+            router.get(`/inventorio/month/${this.year}/${this.month}`);
+        }
+    }
+
+    increaseMonth() {
+        if (!((this.month + 1) > (currentDate.getMonth() + 1) && this.year == currentDate.getFullYear())) {
+            if (this.month >= 12) {
+                this.month = 1;
+                this.increaseYear();
+                router.get(`/inventorio/month/${this.year}/${this.month}`);
+            }
+            else {
+                this.month += 1;
+                router.get(`/inventorio/month/${this.year}/${this.month}`);
+            }
+        }
+    }
+
+    decreaseDay() {
+        if (this.day <= 1) {
+            this.decreaseMonth();
+        }
+        else {
+            this.day -= 1;
+            router.get(`/inventorio/day/${this.year}/${this.month}/${this.day}`);
+        }
+    }
+
+    increaseDay() {
+        if (this.day >= daysInMonth(this.year, this.month)) {
+            // duplication of updateMonth.increase() here
+            this.increaseMonth();
+            this.day = 1;
+            router.get(`/inventorio/day/${this.year}/${this.month}/${this.day}`);
+        }
+        else {
+            this.day += 1;
+            router.get(`/inventorio/day/${this.year}/${this.month}/${this.day}`);
+        }
+    }
+}

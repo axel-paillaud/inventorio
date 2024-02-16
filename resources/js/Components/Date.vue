@@ -3,6 +3,7 @@ import { computed } from 'vue';
 import {
     initDate, updateYear, updateMonth, updateDay
 } from '@/Services/updateDate.js';
+import { UpdateDate } from '@/Services/updateDate.js';
 import { fullDateFormatter, monthFormatter } from '@/Composables/dateFormatter.js';
 import { dateFrenchTranslation } from '@/Composables/englishToFrench';
 import { ChevronLeft } from 'lucide-vue-next';
@@ -20,6 +21,12 @@ const props = defineProps({
 });
 
 const { year, month, day } = initDate(props.year, props.month, props.day);
+
+const updateDate = new UpdateDate(year.value, month.value, day.value);
+
+function decreaseYear() {
+    updateDate.decreaseYear();
+}
 
 const formattedFullDate = computed(() => {
     return fullDateFormatter.format(new Date(year.value, month.value - 1, day.value));
@@ -49,13 +56,13 @@ const formattedMonthAndYear = computed(() => {
             <div class="flex items-center gap-1.5">
                 <button
                     class="rounded-full hover:bg-gray-100 p-1.5"
-                    @click="updateYear.decrease(year)"
+                    @click="updateDate.decreaseYear()"
                 >
                     <ChevronLeft :size="20"/>
                 </button>
                 <button
                     class="rounded-full hover:bg-gray-100 p-1.5"
-                    @click="updateYear.increase(year)"
+                    @click="updateDate.increaseYear()"
                 >
                     <ChevronRight :size="20"/>
                 </button>
@@ -72,13 +79,13 @@ const formattedMonthAndYear = computed(() => {
                 <!-- See partial reloads -->
                 <button
                     class="rounded-full hover:bg-gray-100 p-1.5"
-                    @click="updateMonth.decrease(year, month)"
+                    @click="updateDate.decreaseMonth()"
                 >
                     <ChevronLeft :size="20"/>
                 </button>
                 <button
                     class="rounded-full hover:bg-gray-100 p-1.5"
-                    @click="updateMonth.increase(year, month)"
+                    @click="updateDate.increaseMonth()"
                 >
                     <ChevronRight :size="20"/>
                 </button>
@@ -95,7 +102,7 @@ const formattedMonthAndYear = computed(() => {
                 <!-- See partial reloads -->
                 <button
                     class="rounded-full hover:bg-gray-100 p-1.5"
-                    @click="updateDay.decrease(year, month, day)"
+                    @click="updateDate.decreaseDay()"
                 >
                     <ChevronLeft :size="20"/>
                 </button>
