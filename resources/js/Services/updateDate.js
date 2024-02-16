@@ -24,13 +24,6 @@ export function initDate(initYear, initMonth, initDay) {
     return { year, month, day };
 }
 
-/* export function increaseYear(year) {
-    if (!((year + 1) > currentDate.getFullYear())) {
-        year += 1;
-        router.get(`/inventorio/year/${year}`);
-    }
-} */
-
 export const updateYear = {
     decrease(year) {
         year -= 1;
