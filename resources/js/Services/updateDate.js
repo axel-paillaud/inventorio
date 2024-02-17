@@ -116,15 +116,27 @@ export class UpdateDate {
         this.day = day;
     }
 
+    callRouter(dateType) {
+        if (dateType === "year") {
+            router.get(`/inventorio/year/${this.year}`);
+        }
+        else if (dateType === "month") {
+            router.get(`/inventorio/month/${this.year}/${this.month}`);
+        }
+        else if (dateType === "day" ) {
+            router.get(`/inventorio/day/${this.year}/${this.month}/${this.day}`);
+        }
+    }
+
     decreaseYear() {
         this.year -= 1;
-        router.get(`/inventorio/year/${this.year}`);
+        // router.get(`/inventorio/year/${this.year}`);
     }
 
     increaseYear() {
         if (!((this.year + 1) > currentDate.getFullYear())) {
             this.year += 1;
-            router.get(`/inventorio/year/${this.year}`);
+            // router.get(`/inventorio/year/${this.year}`);
         }
     }
 
@@ -166,7 +178,6 @@ export class UpdateDate {
 
     increaseDay() {
         if (this.day >= daysInMonth(this.year, this.month)) {
-            // duplication of updateMonth.increase() here
             this.increaseMonth();
             this.day = 1;
             router.get(`/inventorio/day/${this.year}/${this.month}/${this.day}`);

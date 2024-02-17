@@ -1,7 +1,8 @@
 <script setup>
 import { computed } from 'vue';
+import { router } from '@inertiajs/vue3';
 import {
-    initDate, updateYear, updateMonth, updateDay
+    initDate
 } from '@/Services/updateDate.js';
 import { UpdateDate } from '@/Services/updateDate.js';
 import { fullDateFormatter, monthFormatter } from '@/Composables/dateFormatter.js';
@@ -24,8 +25,15 @@ const { year, month, day } = initDate(props.year, props.month, props.day);
 
 const updateDate = new UpdateDate(year.value, month.value, day.value);
 
-function decreaseYear() {
-    updateDate.decreaseYear();
+const filterYear = {
+    increase() {
+        updateDate.increaseYear();
+        updateDate.callRouter("year");
+    },
+    decrease() {
+        updateDate.decreaseYear();
+        updateDate.callRouter("year");
+    }
 }
 
 const formattedFullDate = computed(() => {
@@ -56,13 +64,13 @@ const formattedMonthAndYear = computed(() => {
             <div class="flex items-center gap-1.5">
                 <button
                     class="rounded-full hover:bg-gray-100 p-1.5"
-                    @click="updateDate.decreaseYear()"
+                    @click="filterYear.decrease()"
                 >
                     <ChevronLeft :size="20"/>
                 </button>
                 <button
                     class="rounded-full hover:bg-gray-100 p-1.5"
-                    @click="updateDate.increaseYear()"
+                    @click="filterYear.increase()"
                 >
                     <ChevronRight :size="20"/>
                 </button>
