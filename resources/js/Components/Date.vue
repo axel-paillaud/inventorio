@@ -1,9 +1,6 @@
 <script setup>
 import { computed } from 'vue';
-import { router } from '@inertiajs/vue3';
-import {
-    initDate
-} from '@/Services/updateDate.js';
+import { initDate } from '@/Services/updateDate.js';
 import { UpdateDate } from '@/Services/updateDate.js';
 import { fullDateFormatter, monthFormatter } from '@/Composables/dateFormatter.js';
 import { dateFrenchTranslation } from '@/Composables/englishToFrench';
@@ -33,6 +30,28 @@ const filterYear = {
     decrease() {
         updateDate.decreaseYear();
         updateDate.callRouter("year");
+    }
+}
+
+const filterMonth = {
+    increase() {
+        updateDate.increaseMonth();
+        updateDate.callRouter("month");
+    },
+    decrease() {
+        updateDate.decreaseMonth();
+        updateDate.callRouter("month");
+    }
+}
+
+const filterDay = {
+    increase() {
+        updateDate.increaseDay();
+        updateDate.callRouter("day");
+    },
+    decrease() {
+        updateDate.decreaseDay();
+        updateDate.callRouter("day");
     }
 }
 
@@ -87,13 +106,13 @@ const formattedMonthAndYear = computed(() => {
                 <!-- See partial reloads -->
                 <button
                     class="rounded-full hover:bg-gray-100 p-1.5"
-                    @click="updateDate.decreaseMonth()"
+                    @click="filterMonth.decrease()"
                 >
                     <ChevronLeft :size="20"/>
                 </button>
                 <button
                     class="rounded-full hover:bg-gray-100 p-1.5"
-                    @click="updateDate.increaseMonth()"
+                    @click="filterMonth.increase()"
                 >
                     <ChevronRight :size="20"/>
                 </button>
@@ -110,13 +129,13 @@ const formattedMonthAndYear = computed(() => {
                 <!-- See partial reloads -->
                 <button
                     class="rounded-full hover:bg-gray-100 p-1.5"
-                    @click="updateDate.decreaseDay()"
+                    @click="filterDay.decrease()"
                 >
                     <ChevronLeft :size="20"/>
                 </button>
                 <button
                     class="rounded-full hover:bg-gray-100 p-1.5"
-                    @click="updateDay.increase(year, month, day)"
+                    @click="filterDay.increase()"
                 >
                     <ChevronRight :size="20"/>
                 </button>

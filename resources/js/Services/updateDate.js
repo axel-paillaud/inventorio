@@ -144,11 +144,11 @@ export class UpdateDate {
         if (this.month <= 1) {
             this.month = 12;
             this.decreaseYear();
-            router.get(`/inventorio/month/${this.year}/${this.month}`);
+            // router.get(`/inventorio/month/${this.year}/${this.month}`);
         }
         else {
             this.month -= 1;
-            router.get(`/inventorio/month/${this.year}/${this.month}`);
+            // router.get(`/inventorio/month/${this.year}/${this.month}`);
         }
     }
 
@@ -157,11 +157,11 @@ export class UpdateDate {
             if (this.month >= 12) {
                 this.month = 1;
                 this.increaseYear();
-                router.get(`/inventorio/month/${this.year}/${this.month}`);
+                // router.get(`/inventorio/month/${this.year}/${this.month}`);
             }
             else {
                 this.month += 1;
-                router.get(`/inventorio/month/${this.year}/${this.month}`);
+                // router.get(`/inventorio/month/${this.year}/${this.month}`);
             }
         }
     }
@@ -172,7 +172,7 @@ export class UpdateDate {
         }
         else {
             this.day -= 1;
-            router.get(`/inventorio/day/${this.year}/${this.month}/${this.day}`);
+            // router.get(`/inventorio/day/${this.year}/${this.month}/${this.day}`);
         }
     }
 
@@ -180,11 +180,11 @@ export class UpdateDate {
         if (this.day >= daysInMonth(this.year, this.month)) {
             this.increaseMonth();
             this.day = 1;
-            router.get(`/inventorio/day/${this.year}/${this.month}/${this.day}`);
+            // router.get(`/inventorio/day/${this.year}/${this.month}/${this.day}`);
         }
         else {
             this.day += 1;
-            router.get(`/inventorio/day/${this.year}/${this.month}/${this.day}`);
+            // router.get(`/inventorio/day/${this.year}/${this.month}/${this.day}`);
         }
     }
 }
