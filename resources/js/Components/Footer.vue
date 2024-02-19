@@ -1,6 +1,6 @@
 <script setup>
 import { isPositiveInteger } from '@/Composables/validators/integer';
-import CreateFilter from '@/Components/CreateFilter.vue';
+import CreateTableButton from '@/Components/CreateTableButton.vue';
 import FilterAll from '@/Components/FilterAll.vue';
 import Filter from '@/Components/Filter.vue';
 
@@ -53,7 +53,7 @@ const emit = defineEmits({
                         @click="$emit('toggleTable', table.id)"
                     />
                 </div>
-                <CreateFilter />
+                <CreateTableButton />
             </div>
         </div>
     </footer>
