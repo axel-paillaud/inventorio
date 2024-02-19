@@ -78,6 +78,7 @@ export class UpdateDate {
     decreaseDay() {
         if (this.day <= 1) {
             this.decreaseMonth();
+            this.day = daysInMonth(this.year, this.month);
         }
         else {
             this.day -= 1;
