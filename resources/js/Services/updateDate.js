@@ -24,91 +24,6 @@ export function initDate(initYear, initMonth, initDay) {
     return { year, month, day };
 }
 
-export const updateYear = {
-    decrease(year) {
-        year -= 1;
-        router.get(`/inventorio/year/${year}`);
-    },
-    increase(year) {
-        if (!((year + 1) > currentDate.getFullYear())) {
-            year += 1;
-            router.get(`/inventorio/year/${year}`);
-        }
-    }
-}
-
-export const updateMonth = {
-    decrease(year, month) {
-        if (month <= 1) {
-            month = 12;
-            year --;
-            router.get(`/inventorio/month/${year}/${month}`);
-        }
-        else {
-            month -= 1;
-            router.get(`/inventorio/month/${year}/${month}`);
-        }
-    },
-    increase(year, month) {
-        if (!((month + 1) > (currentDate.getMonth() + 1) && year == currentDate.getFullYear())) {
-            if (month >= 12) {
-                month = 1;
-                year++;
-                router.get(`/inventorio/month/${year}/${month}`);
-            }
-            else {
-                month += 1;
-                router.get(`/inventorio/month/${year}/${month}`);
-            }
-        }
-    },
-}
-
-export const updateDay = {
-    decrease(year, month, day) {
-        if (day <= 1) {
-            // duplication of updateMonth.decrease() here
-            if (month <= 1) {
-                month = 12;
-                year --;
-                router.get(`/inventorio/month/${year}/${month}`);
-            }
-            else {
-                month -= 1;
-                router.get(`/inventorio/month/${year}/${month}`);
-            }
-            day = daysInMonth(year, month);
-            router.get(`/inventorio/day/${year}/${month}/${day}`);
-        }
-        else {
-            day -= 1;
-            router.get(`/inventorio/day/${year}/${month}/${day}`);
-        }
-    },
-    increase(year, month, day) {
-        if (day.value >= daysInMonth(year.value, month.value)) {
-            // duplication of updateMonth.increase() here
-            if (!((month + 1) > (currentDate.getMonth() + 1) && year == currentDate.getFullYear())) {
-                if (month >= 12) {
-                    month = 1;
-                    year++;
-                    router.get(`/inventorio/month/${year}/${month}`);
-                }
-                else {
-                    month += 1;
-                    router.get(`/inventorio/month/${year}/${month}`);
-                }
-            }
-            day = 1;
-            router.get(`/inventorio/day/${year}/${month}/${day}`);
-        }
-        else {
-            day += 1;
-            router.get(`/inventorio/day/${year}/${month}/${day}`);
-        }
-    }
-}
-
 export class UpdateDate {
     constructor(year, month, day) {
         this.year = year;
@@ -130,13 +45,11 @@ export class UpdateDate {
 
     decreaseYear() {
         this.year -= 1;
-        // router.get(`/inventorio/year/${this.year}`);
     }
 
     increaseYear() {
         if (!((this.year + 1) > currentDate.getFullYear())) {
             this.year += 1;
-            // router.get(`/inventorio/year/${this.year}`);
         }
     }
 
@@ -144,11 +57,9 @@ export class UpdateDate {
         if (this.month <= 1) {
             this.month = 12;
             this.decreaseYear();
-            // router.get(`/inventorio/month/${this.year}/${this.month}`);
         }
         else {
             this.month -= 1;
-            // router.get(`/inventorio/month/${this.year}/${this.month}`);
         }
     }
 
@@ -157,11 +68,9 @@ export class UpdateDate {
             if (this.month >= 12) {
                 this.month = 1;
                 this.increaseYear();
-                // router.get(`/inventorio/month/${this.year}/${this.month}`);
             }
             else {
                 this.month += 1;
-                // router.get(`/inventorio/month/${this.year}/${this.month}`);
             }
         }
     }
@@ -172,7 +81,6 @@ export class UpdateDate {
         }
         else {
             this.day -= 1;
-            // router.get(`/inventorio/day/${this.year}/${this.month}/${this.day}`);
         }
     }
 
@@ -180,11 +88,9 @@ export class UpdateDate {
         if (this.day >= daysInMonth(this.year, this.month)) {
             this.increaseMonth();
             this.day = 1;
-            // router.get(`/inventorio/day/${this.year}/${this.month}/${this.day}`);
         }
         else {
             this.day += 1;
-            // router.get(`/inventorio/day/${this.year}/${this.month}/${this.day}`);
         }
     }
 }
