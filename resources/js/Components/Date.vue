@@ -22,7 +22,7 @@ const { year, month, day } = initDate(props.year, props.month, props.day);
 
 const updateDate = new UpdateDate(year.value, month.value, day.value);
 
-const filterYear = {
+const updateAndGetYear = {
     increase() {
         updateDate.increaseYear();
         updateDate.callRouter("year");
@@ -33,7 +33,7 @@ const filterYear = {
     }
 }
 
-const filterMonth = {
+const updateAndGetMonth = {
     increase() {
         updateDate.increaseMonth();
         updateDate.callRouter("month");
@@ -44,7 +44,7 @@ const filterMonth = {
     }
 }
 
-const filterDay = {
+const updateAndGetDay = {
     increase() {
         updateDate.increaseDay();
         updateDate.callRouter("day");
@@ -83,13 +83,13 @@ const formattedMonthAndYear = computed(() => {
             <div class="flex items-center gap-1.5">
                 <button
                     class="rounded-full hover:bg-gray-100 p-1.5"
-                    @click="filterYear.decrease()"
+                    @click="updateAndGetYear.decrease()"
                 >
                     <ChevronLeft :size="20"/>
                 </button>
                 <button
                     class="rounded-full hover:bg-gray-100 p-1.5"
-                    @click="filterYear.increase()"
+                    @click="updateAndGetYear.increase()"
                 >
                     <ChevronRight :size="20"/>
                 </button>
@@ -106,13 +106,13 @@ const formattedMonthAndYear = computed(() => {
                 <!-- See partial reloads -->
                 <button
                     class="rounded-full hover:bg-gray-100 p-1.5"
-                    @click="filterMonth.decrease()"
+                    @click="updateAndGetMonth.decrease()"
                 >
                     <ChevronLeft :size="20"/>
                 </button>
                 <button
                     class="rounded-full hover:bg-gray-100 p-1.5"
-                    @click="filterMonth.increase()"
+                    @click="updateAndGetMonth.increase()"
                 >
                     <ChevronRight :size="20"/>
                 </button>
@@ -129,13 +129,13 @@ const formattedMonthAndYear = computed(() => {
                 <!-- See partial reloads -->
                 <button
                     class="rounded-full hover:bg-gray-100 p-1.5"
-                    @click="filterDay.decrease()"
+                    @click="updateAndGetDay.decrease()"
                 >
                     <ChevronLeft :size="20"/>
                 </button>
                 <button
                     class="rounded-full hover:bg-gray-100 p-1.5"
-                    @click="filterDay.increase()"
+                    @click="updateAndGetDay.increase()"
                 >
                     <ChevronRight :size="20"/>
                 </button>
