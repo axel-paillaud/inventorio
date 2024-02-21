@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue';
-import { Plus } from 'lucide-vue-next';
+import { Plus, ChevronDown } from 'lucide-vue-next';
+import Dropdown from '@/Components/Dropdown.vue';
 
 const modal = ref(null);
 
@@ -18,16 +19,17 @@ const openModal = () => {
         Créer un tableau
         <Plus size="16"/>
     </button>
-    <dialog r
-        ef="modal"
-        class="rounded-md text-gray-700 backdrop:bg-stone-400 backdrop:opacity-60 shadow-md"
+    <dialog
+        ref="modal"
+        class="rounded-md text-gray-700 backdrop:bg-stone-400 backdrop:opacity-60
+        shadow-md overflow-visible"
     >
         <div class="px-16 py-6 border-b border-stone-300">
             Ajouter un nouveau tableau
         </div>
         <form
             method="dialog"
-            class="px-16 py-6 flex flex-col gap-6"
+            class="px-16 py-8 flex flex-col gap-8"
         >
             <div class="flex flex-col gap-2">
                 <label for="table-name">Nom du tableau</label>
@@ -39,15 +41,42 @@ const openModal = () => {
                 >
             </div>
             <div class="flex flex-col gap-2">
-                <label for="color-select">Couleur</label>
-                <select name="" id="color-select">
-                    <option value="red">Rouge</option>
-                    <option value="blue">Bleue</option>
-                    <option value="green">Vert</option>
-                </select>
+                <Dropdown align="left">
+                    <template #trigger>
+                        <span
+                            class="inline-flex rounded-md border border-stone-300
+                            items-center px-3 py-2 gap-4 hover:cursor-pointer
+                            hover:bg-gray-100 transition"
+                        >
+                            <button type="button">
+                                Couleur
+                            </button>
+                            <ChevronDown :size="16" />
+                        </span>
+                    </template>
+
+                    <template #content>
+                        <div class="px-3 py-2 flex items-center justify-between
+                        hover:bg-gray-100 transition hover:cursor-pointer">
+                            <span>Rouge</span>
+                            <div class="bg-red-700 w-20 h-5 rounded"></div>
+                        </div>
+                        <div class="px-3 py-2 flex items-center justify-between
+                        hover:bg-gray-100 transition hover:cursor-pointer">
+                            <span>Vert</span>
+                            <div class="bg-green-700 w-20 h-5 rounded"></div>
+                        </div>
+                        <div class="px-3 py-2 flex items-center justify-between
+                        hover:bg-gray-100 transition hover:cursor-pointer">
+                            <span>Bleue</span>
+                            <div class="bg-blue-700 w-20 h-5 rounded"></div>
+                        </div>
+                    </template>
+                </Dropdown>
             </div>
             <button
-                class="border border-stone-300 rounded px-3 py-2 mt-4 bg-white hover:bg-gray-100"
+                class="border border-stone-300 rounded px-3 py-2 bg-white
+                hover:bg-gray-100 transition mb-2"
                 type="submit"
             >Créer</button>
         </form>
