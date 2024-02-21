@@ -18,8 +18,11 @@ const openModal = () => {
         Créer un tableau
         <Plus size="16"/>
     </button>
-    <dialog ref="modal" class="rounded text-gray-700">
-        <div class="px-16 py-6 border-b">
+    <dialog r
+        ef="modal"
+        class="rounded-md text-gray-700 backdrop:bg-stone-400 backdrop:opacity-60 shadow-md"
+    >
+        <div class="px-16 py-6 border-b border-stone-300">
             Ajouter un nouveau tableau
         </div>
         <form
@@ -43,7 +46,10 @@ const openModal = () => {
                     <option value="green">Vert</option>
                 </select>
             </div>
-            <button type="submit">Créer</button>
+            <button
+                class="border border-stone-300 rounded px-3 py-2 mt-4 bg-white hover:bg-gray-100"
+                type="submit"
+            >Créer</button>
         </form>
     </dialog>
 </template>
