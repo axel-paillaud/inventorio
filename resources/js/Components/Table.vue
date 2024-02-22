@@ -8,6 +8,7 @@ import CreateNewRow from '@/Components/CreateNewRow.vue';
 import colors from '@/Services/ColorService';
 
 const props = defineProps({
+    rows: Array,
     year: Number,
     month: Number,
     day: Number,
@@ -19,7 +20,7 @@ const props = defineProps({
 const createRowError = ref(null);
 const currentFilterDate = buildDefaultDate(props.year, props.month, props.day);
 
-let url = `/inventorio/api/${props.tableId}`;
+/* let url = `/inventorio/api/${props.tableId}`;
 if (props.year) {
     url += `/${props.year}`;
     if (props.month) {
@@ -28,9 +29,11 @@ if (props.year) {
             url += `/${props.day}`;
         }
     }
-}
+} */
 
-let { data: rows, error } = useFetch(url);
+// let { data: rows, error } = useFetch(url);
+
+const rows = ref(props.rows);
 
 const tableContainer = ref(null);
 
@@ -102,12 +105,6 @@ const addNewRowAndScrollDown = async (newRow) => {
                         :price="row.price"
                         @updateTotal="(updatedTotal) => row.total = updatedTotal"
                     />
-                    <tr v-if="error" class="text-red-500 text-center">
-                        <td colspan="6"><p class="p-2">Oups ! Une erreur est survenue. Message d'erreur :</p></td>
-                    </tr>
-                    <tr v-if="error" class="text-red-500 text-center">
-                        <td colspan="6"><p class="p-2">{{ error }}</p></td>
-                    </tr>
                 </tbody>
             </table>
         </div>

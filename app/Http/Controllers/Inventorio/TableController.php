@@ -31,7 +31,7 @@ class TableController extends Controller
     {
         $user = $request->user();
 
-        $tables = self::getTables($user);
+        $tables = self::getTables($user)->with('tableRows')->get();
 
         return Inertia::render('Table/Inventorio', [
             'tables' => $tables,
@@ -47,7 +47,7 @@ class TableController extends Controller
     {
         $user = $request->user();
 
-        $tables = self::getTables($user);
+        $tables = self::getTables($user)->get();
 
         return Inertia::render('Table/Inventorio', [
             'tables' => $tables,
@@ -65,7 +65,7 @@ class TableController extends Controller
     {
         $user = $request->user();
 
-        $tables = self::getTables($user);
+        $tables = self::getTables($user)->get();
 
         return Inertia::render('Table/Inventorio', [
             'tables' => $tables,
@@ -85,7 +85,7 @@ class TableController extends Controller
     {
         $user = $request->user();
 
-        $tables = self::getTables($user);
+        $tables = self::getTables($user)->get();
 
         return Inertia::render('Table/Inventorio', [
             'tables' => $tables,
@@ -98,6 +98,6 @@ class TableController extends Controller
 
     private function getTables($user)
     {
-        return Table::where('user_id', $user->id)->get();
+        return Table::where('user_id', $user->id);
     }
 }
