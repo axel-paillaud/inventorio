@@ -2,7 +2,6 @@
 import { computed } from 'vue';
 import { useForm } from '@inertiajs/vue3';
 import colors from '@/Services/ColorService';
-import { router } from '@inertiajs/vue3';
 
 const props = defineProps({
     name: String,
