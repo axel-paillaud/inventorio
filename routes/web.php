@@ -4,9 +4,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Inventorio\TableController;
 use App\Http\Controllers\Inventorio\ToggleTableController;
 use App\Http\Controllers\Inventorio\ToggleAllTableController;
-use App\Http\Controllers\Inventorio\YearController;
-use App\Http\Controllers\Inventorio\MonthController;
-use App\Http\Controllers\Inventorio\DayController;
 use App\Http\Controllers\Inventorio\RowController;
 use App\Http\Controllers\Inventorio\Cells\DateController;
 use App\Http\Controllers\Inventorio\Cells\NameController;
@@ -15,12 +12,7 @@ use App\Http\Controllers\Inventorio\Cells\QuantityController;
 use App\Http\Controllers\Inventorio\Cells\PriceController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
-
-use App\Models\Table;
-use App\Models\TableRow;
-use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
