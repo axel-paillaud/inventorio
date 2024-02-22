@@ -1,7 +1,7 @@
 const colors = {
     green: {
         id: 1,
-        name: 'vert',
+        name: 'green',
         color: 'bg-green-700',
         title: 'text-green-700',
         bg: 'bg-green-100',
@@ -9,7 +9,7 @@ const colors = {
     },
     blue: {
         id: 2,
-        name: 'bleue',
+        name: 'blue',
         color: 'bg-blue-700',
         title: 'text-blue-700',
         bg: 'bg-blue-100',
@@ -17,7 +17,7 @@ const colors = {
     },
     red: {
         id: 3,
-        name: 'rouge',
+        name: 'red',
         color: 'bg-red-700',
         title: 'text-red-700',
         bg: 'bg-red-100',
@@ -33,7 +33,7 @@ const colors = {
     },
     gray: {
         id: 5,
-        name: 'gris',
+        name: 'gray',
         color: 'bg-gray-700',
         title: 'text-gray-700',
         bg: 'bg-gray-100',
@@ -41,7 +41,7 @@ const colors = {
     },
     amber: {
         id: 6,
-        name: 'ambre',
+        name: 'amber',
         color: 'bg-amber-700',
         title: 'text-amber-700',
         bg: 'bg-amber-100',
@@ -49,7 +49,7 @@ const colors = {
     },
     yellow: {
         id: 7,
-        name: 'jaune',
+        name: 'yellow',
         color: 'bg-yellow-700',
         title: 'text-yellow-700',
         bg: 'bg-yellow-100',
@@ -57,7 +57,7 @@ const colors = {
     },
     lime: {
         id: 8,
-        name: 'citron',
+        name: 'lime',
         color: 'bg-lime-700',
         title: 'text-lime-700',
         bg: 'bg-lime-100',

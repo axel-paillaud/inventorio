@@ -1,5 +1,6 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
+import { useForm } from '@inertiajs/vue3';
 import { Plus, ChevronDown } from 'lucide-vue-next';
 import Dropdown from '@/Components/Dropdown.vue';
 import colors from '@/Services/ColorService.js';
@@ -7,10 +8,25 @@ import colors from '@/Services/ColorService.js';
 const modal = ref(null);
 const selectColor = ref(null);
 
+const form = useForm({
+    name: null,
+    color: null,
+});
+
+watch(selectColor, (newColor) => {
+    form.color = newColor.name;
+});
+
 const openModal = () => {
     modal.value.showModal();
 }
 
+function submit() {
+    console.log(form);
+    // form.post('', {});
+}
+
+// extract to composable here
 const closeModalWithBackdrop = (e) => {
     const modalDimensions = modal.value.getBoundingClientRect();
     if (
@@ -22,6 +38,7 @@ const closeModalWithBackdrop = (e) => {
         modal.value.close();
     }
 }
+
 </script>
 
 <template>
@@ -49,6 +66,7 @@ const closeModalWithBackdrop = (e) => {
             <div class="flex flex-col gap-2">
                 <label for="table-name">Nom du tableau</label>
                 <input
+                    v-model="form.name"
                     id="table-name"
                     required
                     class="rounded border-stone-300"
@@ -97,7 +115,11 @@ const closeModalWithBackdrop = (e) => {
                 class="border border-stone-300 rounded px-3 py-2 bg-white
                 hover:bg-gray-100 transition mb-2"
                 type="submit"
-            >Créer</button>
+                @click.prevent="submit"
+                :disabled="form.processing"
+            >
+                Créer
+            </button>
         </form>
     </dialog>
 </template>
