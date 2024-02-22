@@ -1,9 +1,11 @@
 <script setup>
 import { ref } from 'vue';
 import { Plus, ChevronDown } from 'lucide-vue-next';
+import colors from '@/Services/ColorService.js';
 import Dropdown from '@/Components/Dropdown.vue';
 
 const modal = ref(null);
+const selectColor = ref(null);
 
 const openModal = () => {
     modal.value.showModal();
@@ -46,9 +48,19 @@ const openModal = () => {
                         <span
                             class="inline-flex rounded-md border border-stone-300
                             items-center px-3 py-2 gap-4 hover:cursor-pointer
-                            hover:bg-gray-100 transition"
+                            hover:bg-gray-100 transition w-full justify-between"
                         >
-                            <button type="button">
+                            <div
+                                v-if="selectColor"
+                                class="flex items-center justify-between w-full"
+                            >
+                                <button class="capitalize">{{ selectColor.name }}</button>
+                                <div
+                                    class="w-20 h-5 rounded"
+                                    :class="selectColor.color">
+                                </div>
+                            </div>
+                            <button v-else type="button">
                                 Couleur
                             </button>
                             <ChevronDown :size="16" />
@@ -56,20 +68,13 @@ const openModal = () => {
                     </template>
 
                     <template #content>
-                        <div class="px-3 py-2 flex items-center justify-between
-                        hover:bg-gray-100 transition hover:cursor-pointer">
-                            <span>Rouge</span>
-                            <div class="bg-red-700 w-20 h-5 rounded"></div>
-                        </div>
-                        <div class="px-3 py-2 flex items-center justify-between
-                        hover:bg-gray-100 transition hover:cursor-pointer">
-                            <span>Vert</span>
-                            <div class="bg-green-700 w-20 h-5 rounded"></div>
-                        </div>
-                        <div class="px-3 py-2 flex items-center justify-between
-                        hover:bg-gray-100 transition hover:cursor-pointer">
-                            <span>Bleue</span>
-                            <div class="bg-blue-700 w-20 h-5 rounded"></div>
+                        <div v-for="color in colors" @click="selectColor = color">
+                            <div
+                                class="px-3 py-2 flex items-center justify-between
+                                hover:bg-gray-100 transition hover:cursor-pointer">
+                                <span class="capitalize">{{ color.name }}</span>
+                                <div class="w-20 h-5 rounded" :class="color.color"></div>
+                            </div>
                         </div>
                     </template>
                 </Dropdown>
