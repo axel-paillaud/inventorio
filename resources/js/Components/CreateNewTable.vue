@@ -4,6 +4,7 @@ import { useForm } from '@inertiajs/vue3';
 import { Plus, ChevronDown } from 'lucide-vue-next';
 import Dropdown from '@/Components/Dropdown.vue';
 import colors from '@/Services/ColorService.js';
+import { colorFrenchTranslation } from '@/Composables/englishToFrench';
 
 const modal = ref(null);
 const selectColor = ref(null);
@@ -87,7 +88,9 @@ const closeModalWithBackdrop = (e) => {
                                 v-if="selectColor"
                                 class="flex items-center justify-between w-full"
                             >
-                                <button class="capitalize">{{ selectColor.name }}</button>
+                                <button class="capitalize">
+                                    {{ colorFrenchTranslation[selectColor.name] }}
+                                </button>
                                 <div
                                     class="w-20 h-5 rounded"
                                     :class="selectColor.color">
@@ -105,7 +108,9 @@ const closeModalWithBackdrop = (e) => {
                             <div
                                 class="px-3 py-2 flex items-center justify-between
                                 hover:bg-gray-100 transition hover:cursor-pointer">
-                                <span class="capitalize">{{ color.name }}</span>
+                                <span class="capitalize">
+                                    {{ colorFrenchTranslation[color.name] }}
+                                </span>
                                 <div class="w-20 h-5 rounded" :class="color.color"></div>
                             </div>
                         </div>
