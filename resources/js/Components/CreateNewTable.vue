@@ -10,6 +10,18 @@ const selectColor = ref(null);
 const openModal = () => {
     modal.value.showModal();
 }
+
+const closeModalWithBackdrop = (e) => {
+    const modalDimensions = modal.value.getBoundingClientRect();
+    if (
+        e.clientX < modalDimensions.left ||
+        e.clientX > modalDimensions.right ||
+        e.clientY < modalDimensions.top ||
+        e.clientY > modalDimensions.bottom
+    ) {
+        modal.value.close();
+    }
+}
 </script>
 
 <template>
@@ -23,8 +35,9 @@ const openModal = () => {
     </button>
     <dialog
         ref="modal"
+        @click="closeModalWithBackdrop"
         class="rounded-md text-gray-700 backdrop:bg-stone-400 backdrop:opacity-60
-        shadow-md overflow-visible"
+        shadow-md overflow-visible animate-zoom-in"
     >
         <div class="px-16 py-6 border-b border-stone-300">
             Ajouter un nouveau tableau

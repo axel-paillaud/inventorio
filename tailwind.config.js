@@ -24,6 +24,15 @@ export default {
                 '90': '90',
                 '100': '100'
             },
+            animation: {
+                'zoom-in': 'zoom-in 0.2s ease-out',
+            },
+            keyframes: {
+                'zoom-in': {
+                    'from': { transform: 'scale(0.9)', opacity: 0.5 },
+                    'to': { transform: 'scale(1)', opacity: 1 },
+                },
+            },
         },
     },
 
