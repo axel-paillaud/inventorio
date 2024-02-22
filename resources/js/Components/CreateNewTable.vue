@@ -4,7 +4,7 @@ import { useForm } from '@inertiajs/vue3';
 import { Plus, ChevronDown } from 'lucide-vue-next';
 import Dropdown from '@/Components/Dropdown.vue';
 import colors from '@/Services/ColorService.js';
-import { colorFrenchTranslation } from '@/Composables/englishToFrench';
+import { colorFrenchTranslation } from '@/Services/englishToFrench';
 
 const modal = ref(null);
 const selectColor = ref(null);
