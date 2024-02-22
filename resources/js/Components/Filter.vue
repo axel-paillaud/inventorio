@@ -18,7 +18,8 @@ const classFilter = computed(() => ({
 function submitToggleTable() {
     router.post(
         `/inventorio/filter/${props.tableId}`,
-        { isActive: props.isActive }
+        { isActive: props.isActive },
+        {preserveScroll: true}
     )
 }
 
