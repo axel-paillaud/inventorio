@@ -1,5 +1,6 @@
 <script setup>
 import { computed } from 'vue';
+import { useForm } from '@inertiajs/vue3';
 import colors from '@/Services/ColorService';
 import { router } from '@inertiajs/vue3';
 
@@ -19,7 +20,7 @@ const classFilter = computed(() => ({
 }));
 
 function submitToggleAllTable() {
-    router.post('/inventorio/filters');
+    useForm({}).post('/inventorio/filters', { preserveScroll: true });
 }
 
 </script>
