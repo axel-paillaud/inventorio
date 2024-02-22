@@ -22,8 +22,9 @@ const openModal = () => {
 }
 
 function submit() {
-    console.log(form);
-    // form.post('', {});
+    form.post('/inventorio/api/table/create', {
+        preserveState: false,
+    });
 }
 
 // extract to composable here
@@ -32,8 +33,7 @@ const closeModalWithBackdrop = (e) => {
     if (
         e.clientX < modalDimensions.left ||
         e.clientX > modalDimensions.right ||
-        e.clientY < modalDimensions.top ||
-        e.clientY > modalDimensions.bottom
+        e.clientY < modalDimensions.top
     ) {
         modal.value.close();
     }
@@ -56,14 +56,14 @@ const closeModalWithBackdrop = (e) => {
         class="rounded-md text-gray-700 backdrop:bg-stone-400 backdrop:opacity-60
         shadow-md overflow-visible animate-zoom-in"
     >
-        <div class="px-16 py-6 border-b border-stone-300">
+        <div class="px-16 py-8 border-b border-stone-300">
             Ajouter un nouveau tableau
         </div>
         <form
             method="dialog"
-            class="px-16 py-8 flex flex-col gap-8"
+            class="px-16 py-12 flex flex-col gap-10"
         >
-            <div class="flex flex-col gap-2">
+            <div class="flex flex-col gap-3">
                 <label for="table-name">Nom du tableau</label>
                 <input
                     v-model="form.name"

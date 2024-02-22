@@ -10,6 +10,23 @@ use App\Models\Table;
 
 class TableController extends Controller
 {
+    public function create(Request $request)
+    {
+        $user = $request->user();
+
+        $validated = $request->validate([
+            'name' => ['required', 'max:255'],
+            'color' => ['required', 'max:255']
+        ]);
+
+        $user->tables()->create([
+            'isActive' => true,
+            'name' => $validated['name'],
+            'color' => $validated['color'],
+        ]);
+
+    }
+
     public function show(Request $request)
     {
         $user = $request->user();
