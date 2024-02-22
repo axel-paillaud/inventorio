@@ -50,6 +50,7 @@ const closeModalWithBackdrop = (e) => {
                 <label for="table-name">Nom du tableau</label>
                 <input
                     id="table-name"
+                    required
                     class="rounded border-stone-300"
                     type="text"
                     autofocus
