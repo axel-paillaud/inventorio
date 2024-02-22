@@ -1,9 +1,7 @@
 <script setup>
 import { ref } from 'vue';
-import { SortTable } from '@/Services/TableService';
 import Header from '@/Components/Header.vue';
 import Table from '@/Components/Table.vue';
-import Row from '@/Components/Row.vue';
 import Footer from '@/Components/Footer.vue';
 import { Head } from '@inertiajs/vue3';
 
