@@ -24,7 +24,7 @@ if (props.year) {
     url += `/${props.year}`;
     if (props.month) {
         url += `/${props.month}`;
-        if(props.day) {
+        if (props.day) {
             url += `/${props.day}`;
         }
     }
