@@ -22,7 +22,7 @@ class TableFactory extends Factory
             'user_id' => 1,
             'name' => fake()->word(),
             'color' => $colours[array_rand($colours)],
-            'isActive' => rand(0, 1),
+            'isActive' => 1,
         ];
     }
 }
