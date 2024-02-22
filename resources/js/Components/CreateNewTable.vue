@@ -122,7 +122,7 @@ const closeModalWithBackdrop = (e) => {
                 hover:bg-gray-100 transition mb-2"
                 type="submit"
                 @click.prevent="submit"
-                :disabled="form.processing"
+                :disabled="!form.name && !form.color"
             >
                 Créer
             </button>
