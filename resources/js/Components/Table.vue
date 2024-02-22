@@ -20,19 +20,6 @@ const props = defineProps({
 const createRowError = ref(null);
 const currentFilterDate = buildDefaultDate(props.year, props.month, props.day);
 
-/* let url = `/inventorio/api/${props.tableId}`;
-if (props.year) {
-    url += `/${props.year}`;
-    if (props.month) {
-        url += `/${props.month}`;
-        if (props.day) {
-            url += `/${props.day}`;
-        }
-    }
-} */
-
-// let { data: rows, error } = useFetch(url);
-
 const rows = ref(props.rows);
 
 const tableContainer = ref(null);
