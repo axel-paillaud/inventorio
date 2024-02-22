@@ -43,7 +43,7 @@ function submitCellData() {
         >
             {{ form.name }}
         </textarea>
-        <div class="py-3 px-6" :class="{ invisible: isActive }">
+        <div class="py-3 px-6 break-all" :class="{ invisible: isActive }">
             {{ form.name }}
         </div>
 </td>
