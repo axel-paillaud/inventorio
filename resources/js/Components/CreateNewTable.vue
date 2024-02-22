@@ -33,7 +33,8 @@ const closeModalWithBackdrop = (e) => {
     if (
         e.clientX < modalDimensions.left ||
         e.clientX > modalDimensions.right ||
-        e.clientY < modalDimensions.top
+        e.clientY < modalDimensions.top ||
+        e.clientY > modalDimensions.bottom
     ) {
         modal.value.close();
     }
