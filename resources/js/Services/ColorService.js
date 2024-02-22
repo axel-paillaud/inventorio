@@ -33,7 +33,7 @@ const colors = {
     },
     gray: {
         id: 5,
-        name: 'gray',
+        name: 'gris',
         color: 'bg-gray-700',
         title: 'text-gray-700',
         bg: 'bg-gray-100',
@@ -49,7 +49,7 @@ const colors = {
     },
     yellow: {
         id: 7,
-        name: 'yellow',
+        name: 'jaune',
         color: 'bg-yellow-700',
         title: 'text-yellow-700',
         bg: 'bg-yellow-100',

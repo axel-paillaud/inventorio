@@ -1,8 +1,8 @@
 <script setup>
 import { ref } from 'vue';
 import { Plus, ChevronDown } from 'lucide-vue-next';
-import colors from '@/Services/ColorService.js';
 import Dropdown from '@/Components/Dropdown.vue';
+import colors from '@/Services/ColorService.js';
 
 const modal = ref(null);
 const selectColor = ref(null);
