@@ -1,4 +1,5 @@
 <script setup>
+import { ref, onMounted, watch } from 'vue';
 import { useForm } from '@inertiajs/vue3';
 import { Trash } from 'lucide-vue-next';
 
@@ -6,14 +7,28 @@ const props = defineProps({
     rowId: Number,
 });
 
+const cell = ref(null);
+const container = ref(null);
+
+onMounted(() => {
+    const height = ref(cell.value.clientHeight);
+    container.value.style.height = `${cell.value.clientHeight}px`;
+});
+
 </script>
 
 <template>
-       <td class="border-b border-b-gray-100 hover:bg-red-100 transition">
-        <button
-            class="flex items-center justify-center w-full px-4"
+    <td ref="cell" class="group border-b border-b-gray-100"
+    >
+        <div ref="container"
+            class="relative hover:bg-red-100 transition-all rounded-r-md flex
+            right-8 group-hover:right-0 group-hover:bg-red-100"
         >
-            <Trash size="20" stroke-width="2.5" color="#a51d2d"/>
-        </button>
+            <button
+                class="px-2"
+            >
+                <Trash size="20" stroke-width="2.5" color="#a51d2d"/>
+            </button>
+        </div>
     </td>
 </template>
