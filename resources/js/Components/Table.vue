@@ -54,6 +54,7 @@ const addNewRowAndScrollDown = async (newRow) => {
                     :class="colors[color].bg"
                 >
                     <tr>
+                        <th></th>
                         <th class="py-3 px-6 border-b">Date</th>
                         <th class="py-3 px-6 border-b">Nom</th>
                         <th class="py-3 px-6 border-b">État</th>
@@ -69,6 +70,7 @@ const addNewRowAndScrollDown = async (newRow) => {
                         </td>
                     </tr>
                     <tr>
+                        <td class="border-t border-t-gray-200"></td>
                         <CreateNewRow
                             @create-new-row-event="addNewRowAndScrollDown"
                             @error-create-new-row-event="(err) => createRowError = err"

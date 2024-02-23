@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import { isNumber } from '@/Composables/validators/integer';
+import DeleteCell from '@/Components/Cells/Delete.vue';
 import DateCell from '@/Components/Cells/Date.vue';
 import NameCell from '@/Components/Cells/Name.vue';
 import StateCell from '@/Components/Cells/State.vue';
@@ -34,6 +35,7 @@ const price = ref(props.price);
 
 <template>
     <tr>
+        <DeleteCell></DeleteCell>
         <DateCell :date="date" :rowId="rowId" />
         <NameCell :name="name" :rowId="rowId" />
         <StateCell :state="state" :rowId="rowId" />
