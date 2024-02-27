@@ -60,4 +60,17 @@ class RowController extends Controller
 
         return response()->json($rows);
     }
+
+    public function delete(Request $request)
+    {
+        $user = $request->user();
+
+        $validated = $request->validate([
+            'row_id' => 'required|numeric|exists:table_rows,id',
+        ]);
+
+        $user->rows()->where('id', $validated['row_id'])->delete();
+
+        return response()->json($validated['row_id']);
+    }
 }

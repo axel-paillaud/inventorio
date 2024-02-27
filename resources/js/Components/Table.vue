@@ -27,7 +27,12 @@ const addNewRowAndScrollDown = async (newRow) => {
     rows.value.push(newRow);
     await nextTick();
     tableContainer.value.scrollTop = tableContainer.value.scrollHeight;
- }
+}
+
+const deleteRow = (rowId) => {
+    const indexRowToDelete = rows.value.findIndex((row) => row.id === rowId);
+    rows.value.splice(indexRowToDelete, 1);
+}
 
 </script>
 
@@ -92,6 +97,7 @@ const addNewRowAndScrollDown = async (newRow) => {
                         :quantity="row.quantity"
                         :price="row.price"
                         @updateTotal="(updatedTotal) => row.total = updatedTotal"
+                        @deleteRowEvent="deleteRow"
                     />
                 </tbody>
             </table>

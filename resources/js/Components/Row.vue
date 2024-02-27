@@ -27,7 +27,8 @@ const emit = defineEmits({
             console.warn('Invalid total row type!');
             return false;
         }
-    }
+    },
+    deleteRowEvent: null,
 });
 
 const quantity = ref(props.quantity);
@@ -37,7 +38,12 @@ const price = ref(props.price);
 
 <template>
     <tr @mouseenter="isRowHover = true" @mouseleave="isRowHover = false">
-        <DeleteCell :isRowHover=isRowHover></DeleteCell>
+        <DeleteCell
+            :rowId="rowId"
+            :isRowHover=isRowHover
+            @deleteRowEvent="$emit('deleteRowEvent', rowId)"
+        >
+        </DeleteCell>
         <DateCell :date="date" :rowId="rowId" />
         <NameCell :name="name" :rowId="rowId" />
         <StateCell :state="state" :rowId="rowId" />

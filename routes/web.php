@@ -48,10 +48,14 @@ Route::middleware('auth')->group(function() {
     ->name('inventorio.day');
 });
 
+// delete this route
 Route::get('/inventorio/api/{tableId}/{year?}/{month?}/{day?}', [RowController::class, 'show'])
 ->middleware('auth');
 
 Route::post('/inventorio/api/row/create', [RowController::class, 'create'])
+    ->middleware(['auth', 'verified']);
+
+Route::post('/inventorio/api/row/delete', [RowController::class, 'delete'])
     ->middleware(['auth', 'verified']);
 
 Route::post('/inventorio/api/table/create', [TableController::class, 'create'])
