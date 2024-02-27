@@ -18,7 +18,7 @@ const props = defineProps({
     price: Number,
 });
 
-const rowHover = ref('');
+const isRowHover = ref(false);
 
 const emit = defineEmits({
     updateTotal: (total) => {
@@ -36,8 +36,8 @@ const price = ref(props.price);
 </script>
 
 <template>
-    <tr @mouseenter="rowHover = 'bg-red-100'" @mouseleave="rowHover = ''">
-        <DeleteCell :rowHover=rowHover></DeleteCell>
+    <tr @mouseenter="isRowHover = true" @mouseleave="isRowHover = false">
+        <DeleteCell :isRowHover=isRowHover></DeleteCell>
         <DateCell :date="date" :rowId="rowId" />
         <NameCell :name="name" :rowId="rowId" />
         <StateCell :state="state" :rowId="rowId" />
