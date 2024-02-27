@@ -11,18 +11,18 @@ const cell = ref(null);
 const container = ref(null);
 
 onMounted(() => {
-    const height = ref(cell.value.clientHeight);
-    container.value.style.height = `${cell.value.clientHeight}px`;
+    // const height = ref(cell.value.clientHeight);
+    // container.value.style.height = `${cell.value.clientHeight}px`;
 });
 
 </script>
 
 <template>
-    <td ref="cell" class="group border-b border-b-gray-100"
+    <td ref="cell" class="group border-b border-b-gray-100 h-full"
     >
         <div ref="container"
             class="relative hover:bg-red-100 transition-all rounded-r-md flex
-            right-8 group-hover:right-0 group-hover:bg-red-100"
+            right-8 group-hover:right-0 group-hover:bg-red-100 h-full"
         >
             <button
                 class="px-2"
