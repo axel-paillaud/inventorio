@@ -15,7 +15,7 @@ const props = defineProps({
     >
         <div
             class="relative hover:bg-red-100 transition-all rounded-r-md flex
-            right-8 group-hover:right-0 group-hover:bg-red-100 h-full"
+            right-8 group-hover:right-px group-hover:bg-red-100 h-full"
             :class="isRowHover ? 'bg-red-100' : ''"
         >
             <button
