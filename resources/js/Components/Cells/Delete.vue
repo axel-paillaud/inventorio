@@ -1,5 +1,4 @@
 <script setup>
-import { ref, watch } from 'vue';
 import { useForm } from '@inertiajs/vue3';
 import { Trash } from 'lucide-vue-next';
 
