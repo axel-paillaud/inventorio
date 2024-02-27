@@ -1,9 +1,11 @@
 <script setup>
+import { ref } from 'vue';
 import { useForm } from '@inertiajs/vue3';
 import { Trash } from 'lucide-vue-next';
 
 const props = defineProps({
     rowId: Number,
+    rowHover: String,
 });
 
 </script>
@@ -14,6 +16,7 @@ const props = defineProps({
         <div
             class="relative hover:bg-red-100 transition-all rounded-r-md flex
             right-8 group-hover:right-0 group-hover:bg-red-100 h-full"
+            :class="rowHover"
         >
             <button
                 class="px-2"
