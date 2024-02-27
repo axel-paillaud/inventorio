@@ -16,7 +16,7 @@ const props = defineProps({
     color: {type: String, default: 'gray'},
 });
 
-const createRowError = ref(null);
+const error = ref(null);
 const currentFilterDate = buildDefaultDate(props.year, props.month, props.day);
 
 const rows = ref(props.rows);
@@ -30,8 +30,7 @@ const addNewRowAndScrollDown = async (newRow) => {
 }
 
 const deleteRow = (rowId) => {
-    const indexRowToDelete = rows.value.findIndex((row) => row.id === rowId);
-    rows.value.splice(indexRowToDelete, 1);
+    rows.value.splice(rows.value.findIndex((row) => row.id === rowId), 1);
 }
 
 </script>
@@ -69,16 +68,16 @@ const deleteRow = (rowId) => {
                     </tr>
                 </thead>
                 <tfoot class="sticky bottom-0 bg-white z-30">
-                    <tr v-if="createRowError">
+                    <tr v-if="error">
                         <td class="text-red-500 py-3 px-6" colspan="6">
-                            {{ createRowError }}
+                            {{ error }}
                         </td>
                     </tr>
                     <tr>
                         <td class="border-t border-t-gray-200"></td>
                         <CreateNewRow
                             @create-new-row-event="addNewRowAndScrollDown"
-                            @error-create-new-row-event="(err) => createRowError = err"
+                            @error-create-new-row-event="(errorData) => error = errorData"
                             :currentFilterDate="currentFilterDate"
                             :tableId="tableId"
                         />
@@ -96,8 +95,9 @@ const deleteRow = (rowId) => {
                         :state="row.state"
                         :quantity="row.quantity"
                         :price="row.price"
-                        @updateTotal="(updatedTotal) => row.total = updatedTotal"
-                        @deleteRowEvent="deleteRow"
+                        @update-total="(updatedTotal) => row.total = updatedTotal"
+                        @delete-row-event="deleteRow"
+                        @error-delete-row-event="(errorData) => error = errorData"
                     />
                 </tbody>
             </table>
