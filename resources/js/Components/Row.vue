@@ -67,6 +67,7 @@ const price = ref(props.price);
             :price="price"
             :rowId="rowId"
             @updatePrice="(updatedPrice) => price = updatedPrice"
+            @error-price="(errorData) => $emit('error', errorData)"
         />
         <Total
             :quantity="quantity"

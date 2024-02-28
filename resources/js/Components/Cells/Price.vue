@@ -19,7 +19,8 @@ const emit = defineEmits({
             console.warn('Invalid price type!');
             return false;
         }
-    }
+    },
+    errorPrice: null,
 });
 
 const isActive = ref(false);
@@ -43,6 +44,7 @@ const formattedPrice = computed(() => {
 function submitCellData() {
     form.post('/inventorio/cells/price', {
         preserveScroll: true,
+        onError: (error) => emit('errorPrice', error.price),
     });
 }
 
