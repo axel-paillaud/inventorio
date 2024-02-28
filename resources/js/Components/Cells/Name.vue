@@ -8,6 +8,8 @@ const props = defineProps({
     rowId: Number,
 });
 
+const emit = defineEmits(['errorName']);
+
 const isActive = ref(false);
 
 const form = useForm({
@@ -18,6 +20,7 @@ const form = useForm({
 function submitCellData() {
     form.post('/inventorio/cells/name', {
         preserveScroll: true,
+        onError: (error) => emit('errorName', error.name),
     });
 }
 
@@ -43,10 +46,7 @@ function submitCellData() {
         >
             {{ form.name }}
         </textarea>
-        <div v-if="form.errors.name" class="py-3 px-6 text-red-700">
-            {{ form.errors.name }}
-        </div>
-        <div v-else
+        <div
             class="py-3 max-h-44 overflow-hidden px-6 break-anywhere overflow-wrap"
             :class="{ invisible: isActive }"
         >

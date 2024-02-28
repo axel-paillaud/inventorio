@@ -18,7 +18,8 @@ const emit = defineEmits({
             console.warn('Invalid quantity type!');
             return false;
         }
-    }
+    },
+    errorQuantity: null,
 });
 
 const quantity = ref(props.quantity);
@@ -39,6 +40,7 @@ function updateQuantity(quantity) {
 function submitCellData() {
     form.post('/inventorio/cells/quantity', {
         preserveScroll: true,
+        onError: (error) => emit('errorQuantity', error.quantity),
     });
 }
 

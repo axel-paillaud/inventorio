@@ -47,12 +47,21 @@ const price = ref(props.price);
         >
         </DeleteCell>
         <DateCell :date="date" :rowId="rowId" />
-        <NameCell :name="name" :rowId="rowId" />
-        <StateCell :state="state" :rowId="rowId" @error-state="(errorData) => $emit('error', errorData)"/>
+        <NameCell
+            :name="name"
+            :rowId="rowId"
+            @error-name="(errorData) => $emit('error', errorData)"
+        />
+        <StateCell
+            :state="state"
+            :rowId="rowId"
+            @error-state="(errorData) => $emit('error', errorData)"
+        />
         <QuantityCell
             :quantity="quantity"
             :rowId="rowId"
             @updateQuantity="(updatedQuantity) => quantity = updatedQuantity"
+            @error-quantity="(errorData) => $emit('error', errorData)"
         />
         <PriceCell
             :price="price"
