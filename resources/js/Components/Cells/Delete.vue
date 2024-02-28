@@ -22,7 +22,7 @@ function submit() {
     >
         <form
             class="relative hover:bg-red-100 transition-all rounded-r-md flex
-            right-8 group-hover:right-px group-hover:bg-red-100 h-full
+            right-8 group-hover:right-px group-hover:bg-red-100 h-full max-w-[40px]
             group-hover:justify-center"
             :class="isRowHover ? 'bg-red-100' : ''"
         >
@@ -36,3 +36,4 @@ function submit() {
         </form>
     </td>
 </template>
+
