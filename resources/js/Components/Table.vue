@@ -69,6 +69,7 @@ const deleteRow = (rowId) => {
                 </thead>
                 <tfoot class="sticky bottom-0 bg-white z-30">
                     <tr v-if="error">
+                        <td></td>
                         <td class="text-red-500 py-3 px-6" colspan="6">
                             {{ error }}
                         </td>
