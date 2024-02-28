@@ -43,8 +43,19 @@ function submitCellData() {
         >
             {{ form.name }}
         </textarea>
-        <div class="py-3 px-6 break-all" :class="{ invisible: isActive }">
+        <div class="py-3 px-6 break-anywhere" :class="{ invisible: isActive }">
             {{ form.name }}
         </div>
 </td>
 </template>
+
+<style scoped>
+
+/* overflow-wrap: anywhere is currently not supported in Tailwindcss */
+/* PR is validated, so it's coming soon */
+
+.break-anywhere {
+    overflow-wrap: anywhere;
+}
+
+</style>
