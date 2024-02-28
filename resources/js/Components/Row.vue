@@ -29,7 +29,7 @@ const emit = defineEmits({
         }
     },
     deleteRowEvent: null,
-    errorDeleteRowEvent: null,
+    error: null,
 });
 
 const quantity = ref(props.quantity);
@@ -43,12 +43,12 @@ const price = ref(props.price);
             :rowId="rowId"
             :isRowHover=isRowHover
             @delete-row-event="(deleteRowId) => $emit('deleteRowEvent', deleteRowId)"
-            @error-delete-row-event="(errorData) => $emit('errorDeleteRowEvent', errorData)"
+            @error-delete-row-event="(errorData) => $emit('error', errorData)"
         >
         </DeleteCell>
         <DateCell :date="date" :rowId="rowId" />
         <NameCell :name="name" :rowId="rowId" />
-        <StateCell :state="state" :rowId="rowId" />
+        <StateCell :state="state" :rowId="rowId" @error-state="(errorData) => $emit('error', errorData)"/>
         <QuantityCell
             :quantity="quantity"
             :rowId="rowId"

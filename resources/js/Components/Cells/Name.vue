@@ -35,7 +35,7 @@ function submitCellData() {
             @change="submitCellData"
             v-show="isActive"
             class="py-3 px-6 absolute top-0 left-0 w-full z-60 h-fit min-h-full
-            bg-gray-50 border-gray-500"
+            bg-gray-50 border-gray-500 max-h-40"
             maxlength="255"
             required
             role="textbox"
@@ -43,7 +43,13 @@ function submitCellData() {
         >
             {{ form.name }}
         </textarea>
-        <div class="py-3 px-6 break-anywhere" :class="{ invisible: isActive }">
+        <div v-if="form.errors.name" class="py-3 px-6 text-red-700">
+            {{ form.errors.name }}
+        </div>
+        <div v-else
+            class="py-3 max-h-44 overflow-hidden px-6 break-anywhere overflow-wrap"
+            :class="{ invisible: isActive }"
+        >
             {{ form.name }}
         </div>
 </td>

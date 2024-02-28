@@ -22,7 +22,6 @@ const form = useForm({
 });
 
 function submitCellData() {
-    // add isDateValid() here
     form.post('/inventorio/cells/date', {
         preserveScroll: true,
     });
@@ -47,7 +46,10 @@ function submitCellData() {
             v-model="form.date"
             name="date"
         >
-        <div class="py-3 px-6" :class="{ invisible: isActive }">
+        <div v-if="form.errors.date" class="py-3 px-6 text-red-700">
+            {{ form.errors.date }}
+        </div>
+        <div v-else class="py-3 px-6" :class="{ invisible: isActive }">
             {{ formattedDate }}
         </div>
     </td>

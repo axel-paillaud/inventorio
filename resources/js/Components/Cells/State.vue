@@ -8,6 +8,8 @@ const props = defineProps({
     rowId: Number,
 });
 
+const emit = defineEmits(['errorState']);
+
 const isActive = ref(false);
 const state = ref(props.state);
 
@@ -19,6 +21,7 @@ const form = useForm({
 function submitCellData() {
     form.post('/inventorio/cells/state', {
         preserveScroll: true,
+        onError: error => emit('errorState', error.state),
     });
 }
 

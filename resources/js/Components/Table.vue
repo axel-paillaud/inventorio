@@ -69,8 +69,8 @@ const deleteRow = (rowId) => {
                 </thead>
                 <tfoot class="sticky bottom-0 bg-white z-30">
                     <tr v-if="error">
-                        <td></td>
-                        <td class="text-red-500 py-3 px-6" colspan="6">
+                        <td class="border-t border-t-gray-200"></td>
+                        <td class="text-red-500 py-3 px-6 border-t border-t-gray-200" colspan="6">
                             {{ error }}
                         </td>
                     </tr>
@@ -98,7 +98,7 @@ const deleteRow = (rowId) => {
                         :price="row.price"
                         @update-total="(updatedTotal) => row.total = updatedTotal"
                         @delete-row-event="deleteRow"
-                        @error-delete-row-event="(errorData) => error = errorData"
+                        @error="(errorData) => error = errorData"
                     />
                 </tbody>
             </table>
