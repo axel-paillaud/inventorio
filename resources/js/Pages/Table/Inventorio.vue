@@ -27,14 +27,12 @@ const setActiveAllTable = () => {
 <template>
     <Head title="Home" />
 
-    <div class="h-full bg-gray-100">
-        <Header
-            :dateType="dateType"
-            :year="year"
-            :month="month"
-            :day="day"
-        />
-    </div>
+    <Header
+        :dateType="dateType"
+        :year="year"
+        :month="month"
+        :day="day"
+    />
 
     <!-- Show form validation error from Laravel for debugging -->
     <div v-if="errors">{{ errors }}</div>

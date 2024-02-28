@@ -27,7 +27,7 @@ function submitCellData() {
 <td
     class="p-0 border border-white border-b border-b-gray-100 relative
         transition-colors cursor-text hover:bg-gray-50 hover:border-t-gray-50
-        hover:border-r-gray-200 hover:border-l-gray-200 min-w-32"
+        hover:border-r-gray-200 hover:border-l-gray-200 min-w-40"
     @click="isActive = true"
     >
         <InputOverlay :isActive="isActive" @closeCell="isActive = false" />
