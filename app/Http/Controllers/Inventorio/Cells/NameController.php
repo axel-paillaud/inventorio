@@ -4,24 +4,20 @@ namespace App\Http\Controllers\Inventorio\Cells;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\TableRow;
 
 class NameController extends Controller
 {
     public function update(Request $request)
     {
-        $user = $request->user();
-
         if (!$request['name']) {$request['name'] = '';};
 
         $validated = $request->validate([
-            'name' => ['max:255'],
+            'name' => ['max:255', 'string'],
             'row_id' => ['required', 'integer', 'exists:table_rows,id'],
         ]);
 
-        TableRow::where([
-            ['user_id', $user->id],
-            ['id', $validated['row_id']],
-        ])->update(['name'=> $validated['name']]);
+        $request->user()->rows()->where('id', $validated['row_id'])->update([
+            'name'=> $validated['name']
+        ]);
     }
 }

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Inventorio\Cells;
 
 use Illuminate\Http\Request;
-use App\Models\TableRow;
 use App\Http\Controllers\Controller;
 
 class DateController extends Controller
@@ -15,7 +14,7 @@ class DateController extends Controller
             'row_id' => ['required', 'integer', 'exists:table_rows,id'],
         ]);
 
-        $request->user()->rows($validated['row_id'])->update([
+        $request->user()->rows()->where('id', $validated['row_id'])->update([
             'date' => $validated['date']
         ]);
     }
