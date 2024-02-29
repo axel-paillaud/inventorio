@@ -10,6 +10,8 @@ const props = defineProps({
 
 const emit = defineEmits(['errorName']);
 
+let initName = props.name;
+
 const isActive = ref(false);
 
 const form = useForm({
@@ -20,7 +22,11 @@ const form = useForm({
 function submitCellData() {
     form.post('/inventorio/cells/name', {
         preserveScroll: true,
-        onError: (error) => emit('errorName', error.name),
+        onError: (error) => {
+            emit('errorName', error.name);
+            form.name = initName;
+        },
+        onSuccess: () => initName = form.name,
     });
 }
 
