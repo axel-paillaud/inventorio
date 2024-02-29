@@ -34,10 +34,7 @@ class RowController extends Controller
         ?int $day = null
     )
     {
-        $user = $request->user();
-
-        $query = TableRow::where('user_id', $user->id)
-        ->where('table_id', $tableId);
+        $query = $request->user()->rows()->where('table_id', $tableId);
 
         if ($year)
         {
