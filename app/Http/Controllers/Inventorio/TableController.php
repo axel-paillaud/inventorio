@@ -15,8 +15,8 @@ class TableController extends Controller
         $user = $request->user();
 
         $validated = $request->validate([
-            'name' => ['required', 'max:255'],
-            'color' => ['required', 'max:255']
+            'name' => ['required', 'max:255', 'string'],
+            'color' => ['required', 'max:255', 'string']
         ]);
 
         $user->tables()->create([
