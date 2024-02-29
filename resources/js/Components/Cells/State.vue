@@ -11,17 +11,21 @@ const props = defineProps({
 const emit = defineEmits(['errorState']);
 
 const isActive = ref(false);
-const state = ref(props.state);
+let initState = props.state;
 
 const form = useForm({
     row_id: props.rowId,
-    state
+    state: props.state,
 });
 
 function submitCellData() {
     form.post('/inventorio/cells/state', {
         preserveScroll: true,
-        onError: error => emit('errorState', error.state),
+        onError: error => {
+            emit('errorState', error.state);
+            form.state = initState;
+        },
+        onSuccess: () => initState = form.state,
     });
 }
 
