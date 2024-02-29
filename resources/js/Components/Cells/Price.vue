@@ -24,11 +24,11 @@ const emit = defineEmits({
 });
 
 const isActive = ref(false);
-const price = ref(props.price);
+let initPrice = props.price;
 
 const form = useForm({
     row_id: props.rowId,
-    price
+    price: props.price,
 });
 
 function updatePrice(price) {
@@ -44,7 +44,11 @@ const formattedPrice = computed(() => {
 function submitCellData() {
     form.post('/inventorio/cells/price', {
         preserveScroll: true,
-        onError: (error) => emit('errorPrice', error.price),
+        onError: (error) => {
+            emit('errorPrice', error.price);
+            form.price = initPrice;
+        },
+        onSuccess: () => initPrice = form.price,
     });
 }
 
