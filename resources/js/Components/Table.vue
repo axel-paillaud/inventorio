@@ -1,5 +1,5 @@
 <script setup>
-import { ref, nextTick } from 'vue';
+import { ref, nextTick, watch } from 'vue';
 import { buildDefaultDate } from '@/Composables/buildDefaultDate';
 import Row from '@/Components/Row.vue';
 import Total from '@/Components/Cells/TableTotal.vue';
@@ -17,6 +17,12 @@ const props = defineProps({
 });
 
 const error = ref(null);
+
+// Remove visible form error after x seconds
+watch(error, (newError) => {
+    if (newError) setTimeout(() => error.value = null, 5000);
+});
+
 const currentFilterDate = buildDefaultDate(props.year, props.month, props.day);
 
 const rows = ref(props.rows);
@@ -68,12 +74,14 @@ const deleteRow = (rowId) => {
                     </tr>
                 </thead>
                 <tfoot class="sticky bottom-0 bg-white z-30">
-                    <tr v-if="error">
-                        <td class="border-t border-t-gray-200"></td>
-                        <td class="text-red-500 py-3 px-6 border-t border-t-gray-200" colspan="6">
-                            {{ error }}
-                        </td>
-                    </tr>
+                    <Transition>
+                        <tr v-if="error">
+                            <td class="border-t border-t-gray-200"></td>
+                            <td class="text-red-500 py-3 px-6 border-t border-t-gray-200" colspan="6">
+                                {{ error }}
+                            </td>
+                        </tr>
+                    </Transition>
                     <tr>
                         <td class="border-t border-t-gray-200"></td>
                         <CreateNewRow
@@ -112,4 +120,15 @@ const deleteRow = (rowId) => {
     padding: 12px 24px;
     border-top: solid 1px var(--gray-200);
 }
+
+.v-enter-active,
+.v-leave-active {
+    transition: opacity 0.3s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+    opacity: 0;
+}
+
 </style>
