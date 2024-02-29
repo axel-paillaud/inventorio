@@ -13,7 +13,7 @@ class PriceController extends Controller
         $user = $request->user();
 
         $validated = $request->validate([
-            'price' => ['required', 'numeric', 'min:0'],
+            'price' => ['required', 'numeric', 'min:1'],
             'row_id' => ['required', 'integer', 'exists:table_rows,id'],
         ]);
 
