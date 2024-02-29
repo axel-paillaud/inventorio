@@ -10,20 +10,16 @@ class RowController extends Controller
 {
     public function create(Request $request)
     {
-        $user = $request->user();
-
         $validated = $request->validate([
             'table_id' => 'required|numeric|exists:tables,id',
             'date' => 'date_format:Y-m-d',
         ]);
 
-        $row = new TableRow([
+        $row = $request->user()->rows()->create([
             'table_id' => $validated['table_id'],
-            'user_id' => $user->id,
             'date' => $validated['date'],
         ]);
 
-        $row->save();
         $row->refresh();
 
         return response()->json($row);
