@@ -29,9 +29,7 @@ class TableController extends Controller
 
     public function show(Request $request)
     {
-        $user = $request->user();
-
-        $tables = self::getTables($user)->with('tableRows')->get();
+        $tables = $request->user()->tables()->with('tableRows')->get();
 
         return Inertia::render('Table/Inventorio', [
             'tables' => $tables,
@@ -45,9 +43,7 @@ class TableController extends Controller
         string $year,
     )
     {
-        $user = $request->user();
-
-        $tables = self::getTables($user)->with([
+        $tables = $request->user()->tables()->with([
             'tableRows' => function ($query) use ($year) {
                 $query->whereYear('date', $year);
             }
@@ -67,9 +63,7 @@ class TableController extends Controller
         string $month,
     )
     {
-        $user = $request->user();
-
-        $tables = self::getTables($user)->with([
+        $tables = $request->user()->tables()->with([
             'tableRows' => function ($query) use ($year, $month) {
                 $query->whereYear('date', $year)
                 ->whereMonth('date', $month);
@@ -92,9 +86,7 @@ class TableController extends Controller
         string $day,
     )
     {
-        $user = $request->user();
-
-        $tables = self::getTables($user)->with([
+        $tables = $request->user()->tables()->with([
             'tableRows' => function ($query) use ($year, $month, $day) {
                 $query->whereYear('date', $year)
                 ->whereMonth('date', $month)
@@ -109,10 +101,5 @@ class TableController extends Controller
             'month' => intval($month),
             'day' => intval($day),
         ]);
-    }
-
-    private function getTables($user)
-    {
-        return Table::where('user_id', $user->id);
     }
 }
