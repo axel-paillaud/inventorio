@@ -22,11 +22,11 @@ const emit = defineEmits({
     errorQuantity: null,
 });
 
-const quantity = ref(props.quantity);
+let initQuantity = props.quantity;
 
 const form = useForm({
     row_id: props.rowId,
-    quantity
+    quantity: props.quantity,
 });
 
 const isActive = ref(false);
@@ -40,7 +40,11 @@ function updateQuantity(quantity) {
 function submitCellData() {
     form.post('/inventorio/cells/quantity', {
         preserveScroll: true,
-        onError: (error) => emit('errorQuantity', error.quantity),
+        onError: (error) => {
+            emit('errorQuantity', error.quantity);
+            form.quantity = initQuantity;
+        },
+        onSuccess: () => initQuantity = form.quantity,
     });
 }
 
