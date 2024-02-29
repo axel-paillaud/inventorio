@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Inventorio;
 
 use Illuminate\Http\Request;
-use App\Models\Table;
 use App\Http\Controllers\Controller;
 
 class ToggleTableController extends Controller

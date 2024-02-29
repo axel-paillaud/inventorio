@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Inventorio;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Inertia\Inertia;
-use App\Models\Table;
 
 
 class TableController extends Controller
