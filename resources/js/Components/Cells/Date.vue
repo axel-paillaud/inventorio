@@ -9,8 +9,10 @@ const props = defineProps({
     rowId: Number,
 });
 
+const emit = defineEmits(['errorDate']);
+
 const isActive = ref(false);
-const date = ref(props.date);
+let initDate = props.date;
 
 const formattedDate = computed(() => {
     return new Date(form.date).toLocaleDateString();
@@ -18,12 +20,17 @@ const formattedDate = computed(() => {
 
 const form = useForm({
     row_id: props.rowId,
-    date
+    date: props.date,
 });
 
 function submitCellData() {
     form.post('/inventorio/cells/date', {
         preserveScroll: true,
+        onError: (error) => {
+            emit('errorDate', error.date);
+            form.date = initDate;
+        },
+        onSuccess: () => initDate = form.date,
     });
 }
 
@@ -46,10 +53,7 @@ function submitCellData() {
             v-model="form.date"
             name="date"
         >
-        <div v-if="form.errors.date" class="py-3 px-6 text-red-700">
-            {{ form.errors.date }}
-        </div>
-        <div v-else class="py-3 px-6" :class="{ invisible: isActive }">
+        <div class="py-3 px-6" :class="{ invisible: isActive }">
             {{ formattedDate }}
         </div>
     </td>

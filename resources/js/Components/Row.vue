@@ -46,7 +46,11 @@ const price = ref(props.price);
             @error-delete-row-event="(errorData) => $emit('error', errorData)"
         >
         </DeleteCell>
-        <DateCell :date="date" :rowId="rowId" />
+        <DateCell
+            :date="date"
+            :rowId="rowId"
+            @error-date="(errorData) => $emit('error', errorData)"
+        />
         <NameCell
             :name="name"
             :rowId="rowId"
