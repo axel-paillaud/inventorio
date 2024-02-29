@@ -44,7 +44,7 @@ const deleteRow = (rowId) => {
 <template>
     <div class="basis-full xl:basis-4/12 grow">
         <p
-            class="px-6 py-1"
+            class="relative py-4 px-6 left-10"
             :class="colors[color].title"
         >
             {{ name }}
@@ -55,8 +55,7 @@ const deleteRow = (rowId) => {
             scroll-region
         >
             <table
-                class="bg-white sm:rounded-lg w-full
-                border border-separate border-spacing-0"
+                class="bg-white w-full border border-separate border-spacing-0"
             >
                 <thead
                     class="text-left sticky top-0 whitespace-nowrap z-30

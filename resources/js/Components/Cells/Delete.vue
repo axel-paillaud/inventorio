@@ -18,7 +18,7 @@ function submit() {
 </script>
 
 <template>
-    <td ref="cell" class="group border-b border-b-gray-100 h-full"
+    <td ref="cell" class="group border-b border-b-gray-100 h-full w-10"
     >
         <form
             class="relative hover:bg-red-100 transition-all rounded-r-md flex
