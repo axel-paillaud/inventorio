@@ -31,12 +31,14 @@ Route::post('locale', function(Request $request) {
         'language' => ['required'],
     ]);
 
+    dd($request);
+
     App::setLocale($validated['language']);
 
     session()->put('locale', $validated['language']);
 
     return redirect()->back();
-});
+})->name('locale');
 
 Route::middleware('auth')->group(function() {
     Route::get('/inventorio', [TableController::class, 'show'])
