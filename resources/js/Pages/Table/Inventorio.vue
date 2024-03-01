@@ -35,7 +35,7 @@ const setActiveAllTable = () => {
     />
 
     <!-- Show form validation error from Laravel for debugging -->
-    <div v-if="errors">{{ errors }}</div>
+    <!--<div v-if="errors">{{ errors }}</div>-->
 
     <div class="overflow-auto">
         <main
