@@ -12,6 +12,8 @@ use App\Http\Controllers\Inventorio\Cells\QuantityController;
 use App\Http\Controllers\Inventorio\Cells\PriceController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\App;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 Route::get('/', function () {
@@ -21,6 +23,19 @@ Route::get('/', function () {
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
+});
+
+// Change the locale
+Route::post('locale', function(Request $request) {
+    $validated = $request->validate([
+        'language' => ['required'],
+    ]);
+
+    App::setLocale($validated['language']);
+
+    session()->put('locale', $validated['language']);
+
+    return redirect()->back();
 });
 
 Route::middleware('auth')->group(function() {
