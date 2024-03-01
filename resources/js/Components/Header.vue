@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue';
+import { ChevronDown, Languages } from 'lucide-vue-next';
 import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import Date from '@/Components/Date.vue';
@@ -36,7 +37,7 @@ const showingNavigationDropdown = ref(false);
 
                     </div>
 
-                    <div class="flex items-center">
+                    <div class="flex items-center gap-8">
                         <!-- Date Selection -->
                         <Date
                             :dateType="dateType"
@@ -45,10 +46,25 @@ const showingNavigationDropdown = ref(false);
                             :day="day"
                         />
 
+                        <!-- Language Selection -->
+                        <Dropdown width="40">
+                            <template #trigger>
+                                <span class="inline-flex border rounded py-2 px-3 h-10 hover:bg-gray-100">
+                                    <button class="inline-flex gap-1.5 items-center">
+                                        <Languages size="18"/> <ChevronDown size="16"></ChevronDown>
+                                    </button>
+                                </span>
+                            </template>
+                            <template #content>
+                                <DropdownLink> Français </DropdownLink>
+                                <DropdownLink> English </DropdownLink>
+                            </template>
+                        </Dropdown>
+
                         <!-- Profile Dropdown -->
-                        <div class="hidden sm:flex sm:items-center sm:ml-6">
+                        <div class="hidden sm:flex sm:items-center">
                             <!-- Settings Dropdown -->
-                            <div class="ml-3 relative">
+                            <div class="relative">
                                 <Dropdown align="right" width="48">
                                     <template #trigger>
                                         <span class="inline-flex rounded-md">

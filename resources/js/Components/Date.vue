@@ -145,7 +145,7 @@ const formattedMonthAndYear = computed(() => {
             <template #trigger>
                 <button
                     class='flex items-center py-2 px-3 border gap-1.5 rounded
-                    hover:bg-gray-100'
+                    hover:bg-gray-100 h-10'
                 >
                     <span>{{ dateFrenchTranslation[dateType] }}</span>
                     <ChevronDown :size="16"/>
