@@ -10,7 +10,7 @@ class DateController extends Controller
     public function update(Request $request)
     {
         $validated = $request->validate([
-            'date' => ['required', 'date_format:Y-m-d'],
+            'date' => ['required', 'date_format:Y-d'],
             'row_id' => ['required', 'integer', 'exists:table_rows,id'],
         ]);
 

@@ -31,8 +31,6 @@ Route::post('locale', function(Request $request) {
         'language' => ['required'],
     ]);
 
-    dd($request);
-
     App::setLocale($validated['language']);
 
     session()->put('locale', $validated['language']);
