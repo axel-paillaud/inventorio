@@ -10,6 +10,7 @@ import { createI18n } from 'vue-i18n';
 import messages from '@/lang/messages.js';
 
 const i18n = createI18n({
+    legacy: false,
     locale: 'fr',
     fallbackLocale: 'en',
     messages
