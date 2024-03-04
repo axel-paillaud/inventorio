@@ -1,5 +1,6 @@
 <script setup>
-import { computed } from 'vue';
+import { computed, onMounted } from 'vue';
+import { useI18n } from 'vue-i18n'
 import { initDate } from '@/Services/updateDate.js';
 import { UpdateDate } from '@/Services/updateDate.js';
 import { fullDateFormatter, monthFormatter } from '@/Composables/dateFormatter.js';
@@ -17,6 +18,9 @@ const props = defineProps({
     month: Number,
     day: Number,
 });
+
+const { t } = useI18n();
+onMounted(()=>console.log(t('auth.logout')));
 
 const { year, month, day } = initDate(props.year, props.month, props.day);
 
@@ -68,6 +72,7 @@ const formattedMonthAndYear = computed(() => {
 
 <template>
     <div class="flex items-center text-sm gap-4">
+        <span>{{t('auth.logout')}}</span>
         <!-- Date and arrow container -->
         <div
             v-if="dateType === 'always'"
