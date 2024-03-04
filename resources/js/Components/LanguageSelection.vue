@@ -1,14 +1,19 @@
 <script setup>
+import { useI18n } from 'vue-i18n';
 import { ChevronDown, Languages } from 'lucide-vue-next';
 import Dropdown from '@/Components/Dropdown.vue';
 import { router } from '@inertiajs/vue3';
 
+const { locale } = useI18n();
+
 const selectFrench = () => {
-    router.post('locale', { language: 'fr'});
+    router.post('/locale', { language: 'fr'});
+    locale.value = "fr";
 }
 
 const selectEnglish = () => {
-    router.post('locale', { language: 'en'});
+    router.post('/locale', { language: 'en'});
+    locale.value = "en";
 }
 
 </script>

@@ -20,7 +20,6 @@ const props = defineProps({
 });
 
 const { t } = useI18n();
-onMounted(()=>console.log(t('auth.logout')));
 
 const { year, month, day } = initDate(props.year, props.month, props.day);
 
@@ -72,7 +71,6 @@ const formattedMonthAndYear = computed(() => {
 
 <template>
     <div class="flex items-center text-sm gap-4">
-        <span>{{t('auth.logout')}}</span>
         <!-- Date and arrow container -->
         <div
             v-if="dateType === 'always'"
@@ -152,35 +150,43 @@ const formattedMonthAndYear = computed(() => {
                     class='flex items-center py-2 px-3 border gap-1.5 rounded
                     hover:bg-gray-100 h-10'
                 >
-                    <span>{{ dateFrenchTranslation[dateType] }}</span>
+                    <i18n-t
+                        :keypath="`date.${dateType}`"
+                        tag="span"
+                        class="first-letter:capitalize">
+                    </i18n-t>
                     <ChevronDown :size="16"/>
                 </button>
             </template>
             <template #content>
                 <div class="flex flex-col">
                     <DropdownLink
+                        class="capitalize"
                         @click="dateType = 'day'"
                         :href="route('inventorio.day', { year, month, day } )"
                     >
-                        Jour
+                        {{ t('date.day') }}
                     </DropdownLink>
                     <DropdownLink
+                        class="capitalize"
                         @click="dateType = 'month'"
                         :href="route('inventorio.month', { year, month } )"
                     >
-                        Mois
+                        {{ t('date.month') }}
                     </DropdownLink>
                     <DropdownLink
+                        class="capitalize"
                         @click="dateType = 'year'"
                         :href="route('inventorio.year', { year } )"
                     >
-                        Année
+                        {{ t('date.year') }}
                     </DropdownLink>
                     <DropdownLink
+                        class="first-letter:capitalize"
                         @click="dateType = 'always'"
                         :href="route('inventorio')"
                     >
-                        Depuis toujours
+                        {{ t('date.always') }}
                     </DropdownLink>
                 </div>
             </template>
