@@ -17,8 +17,7 @@ class TableRowFactory extends Factory
      */
     public function definition(): array
     {
-        // $states = ['Neuf', 'Occasion', 'A réparer'];
-        $states = ['unused', 'second-hand', 'to fix'];
+        $states = ['Unused', 'Second-hand', 'To fix'];
 
         return [
             'table_id' => Table::inRandomOrder()->first()->id,

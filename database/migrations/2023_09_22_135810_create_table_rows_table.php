@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamps();
             $table->date('date')->default('2023-01-01');
             $table->string('name')->default('');
-            $table->enum('state', ['unused', 'second-hand', 'to fix'])->default('unused');
+            $table->enum('state', ['Unused', 'Second-hand', 'To fix'])->default('unused');
             $table->integer('quantity')->default('0');
             $table->float('price', 9, 2)->default('0.0');
         });

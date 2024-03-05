@@ -10,7 +10,7 @@ class StateController extends Controller
     public function update(Request $request)
     {
         $validated = $request->validate([
-            'state' => ['required', 'in:unused,second-hand,to fix'],
+            'state' => ['required', 'in:Unused,Second-hand,To fix'],
             'row_id' => ['required', 'integer', 'exists:table_rows,id'],
         ]);
 
