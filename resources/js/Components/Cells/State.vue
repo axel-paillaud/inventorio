@@ -19,6 +19,8 @@ const form = useForm({
 });
 
 function submitCellData() {
+    console.log(props.state);
+    console.log(initState);
     form.post('/inventorio/cells/state', {
         preserveScroll: true,
         onError: error => {
@@ -46,9 +48,9 @@ function submitCellData() {
             bg-gray-50 border-gray-500"
             v-model="form.state"
         >
-            <option value="Neuf">Neuf</option>
-            <option value="Occasion">Occasion</option>
-            <option value="A réparer">A réparer</option>
+            <option value="unused">unused</option>
+            <option value="second-hand">second-hand</option>
+            <option value="to fix">to fix</option>
         </select>
 
         <div class="py-3 px-6 whitespace-nowrap"
