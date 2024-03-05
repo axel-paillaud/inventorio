@@ -149,11 +149,9 @@ const formattedMonthAndYear = computed(() => {
                     class='flex items-center py-2 px-3 border gap-1.5 rounded
                     hover:bg-gray-100 h-10'
                 >
-                    <i18n-t
-                        :keypath="`date.${dateType}`"
-                        tag="span"
-                        class="first-letter:capitalize">
-                    </i18n-t>
+                    <span class="first-letter:capitalize">
+                        {{ t(`date.${dateType}`) }}
+                    </span>
                     <ChevronDown :size="16"/>
                 </button>
             </template>

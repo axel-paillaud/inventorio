@@ -72,7 +72,7 @@ const deleteRow = (rowId) => {
                         <th class="py-3 px-6 border-b capitalize">{{ t('table.columnName.state') }}</th>
                         <th class="py-3 px-6 border-b capitalize">{{ t('table.columnName.quantity') }}</th>
                         <th class="py-3 px-6 border-b capitalize">{{ t('table.columnName.price') }}</th>
-                        <th class="py-3 px-6 border-b capitalize">Total</th>
+                        <th class="py-3 px-6 border-b">Total</th>
                     </tr>
                 </thead>
                 <tfoot class="sticky bottom-0 bg-white z-30">
