@@ -45,15 +45,15 @@ function submitCellData() {
             @change="submitCellData"
             v-show="isActive"
             class="py-3 px-6 w-full focus:ring-0 absolute inset-0 z-60 min-w-[130px]
-            bg-gray-50 border-gray-500 capitalize"
+            bg-gray-50 border-gray-500"
             v-model="form.state"
         >
-            <option class="capitalize" value="unused">unused</option>
-            <option value="second-hand">second-hand</option>
-            <option value="to fix">to fix</option>
+            <option value="Unused">Unused</option>
+            <option value="Second-hand">Second-hand</option>
+            <option value="To fix">To fix</option>
         </select>
 
-        <div class="py-3 px-6 whitespace-nowrap first-letter:capitalize"
+        <div class="py-3 px-6 whitespace-nowrap"
             :class="{ invisible: isActive }"
         >
             {{ form.state }}
