@@ -5,6 +5,7 @@ export default {
         },
         auth: {
             logout: "log out",
+            profile: "profile",
         },
         date: {
             always: 'always',
@@ -19,6 +20,7 @@ export default {
         },
         auth: {
             logout: "déconnexion",
+            profile: "profil",
         },
         date: {
             always: 'depuis toujours',

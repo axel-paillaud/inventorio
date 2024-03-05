@@ -1,10 +1,9 @@
 <script setup>
-import { computed, onMounted } from 'vue';
+import { computed } from 'vue';
 import { useI18n } from 'vue-i18n'
 import { initDate } from '@/Services/updateDate.js';
 import { UpdateDate } from '@/Services/updateDate.js';
 import { fullDateFormatter, monthFormatter } from '@/Composables/dateFormatter.js';
-import { dateFrenchTranslation } from '@/Services/englishToFrench';
 import { ChevronLeft } from 'lucide-vue-next';
 import { ChevronRight } from 'lucide-vue-next';
 import { ChevronDown } from 'lucide-vue-next';
