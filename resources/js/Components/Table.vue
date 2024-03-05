@@ -1,5 +1,6 @@
 <script setup>
 import { ref, nextTick, watch } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { buildDefaultDate } from '@/Composables/buildDefaultDate';
 import Row from '@/Components/Row.vue';
 import Total from '@/Components/Cells/TableTotal.vue';
@@ -15,6 +16,8 @@ const props = defineProps({
     name: String,
     color: {type: String, default: 'gray'},
 });
+
+const { t } = useI18n();
 
 const error = ref(null);
 
@@ -64,12 +67,12 @@ const deleteRow = (rowId) => {
                 >
                     <tr>
                         <th></th>
-                        <th class="py-3 px-6 border-b">Date</th>
-                        <th class="py-3 px-6 border-b">Nom</th>
-                        <th class="py-3 px-6 border-b">État</th>
-                        <th class="py-3 px-6 border-b">Quantité</th>
-                        <th class="py-3 px-6 border-b">Prix Unitaire</th>
-                        <th class="py-3 px-6 border-b">Total</th>
+                        <th class="py-3 px-6 border-b capitalize">{{ t('table.columnName.date') }}</th>
+                        <th class="py-3 px-6 border-b capitalize">{{ t('table.columnName.name') }}</th>
+                        <th class="py-3 px-6 border-b capitalize">{{ t('table.columnName.state') }}</th>
+                        <th class="py-3 px-6 border-b capitalize">{{ t('table.columnName.quantity') }}</th>
+                        <th class="py-3 px-6 border-b capitalize">{{ t('table.columnName.price') }}</th>
+                        <th class="py-3 px-6 border-b capitalize">Total</th>
                     </tr>
                 </thead>
                 <tfoot class="sticky bottom-0 bg-white z-30">

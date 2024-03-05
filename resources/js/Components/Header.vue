@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue';
+import { useI18n } from 'vue-i18n';
 import LanguageSelection from '@/Components/LanguageSelection.vue';
 import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
@@ -13,6 +14,8 @@ const props = defineProps({
     month: Number,
     day: Number
 });
+
+const { t } = useI18n();
 
 const showingNavigationDropdown = ref(false);
 
@@ -81,9 +84,17 @@ const showingNavigationDropdown = ref(false);
                                     </template>
 
                                     <template #content>
-                                        <DropdownLink :href="route('profile.edit')"> Profile </DropdownLink>
-                                        <DropdownLink :href="route('logout')" method="post" as="button">
-                                            Log Out
+                                        <DropdownLink
+                                            class="first-letter:capitalize"
+                                            :href="route('profile.edit')"
+                                        >
+                                            {{ t('auth.profile') }}
+                                        </DropdownLink>
+                                        <DropdownLink
+                                            class="first-letter:capitalize"
+                                            :href="route('logout')" method="post" as="button"
+                                        >
+                                            {{ t('auth.logout') }}
                                         </DropdownLink>
                                     </template>
                                 </Dropdown>

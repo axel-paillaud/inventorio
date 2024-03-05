@@ -1,10 +1,13 @@
 <script setup>
 import { ref, watch } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useForm } from '@inertiajs/vue3';
 import { Plus, ChevronDown } from 'lucide-vue-next';
 import Dropdown from '@/Components/Dropdown.vue';
 import colors from '@/Services/ColorService.js';
 import { colorFrenchTranslation } from '@/Services/englishToFrench';
+
+const { t } = useI18n();
 
 const modal = ref(null);
 const selectColor = ref(null);
@@ -49,7 +52,7 @@ const closeModalWithBackdrop = (e) => {
         class="flex items-center gap-1.5 px-3 py-2 border rounded
         hover:bg-gray-100"
     >
-        Créer un tableau
+        <span class="first-letter:capitalize">{{ t('table.create') }}</span>
         <Plus size="16"/>
     </button>
     <dialog
