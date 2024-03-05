@@ -39,7 +39,6 @@ const emit = defineEmits({
                 <div class="flex gap-4">
                     <FilterAll
                         :tables="tables"
-                        name="Tout"
                         color="gray"
                         @click="$emit('toggleAllTable')"
                     />
