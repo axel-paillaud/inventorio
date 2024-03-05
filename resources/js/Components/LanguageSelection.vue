@@ -1,10 +1,16 @@
 <script setup>
+import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { ChevronDown, Languages } from 'lucide-vue-next';
 import Dropdown from '@/Components/Dropdown.vue';
-import { router } from '@inertiajs/vue3';
+import { router, usePage } from '@inertiajs/vue3';
+
+const page = usePage()
+const localeSession = computed(() => page.props.locale);
 
 const { locale } = useI18n();
+
+locale.value = localeSession.value;
 
 const selectFrench = () => {
     router.post('/locale', { language: 'fr'});
