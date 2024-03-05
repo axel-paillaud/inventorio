@@ -13,6 +13,9 @@ export default {
             month: 'month',
             day: 'day',
         },
+        quantity: {
+            all: 'all',
+        },
         table: {
             create: 'create a table',
             columnName: {
@@ -21,6 +24,13 @@ export default {
                 state: 'state',
                 quantity: 'quantity',
                 price: 'unit price',
+            },
+            cell: {
+                state: {
+                    'Unused': 'Unused',
+                    'Second-hand': 'Second-hand',
+                    'To fix': 'To fix',
+                },
             }
         },
     },
@@ -38,6 +48,9 @@ export default {
             month: 'mois',
             day: 'jour',
         },
+        quantity: {
+            all: 'tout',
+        },
         table: {
             create: 'créer un tableau',
             columnName: {
@@ -46,7 +59,14 @@ export default {
                 state: 'état',
                 quantity: 'quantité',
                 price: 'prix unitaire',
-            }
+            },
+            cell: {
+                state: {
+                    'Unused': 'Neuf',
+                    'Second-hand': 'Occasion',
+                    'To fix': 'A réparer',
+                },
+            },
         }
     }
 }

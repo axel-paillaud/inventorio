@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useForm } from '@inertiajs/vue3';
 import InputOverlay from '@/Components/InputOverlay.vue';
 
@@ -7,6 +8,8 @@ const props = defineProps({
     state: String,
     rowId: Number,
 });
+
+const { t } = useI18n();
 
 const emit = defineEmits(['errorState']);
 
@@ -19,8 +22,6 @@ const form = useForm({
 });
 
 function submitCellData() {
-    console.log(props.state);
-    console.log(initState);
     form.post('/inventorio/cells/state', {
         preserveScroll: true,
         onError: error => {
@@ -48,15 +49,15 @@ function submitCellData() {
             bg-gray-50 border-gray-500"
             v-model="form.state"
         >
-            <option value="Unused">Unused</option>
-            <option value="Second-hand">Second-hand</option>
-            <option value="To fix">To fix</option>
+            <option value="Unused">{{ t('table.cell.state.Unused') }}</option>
+            <option value="Second-hand">{{ t('table.cell.state.Second-hand') }}</option>
+            <option value="To fix">{{ t('table.cell.state.To fix') }}</option>
         </select>
 
         <div class="py-3 px-6 whitespace-nowrap"
             :class="{ invisible: isActive }"
         >
-            {{ form.state }}
+            {{ t(`table.cell.state.${form.state}`) }}
         </div>
 </td>
 </template>
