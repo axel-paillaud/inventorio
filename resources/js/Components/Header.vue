@@ -43,6 +43,7 @@ const showingNavigationDropdown = ref(false);
                     <div class="flex items-center gap-8">
                         <!-- Date Selection -->
                         <Date
+                            v-if="dateType"
                             :dateType="dateType"
                             :year="year"
                             :month="month"
