@@ -61,15 +61,17 @@ const closeModalWithBackdrop = (e) => {
         class="rounded-md text-gray-700 backdrop:bg-stone-400 backdrop:opacity-60
         shadow-md overflow-visible animate-zoom-in"
     >
-        <div class="px-16 py-8 border-b border-stone-300">
-            Ajouter un nouveau tableau
+        <div class="px-16 py-8 border-b border-stone-300 first-letter:capitalize">
+            {{ t('table.add') }}
         </div>
         <form
             method="dialog"
             class="px-16 py-12 flex flex-col gap-10"
         >
             <div class="flex flex-col gap-3">
-                <label for="table-name">Nom du tableau</label>
+                <label for="table-name" class="first-letter:capitalize">
+                    {{ t('table.name') }}
+                </label>
                 <input
                     v-model="form.name"
                     id="table-name"
@@ -91,16 +93,16 @@ const closeModalWithBackdrop = (e) => {
                                 v-if="selectColor"
                                 class="flex items-center justify-between w-full"
                             >
-                                <button class="capitalize">
-                                    {{ colorFrenchTranslation[selectColor.name] }}
+                                <button class="first-letter:capitalize">
+                                    {{ t(`color.${selectColor.name}`) }}
                                 </button>
                                 <div
                                     class="w-20 h-5 rounded"
                                     :class="selectColor.color">
                                 </div>
                             </div>
-                            <button v-else type="button">
-                                Couleur
+                            <button v-else type="button" class="first-letter:capitalize">
+                                {{ t('table.color') }}
                             </button>
                             <ChevronDown :size="16" />
                         </span>
@@ -111,8 +113,8 @@ const closeModalWithBackdrop = (e) => {
                             <div
                                 class="px-3 py-2 flex items-center justify-between
                                 hover:bg-gray-100 transition hover:cursor-pointer">
-                                <span class="capitalize">
-                                    {{ colorFrenchTranslation[color.name] }}
+                                <span class="first-letter:capitalize">
+                                    {{ t(`color.${color.name}`) }}
                                 </span>
                                 <div class="w-20 h-5 rounded" :class="color.color"></div>
                             </div>
@@ -122,12 +124,12 @@ const closeModalWithBackdrop = (e) => {
             </div>
             <button
                 class="border border-stone-300 rounded px-3 py-2 bg-white
-                hover:bg-gray-100 transition mb-2"
+                hover:bg-gray-100 transition mb-2 capitalize"
                 type="submit"
                 @click.prevent="submit"
                 :disabled="!form.name && !form.color"
             >
-                Créer
+                {{ t('crud.create') }}
             </button>
         </form>
     </dialog>
