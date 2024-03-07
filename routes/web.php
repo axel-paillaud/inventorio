@@ -64,10 +64,10 @@ Route::post('/inventorio/api/row/delete', [RowController::class, 'delete'])
 Route::post('/inventorio/api/table/create', [TableController::class, 'create'])
     ->middleware(['auth', 'verified']);
 
-Route::post('/inventorio/filter', [ToggleTableController::class, 'update'])
+Route::post('/inventorio/toggle', [ToggleTableController::class, 'update'])
     ->middleware(['auth', 'verified']);
 
-Route::post('/inventorio/filters', [ToggleAllTableController::class, 'update'])
+Route::post('/inventorio/toggles', [ToggleAllTableController::class, 'update'])
     ->middleware(['auth', 'verified']);
 
 Route::middleware('auth', 'verified')->group(function() {

@@ -22,7 +22,7 @@ const classFilter = computed(() => ({
 
 function submitToggleTable() {
     form.post(
-        '/inventorio/filter',
+        '/inventorio/toggle',
         {preserveScroll: true}
     )
 }
