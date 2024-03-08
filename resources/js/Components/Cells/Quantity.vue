@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-import useFocus from '@/Composables/useFocus';
+import useFocus from '@/Composables/focus';
 import { useForm } from '@inertiajs/vue3';
 import InputOverlay from '@/Components/InputOverlay.vue';
 import { isPositiveInteger } from '@/Composables/validators/integer';

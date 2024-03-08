@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed } from 'vue';
-import useFocus from '@/Composables/useFocus';
+import useFocus from '@/Composables/focus';
 import InputOverlay from '@/Components/InputOverlay.vue';
 import { isDateValid } from '@/Composables/validators/date';
 import { useForm } from '@inertiajs/vue3';
