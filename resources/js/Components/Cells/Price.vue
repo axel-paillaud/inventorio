@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed } from 'vue';
+import useFocus from '@/Composables/useFocus.js';
 import { useForm } from '@inertiajs/vue3';
 import { formatter } from '@/Composables/currencyFormatter';
 import { isNumber } from '@/Composables/validators/integer';
@@ -24,7 +25,12 @@ const emit = defineEmits({
 });
 
 const isActive = ref(false);
+const inputPrice = ref(null);
+
+useFocus(isActive, inputPrice);
+
 let initPrice = props.price;
+
 
 const form = useForm({
     row_id: props.rowId,
@@ -63,6 +69,7 @@ function submitCellData() {
     >
         <InputOverlay :isActive="isActive" @closeCell="isActive = false" />
         <input
+            ref="inputPrice"
             @change="submitCellData"
             @input="updatePrice(form.price)"
             class="py-3 px-6 w-full h-full focus:ring-0 absolute inset-0 z-60

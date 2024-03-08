@@ -14,6 +14,7 @@ const { t } = useI18n();
 const emit = defineEmits(['errorState']);
 
 const isActive = ref(false);
+
 let initState = props.state;
 
 const form = useForm({

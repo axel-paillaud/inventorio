@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed } from 'vue';
+import useFocus from '@/Composables/useFocus.js';
 import InputOverlay from '@/Components/InputOverlay.vue';
 import { isDateValid } from '@/Composables/validators/date';
 import { useForm } from '@inertiajs/vue3';
@@ -12,6 +13,10 @@ const props = defineProps({
 const emit = defineEmits(['errorDate']);
 
 const isActive = ref(false);
+const inputDate = ref(null);
+
+useFocus(isActive, inputDate);
+
 let initDate = props.date;
 
 const formattedDate = computed(() => {
@@ -45,6 +50,7 @@ function submitCellData() {
     >
         <InputOverlay :isActive="isActive"  @closeCell="isActive = false" />
         <input
+            ref="inputDate"
             @change="submitCellData"
             v-show="isActive"
             class="py-3 px-6 focus:ring-0 transition-colors absolute inset-0 w-48

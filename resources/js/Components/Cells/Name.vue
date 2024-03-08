@@ -1,8 +1,8 @@
 <script setup>
-import { ref, watch } from 'vue';
+import { ref } from 'vue';
 import { useForm } from '@inertiajs/vue3';
+import useFocus from '@/Composables/useFocus.js';
 import InputOverlay from '@/Components/InputOverlay.vue';
-import { nextTick } from 'vue';
 
 const props = defineProps({
     name: String,
@@ -14,12 +14,7 @@ const emit = defineEmits(['errorName']);
 const textarea = ref(null);
 const isActive = ref(false);
 
-watch(isActive, async (newValue) => {
-    if (newValue) {
-        await nextTick();
-        textarea.value.focus();
-    }
-});
+useFocus(isActive, textarea);
 
 let initName = props.name;
 
