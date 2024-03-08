@@ -10,21 +10,15 @@ const props = defineProps({
     isActive: Boolean,
 })
 
-
 const form = useForm({
     'id': props.tableId,
     'isActive': props.isActive,
 });
 
-/* const classFilter = computed(() => ({
+const classFilter = computed(() => ({
     [colors[props.color].filter]: true,
-    [colors[props.color].bg]: form.isActive,
-})); */
-
-const classFilter = ref({
-    [colors[props.color].filter]: true,
-    [colors[props.color].bg]: form.isActive,
-});
+    [colors[props.color].bg]: props.isActive,
+}));
 
 function submitToggleTable() {
     form.isActive = !form.isActive;
