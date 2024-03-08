@@ -40,7 +40,7 @@ const showingTableFilter = ref(false);
         <!-- Responsive filter list -->
         <div
             v-show="showingTableFilter"
-            class="px-4 py-3 flex flex-col gap-4"
+            class="px-4 py-3 flex sm:hidden flex-col gap-4"
         >
             <Filter v-for="table in tables"
                 data-testid="filter-component"
