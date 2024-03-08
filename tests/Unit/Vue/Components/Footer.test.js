@@ -1,20 +1,13 @@
-import { mount } from '@vue/test-utils';
-import { createI18n, useI18n } from 'vue-i18n';
+import { mount, config } from '@vue/test-utils';
+import { createI18n } from 'vue-i18n';
 import Footer from '@/Components/Footer.vue';
-import Filter from '@/Components/Filter.vue';
+
+const i18n = createI18n({
+    legacy: false,
+});
+config.global.plugins = [i18n];
 
 describe('Footer', () => {
-    const i18n = createI18n({
-        locale: 'fr',
-        messages: {
-            'en-US': {
-                table: {
-                    create: 'Create Table',
-                },
-            },
-        },
-    });
-
     const tables = [
         {id: 1, name: 'foo', color: 'blue', isActive: true},
         {id: 2, name: 'bar', color: 'red', isActive: true},
@@ -25,9 +18,6 @@ describe('Footer', () => {
     test('Click on filter always emits toggleTable with table id', async () => {
         const wrapper = mount(Footer, {
             props: {tables},
-            global: {
-                plugins: [i18n],
-            },
         });
 
         const filtersComponent = wrapper.findAllComponents('[data-testid="filter-component"]');
