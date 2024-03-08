@@ -101,7 +101,7 @@ const formattedMonthAndYear = computed(() => {
             v-else-if="dateType === 'month'"
             class="flex items-center gap-4"
         >
-            <span>{{ formattedMonthAndYear }}</span>
+            <span class="whitespace-nowrap">{{ formattedMonthAndYear }}</span>
             <!-- Arrow container -->
             <div class="flex items-center gap-1.5">
                 <!-- We need preverveState and preserveScroll ? -->
@@ -124,11 +124,9 @@ const formattedMonthAndYear = computed(() => {
             v-else="dateType === 'day'"
             class="flex items-center gap-4"
         >
-            <span>{{ formattedFullDate }}</span>
+            <span class="whitespace-nowrap">{{ formattedFullDate }}</span>
             <!-- Arrow container -->
             <div class="flex items-center gap-1.5">
-                <!-- We need preverveState and preserveScroll ? -->
-                <!-- See partial reloads -->
                 <button
                     class="rounded-full hover:bg-gray-100 p-1.5"
                     @click="updateAndGetDay.decrease()"

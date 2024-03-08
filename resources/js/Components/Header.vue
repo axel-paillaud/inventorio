@@ -44,7 +44,7 @@ const showingNavigationDropdown = ref(false);
                     <div class="flex items-center gap-8">
                         <!-- Date Selection -->
                         <Date
-                            v-if="dateType"
+                            class="hidden sm:flex"
                             :dateType="dateType"
                             :year="year"
                             :month="month"
@@ -104,7 +104,7 @@ const showingNavigationDropdown = ref(false);
                         </div>
 
                         <!-- Hamburger -->
-                        <div class="-mr-2 flex items-center sm:hidden">
+                        <div class="flex items-center sm:hidden">
                             <button
                                 @click="showingNavigationDropdown = !showingNavigationDropdown"
                                 class="inline-flex items-center justify-center p-2 rounded
