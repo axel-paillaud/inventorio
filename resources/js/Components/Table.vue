@@ -47,7 +47,7 @@ const deleteRow = (rowId) => {
 <template>
     <div class="w-full lg:basis-4/12 grow">
         <p
-            class="relative py-4 px-6 left-10"
+            class="py-4 px-16"
             :class="colors[color].title"
         >
             {{ name }}
