@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import { useForm } from '@inertiajs/vue3';
-import useFocus from '@/Composables/useFocus.js';
+import useFocus from '@/Composables/useFocus';
 import InputOverlay from '@/Components/InputOverlay.vue';
 
 const props = defineProps({

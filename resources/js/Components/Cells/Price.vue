@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed } from 'vue';
-import useFocus from '@/Composables/useFocus.js';
+import useFocus from '@/Composables/useFocus';
 import { useForm } from '@inertiajs/vue3';
 import { formatter } from '@/Composables/currencyFormatter';
 import { isNumber } from '@/Composables/validators/integer';
