@@ -30,7 +30,7 @@ const showingNavigationDropdown = ref(false);
                 <div class="flex justify-between h-16">
                     <div class="flex">
                         <!-- Homepage -->
-                        <div class="shrink-0 flex items-center">
+                        <div class="hidden shrink-0 sm:flex sm:items-center">
                             <Link
                                 :href="route('inventorio')"
                                 @click="dateType = 'always'"
@@ -102,19 +102,20 @@ const showingNavigationDropdown = ref(false);
                                 </Dropdown>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Hamburger -->
-                    <div class="-mr-2 flex items-center sm:hidden">
-                        <button
-                            @click="showingNavigationDropdown = !showingNavigationDropdown"
-                            class="inline-flex items-center justify-center p-2 rounded
-                            hover:bg-gray-100 transition duration-150 ease-in-out border h-10"
-                            :class="showingNavigationDropdown ? 'bg-gray-100' : ''"
-                        >
-                            <Menu v-show="!showingNavigationDropdown"/>
-                            <X v-show="showingNavigationDropdown" />
-                        </button>
+                        <!-- Hamburger -->
+                        <div class="-mr-2 flex items-center sm:hidden">
+                            <button
+                                @click="showingNavigationDropdown = !showingNavigationDropdown"
+                                class="inline-flex items-center justify-center p-2 rounded
+                                hover:bg-gray-100 transition duration-150 ease-in-out border h-10"
+                                :class="showingNavigationDropdown ? 'bg-gray-100' : ''"
+                            >
+                                <Menu v-show="!showingNavigationDropdown"/>
+                                <X v-show="showingNavigationDropdown" />
+                            </button>
+                        </div>
+
                     </div>
                 </div>
             </div>
