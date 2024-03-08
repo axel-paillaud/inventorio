@@ -1,7 +1,8 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import { useForm } from '@inertiajs/vue3';
 import InputOverlay from '@/Components/InputOverlay.vue';
+import { nextTick } from 'vue';
 
 const props = defineProps({
     name: String,
@@ -10,9 +11,18 @@ const props = defineProps({
 
 const emit = defineEmits(['errorName']);
 
+const textarea = ref(null);
+const isActive = ref(false);
+
+watch(isActive, async (newValue) => {
+    if (newValue) {
+        await nextTick();
+        textarea.value.focus();
+    }
+});
+
 let initName = props.name;
 
-const isActive = ref(false);
 
 const form = useForm({
     row_id: props.rowId,
@@ -41,6 +51,7 @@ function submitCellData() {
     >
         <InputOverlay :isActive="isActive" @closeCell="isActive = false" />
         <textarea
+            ref="textarea"
             @change="submitCellData"
             v-show="isActive"
             class="py-3 px-6 absolute top-0 left-0 w-full z-60 h-fit min-h-full
