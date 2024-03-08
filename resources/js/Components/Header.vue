@@ -143,7 +143,7 @@ const showingNavigationDropdown = ref(false);
             >
                 <div class="pt-2 pb-3 space-y-1">
                     <ResponsiveNavLink :href="route('inventorio')" :active="route().current('inventorio')">
-                        Dashboard
+                        Inventorio
                     </ResponsiveNavLink>
                 </div>
 
