@@ -1,7 +1,7 @@
 <script setup>
 import { ref, nextTick, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { buildDefaultDate } from '@/Composables/buildDefaultDate';
+import { buildDefaultDate } from '@/Services/buildDefaultDate';
 import Row from '@/Components/Row.vue';
 import Total from '@/Components/Cells/TableTotal.vue';
 import CreateNewRow from '@/Components/CreateNewRow.vue';
