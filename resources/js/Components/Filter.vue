@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, watch } from 'vue';
+import { computed } from 'vue';
 import colors from '@/Services/ColorService';
 import { useForm } from '@inertiajs/vue3';
 
@@ -35,7 +35,7 @@ function submitToggleTable() {
         <button
             data-testid="filter-button"
             :class="classFilter"
-            class="transition-colors px-3 py-2 border rounded"
+            class="transition-colors px-3 py-2 border rounded whitespace-nowrap"
             type="submit"
         >
             {{ name }}
