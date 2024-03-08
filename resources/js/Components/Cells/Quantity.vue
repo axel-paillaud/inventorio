@@ -3,7 +3,7 @@ import { ref } from 'vue';
 import useFocus from '@/Composables/focus';
 import { useForm } from '@inertiajs/vue3';
 import InputOverlay from '@/Components/InputOverlay.vue';
-import { isPositiveInteger } from '@/Composables/validators/integer';
+import { isPositiveInteger } from '@/validators/integer';
 
 const props = defineProps({
     quantity: Number,

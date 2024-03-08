@@ -1,5 +1,5 @@
 <script setup>
-import { isPositiveInteger } from '@/Composables/validators/integer';
+import { isPositiveInteger } from '@/validators/integer';
 import CreateNewTable from '@/Components/CreateNewTable.vue';
 import FilterAll from '@/Components/FilterAll.vue';
 import Filter from '@/Components/Filter.vue';

@@ -1,4 +1,4 @@
-import { isDateValid } from '@/Composables/validators/date';
+import { isDateValid } from '@/validators/date';
 
 describe('isDateValid', () => {
 

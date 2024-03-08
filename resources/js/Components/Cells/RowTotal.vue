@@ -1,7 +1,7 @@
 <script setup>
 import { computed, watch } from 'vue';
 import { formatter } from '@/Services/currencyFormatter.js'
-import { isNumber } from '@/Composables/validators/integer';
+import { isNumber } from '@/validators/integer';
 
 const props = defineProps({
     quantity: Number,

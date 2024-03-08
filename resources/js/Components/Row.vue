@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-import { isNumber } from '@/Composables/validators/integer';
+import { isNumber } from '@/validators/integer';
 import DeleteCell from '@/Components/Cells/Delete.vue';
 import DateCell from '@/Components/Cells/Date.vue';
 import NameCell from '@/Components/Cells/Name.vue';

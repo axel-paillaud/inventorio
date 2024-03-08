@@ -1,5 +1,5 @@
-import { isPositiveInteger } from '@/Composables/validators/integer';
-import { isNumber } from '@/Composables/validators/integer';
+import { isPositiveInteger } from '@/validators/integer';
+import { isNumber } from '@/validators/integer';
 
 describe('isPositiveInteger', () => {
     test('Return true when input is positive integer', () => {

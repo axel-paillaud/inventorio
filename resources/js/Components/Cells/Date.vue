@@ -2,7 +2,7 @@
 import { ref, computed } from 'vue';
 import useFocus from '@/Composables/focus';
 import InputOverlay from '@/Components/InputOverlay.vue';
-import { isDateValid } from '@/Composables/validators/date';
+import { isDateValid } from '@/validators/date';
 import { useForm } from '@inertiajs/vue3';
 
 const props = defineProps({
