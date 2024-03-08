@@ -1,4 +1,5 @@
 import { mount } from '@vue/test-utils';
+import { useI18n } from 'vue-i18n';
 import Footer from '@/Components/Footer.vue';
 import Filter from '@/Components/Filter.vue';
 

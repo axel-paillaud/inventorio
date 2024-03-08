@@ -5,7 +5,6 @@ import { useForm } from '@inertiajs/vue3';
 import { Plus, ChevronDown } from 'lucide-vue-next';
 import Dropdown from '@/Components/Dropdown.vue';
 import colors from '@/Services/ColorService.js';
-import { colorFrenchTranslation } from '@/Services/englishToFrench';
 
 const { t } = useI18n();
 
