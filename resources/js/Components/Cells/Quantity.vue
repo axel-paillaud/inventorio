@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue';
+import useFocus from '@/Composables/useFocus';
 import { useForm } from '@inertiajs/vue3';
 import InputOverlay from '@/Components/InputOverlay.vue';
 import { isPositiveInteger } from '@/Composables/validators/integer';
@@ -22,6 +23,11 @@ const emit = defineEmits({
     errorQuantity: null,
 });
 
+const isActive = ref(false);
+const inputQuantity = ref(null);
+
+useFocus(isActive, inputQuantity);
+
 let initQuantity = props.quantity;
 
 const form = useForm({
@@ -29,7 +35,6 @@ const form = useForm({
     quantity: props.quantity,
 });
 
-const isActive = ref(false);
 
 function updateQuantity(quantity) {
     if (isPositiveInteger(quantity)) {
@@ -59,6 +64,7 @@ function submitCellData() {
     >
         <InputOverlay :isActive="isActive" @closeCell="isActive = false" />
         <input
+            ref="inputQuantity"
             @change="submitCellData"
             @input="updateQuantity(form.quantity)"
             class="py-3 px-6 w-full h-full focus:ring-0 absolute inset-0 z-60
