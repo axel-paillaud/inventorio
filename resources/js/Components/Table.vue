@@ -45,7 +45,7 @@ const deleteRow = (rowId) => {
 </script>
 
 <template>
-    <div class="basis-full xl:basis-4/12 grow">
+    <div class="w-full lg:basis-4/12 grow">
         <p
             class="relative py-4 px-6 left-10"
             :class="colors[color].title"
