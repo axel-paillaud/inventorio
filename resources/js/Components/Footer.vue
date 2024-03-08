@@ -79,6 +79,7 @@ const showingTableFilter = ref(false);
                 <div class="flex sm:hidden">
                     <button class="border border-gray-200 hover:bg-gray-100 transition-colors
                         px-3 py-2 rounded capitalize flex items-center gap-1.5"
+                        :class="showingTableFilter ? 'bg-gray-100' : ''"
                         @click="showingTableFilter = !showingTableFilter"
                     >
                         <ListFilter v-show="!showingTableFilter" size="16" />
