@@ -35,7 +35,7 @@ const showingTableFilter = ref(false);
     </div>
     <footer
         class="bg-white border-t border-gray-100 fixed bottom-0 left-0 right-0
-        z-70"
+        z-70 overflow-x-scroll"
     >
         <!-- Responsive filter list -->
         <div

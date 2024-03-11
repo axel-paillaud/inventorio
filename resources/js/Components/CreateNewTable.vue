@@ -49,7 +49,7 @@ const closeModalWithBackdrop = (e) => {
     <button
         @click="openModal"
         class="flex items-center gap-1.5 px-3 py-2 border rounded
-        hover:bg-gray-100"
+        hover:bg-gray-100 ml-4"
     >
         <span class="first-letter:capitalize whitespace-nowrap">{{ t('table.create') }}</span>
         <Plus size="16"/>
