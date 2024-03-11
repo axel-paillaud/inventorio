@@ -161,9 +161,11 @@ watch(showingNavigationDropdown, (newValue) => {
                         <div class="font-medium text-sm text-gray-500">{{ $page.props.auth.user.email }}</div>
                     </div>
 
-                    <ResponsiveNavLink :href="route('profile.edit')"> Profile </ResponsiveNavLink>
-                    <ResponsiveNavLink :href="route('logout')" method="post" as="button">
-                        Log Out
+                    <ResponsiveNavLink :href="route('profile.edit')" class="first-letter:capitalize">
+                        {{ t('auth.profile') }}
+                    </ResponsiveNavLink>
+                    <ResponsiveNavLink :href="route('logout')" method="post" as="button" class="first-letter:capitalize">
+                        {{ t('auth.logout') }}
                     </ResponsiveNavLink>
                 </div>
             </div>
