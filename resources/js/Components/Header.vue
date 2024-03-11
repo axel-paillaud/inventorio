@@ -144,7 +144,7 @@ watch(showingNavigationDropdown, (newValue) => {
                 <!-- Responsive Settings Options -->
                 <div class="pt-4 pb-1 border-t border-gray-200 flex flex-col gap-3">
 
-                    <div class="px-4">
+                    <div class="px-4 self-end">
                         <Date
                             class="flex sm:hidden"
                             :dateType="dateType"
