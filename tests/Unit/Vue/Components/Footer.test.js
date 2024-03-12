@@ -1,9 +1,13 @@
 import { mount, config } from '@vue/test-utils';
 import { createI18n } from 'vue-i18n';
+import messages from '@/lang/messages.js';
 import Footer from '@/Components/Footer.vue';
 
 const i18n = createI18n({
     legacy: false,
+    locale: 'fr',
+    fallbackLocale: 'en',
+    messages
 });
 config.global.plugins = [i18n];
 

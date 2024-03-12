@@ -1,9 +1,7 @@
 <script setup>
-import { computed } from 'vue';
 import { useI18n } from 'vue-i18n'
 import { initDate } from '@/Services/updateDate.js';
 import { UpdateDate } from '@/Services/updateDate.js';
-import { fullDateFormatter, monthFormatter } from '@/Services/dateFormatter.js';
 import { ChevronLeft } from 'lucide-vue-next';
 import { ChevronRight } from 'lucide-vue-next';
 import { ChevronDown } from 'lucide-vue-next';
@@ -18,7 +16,7 @@ const props = defineProps({
     day: Number,
 });
 
-const { t } = useI18n();
+const { t, d } = useI18n();
 
 const { year, month, day } = initDate(props.year, props.month, props.day);
 
@@ -57,15 +55,6 @@ const updateAndGetDay = {
     }
 }
 
-const formattedFullDate = computed(() => {
-    return fullDateFormatter.format(new Date(year.value, month.value - 1, day.value));
-});
-
-const formattedMonthAndYear = computed(() => {
-    return monthFormatter.format(new Date(year.value, month.value - 1, day.value));
-
-});
-
 </script>
 
 <template>
@@ -101,7 +90,7 @@ const formattedMonthAndYear = computed(() => {
             v-else-if="dateType === 'month'"
             class="flex items-center gap-4"
         >
-            <span class="whitespace-nowrap">{{ formattedMonthAndYear }}</span>
+            <span class="whitespace-nowrap">{{ d(new Date(year, month - 1, day), 'short') }}</span>
             <!-- Arrow container -->
             <div class="flex items-center gap-1.5">
                 <!-- We need preverveState and preserveScroll ? -->
@@ -124,7 +113,7 @@ const formattedMonthAndYear = computed(() => {
             v-else="dateType === 'day'"
             class="flex items-center gap-4"
         >
-            <span class="whitespace-nowrap">{{ formattedFullDate }}</span>
+            <span class="whitespace-nowrap">{{ d(new Date(year, month - 1, day), 'long') }}</span>
             <!-- Arrow container -->
             <div class="flex items-center gap-1.5">
                 <button

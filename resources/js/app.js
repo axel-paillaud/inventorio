@@ -7,12 +7,14 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 import { createI18n } from 'vue-i18n';
 import messages from '@/lang/messages.js';
+import datetimeFormats from '@/lang/datetimeFormats.js';
 
 const i18n = createI18n({
     legacy: false,
     locale: 'fr',
     fallbackLocale: 'en',
-    messages
+    messages,
+    datetimeFormats
 });
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
