@@ -23,7 +23,7 @@ const showingNavigationDropdown = ref(false);
 // Keep responsive dropdown menu open when filter date
 const wasResponsiveMenuOpen = sessionStorage.getItem('wasResponsiveMenuOpen');
 if (wasResponsiveMenuOpen) {
-    showingNavigationDropdown.value = Boolean(wasResponsiveMenuOpen);
+    showingNavigationDropdown.value = JSON.parse(wasResponsiveMenuOpen);
 }
 
 watch(showingNavigationDropdown, (newValue) => {
