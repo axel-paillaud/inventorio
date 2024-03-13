@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('table_rows', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('table_id');
+            $table->foreignId('table_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id');
             $table->timestamps();
             $table->date('date')->default('2023-01-01');
