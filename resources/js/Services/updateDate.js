@@ -33,7 +33,7 @@ export class UpdateDate {
 
     callRouter(dateType) {
         if (dateType === "year") {
-            router.get(`/inventorio/year/${this.year}`);
+            router.get(route('inventorio.year', { year: this.year }) );
         }
         else if (dateType === "month") {
             router.get(`/inventorio/month/${this.year}/${this.month}`);
