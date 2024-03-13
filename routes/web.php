@@ -56,10 +56,10 @@ Route::get('/inventorio/api/{tableId}/{year?}/{month?}/{day?}', [RowController::
 ->middleware('auth');
 
 Route::post('/inventorio/api/row/create', [RowController::class, 'create'])
-    ->middleware(['auth', 'verified']);
+    ->middleware(['auth', 'verified'])->name('row.create');
 
 Route::post('/inventorio/api/row/delete', [RowController::class, 'delete'])
-    ->middleware(['auth', 'verified']);
+    ->middleware(['auth', 'verified'])->name('row.delete');
 
 Route::post('/inventorio/api/table/create', [TableController::class, 'create'])
     ->middleware(['auth', 'verified']);

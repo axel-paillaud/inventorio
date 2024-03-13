@@ -13,7 +13,7 @@ const { locale } = useI18n();
 locale.value = localeSession.value;
 
 const selectFrench = () => {
-    router.post('/locale', { language: 'fr'});
+    router.post(route('locale'), { language: 'fr'});
     locale.value = "fr";
 }
 

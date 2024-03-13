@@ -11,7 +11,7 @@ const emit = defineEmits(['createNewRowEvent', 'errorCreateNewRowEvent']);
 
 function createNewRow() {
     axios.post(
-        '/inventorio/api/row/create',
+        route('row.create'),
         {table_id: props.tableId, date: props.currentFilterDate}
     )
         .then((res) => emit('createNewRowEvent', res.data))

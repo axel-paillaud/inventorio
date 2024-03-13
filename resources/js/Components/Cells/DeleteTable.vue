@@ -25,8 +25,6 @@ function submit() {
     })
 }
 
-console.log(route('table.destroy'));
-
 </script>
 
 <template>

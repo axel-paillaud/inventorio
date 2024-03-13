@@ -10,7 +10,7 @@ const props = defineProps({
 const emit = defineEmits(['deleteRowEvent', 'errorDeleteRowEvent']);
 
 function submit() {
-    axios.post('inventorio/api/row/delete', {row_id: props.rowId})
+    axios.post(route('row.delete'), {row_id: props.rowId})
         .then((res) => emit('deleteRowEvent', res.data))
         .catch((err) => emit('errorDeleteRowEvent', err));
 }
