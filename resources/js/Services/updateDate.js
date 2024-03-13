@@ -36,10 +36,17 @@ export class UpdateDate {
             router.get(route('inventorio.year', { year: this.year }) );
         }
         else if (dateType === "month") {
-            router.get(`/inventorio/month/${this.year}/${this.month}`);
+            router.get(route('inventorio.month', {
+                year: this.year,
+                month: this.month
+            }));
         }
         else if (dateType === "day" ) {
-            router.get(`/inventorio/day/${this.year}/${this.month}/${this.day}`);
+            router.get(route('inventorio.day', {
+                year: this.year,
+                month: this.month,
+                day: this.day,
+            }));
         }
     }
 
