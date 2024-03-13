@@ -11,8 +11,6 @@ const props = defineProps({
     isRowHover: Boolean,
 });
 
-const emit = defineEmits(['deleteTableEvent', 'errorDeleteTableEvent']);
-
 const { t } = useI18n();
 
 const form = useForm({
@@ -24,7 +22,6 @@ const dialogModal = ref(null);
 function submit() {
     form.post(route('table.destroy'), {
         preserveState: false,
-        onError: (error) => emit('errorDeleteTableEvent', error),
     })
 }
 
