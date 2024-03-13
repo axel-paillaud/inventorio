@@ -40,7 +40,17 @@ function submit() {
     </td>
     <Teleport to="body">
         <DialogModal ref="dialogModal">
-
+            <div class="sm:px-16 sm:py-12 px-10 py-8 flex flex-col gap-10">
+                <span>Are you sure you want to delete table xxx ?</span>
+                <div class="flex gap-6 justify-evenly">
+                    <button class="px-8 py-3 rounded bg-red-100 hover:bg-red-200 transition-colors">
+                        Yes
+                    </button>
+                    <button class="px-8 py-3 rounded bg-gray-200 hover:bg-gray-300 transition-colors">
+                        Cancel
+                    </button>
+                </div>
+            </div>
         </DialogModal>
     </Teleport>
 </template>
