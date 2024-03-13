@@ -39,16 +39,16 @@ Route::post('locale', function(Request $request) {
 })->name('locale');
 
 Route::middleware('auth')->group(function() {
-    Route::get('/inventorio', [TableController::class, 'show'])
+    Route::get('/', [TableController::class, 'show'])
     ->name('inventorio');
 
-    Route::get('/inventorio/year/{year}', [TableController::class, 'showYear'])
+    Route::get('/year/{year}', [TableController::class, 'showYear'])
     ->name('inventorio.year');
 
-    Route::get('/inventorio/month/{year}/{month}', [TableController::class, 'showMonth'])
+    Route::get('/month/{year}/{month}', [TableController::class, 'showMonth'])
     ->name('inventorio.month');
 
-    Route::get('/inventorio/day/{year}/{month}/{day}', [TableController::class, 'showDay'])
+    Route::get('/day/{year}/{month}/{day}', [TableController::class, 'showDay'])
     ->name('inventorio.day');
 });
 
