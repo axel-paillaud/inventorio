@@ -104,7 +104,7 @@ watch(showingNavigationDropdown, (newValue) => {
                                             {{ t('auth.profile') }}
                                         </DropdownLink>
                                         <DropdownLink
-                                            class="first-letter:capitalize" AVIF and JPEG XL are designed to supersede WebP.
+                                            class="first-letter:capitalize"
                                             :href="route('logout')" method="post" as="button"
                                         >
                                             {{ t('auth.logout') }}
