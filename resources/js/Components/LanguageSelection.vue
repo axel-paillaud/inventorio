@@ -27,7 +27,7 @@ const selectEnglish = () => {
 <template>
     <Dropdown width="40">
         <template #trigger>
-            <span class="inline-flex border rounded py-2 px-3 h-10 hover:bg-gray-100">
+            <span class="inline-flex border rounded py-2 px-3 h-10 hover:bg-gray-100 cursor-pointer">
                 <button class="inline-flex gap-1.5 items-center">
                     <Languages size="18"/> <ChevronDown size="16"></ChevronDown>
                 </button>
