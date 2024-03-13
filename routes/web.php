@@ -75,10 +75,10 @@ Route::post('/inventorio/toggles', [ToggleAllTableController::class, 'update'])
 
 Route::middleware('auth', 'verified')->group(function() {
     Route::post('/inventorio/cells/date', [DateController::class, 'update'])->name('cell.date.update');
-    Route::post('/inventorio/cells/name', [NameController::class, 'update']);
-    Route::post('/inventorio/cells/state', [StateController::class, 'update']);
-    Route::post('/inventorio/cells/quantity', [QuantityController::class, 'update']);
-    Route::post('/inventorio/cells/price', [PriceController::class, 'update']);
+    Route::post('/inventorio/cells/name', [NameController::class, 'update'])->name('cell.name.update');
+    Route::post('/inventorio/cells/state', [StateController::class, 'update'])->name('cell.state.update');
+    Route::post('/inventorio/cells/quantity', [QuantityController::class, 'update'])->name('cell.quantity.update');
+    Route::post('/inventorio/cells/price', [PriceController::class, 'update'])->name('cell.price.update');
 });
 
 Route::middleware('auth')->group(function () {
