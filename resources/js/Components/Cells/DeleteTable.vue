@@ -1,8 +1,8 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 import axios from 'axios';
+import DialogModal from '@/Components//DialogModal.vue';
 import { Trash } from 'lucide-vue-next';
-import useCloseModalWithBackdrop from '@/Composables/closeModal.js';
 
 const props = defineProps({
     tableId: Number,
@@ -11,9 +11,7 @@ const props = defineProps({
 
 const emit = defineEmits(['deleteTableEvent', 'errorDeleteTableEvent']);
 
-const modal = ref(null);
-
-const { closeModalWithBackdrop } = useCloseModalWithBackdrop(modal);
+const dialogModal = ref(null);
 
 function submit() {
     axios.post('inventorio/api/table/delete', {id: props.tableId})
@@ -33,7 +31,7 @@ function submit() {
             :class="isRowHover ? 'bg-red-200' : ''"
         >
             <button
-                @click="modal.showModal()"
+                @click="dialogModal.modal.showModal()"
                 class="px-2"
             >
                 <Trash size="16" stroke-width="2.5" color="#a51d2d"/>
@@ -41,14 +39,9 @@ function submit() {
         </div>
     </td>
     <Teleport to="body">
-        <dialog
-            ref="modal"
-            @click="closeModalWithBackdrop"
-            class="rounded-md text-gray-700 backdrop:bg-stone-400 backdrop:opacity-60
-            shadow-md overflow-visible animate-zoom-in"
-        >
-            <p>hello</p>
-        </dialog>
+        <DialogModal ref="dialogModal">
+
+        </DialogModal>
     </Teleport>
 </template>
 
