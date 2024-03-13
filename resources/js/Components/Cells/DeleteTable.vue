@@ -21,17 +21,17 @@ function submit() {
     <td ref="cell" class="group border-b border-b-gray-100 h-full w-10"
     >
         <form
-            class="relative hover:bg-red-100 transition-all rounded-r-md flex
-            right-8 group-hover:right-px group-hover:bg-red-100 h-full max-w-10
+            class="relative z-40 hover:bg-red-200 transition-all rounded-r-md flex
+            right-8 group-hover:right-px group-hover:bg-red-200 h-full max-w-10
             group-hover:justify-center"
-            :class="isRowHover ? 'bg-red-100' : ''"
+            :class="isRowHover ? 'bg-red-200' : ''"
         >
             <button
                 @click.prevent="submit"
                 type="submit"
                 class="px-2"
             >
-                <Trash size="20" stroke-width="2.5" color="#a51d2d"/>
+                <Trash size="16" stroke-width="2.5" color="#a51d2d"/>
             </button>
         </form>
     </td>

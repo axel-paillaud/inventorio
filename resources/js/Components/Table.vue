@@ -21,6 +21,7 @@ const props = defineProps({
 const { t } = useI18n();
 
 const error = ref(null);
+const isRowHover = ref(false);
 
 // Remove visible form error after x seconds
 watch(error, (newError) => {
@@ -62,12 +63,12 @@ const deleteRow = (rowId) => {
                 class="bg-white w-full border border-separate border-spacing-0"
             >
                 <thead
-                    class="text-left sticky top-0 whitespace-nowrap z-30
-                    pointer-events-none"
+                    class="text-left sticky top-0 whitespace-nowrap z-30"
                     :class="colors[color].bg"
+                    @mouseenter="isRowHover = true" @mouseleave="isRowHover = false"
                 >
                     <tr>
-                        <th></th>
+                        <DeleteTable :tableId="tableId" :isRowHover="isRowHover" />
                         <th class="py-3 px-6 border-b capitalize">{{ t('table.columnName.date') }}</th>
                         <th class="py-3 px-6 border-b capitalize">{{ t('table.columnName.name') }}</th>
                         <th class="py-3 px-6 border-b capitalize">{{ t('table.columnName.state') }}</th>

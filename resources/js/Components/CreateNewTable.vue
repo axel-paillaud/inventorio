@@ -2,6 +2,7 @@
 import { ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useForm } from '@inertiajs/vue3';
+import useCloseModalWithBackdrop from '@/Composables/closeModal.js';
 import { Plus, ChevronDown } from 'lucide-vue-next';
 import Dropdown from '@/Components/Dropdown.vue';
 import colors from '@/Services/ColorService.js';
@@ -30,18 +31,20 @@ function submit() {
     });
 }
 
+const { closeModalWithBackdrop } = useCloseModalWithBackdrop(modal);
+
 // extract to composable here
-const closeModalWithBackdrop = (e) => {
+/* const closeModalWithBackdrop = (e) => {
     const modalDimensions = modal.value.getBoundingClientRect();
     if (
         e.clientX < modalDimensions.left ||
-        e.clientX > modalDimensions.right ||
-        e.clientY < modalDimensions.top ||
-        e.clientY > modalDimensions.bottom
+            e.clientX > modalDimensions.right ||
+            e.clientY < modalDimensions.top ||
+            e.clientY > modalDimensions.bottom
     ) {
         modal.value.close();
     }
-}
+} */
 
 </script>
 
