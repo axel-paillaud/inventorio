@@ -11,7 +11,6 @@ const props = defineProps([
 ]);
 
 const tables = ref(props.tables);
-const errorContainer = ref(null);
 
 const setActiveTable = (tableId) => {
     let table = tables.value.find(table => table.id === tableId);
@@ -23,11 +22,6 @@ const setActiveAllTable = () => {
         table.isActive = true;
     });
 }
-
-// Hide errors after x seconds
-onMounted(() => {
-    setTimeout(() => { errorContainer.value.classList.add('hidden') }, 5000);
-});
 
 </script>
 
@@ -42,14 +36,12 @@ onMounted(() => {
 />
 
     <!-- Show form validation error-->
-    <div ref="errorContainer">
         <div
             v-for="error in errors"
             class="fixed bg-red-200 z-40 w-full px-4 sm:px-8 lg:px-12 py-3 font-bold"
         >
             {{ error }}
         </div>
-    </div>
 
     <div class="overflow-auto">
         <main
