@@ -33,19 +33,6 @@ function submit() {
 
 const { closeModalWithBackdrop } = useCloseModalWithBackdrop(modal);
 
-// extract to composable here
-/* const closeModalWithBackdrop = (e) => {
-    const modalDimensions = modal.value.getBoundingClientRect();
-    if (
-        e.clientX < modalDimensions.left ||
-            e.clientX > modalDimensions.right ||
-            e.clientY < modalDimensions.top ||
-            e.clientY > modalDimensions.bottom
-    ) {
-        modal.value.close();
-    }
-} */
-
 </script>
 
 <template>
