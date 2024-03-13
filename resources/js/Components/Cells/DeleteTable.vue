@@ -46,7 +46,7 @@ function submit() {
         <DialogModal ref="dialogModal">
             <div class="sm:px-16 sm:py-12 px-10 py-8 flex flex-col gap-10">
                 <span>{{ t('table.delete.confirmMessage', { table: name }) }}</span>
-                <div class="flex gap-6 justify-evenly">
+                <div class="flex flex-col sm:flex-row gap-6 justify-evenly">
                     <button class="px-8 py-3 rounded bg-red-100 hover:bg-red-200 transition-colors capitalize">
                         {{ t('confirm.yes') }}
                     </button>
