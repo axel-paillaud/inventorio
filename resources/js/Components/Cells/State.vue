@@ -23,7 +23,7 @@ const form = useForm({
 });
 
 function submitCellData() {
-    form.post('/inventorio/cells/state', {
+    form.post(route('cell.state.update'), {
         preserveScroll: true,
         onError: error => {
             emit('errorState', error.state);

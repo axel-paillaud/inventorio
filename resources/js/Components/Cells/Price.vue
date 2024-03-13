@@ -48,7 +48,7 @@ const formattedPrice = computed(() => {
 });
 
 function submitCellData() {
-    form.post('/inventorio/cells/price', {
+    form.post(route('cell.price.update'), {
         preserveScroll: true,
         onError: (error) => {
             emit('errorPrice', error.price);

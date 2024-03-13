@@ -43,7 +43,7 @@ function updateQuantity(quantity) {
 }
 
 function submitCellData() {
-    form.post('/inventorio/cells/quantity', {
+    form.post(route('cell.quantity.update'), {
         preserveScroll: true,
         onError: (error) => {
             emit('errorQuantity', error.quantity);
