@@ -29,7 +29,7 @@ const form = useForm({
 });
 
 function submitCellData() {
-    form.post('/inventorio/cells/date', {
+    form.post(route('cell.date.update'), {
         preserveScroll: true,
         onError: (error) => {
             emit('errorDate', error.date);
