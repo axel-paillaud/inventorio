@@ -5,6 +5,7 @@ import { buildDefaultDate } from '@/Services/buildDefaultDate';
 import Row from '@/Components/Row.vue';
 import Total from '@/Components/Cells/TableTotal.vue';
 import CreateNewRow from '@/Components/CreateNewRow.vue';
+import DeleteTable from '@/Components/Cells/DeleteTable.vue';
 import colors from '@/Services/ColorService';
 
 const props = defineProps({

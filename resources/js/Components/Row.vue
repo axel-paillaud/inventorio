@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import { isNumber } from '@/validators/integer';
-import DeleteCell from '@/Components/Cells/Delete.vue';
+import DeleteCell from '@/Components/Cells/DeleteRow.vue';
 import DateCell from '@/Components/Cells/Date.vue';
 import NameCell from '@/Components/Cells/Name.vue';
 import StateCell from '@/Components/Cells/State.vue';
