@@ -69,7 +69,7 @@ watch(showingNavigationDropdown, (newValue) => {
                         <div class="hidden sm:flex sm:items-center">
                             <!-- Settings Dropdown -->
                             <div class="relative">
-                                <Dropdown align="right" width="48"> AVIF and JPEG XL are designed to supersede WebP.
+                                <Dropdown align="right" width="48">
                                     <template #trigger>
                                         <span class="inline-flex rounded-md">
                                             <button
