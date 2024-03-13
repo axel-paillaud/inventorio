@@ -19,6 +19,8 @@ defineExpose({
         class="rounded-md text-gray-700 backdrop:bg-stone-400 backdrop:opacity-60
         shadow-md overflow-visible animate-zoom-in"
     >
-        <slot>Default Content</slot>
+        <slot>
+            <div class="py-2 px-3">Default modal content</div>
+        </slot>
     </dialog>
 </template>

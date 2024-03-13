@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import axios from 'axios';
-import DialogModal from '@/Components//DialogModal.vue';
+import DialogModal from '@/Components/DialogModal.vue';
 import { Trash } from 'lucide-vue-next';
 
 const props = defineProps({
