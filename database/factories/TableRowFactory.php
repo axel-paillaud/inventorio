@@ -20,7 +20,7 @@ class TableRowFactory extends Factory
         $states = ['Unused', 'Second-hand', 'To fix'];
 
         return [
-            'table_id' => Table::inRandomOrder()->first()->id,
+            'table_id' => Table::where('user_id', 1)->inRandomOrder()->first()->id,
             'user_id' => 1,
             'date' => fake()->dateTimeBetween('2019-01-01', '2024-12-31'),
             'name' => fake()->sentence(),
