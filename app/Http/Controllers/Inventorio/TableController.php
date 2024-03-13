@@ -26,6 +26,17 @@ class TableController extends Controller
 
     }
 
+    public function delete(Request $request)
+    {
+        $user = $request->user();
+
+        $validated = $request->validate([
+            'id' => ['exists:tables'],
+        ]);
+
+        $user->tables()->where('id', $validated['id'])->delete();
+    }
+
     public function show(Request $request)
     {
         $tables = $request->user()->tables()->with('tableRows')->get();

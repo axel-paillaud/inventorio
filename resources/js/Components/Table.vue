@@ -72,6 +72,7 @@ const deleteRow = (rowId) => {
                             :id="tableId"
                             :name="name"
                             :isRowHover="isRowHover"
+                            @error-delete-table-event="(errorData) => error = errorData"
                         />
                         <th class="py-3 px-6 border-b capitalize">{{ t('table.columnName.date') }}</th>
                         <th class="py-3 px-6 border-b capitalize">{{ t('table.columnName.name') }}</th>

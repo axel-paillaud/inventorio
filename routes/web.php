@@ -64,6 +64,9 @@ Route::post('/inventorio/api/row/delete', [RowController::class, 'delete'])
 Route::post('/inventorio/api/table/create', [TableController::class, 'create'])
     ->middleware(['auth', 'verified']);
 
+Route::post('/inventorio/api/table/delete', [TableController::class, 'delete'])
+    ->middleware(['auth', 'verified'])->name('table.destroy');
+
 Route::post('/inventorio/toggle', [ToggleTableController::class, 'update'])
     ->middleware(['auth', 'verified']);
 
