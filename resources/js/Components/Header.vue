@@ -54,6 +54,7 @@ watch(showingNavigationDropdown, (newValue) => {
                     <div class="flex items-center gap-8">
                         <!-- Date Selection -->
                         <Date
+                            v-if="dateType"
                             class="hidden sm:flex"
                             :dateType="dateType"
                             :year="year"
@@ -146,6 +147,7 @@ watch(showingNavigationDropdown, (newValue) => {
 
                     <div class="px-4 self-end">
                         <Date
+                            v-if="dateType"
                             class="flex sm:hidden"
                             :dateType="dateType"
                             :year="year"
