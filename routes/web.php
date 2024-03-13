@@ -62,16 +62,16 @@ Route::post('/inventorio/api/row/delete', [RowController::class, 'delete'])
     ->middleware(['auth', 'verified'])->name('row.delete');
 
 Route::post('/inventorio/api/table/create', [TableController::class, 'create'])
-    ->middleware(['auth', 'verified']);
+    ->middleware(['auth', 'verified'])->name('table.create');
 
 Route::post('/inventorio/api/table/delete', [TableController::class, 'delete'])
     ->middleware(['auth', 'verified'])->name('table.destroy');
 
 Route::post('/inventorio/toggle', [ToggleTableController::class, 'update'])
-    ->middleware(['auth', 'verified']);
+    ->middleware(['auth', 'verified'])->name('table.toggle');
 
 Route::post('/inventorio/toggles', [ToggleAllTableController::class, 'update'])
-    ->middleware(['auth', 'verified']);
+    ->middleware(['auth', 'verified'])->name('table.togglesAll');
 
 Route::middleware('auth', 'verified')->group(function() {
     Route::post('/inventorio/cells/date', [DateController::class, 'update'])->name('cell.date.update');

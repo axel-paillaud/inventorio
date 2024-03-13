@@ -22,7 +22,7 @@ watch(selectColor, (newColor) => {
 });
 
 function submit() {
-    form.post('/inventorio/api/table/create', {
+    form.post(route('table.create'), {
         preserveState: false,
     });
 }

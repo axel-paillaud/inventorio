@@ -25,7 +25,7 @@ const classFilter = computed(() => ({
 function submitToggleTable() {
     form.isActive = !form.isActive;
     form.post(
-        '/inventorio/toggle',
+        route('table.toggle'),
         {preserveScroll: true}
     )
 }

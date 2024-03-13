@@ -21,7 +21,7 @@ const classFilter = computed(() => ({
 }));
 
 function submitToggleAllTable() {
-    useForm({}).post('/inventorio/toggles', { preserveScroll: true });
+    useForm({}).post(route('table.togglesAll'), { preserveScroll: true });
 }
 
 </script>
