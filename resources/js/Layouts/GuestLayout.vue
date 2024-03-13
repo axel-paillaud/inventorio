@@ -1,6 +1,10 @@
 <script setup>
 import { Link } from '@inertiajs/vue3';
+import { useI18n } from 'vue-i18n';
 import LanguageSelection from '@/Components/LanguageSelection.vue';
+
+const { t } = useI18n();
+
 </script>
 
 <template>
@@ -11,7 +15,7 @@ import LanguageSelection from '@/Components/LanguageSelection.vue';
         >
             <div>
                 <Link href="/">
-                    Home
+                    {{ t('nav.home')}}
                 </Link>
             </div>
 

@@ -1,4 +1,5 @@
 <script setup>
+import { useI18n } from 'vue-i18n';
 import Checkbox from '@/Components/Checkbox.vue';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import InputError from '@/Components/InputError.vue';
@@ -15,6 +16,8 @@ defineProps({
         type: String,
     },
 });
+
+const { t } = useI18n();
 
 const form = useForm({
     email: '',
@@ -39,7 +42,7 @@ const submit = () => {
 
         <form @submit.prevent="submit">
             <div>
-                <InputLabel for="email" value="Email" />
+                <InputLabel for="email" :value="t('auth.email')" />
 
                 <TextInput
                     id="email"
@@ -72,7 +75,7 @@ const submit = () => {
             <div class="block mt-4">
                 <label class="flex items-center">
                     <Checkbox name="remember" v-model:checked="form.remember" />
-                    <span class="ml-2 text-sm text-gray-600">Remember me</span>
+                    <span class="ml-2 text-sm text-gray-600">{{ t('auth.rememberMe') }}</span>
                 </label>
             </div>
 
@@ -82,11 +85,11 @@ const submit = () => {
                     :href="route('password.request')"
                     class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
-                    Forgot your password?
+                    {{ t('auth.password.forgot') }}
                 </Link>
 
                 <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Log in
+                    {{ t('auth.login') }}
                 </PrimaryButton>
             </div>
             <div class="flex justify-end mt-4">
@@ -94,7 +97,7 @@ const submit = () => {
                     :href="route('register')"
                     class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
-                    Need to register?
+                    {{ t('auth.needToRegister') }}
                 </Link>
             </div>
         </form>
