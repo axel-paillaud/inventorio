@@ -1,15 +1,17 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import Header from '@/Components/Header.vue';
 import Table from '@/Components/Table.vue';
 import Footer from '@/Components/Footer.vue';
 import { Head } from '@inertiajs/vue3';
+import { Transition } from 'vue';
 
 const props = defineProps([
     'tables', 'dateType', 'year', 'month', 'day', 'errors',
 ]);
 
 const tables = ref(props.tables);
+const errorContainer = ref(null);
 
 const setActiveTable = (tableId) => {
     let table = tables.value.find(table => table.id === tableId);
@@ -22,6 +24,11 @@ const setActiveAllTable = () => {
     });
 }
 
+// Hide errors after x seconds
+onMounted(() => {
+    setTimeout(() => { errorContainer.value.classList.add('hidden') }, 5000);
+});
+
 </script>
 
 <template>
@@ -32,10 +39,17 @@ const setActiveAllTable = () => {
         :year="year"
         :month="month"
         :day="day"
-    />
+/>
 
-    <!-- Show form validation error from Laravel for debugging -->
-    <div v-if="errors">{{ errors }}</div>
+    <!-- Show form validation error-->
+    <div ref="errorContainer">
+        <div
+            v-for="error in errors"
+            class="fixed bg-red-200 z-40 w-full px-4 sm:px-8 lg:px-12 py-3 font-bold"
+        >
+            {{ error }}
+        </div>
+    </div>
 
     <div class="overflow-auto">
         <main

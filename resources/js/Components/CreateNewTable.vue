@@ -106,7 +106,7 @@ function submit() {
                     hover:bg-gray-100 transition mb-2 capitalize"
                     type="submit"
                     @click.prevent="submit"
-                    :disabled="!form.name && !form.color"
+                    :disabled="!form.name || !form.color"
                 >
                     {{ t('crud.create') }}
                 </button>
