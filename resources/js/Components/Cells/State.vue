@@ -55,7 +55,7 @@ function submitCellData() {
             <option value="To fix">{{ t('table.cell.state.To fix') }}</option>
         </select>
 
-        <div class="py-3 px-6 whitespace-nowrap"
+        <div class="py-3 px-6 whitespace-nowrap min-w-32"
             :class="{ invisible: isActive }"
         >
             {{ t(`table.cell.state.${form.state}`) }}
