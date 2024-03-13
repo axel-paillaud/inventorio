@@ -68,7 +68,11 @@ const deleteRow = (rowId) => {
                     @mouseenter="isRowHover = true" @mouseleave="isRowHover = false"
                 >
                     <tr>
-                        <DeleteTable :tableId="tableId" :isRowHover="isRowHover" />
+                        <DeleteTable
+                            :id="tableId"
+                            :name="name"
+                            :isRowHover="isRowHover"
+                        />
                         <th class="py-3 px-6 border-b capitalize">{{ t('table.columnName.date') }}</th>
                         <th class="py-3 px-6 border-b capitalize">{{ t('table.columnName.name') }}</th>
                         <th class="py-3 px-6 border-b capitalize">{{ t('table.columnName.state') }}</th>

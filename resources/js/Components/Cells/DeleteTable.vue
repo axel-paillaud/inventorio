@@ -1,20 +1,24 @@
 <script setup>
 import { ref } from 'vue';
+import { useI18n } from 'vue-i18n';
 import axios from 'axios';
 import DialogModal from '@/Components/DialogModal.vue';
 import { Trash } from 'lucide-vue-next';
 
 const props = defineProps({
-    tableId: Number,
+    id: Number,
+    name: String,
     isRowHover: Boolean,
 });
+
+const { t } = useI18n();
 
 const emit = defineEmits(['deleteTableEvent', 'errorDeleteTableEvent']);
 
 const dialogModal = ref(null);
 
 function submit() {
-    axios.post('inventorio/api/table/delete', {id: props.tableId})
+    axios.post('inventorio/api/table/delete', {id: props.id})
         .then((res) => emit('deleteTableEvent', res.data))
         .catch((err) => emit('errorDeleteTableEvent', err));
 }
@@ -41,13 +45,13 @@ function submit() {
     <Teleport to="body">
         <DialogModal ref="dialogModal">
             <div class="sm:px-16 sm:py-12 px-10 py-8 flex flex-col gap-10">
-                <span>Are you sure you want to delete table xxx ?</span>
+                <span>{{ t('table.delete.confirmMessage', { table: name }) }}</span>
                 <div class="flex gap-6 justify-evenly">
-                    <button class="px-8 py-3 rounded bg-red-100 hover:bg-red-200 transition-colors">
-                        Yes
+                    <button class="px-8 py-3 rounded bg-red-100 hover:bg-red-200 transition-colors capitalize">
+                        {{ t('confirm.yes') }}
                     </button>
-                    <button class="px-8 py-3 rounded bg-gray-200 hover:bg-gray-300 transition-colors">
-                        Cancel
+                    <button class="px-8 py-3 rounded bg-gray-200 hover:bg-gray-300 transition-colors capitalize">
+                        {{ t('crud.cancel') }}
                     </button>
                 </div>
             </div>

@@ -38,9 +38,16 @@ export default {
             save: 'save',
             cancel: 'Cancel',
         },
+        confirm: {
+            yes: 'yes',
+            no: 'no',
+        },
         table: {
             create: 'create a table',
             add: 'add a new table',
+            delete: {
+                confirmMessage: 'Are you sure you want to delete the "{table}" table ?',
+            },
             name: 'table name',
             color: 'color',
             columnName: {
@@ -112,9 +119,16 @@ export default {
             save: 'sauvegarder',
             cancel: 'Annuler',
         },
+        confirm: {
+            yes: 'oui',
+            no: 'non',
+        },
         table: {
             create: 'créer un tableau',
             add: 'ajouter un nouveau tableau',
+            delete: {
+                confirmMessage: 'Êtes-vous sûr·e de vouloir supprimer la table "{table}" ?',
+            },
             name: 'nom du tableau',
             color: 'couleur',
             columnName: {
