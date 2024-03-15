@@ -16,11 +16,14 @@ class TableFactory extends Factory
      */
     public function definition(): array
     {
-        $colours = [ 'red', 'orange', 'green', 'sky', 'blue', 'violet', 'pink', ];
+        $colours = [
+            'red', 'orange', 'green', 'blue', 'violet', 'rose', 'amber', 'yellow',
+            'lime', 'cyan', 'fuchsia',
+        ];
 
         return [
             'user_id' => 1,
-            'name' => fake()->word(),
+            'name' => fake()->word() . ' ' . fake()->word(),
             'color' => $colours[array_rand($colours)],
             'isActive' => 1,
         ];

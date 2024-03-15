@@ -25,8 +25,8 @@ class TableRowFactory extends Factory
             'date' => fake()->dateTimeBetween('2019-01-01', '2024-12-31'),
             'name' => fake()->sentence(),
             'state' => $states[array_rand($states)],
-            'quantity' => rand(1, 100),
-            'price' => (rand(1 * 10000, 10000 * 10000) / 10000),
+            'quantity' => rand(1, 5) * 10,
+            'price' => (rand(100, 300000) / 100),
         ];
     }
 }
