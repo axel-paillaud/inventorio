@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('name')->default('');
             $table->enum('state', ['Unused', 'Second-hand', 'To fix'])->default('unused');
             $table->integer('quantity')->default('0');
-            $table->float('price', 9, 2)->default('0.0');
+            $table->float('price', precision: 53)->default('0.0');
         });
     }
 

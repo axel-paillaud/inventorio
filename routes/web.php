@@ -10,20 +10,9 @@ use App\Http\Controllers\Inventorio\Cells\NameController;
 use App\Http\Controllers\Inventorio\Cells\StateController;
 use App\Http\Controllers\Inventorio\Cells\QuantityController;
 use App\Http\Controllers\Inventorio\Cells\PriceController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\App;
 use Illuminate\Http\Request;
-use Inertia\Inertia;
-
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
 
 // Change the locale
 Route::post('locale', function(Request $request) {

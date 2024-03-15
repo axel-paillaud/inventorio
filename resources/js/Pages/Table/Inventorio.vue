@@ -31,17 +31,17 @@ const setActiveAllTable = () => {
     <Header
         :dateType="dateType"
         :year="year"
-        :month="month"
-        :day="day"
+    :month="month"
+    :day="day"
 />
 
     <!-- Show form validation error-->
-        <div
-            v-for="error in errors"
-            class="fixed bg-red-200 z-40 w-full px-4 sm:px-8 lg:px-12 py-3 font-bold"
-        >
-            {{ error }}
-        </div>
+    <div
+        v-for="error in errors"
+        class="fixed bg-red-200 z-40 w-full px-4 sm:px-8 lg:px-12 py-3 font-bold"
+    >
+        {{ error }}
+    </div>
 
     <div class="overflow-auto">
         <main
