@@ -8,7 +8,7 @@ Back-end routes use Laravel, and the SPA is entirely done with JavaScript and th
 
 The site is available online here (wip). You have access to a demo account, please be respectful when editing data.
 
-See [here](#skldfj) for local installation
+See [here](#installation) for local installation
 
 ## Features
 
@@ -20,7 +20,7 @@ See [here](#skldfj) for local installation
 
 ### Create a new table and a new row
 
-## Local installation (on unix-like system or with WSL)
+## <a name="installation"></a>Local installation (on unix-like system or with WSL)
 
 ### Requirements
 
