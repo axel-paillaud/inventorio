@@ -49,6 +49,8 @@ The URL is updated accordingly to the date filter.
 
 ![date-filter-demo](https://github.com/axel-paillaud/vancraft/assets/85078268/bf3c6bc2-098e-4854-a7e6-3808cf3875ea)
 
+A native JavaScript class `UpdateDate` was created for this filter. A class is, for me, relevant here because we need to encapsulate the year, month, day data, with different methods that will act on this data
+
 ### Toggle table
 
 We can activate and disable a table. This will result in hiding or showing the corresponding table. The value `is_active` is then saved asynchronously in the SQL database.
