@@ -34,8 +34,6 @@ password: `password`
 
 We can choose between the French and English languages. When changing language, the webpage is updated dynamically (without reloading), and the language is saved in the current session (e.g., `$_SESSION`).
 
-![language-demo](https://github.com/axel-paillaud/vancraft/assets/85078268/07988d3e-5c0c-40d8-82c7-5c3bcf195863)
-
 ![language-demo](https://github.com/axel-paillaud/vancraft/assets/85078268/e2129886-e4b4-44a9-bdb4-27fb5a2948e6)
 
 At the beginning, native JavaScript object `Intl` was used. Now, the `vue-i18n` package is used, to keep a certain consistency across the different translations (date, currency, word...), and I find it really mature.
