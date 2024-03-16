@@ -6,6 +6,18 @@ Back-end routes use Laravel, and the SPA is entirely done with JavaScript and th
 
 ![presentation-screenshot](https://github.com/axel-paillaud/vancraft/assets/85078268/cae0c9c4-6635-4131-ade3-adf57c230859)
 
+The site is available online here (wip)
+
+See here for local installation
+
+## Features
+
+### Filter by date
+
+### Toggle table
+
+### Create a new table and a new row
+
 ## Local installation (on unix-like system or with WSL)
 
 ### Requirements
