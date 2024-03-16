@@ -47,6 +47,8 @@ Each row in the table has a date, and we can filter rows by year, month, and day
 
 The URL is updated accordingly to the date filter.
 
+![date-filter-demo](https://github.com/axel-paillaud/vancraft/assets/85078268/bf3c6bc2-098e-4854-a7e6-3808cf3875ea)
+
 ### Toggle table
 
 We can activate and disable a table. This will result in hiding or showing the corresponding table. The value `is_active` is then saved asynchronously in the SQL database.
