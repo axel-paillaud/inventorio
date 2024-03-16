@@ -30,6 +30,10 @@ We can activate and disable a table. This will result in hiding or showing the c
 
 ### Create a new table and a new row
 
+### Edit cells
+
+### Delete a row, and a table
+
 ## <a name="installation"></a>Local installation (on unix-like system or with WSL)
 
 ### Requirements
