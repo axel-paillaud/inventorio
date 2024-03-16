@@ -14,6 +14,10 @@ See [here](#installation) for local installation
 
 ### Change the language
 
+You can choose between French and English languages. When changing language, the webpage is updated dynamically (without reloading), and the language is saved in the current session (e.g., `$_SESSION`).
+
+Default language is french.
+
 ### Filter by date
 
 ### Toggle table
