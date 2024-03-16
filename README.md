@@ -6,11 +6,13 @@ Back-end routes use Laravel, and the SPA is entirely done with JavaScript and th
 
 ![presentation-screenshot](https://github.com/axel-paillaud/vancraft/assets/85078268/cae0c9c4-6635-4131-ade3-adf57c230859)
 
-The site is available online here (wip)
+The site is available online here (wip). You have access to a demo account, please be **respectful** when editing data.
 
 See here for local installation
 
 ## Features
+
+### Change the language
 
 ### Filter by date
 
