@@ -7,8 +7,6 @@ use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use App\Models\User;
 use App\Models\Table;
 use App\Models\TableRow;
-use Illuminate\Database\Eloquent\Factories\Factory;
-
 
 class Kernel extends ConsoleKernel
 {
@@ -17,9 +15,6 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        // $schedule->command('inspire')->hourly();
-
-        // $schedule->command('db:seed --force')->everyTenSeconds();
         $schedule->call(function () {
 
             User::where('id', 1)->delete();
@@ -38,9 +33,7 @@ class Kernel extends ConsoleKernel
                 'user_id' => 1,
             ]);
 
-            print("hello");
-
-        })->everyTenSeconds();
+        })->hourly();
     }
 
     /**
