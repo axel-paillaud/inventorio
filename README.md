@@ -26,8 +26,12 @@ Back-end routes use Laravel, and the SPA is entirely done with JavaScript and th
 
 The project use MariaDB server.
 
-`cp .env.example .env` and, in the `.env` file, configure your MariaDB login credentials.
+`cp .env.example .env` Then, in the `.env` file, configure your MariaDB login credentials.
 
 Run `php artisan migrate:fresh --seed` for fake datas.
 
-`php artisan serve` && `npm run dev`
+`php artisan serve` 
+
+`npm run dev`
+
+Default adress: `localhost:8000`
