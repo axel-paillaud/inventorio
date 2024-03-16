@@ -6,7 +6,17 @@ Back-end routes use Laravel, and the SPA is entirely done with JavaScript and th
 
 ![presentation-screenshot](https://github.com/axel-paillaud/vancraft/assets/85078268/cae0c9c4-6635-4131-ade3-adf57c230859)
 
-## Installation (on unix-like system or with WSL)
+## Local installation (on unix-like system or with WSL)
+
+### Requirements
+
+`php` 8.2 or higher, with the appropriate modules (curl, pdo_mysql ...)
+
+`composer` and `npm`
+
+`mariadb` server (or `mysql`)
+
+### Installation
 
 `git clone git@github.com:axel-paillaud/vancraft.git`
 
@@ -14,9 +24,9 @@ Back-end routes use Laravel, and the SPA is entirely done with JavaScript and th
 
 `composer install && npm install`
 
-The project use MySQL server.
+The project use MariaDB server.
 
-`cp .env.example .env` and, in the `.env` file, configure your MySQL login credentials.
+`cp .env.example .env` and, in the `.env` file, configure your MariaDB login credentials.
 
 Run `php artisan migrate:fresh --seed` for fake datas.
 
