@@ -10,6 +10,16 @@ The site is available online [here]() (wip). You have access to a demo account, 
 
 See [here](#installation) for local installation
 
+## Table of features contents
+
+* [Change the language](#change-the-language)
+* Filter rows by date
+* Toggle table
+* Create a new table and a new row
+* Edit cells
+* Delete a row, and a table
+* Responsive
+
 ## Features
 
 ### Change the language
@@ -18,7 +28,7 @@ We can choose between the French and English languages. When changing language, 
 
 Default language is french.
 
-### Filter by date
+### Filter rows by date
 
 Each row in the table has a date, and we can filter rows by year, month, and day. For example, if I choose "*year 2023*", all tables will only show rows with a date that is equal to 2023.
 
