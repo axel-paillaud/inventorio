@@ -14,7 +14,7 @@ See [here](#installation) for local installation
 
 ### Change the language
 
-You can choose between French and English languages. When changing language, the webpage is updated dynamically (without reloading), and the language is saved in the current session (e.g., `$_SESSION`).
+We can choose between the French and English languages. When changing language, the webpage is updated dynamically (without reloading), and the language is saved in the current session (e.g., `$_SESSION`).
 
 Default language is french.
 
@@ -22,9 +22,11 @@ Default language is french.
 
 Each row in the table has a date, and we can filter rows by year, month, and day. For example, if I choose "*year 2023*", all tables will only show rows with a date that is equal to 2023.
 
-The Url is updated accordingly to the date filter.
+The URL is updated accordingly to the date filter.
 
 ### Toggle table
+
+We can activate and disable a table. This will result in hiding or showing the corresponding table. The value `is_active` is then saved asynchronously in the SQL database.
 
 ### Create a new table and a new row
 
