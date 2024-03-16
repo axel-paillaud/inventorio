@@ -68,7 +68,9 @@ This web app is not optimized to be used on a mobile phone in portrait mode. It 
 
 That said, you can still use a mobile phone to edit cells, and view tables, but you will have a horizontal scroll on the table. On a mobile phone, the header uses the hamburger menu, and the footer uses a list icon to display filters.
 
-## Local setup (on unix-like system or with WSL)
+## Local setup
+
+Unix-like system required, or WSL on Windows (see [WSL Install](https://learn.microsoft.com/en-us/windows/wsl/install)).
 
 ### Requirements
 
