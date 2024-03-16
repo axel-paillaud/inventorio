@@ -12,6 +12,7 @@ See [here](#local-setup) for local setup.
 
 ## Table of features contents
 
+* [Authentication](#authentication)
 * [Change the language](#change-the-language)
 * [Filter rows by date](#filter-rows-by-date)
 * [Toggle table](#toggle-table)
@@ -22,9 +23,19 @@ See [here](#local-setup) for local setup.
 
 ## Features
 
+### Authentication
+
+Laravel **Breeze** starter pack was used to manage authentication. You can create a personal account, or use the demo account, with these credentials:
+
+E-mail: `test@example.com`
+password: `password`
+
 ### Change the language
 
 We can choose between the French and English languages. When changing language, the webpage is updated dynamically (without reloading), and the language is saved in the current session (e.g., `$_SESSION`).
+
+At the beginning, native JavaScript object `Intl` was used. Now, the `vue-i18n` package is used, to keep a certain consistency across the different translations (date, currency, word...), and I find it really mature.
+Underneath the hood, it also uses `Intl`.
 
 Default language is french.
 
