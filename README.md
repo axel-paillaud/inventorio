@@ -1,10 +1,10 @@
 # Inventorio
 
-Manage your inventory with excel-like table, directly in the browser.
+Manage your inventory with excel-like tables, directly in the browser.
 
-Write with Laravel 11 and Vue 3.
+Back-end routes use Laravel, and the SPA is entirely done with JavaScript and the Vue 3 framework.
 
-## Installation (on unix-like system)
+## Installation (on unix-like system or with WSL)
 
 `git clone git@github.com:axel-paillaud/vancraft.git`
 
