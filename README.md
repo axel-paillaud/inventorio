@@ -6,7 +6,7 @@ Back-end routes use Laravel, and the SPA is entirely done with JavaScript and th
 
 ![presentation-screenshot](https://github.com/axel-paillaud/vancraft/assets/85078268/345a29f4-39b9-4ec0-be09-819add1446b5)
 
-The site is available online [here]() (wip). You have access to a demo account, and the database is reset every hour. Please be respectful when editing data.
+The site is available online [here]() (wip). You have access to a demo account, and the database on this account is reset every hour. Please be respectful when editing data.
 
 See [here](#local-setup) for local setup.
 
