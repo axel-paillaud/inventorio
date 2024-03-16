@@ -13,12 +13,12 @@ See [here](#local-setup) for local setup.
 ## Table of features contents
 
 * [Change the language](#change-the-language)
-* Filter rows by date
-* Toggle table
-* Create a new table and a new row
-* Edit cells
-* Delete a row, and a table
-* Responsive
+* [Filter rows by date](#filter-rows-by-date)
+* [Toggle table](#toggle-table)
+* [Create a new table and a new row](#create-a-new-table-and-a-new-row)
+* [Edit cells](#edit-cells)
+* [Delete a row and a table](#delete-a-row-and-a-table)
+* [Responsive](#responsive)
 
 ## Features
 
@@ -52,7 +52,7 @@ To edit a cell, simply click on it, and update the content. On each change (e.g.
 
 The strategy to display both the view cell and the edit cell, is to use two containers: the first one is a simple `<div>` and the second one is an `<input>`. When we click on the `<td>` element, `<div>` is hidden and `<input>` is shown, and vice versa.
 
-### Delete a row, and a table
+### Delete a row and a table
 
 We can delete a row, or an entire table. When we delete a table, all the corresponding rows are deleted as well.
 
