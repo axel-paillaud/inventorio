@@ -4,7 +4,7 @@ Manage your inventory with excel-like tables, directly in the browser.
 
 Back-end routes use Laravel, and the SPA is entirely done with JavaScript and the Vue 3 framework.
 
-![presentation-screenshot](https://github.com/axel-paillaud/vancraft/assets/85078268/cae0c9c4-6635-4131-ade3-adf57c230859)
+![presentation-screenshot](https://github.com/axel-paillaud/vancraft/assets/85078268/345a29f4-39b9-4ec0-be09-819add1446b5)
 
 The site is available online [here]() (wip). You have access to a demo account, please be respectful when editing data.
 
