@@ -20,6 +20,10 @@ Default language is french.
 
 ### Filter by date
 
+Each row in the table has a date, and we can filter rows by year, month, and day. For example, if I choose "year 2023", all tables will only show rows with a date that is equal to 2023.
+
+The Url is updated accordingly to the date filter.
+
 ### Toggle table
 
 ### Create a new table and a new row
