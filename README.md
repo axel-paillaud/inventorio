@@ -2,7 +2,7 @@
 
 Manage your inventory with excel-like tables, directly in the browser.
 
-Back-end routes use Laravel, and the SPA is entirely done with JavaScript and the Vue 3 framework.
+Back-end routes use Laravel, and the SPA is entirely done with JavaScript and the Vue 3 framework. APIs are not needed, as we use [inertiajs](https://inertiajs.com/) to glue data between Laravel and Vue.js (the "Monolith way").
 
 ![presentation-screenshot](https://github.com/axel-paillaud/vancraft/assets/85078268/345a29f4-39b9-4ec0-be09-819add1446b5)
 
@@ -30,9 +30,21 @@ We can activate and disable a table. This will result in hiding or showing the c
 
 ### Create a new table and a new row
 
+We can add as many tables and rows we want.
+
+To create a new table, click on "Create table", in the bottom right corner. You can then choose a name, and a color.
+
+To create a new row in a table, click on the "+ Plus" button, in the last row of a table, near the "Total" label. The DOM is then manipulated to add this new row dynamically.
+
 ### Edit cells
 
+To edit a cell, simply click on it, and update the content. On each change (e.g., `change` event), cell's data is saved in the SQL database.
+
+The strategy to display both the view cell and the edit cell, is to use two containers: the first one is a simple `<div>` and the second one is an `<input>`. When we click on the `<td>` element, `<div>` is hidden and `<input>` is shown, and vice versa.
+
 ### Delete a row, and a table
+
+### Responsive
 
 ## <a name="installation"></a>Local installation (on unix-like system or with WSL)
 
