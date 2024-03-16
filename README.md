@@ -8,9 +8,7 @@ Back-end routes use Laravel, and the SPA is entirely done with JavaScript and th
 
 The site is available online here (wip). You have access to a demo account, please be respectful when editing data.
 
-E-mail: `test@example.com` Password: `password`
-
-See here for local installation
+See [here](#skldfj) for local installation
 
 ## Features
 
