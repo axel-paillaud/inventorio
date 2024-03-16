@@ -44,7 +44,19 @@ The strategy to display both the view cell and the edit cell, is to use two cont
 
 ### Delete a row, and a table
 
+We can delete a row, or an entire table. When we delete a table, all the corresponding rows are deleted as well.
+
+When a row is hovered over, you can notice a red border appear on the row's left side. Hover over the left side, and you can see the Trash icon. Click on it, and it will delete the corresponding row.
+
+To delete a table, hover the table's header. The Trash icon is here, on the left side.
+
 ### Responsive
+
+If we have enough width on the screen, two tables are displayed. If not, only one table is displayed, taking up all the screen's width.
+
+This web app is not optimized to be used on a mobile phone in portrait mode. It is very complicated (impossible ?) to show an entire table with rows on a device with a 380 px width.
+
+That said, you can still use a mobile phone to edit cells, and view tables, but you will have a horizontal scroll on the table. On a mobile phone, the header uses the hamburger menu, and the footer uses a list icon to display filters.
 
 ## <a name="installation"></a>Local installation (on unix-like system or with WSL)
 
