@@ -81,6 +81,8 @@ To delete a table, hover the table's header. The Trash icon is here, on the left
 
 If we have enough width on the screen, two tables are displayed. If not, only one table is displayed, taking up all the screen's width.
 
+![responsive](https://github.com/axel-paillaud/vancraft/assets/85078268/77b9d434-c7e8-443b-b5de-cf63e093668f)
+
 This web app is not optimized to be used on a mobile phone in portrait mode. It is very complicated (impossible ?) to show an entire table with rows on a device with a 380 px width.
 
 That said, you can still use a mobile phone to edit cells, and view tables, but you will have a horizontal scroll on the table. On a mobile phone, the header uses the hamburger menu, and the footer uses a list icon to display filters.
