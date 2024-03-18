@@ -61,6 +61,8 @@ We can activate and disable a table. This will result in hiding or showing the c
 
 We can add as many tables and rows we want.
 
+![create-table-and-row](https://github.com/axel-paillaud/vancraft/assets/85078268/f462cebb-41e5-4f86-8952-21741142fc63)
+
 To create a new table, click on "Create table", in the bottom right corner. You can then choose a name, and a color.
 
 To create a new row in a table, click on the "+ Plus" button, in the last row of a table, near the "Total" label. The DOM is then manipulated to add this new row dynamically.
