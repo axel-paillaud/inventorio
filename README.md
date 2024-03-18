@@ -27,7 +27,7 @@ See [here](#local-setup) for local setup.
 
 Laravel **Breeze** starter pack was used to manage authentication. You can create a personal account, or use the demo account, with these credentials:
 
-E-mail: `test@example.com`
+E-mail: `test@example.com`  
 password: `password`
 
 ### Change the language
