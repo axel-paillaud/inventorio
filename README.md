@@ -87,7 +87,7 @@ That said, you can still use a mobile phone to edit cells, and view tables, but 
 
 ## Local setup
 
-Unix-like system required, or WSL on Windows (see [WSL Install](https://learn.microsoft.com/en-us/windows/wsl/install)).
+Unix-like system is required, or use WSL on Windows (see [WSL Install](https://learn.microsoft.com/en-us/windows/wsl/install)).
 
 ### Requirements
 
