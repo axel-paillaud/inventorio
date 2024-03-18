@@ -77,6 +77,8 @@ The strategy to display both the view cell and the edit cell, is to use two cont
 
 We can delete a row, or an entire table. When we delete a table, all the corresponding rows are deleted as well.
 
+![delete-row-and-table](https://github.com/axel-paillaud/vancraft/assets/85078268/9bc36cef-5206-4615-8f5a-e1598ee12320)
+
 When a row is hovered over, you can notice a red border appear on the row's left side. Hover over the left side, and you can see the Trash icon. Click on it, and it will delete the corresponding row.
 
 To delete a table, hover the table's header. The Trash icon is here, on the left side.
