@@ -55,6 +55,8 @@ A native JavaScript class `UpdateDate` was created for this filter. A class is, 
 
 We can activate and disable a table. This will result in hiding or showing the corresponding table. The value `is_active` is then saved asynchronously in the SQL database.
 
+![toggle-table](https://github.com/axel-paillaud/vancraft/assets/85078268/b024e2d1-e126-4fdc-82fe-388a517a5f9e)
+
 ### Create a new table and a new row
 
 We can add as many tables and rows we want.
