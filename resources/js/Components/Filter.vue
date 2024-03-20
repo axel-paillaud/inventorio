@@ -18,7 +18,7 @@ const form = useForm({
 
 const classFilter = computed(() => ({
     [colors[props.color].filter]: true,
-    [colors[props.color].bg]: props.isActive,
+    [colors[props.color].bg]: form.isActive,
     'w-full': props.responsive,
 }));
 
