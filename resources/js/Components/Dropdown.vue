@@ -71,7 +71,7 @@ const open = ref(false);
                 @click.stop="open = false"
             >
                 <div
-                    class="rounded-md ring-1 ring-black ring-opacity-5 max-h-52 overflow-scroll"
+                    class="rounded-md ring-1 ring-black ring-opacity-5 max-h-52"
                     :class="contentClasses">
                     <slot name="content" />
                 </div>

@@ -61,7 +61,7 @@ function submit() {
                     >
                 </div>
                 <div class="flex flex-col gap-2">
-                    <Dropdown align="left">
+                    <Dropdown align="left" content-classes="py-1 bg-white overflow-scroll">
                         <template #trigger>
                             <span
                                 class="inline-flex rounded-md border border-stone-300
