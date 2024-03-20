@@ -8,7 +8,7 @@ const { t } = useI18n();
 </script>
 
 <template>
-    <header class="sticky top-0 z-20 h-full bg-white">
+    <header class="fixed top-0 z-20 w-full bg-white">
         <div
             class="mx-auto px-4 sm:px-8 lg:px-12 h-16 mx-auto px-4 sm:px-8 lg:px-12
             justify-between flex items-center"
