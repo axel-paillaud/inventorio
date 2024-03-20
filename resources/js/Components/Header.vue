@@ -1,7 +1,7 @@
 <script setup>
 import { ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { Menu, X } from 'lucide-vue-next';
+import { Menu, X, Sheet } from 'lucide-vue-next';
 import LanguageSelection from '@/Components/LanguageSelection.vue';
 import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
@@ -44,7 +44,9 @@ watch(showingNavigationDropdown, (newValue) => {
                             <Link
                                 :href="route('inventorio')"
                                 @click="dateType = 'always'"
+                                class="flex items-end gap-1"
                             >
+                                <Sheet />
                                 Inventorio
                             </Link>
                         </div>
