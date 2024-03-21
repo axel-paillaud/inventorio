@@ -33,7 +33,7 @@ function submit() {
         <div
             class="relative z-40 hover:bg-red-200 transition-all rounded-r-md flex
             right-8 group-hover:right-px group-hover:bg-red-200 h-full max-w-10
-            group-hover:justify-center"
+            group-hover:justify-center min-h-[46px]"
             :class="isRowHover ? 'bg-red-200' : ''"
         >
             <button
