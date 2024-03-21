@@ -1,4 +1,5 @@
 <script setup>
+import { computed } from 'vue';
 import axios from 'axios';
 import { Trash } from 'lucide-vue-next';
 
@@ -9,6 +10,10 @@ const props = defineProps({
 
 const emit = defineEmits(['deleteRowEvent', 'errorDeleteRowEvent']);
 
+const classObject = computed(() => ({
+    'bg-red-100': props.isRowHover,
+}));
+
 function submit() {
     axios.post(route('row.delete'), {row_id: props.rowId})
         .then((res) => emit('deleteRowEvent', res.data))
@@ -18,13 +23,13 @@ function submit() {
 </script>
 
 <template>
-    <td ref="cell" class="group border-b border-b-gray-100 h-full w-10"
+    <td class="group border-b border-b-gray-100 h-full w-10"
     >
         <form
             class="relative hover:bg-red-100 transition-all rounded-r-md flex
             right-8 group-hover:right-px group-hover:bg-red-100 h-full max-w-10
-            group-hover:justify-center"
-            :class="isRowHover ? 'bg-red-100' : ''"
+            group-hover:justify-center min-h-[47px]"
+            :class="classObject"
         >
             <button
                 @click.prevent="submit"
