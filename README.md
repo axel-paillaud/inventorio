@@ -113,13 +113,13 @@ Unix-like system is required, or use WSL on Windows (see [WSL Install](https://l
 
 `composer install && npm install`
 
-Generate application key:
-
-`php artisan key:generate`
-
 The project use MariaDB server.
 
 `cp .env.example .env` Then, in the `.env` file, configure your MariaDB login credentials.
+
+Generate application key:
+
+`php artisan key:generate`
 
 Run migration:
 
