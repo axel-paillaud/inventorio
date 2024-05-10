@@ -107,9 +107,9 @@ Unix-like system is required, or use WSL on Windows (see [WSL Install](https://l
 
 ### Installation
 
-`git clone git@github.com:axel-paillaud/vancraft.git`
+`git clone git@github.com:axel-paillaud/inventorio.git`
 
-`cd vancraft`
+`cd inventorio`
 
 `composer install && npm install`
 
